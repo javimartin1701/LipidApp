@@ -1,0 +1,296 @@
+/* Empty. Add your own CSS if you like */
+sup {
+vertical-align: super;
+font-size: smaller; 
+}
+.item-toggle {
+    pointer-events: initial !important;
+}
+.bar-home{
+   background-color: #86253c !important;
+}
+.bar-home h1{
+	color: white !important;
+}
+.fondo{
+	background-color: #efefef !important;
+}
+.bar-footer{
+	background-image: inherit !important;
+	color: black !important;
+    background: white;
+}
+.inf-red{
+	color:#87253c !important;
+}
+
+.datos_imc{
+display: inline-block;
+}
+
+.datos_imc input{
+    width: 80px;
+    text-align: center;
+    height: 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #86253C;
+    border-radius: 4px;
+}
+.calcular-imc{
+    margin-top: 10px;
+    width: 130px;
+    height: 34px;
+    color: white;
+    font-weight: 600;
+    border-radius: 7px;
+    background: -webkit-linear-gradient(right,#86253C, #9b4c59);
+}
+.resultado-imc{
+        margin-top: 20px;
+        margin-bottom: 20px;
+}
+
+.datos_imc{
+    color: #86253C;
+    margin: -5px 7px 0px 7px;
+}
+
+.continuar{
+
+    background: #86253C;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 50px;
+    color: white;
+    font-weight: 600;
+    position: absolute;
+    z-index: 9999999;
+    bottom: 0;
+}
+
+.continuar_imc{
+
+    background: #86253C;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 50px;
+    color: white;
+    font-weight: 600;
+   }
+
+.info{
+    background-image: url('../img/info.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    position: absolute;
+    width: 35px;
+    height: 20px;
+}
+
+.cerrar{
+    background-image: url('../img/cerrar.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    position: absolute;
+     width: 41px;
+    height: 41px;
+    right: 35px;
+    top: 8px;
+
+   
+}
+
+#HTA{
+    display: none;
+    margin-top: 15px;
+}
+
+#LOD{
+    display: none;
+    margin-top: 15px;
+}
+
+#HIPERCOL{
+    display: none;
+    margin-top: 15px;
+}
+
+#HTA input{
+    position: absolute;
+    right: 29px;
+    width: 25px;
+    height: 25px;
+}
+
+#HIPERCOL input{
+    position: absolute;
+    right: 29px;
+    width: 25px;
+    height: 25px;
+}
+
+.factores_cuadro{
+    width: 84%;
+    background: #f6f6f6;
+    margin: auto;
+    margin-top: 8%;
+    border: solid;
+    border-width: 2px;
+    border-color: #d7c5ca;
+}
+
+.factores_cuadro hr{
+    border-width: 0;
+    border-top-width: 2px;
+    width: 70%;
+    float: left;
+}
+
+.factores_cuadro li:first-child{
+    color: #86253C;
+    font-weight: 500;
+    padding-bottom: 30px !important;
+    line-height: 15px;
+}
+.form_calc_imc{
+    text-align: center;
+    margin-top: -7px;
+}
+.inicio button{
+	background-color: #ce9ca7 !important;
+	color:white !important;
+}
+
+.inicio{
+    background: #efefef;
+}
+
+.form_dislipenia{
+    background: #efefef;
+}
+
+.form_dislipenia .toggle.toggle-assertive input:checked + .track {
+    border-color: #86253C !important;
+    background-color: #86253C !important;
+}
+
+.form_dislipenia .toggle.toggle-assertive{
+    position: absolute;
+    top: 15px;
+}
+
+.form_dislipenia li{
+    padding: 10px !important;
+}
+.calculadora{
+    background: url('../img/calculadora.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 7px;
+    right: 11px;
+}
+.cal_imc{
+    background: url('../img/calc_imc.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 198px;
+    height: 31px;
+
+}
+#ldl-actual{
+background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    height: 30px;
+    width: 110px;
+    border-width: 1px;
+    display: inline-block;
+}
+#funcion-renal{
+background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    height: 30px;
+    width: 230px;
+    border-width: 1px;
+    display: inline-block;
+}
+#ldl-actual-unidades{
+background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    height: 30px;
+    width: 110px;
+    border-width: 1px;
+    display: inline-block;
+}
+
+.subtitle{
+    font-size: 15px;
+    padding-top: 10px;
+    padding-left: 15px;
+    color: #86253C;
+    padding-bottom: 20px;
+}
+
+.lista li{
+    background: transparent !important;
+}
+
+.subtitulo{
+    background: transparent !important;
+    top: 0px !important;
+}
+
+.subtitulo h2{
+    text-align: left !important;
+    color:#87253c !important;
+}
+
+.inicio button:first-child{
+	color: #86253c !important;
+    height: 125px;
+    font-weight: 500;
+    background-image: url('../img/heart.png');
+    background-position-x: center;
+    background-position-y: 18px;
+    background-repeat: no-repeat;
+    padding-top: 70px;
+}
+.inicio button:nth-child(2) {
+    line-height: 22px !important;
+    height: 64px !important;
+}
+
+.inicio .col{
+	height: 109px !important;
+}
+
+.inicio .col:first-child{
+	text-align: center;
+    padding-top: 34px;
+}
+.inicio .col:nth-child(2){
+	text-align: center;
+    padding-top: 26px;
+}
+
+.bar-home button{
+	background: transparent !important;
+    border: none !important;
+    color: white !important;
+}
+
+.menu-header{
+	background-image: url('../img/menu_icon.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    width: 50px !important;
+    background-size: 36% !important;
+    height: 32px !important;
+}
