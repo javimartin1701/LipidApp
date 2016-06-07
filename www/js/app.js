@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic','ui.router'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,6 +24,8 @@ angular.module('starter', ['ionic'])
 
 
 })
+
+
 
 
 .config(function($stateProvider, $urlRouterProvider){
@@ -60,6 +62,35 @@ angular.module('starter', ['ionic'])
     controller: 'ModalCardioDoc'
   })
 
+   .state('modalvih',{
+    url:'/modalvih',
+    templateUrl:'templates/modalvih.html',
+    controller: 'ModalVIH'
+  })
+
+  .state('presentacion',{
+    url:'/presentacion',
+    templateUrl:'templates/presentacion.html',
+    controller: 'Presentacion'
+  })
+
+  .state('funcionrenal',{
+    url:'/funcionrenal',
+    templateUrl:'templates/funcionrenal.html',
+    controller: 'FuncionRenal'
+  })
+  .state('calcscore',{
+    url:'/calcscore',
+    templateUrl:'templates/calcscore.html',
+    controller: 'CalcScore'
+  })
+
+  .state('paisesaltoriesgo',{
+    url:'/paisesaltoriesgo',
+    templateUrl:'templates/paisesaltoriesgo.html',
+    controller: 'PaisesAltoRiesgo'
+  })
+
   // .state('vista2',{
   //   url:'/vista2',
   //   template:'<div class="padding"><h2>Vista 2</h2><button class="button button-positive" ui-sref="vista1">A vista1</button></div>'
@@ -74,10 +105,25 @@ angular.module('starter', ['ionic'])
 
 })
 
-.controller('DislipFormCtrl',function($scope){
+
+
+
+.controller('DislipFormCtrl',function($scope,$state){
+  $scope.govih = function() {
+       
+        
+        check = document.getElementById("VIH");
+        if (check.checked) {
+             $state.go('modalvih');
+        }
+        
+    }
+
   
 
 })
+
+
 
 .controller('FactorRiesgoCardio',function($scope){
   
@@ -93,6 +139,38 @@ angular.module('starter', ['ionic'])
   
 
 })
+
+.controller('ModalVIH',function($scope){
+
+  
+
+})
+
+.controller('Presentacion',function($scope){
+
+  
+
+})
+
+.controller('FuncionRenal',function($scope){
+
+  
+
+})
+
+.controller('CalcScore',function($scope){
+
+  
+
+})
+
+.controller('PaisesAltoRiesgo',function($scope){
+
+  
+
+})
+
+
 
 
 

@@ -1,4 +1,8 @@
 /* Empty. Add your own CSS if you like */
+a{
+    color:inherit;
+    text-decoration: none;
+}
 sup {
 vertical-align: super;
 font-size: smaller; 
@@ -19,6 +23,7 @@ font-size: smaller;
 	background-image: inherit !important;
 	color: black !important;
     background: white;
+    z-index: 999999999999;
 }
 .inf-red{
 	color:#87253c !important;
@@ -26,6 +31,112 @@ font-size: smaller;
 
 .datos_imc{
 display: inline-block;
+}
+
+#creatinina{
+    float: right;
+    background: white;
+    width: 100px;
+    height: 26px;
+    border-radius: 0;
+}
+#edad-filtrado{
+    float: right;
+    background: white;
+    width: 100px;
+    height: 26px;
+    border-radius: 0;
+}
+
+
+#edadscore{
+    float: right;
+    background: white;
+    width: 100px;
+    height: 26px;
+    border-radius: 0;
+}
+
+#sexoscore{
+    float: right;
+    background: white;
+    width: 100px;
+    height: 26px;
+    border-radius: 0;
+}
+
+#tabaquismoscore{
+    float: right;
+    background: white;
+    width: 100px;
+    height: 26px;
+    border-radius: 0;
+}
+
+#PAS{
+    float: right;
+    background: white;
+    width: 100px;
+    height: 26px;
+    border-radius: 0;
+}
+
+#colesterolscore1{
+    float: right;
+    background: white;
+    width: 85px;
+    height: 26px;
+    border-radius: 0;
+    float: initial;
+}
+
+#colesterolscore2{
+    float: right;
+    background: white;
+    width: 85px;
+    height: 26px;
+    border-radius: 0;
+     float: initial;
+}
+
+.paises_cuadro {
+    width: 90%;
+    background: #f6f6f6;
+    margin: auto;
+    border: solid;
+    border-width: 2px;
+    border-color: #d7c5ca;
+    margin-bottom: 300px;
+}
+
+.subtitle2{
+    font-size: 15px;
+    padding-top: 6px;
+    padding-left: 6px;
+    color: #86253C;
+    padding-bottom: 20px;
+}
+
+.subtitle3{
+    font-size: 15px;
+    padding-top: 6px;
+    padding-left: 6px;
+    color: #86253C;
+    padding-bottom: 20px;
+    text-decoration: underline;
+}
+
+
+
+.resultado-filtrado p{
+    color: #5d5d5d;
+    margin-top: 13px;
+    margin-bottom: 34px;
+
+}
+
+.resultado-filtrado img{
+    margin-top: 27px;
 }
 
 .datos_imc input{
@@ -130,6 +241,66 @@ display: inline-block;
     height: 25px;
 }
 
+.menu_bottom{
+    display: none;
+  
+    width: 100%;
+    z-index: 999;
+    position: absolute;
+    bottom: 50px;
+}
+
+.menu_bottom li:first-child{
+    background: #7f1223;
+    text-align: center;
+    border: none;
+}
+
+.menu_bottom li{
+    height: 60px;
+    background: #9d203a;
+    color: white;
+    font-size: 17px;
+    border-top: solid;
+    border-color: #a8304c;
+    border-width: 1px;
+    line-height: 60px;
+    font-weight: 500;
+}
+
+.menu_bottom img{
+        margin-left: 25px;
+    margin-right: 15px;
+}
+
+#resultado{
+    width: 100px;
+    margin-left: -50px;
+    top: 372px;
+    position: absolute;
+    left: 50%;
+    height: 50px;
+    z-index: 99999999;
+    text-align: center;
+    font-size: 42px;
+    background: transparent;
+    color: #601a2b;
+}
+
+#resultadofiltrado{
+    width: 130px;
+    margin-left: -50px;
+    top: 430px;
+    position: absolute;
+    left: 50%;
+    height: 75px;
+    z-index: 99999999;
+    text-align: center;
+    font-size: 42px;
+    background: transparent;
+    color: #601a2b;
+}
+
 .factores_cuadro{
     width: 84%;
     background: #f6f6f6;
@@ -138,6 +309,7 @@ display: inline-block;
     border: solid;
     border-width: 2px;
     border-color: #d7c5ca;
+    margin-bottom:300px;
 }
 
 .factores_cuadro hr{

@@ -31,7 +31,7 @@
 		     <a class="info" ui-sref="modalcardiodoc"></a>
 		  </li>
 	     <li class="item">
-	      <p>Función renal<button style="top:21px" class="button calculadora"></button></p>
+	      <p>Función renal<button ui-sref="funcionrenal" style="top:21px" class="button calculadora"></button></p>
 	      <p>
 	      	<select id="funcion-renal">
 			  <option value="IFG60">IFG &#8925; 60 mL/min/1.73m<sup>2</sup></option>
@@ -39,18 +39,22 @@
 			  <option value="IFG30">IFG < 60 mL/min/1.73m<sup>2</sup></option>
 		 	</select>
 		 </p>
-		 <p>Score<button style="top:76px" class="button calculadora"></button></p>
+		 <p>Score<button style="top:76px" ui-sref="calcscore" class="button calculadora"></button></p>
 	      <p>
 	      	<select id="funcion-renal">
-			  <option value="mg/dL">Seleccione una opción</option>
-			  <option value="-">-</option>
+			  <option value="-">Seleccione una opción</option>
+			  <option value="20">SCORE > 20%</option>
+			  <option value="10-20">SCORE >10 - 20%</option>
+			  <option value="5-9">SCORE >5 - 9%</option>
+			  <option value="1-4">SCORE >1 - 4%</option>
+			  <option value="1">SCORE >1%</option>
 		 	</select>
 		 </p>
 	    </li>
 	     <li class="item item-toggle">
      <label>VIH</label>
 		     <label class="toggle toggle-assertive" style="top: 5px;">
-		       <input type="checkbox">
+		       <input type="checkbox" id="VIH" ng-click="govih()">
 		       <div class="track">
 		         <div class="handle"></div>
 		       </div>
@@ -66,10 +70,10 @@
           <i class="icon ion-android-arrow-back"></i>
         </a>
 
-        <a class="tab-item">
+        <a ui-sref="presentacion" class="tab-item">
           <i class="icon ion-ios-information-outline inf-red"></i>
         </a>
-        <a class="tab-item">
+        <a onclick="javascript:menu_inferior()" class="tab-item">
           <i class="icon ion-navicon-round"></i>
         </a>
 </div>
