@@ -20,12 +20,12 @@
 	  	<div class="datos_imc"><p>PESO<br><input type="text" id="peso"></p></div>
 	  	<div class="datos_imc"><p>ALTURA<br><input type="text" id="altura"></p></div>
 	  	<div class="sexo">
-	  		<img src="img/hombre.png">
-	  		<img src="img/mujer.png">
+	  		<img class="H activo"src="img/hombre.png">
+	  		<img class="M" src="img/mujer.png">
 	  	</div>
-	  <input type="submit" class="calcular-imc" value="CALCULAR" onclick="javascript:calculoIMC()">
+	  <input type="submit" class="calcular-imc" value="CALCULAR" ng-click="calculoIMC()">
 
-	  <div class="resultado-imc"><img src="img/resultado-imc.png"><input type="text" id="resultado"></div>
+	  <div class="resultado-imc"><input type="text" id="resultado"></div>
 
 	  </form>
 	

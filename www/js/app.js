@@ -3,9 +3,12 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
+var totalimcRounded="0";
+var sexoimc="1";
 angular.module('starter', ['ionic','ui.router'])
 
 .run(function($ionicPlatform) {
+  
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -45,6 +48,7 @@ angular.module('starter', ['ionic','ui.router'])
   })
 
    .state('factorriesgocardio',{
+    cache: false,
     url:'/factorriesgocardio',
     templateUrl:'templates/factorriesgocardio.html',
     controller: 'FactorRiesgoCardio'
@@ -91,6 +95,37 @@ angular.module('starter', ['ionic','ui.router'])
     controller: 'PaisesAltoRiesgo'
   })
 
+   .state('riesgobajo',{
+    url:'/riesgobajo',
+    templateUrl:'templates/riesgobajo.html',
+    controller: 'RiesgoBajo'
+  })
+
+   .state('riesgomuyalto',{
+    url:'/riesgomuyalto',
+    templateUrl:'templates/riesgomuyalto.html',
+    controller: 'RiesgoMuyAlto'
+  })
+
+
+   .state('riesgoalto',{
+    url:'/riesgoalto',
+    templateUrl:'templates/riesgoalto.html',
+    controller: 'RiesgoAlto'
+  })
+
+   .state('riesgomedio',{
+    url:'/riesgomedio',
+    templateUrl:'templates/riesgomedio.html',
+    controller: 'RiesgoMedio'
+  })
+
+   .state('htasevera',{
+    url:'/htasevera',
+    templateUrl:'templates/htasevera.html',
+    controller: 'HTASevera'
+  })
+
   // .state('vista2',{
   //   url:'/vista2',
   //   template:'<div class="padding"><h2>Vista 2</h2><button class="button button-positive" ui-sref="vista1">A vista1</button></div>'
@@ -109,8 +144,27 @@ angular.module('starter', ['ionic','ui.router'])
 
 
 .controller('DislipFormCtrl',function($scope,$state){
+
+var unidad=document.getElementById("ldl-actual-unidades").value;
+
+  $( "#ldl-actual-unidades" ).change(function() {
+  var factor = parseFloat(document.getElementById("ldl-actual-unidades").value);
+  
+  var ldl = parseFloat(document.getElementById("ldl-actual").value);
+  var ldlconv=ldl*factor;
+  document.getElementById("ldl-actual").value=ldlconv;
+  
+});
+
+
+
+
+
+
+
   $scope.govih = function() {
-       
+
+
         
         check = document.getElementById("VIH");
         if (check.checked) {
@@ -120,18 +174,68 @@ angular.module('starter', ['ionic','ui.router'])
     }
 
   
+  $("select#funcion_renal").val("2");
+ 
 
 })
 
 
 
 .controller('FactorRiesgoCardio',function($scope){
+
+
+  
+  if(sexoimc=="1"){
+    if (totalimcRounded>25) {
+    document.getElementById('sobrepeso').checked=true;
+    
+    }
+    
+  }
+  else{
+    if (totalimcRounded>24) {
+    document.getElementById('sobrepeso').checked=true;
+    
+    }
+    
+  }
   
 
 })
 
-.controller('CalculadoraIMC',function($scope){
-  
+.controller('CalculadoraIMC',function($scope,$state){
+
+  $( ".M" ).click(function() {
+      $( ".M" ).addClass( "activo" );
+      $( ".H" ).removeClass( "activo" );
+      sexoimc="0";
+  });
+  $( ".H" ).click(function() {
+      $( ".H" ).addClass( "activo" );
+      $( ".M" ).removeClass( "activo" );
+      sexoimc="1";
+  });
+
+  $scope.calculoIMC = function() {
+    
+    
+    var calcPeso = parseInt(document.getElementById("peso").value);
+    var calcAltura = parseInt(document.getElementById("altura").value);
+    var calcAlturaCuadrado=(calcAltura/100)*(calcAltura/100);
+
+    var totalimc = calcPeso/(calcAlturaCuadrado);
+
+    totalimcRounded = totalimc.toFixed(1);
+
+    document.getElementById("resultado").value=totalimcRounded;
+    $("#resultado").css("display", "block");
+
+    
+    
+
+
+}
+  // totalimcRounded=90;
 
 })
 
@@ -154,6 +258,33 @@ angular.module('starter', ['ionic','ui.router'])
 
 .controller('FuncionRenal',function($scope){
 
+$scope.CKD1 = function() {
+
+
+var MU=1; 
+var NE=1; 
+var J=1; 
+E=0; 
+var e = document.getElementById("edad-filtrado").value; 
+e=parseFloat(e); 
+var c = document.getElementById("creatinina").value; 
+c=parseFloat(c); 
+if (document.getElementById("sexo-filtrado").checked ){MU=document.getElementById("sexo-filtrado").value}; 
+if (document.getElementById("raza-fintrado").checked) {NE=document.getElementById("raza-fintrado").value}; 
+MU = parseFloat (MU); 
+NE = parseFloat (NE); 
+E=Math.pow(0.993, e); 
+if ((c<=0.7) && (MU==1.018)) {J=Math.pow(c/0.7, -0.329)} 
+else if ((c>0.7) && (MU==1.018)) {J=Math.pow(c/0.7, -1.209)} 
+else if ((c<=0.7) && (MU==1)) {J=Math.pow(c/0.9,-0.411)} 
+else {J=Math.pow(c/0.9, -1.209)}; 
+resultadofiltrado = 141 * J * E * MU * NE; 
+resultadofiltrado= Math.round(resultadofiltrado * 100) / 100;
+resultadofiltradoredond=resultadofiltrado.toFixed(1) 
+document.getElementById("resultadofiltrado").value = resultadofiltradoredond; 
+$("#resultadofiltrado").css("display", "block");
+} 
+
   
 
 })
@@ -165,6 +296,47 @@ angular.module('starter', ['ionic','ui.router'])
 })
 
 .controller('PaisesAltoRiesgo',function($scope){
+
+  
+
+})
+
+.controller('RiesgoBajo',function($scope, $rootScope){
+  a=1;
+  b=1;
+  c=a+b;
+  
+  test=c;
+
+
+})
+
+
+.controller("RiesgoMuyAlto",["$scope",function($scope) {
+  // .controller('RiesgoMuyAlto',function($scope, $rootScope){
+  // $rootScope.variable="Gestión de seguros médicos";
+  // $scope.mensaje=$rootScope.variable;
+  
+  
+ 
+}])
+
+
+
+.controller('RiesgoAlto',function($scope){
+
+  
+
+})
+
+
+.controller('RiesgoMedio',function($scope){
+
+  
+
+})
+
+.controller('HTASevera',function($scope){
 
   
 

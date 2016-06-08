@@ -12,9 +12,9 @@
 	    <li class="item">
 	      <label>LDL Actual</label>
 	      <input type="text" id="ldl-actual">
-	      <select id="ldl-actual-unidades">
-			  <option value="mg/dL">mg/dL</option>
-			  <option value="-">-</option>
+	      <select id="ldl-actual-unidades" >
+			  <option value="18.018">mg/dL</option>
+			  <option value="0.0555">mmol/L</option>
 		 </select>
 	    </li>
 	     <li class="item">
@@ -33,15 +33,15 @@
 	     <li class="item">
 	      <p>Función renal<button ui-sref="funcionrenal" style="top:21px" class="button calculadora"></button></p>
 	      <p>
-	      	<select id="funcion-renal">
-			  <option value="IFG60">IFG &#8925; 60 mL/min/1.73m<sup>2</sup></option>
-			  <option value="IFG3059">IFG 60 mL/min/1.73m<sup>2</sup></option>
-			  <option value="IFG30">IFG < 60 mL/min/1.73m<sup>2</sup></option>
+	      	<select id="funcion_renal">
+			  <option value="1">IFG &#8925; 60 mL/min/1.73m<sup>2</sup></option>
+			  <option value="2">IFG 30-59 mL/min/1.73m<sup>2</sup></option>
+			  <option value="3">IFG < 30 mL/min/1.73m<sup>2</sup></option>
 		 	</select>
 		 </p>
 		 <p>Score<button style="top:76px" ui-sref="calcscore" class="button calculadora"></button></p>
 	      <p>
-	      	<select id="funcion-renal">
+	      	<select id="selector-score">
 			  <option value="-">Seleccione una opción</option>
 			  <option value="20">SCORE > 20%</option>
 			  <option value="10-20">SCORE >10 - 20%</option>
@@ -61,7 +61,7 @@
 		     </label>
 		  </li>
 	  </ul>
-	  <button ui-sref="" class="continuar_imc button">CONTINUAR</button>
+	  <button ui-sref="riesgobajo" class="continuar_imc button">CONTINUAR</button>
 </ion-content>
 <div class="tabs tabs-icon-only bar-footer">
   

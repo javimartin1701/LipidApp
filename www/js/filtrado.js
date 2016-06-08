@@ -24,4 +24,5 @@ resultadofiltrado = 141 * J * E * MU * NE;
 resultadofiltrado= Math.round(resultadofiltrado * 100) / 100;
 resultadofiltradoredond=resultadofiltrado.toFixed(1) 
 document.getElementById("resultadofiltrado").value = resultadofiltradoredond; 
+$("#resultadofiltrado").css("display", "block");
 } 

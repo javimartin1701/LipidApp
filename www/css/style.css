@@ -29,6 +29,43 @@ font-size: smaller;
 	color:#87253c !important;
 }
 
+#unidades_totales{
+    background: white;
+    width: 85px;
+    border-radius: 0;
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+.pantalla_resultado label{
+    color: #86253C;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#ldl_obj_res{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_act_res{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
 .datos_imc{
 display: inline-block;
 }
@@ -40,6 +77,8 @@ display: inline-block;
     height: 26px;
     border-radius: 0;
 }
+
+
 #edad-filtrado{
     float: right;
     background: white;
@@ -63,6 +102,14 @@ display: inline-block;
     width: 100px;
     height: 26px;
     border-radius: 0;
+}
+
+.sexo img{
+    opacity: 0.4;
+}
+
+.activo{
+    opacity: 1 !important;
 }
 
 #tabaquismoscore{
@@ -124,6 +171,20 @@ display: inline-block;
     color: #86253C;
     padding-bottom: 20px;
     text-decoration: underline;
+}
+
+.mensaje_riesgo{
+        margin-top: 20px;
+    width: 230px;
+    margin-bottom: 150px;
+    left: 50%;
+    position: absolute;
+    margin-left: -115px;
+}
+
+.pantalla_resultado{
+    text-align: center;
+    margin-bottom: 120px;
 }
 
 
@@ -274,32 +335,36 @@ display: inline-block;
 }
 
 #resultado{
-    width: 100px;
-    margin-left: -50px;
-    top: 372px;
-    position: absolute;
+    display: none;
+    margin-top: 25px;
+    position: relative;
+    width: 164px;
+    height: 164px;
+    margin-left: -84px;
     left: 50%;
-    height: 50px;
     z-index: 99999999;
     text-align: center;
     font-size: 42px;
-    background: transparent;
     color: #601a2b;
+    background: url("../img/resultado-imc.png");
 }
 
 #resultadofiltrado{
-    width: 130px;
-    margin-left: -50px;
-    top: 430px;
-    position: absolute;
+    display: none;
+        margin-top: 25px;
+    position: relative;
+    width: 191px;
+    height: 191px;
+    margin-left: -95px;
     left: 50%;
-    height: 75px;
     z-index: 99999999;
     text-align: center;
     font-size: 42px;
-    background: transparent;
     color: #601a2b;
+    background: url("../img/resultado-filtrado.png");
 }
+
+
 
 .factores_cuadro{
     width: 84%;
@@ -381,7 +446,17 @@ background: white;
     border-width: 1px;
     display: inline-block;
 }
-#funcion-renal{
+#funcion_renal{
+background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    height: 30px;
+    width: 230px;
+    border-width: 1px;
+    display: inline-block;
+}
+#selector-score{
 background: white;
     border-color: #ccc;
     border-style: solid;
