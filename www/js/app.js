@@ -5,6 +5,12 @@
 // the 2nd parameter is an array of 'requires'
 var totalimcRounded="0";
 var sexoimc="1";
+var resultadofiltradoredond="inicio";
+var cardio="0";
+var ldlactual="0";
+var renalindex="9";
+var scoreindex="9";
+
 angular.module('starter', ['ionic','ui.router'])
 
 .run(function($ionicPlatform) {
@@ -36,12 +42,14 @@ angular.module('starter', ['ionic','ui.router'])
   $stateProvider
 
   .state('home',{
+    cache: false,
     url:'/home',
     templateUrl:'templates/home.html',
     controller: 'HomeCtrl'
   })
 
   .state('formulariodislipemia',{
+    cache: false,
     url:'/formulariodislipemia',
     templateUrl:'templates/formulariodislipemia.html',
     controller: 'DislipFormCtrl'
@@ -55,53 +63,62 @@ angular.module('starter', ['ionic','ui.router'])
   })
 
    .state('calculadoraimc',{
+    cache: false,
     url:'/calculadoraimc',
     templateUrl:'templates/calculadoraimc.html',
     controller: 'CalculadoraIMC'
   })
 
    .state('modalcardiodoc',{
+    cache: false,
     url:'/modalcardiodoc',
     templateUrl:'templates/modalcardiodoc.html',
     controller: 'ModalCardioDoc'
   })
 
    .state('modalvih',{
+    cache: false,
     url:'/modalvih',
     templateUrl:'templates/modalvih.html',
     controller: 'ModalVIH'
   })
 
   .state('presentacion',{
+    cache: false,
     url:'/presentacion',
     templateUrl:'templates/presentacion.html',
     controller: 'Presentacion'
   })
 
   .state('funcionrenal',{
+    cache: false,
     url:'/funcionrenal',
     templateUrl:'templates/funcionrenal.html',
     controller: 'FuncionRenal'
   })
   .state('calcscore',{
+    cache: false,
     url:'/calcscore',
     templateUrl:'templates/calcscore.html',
     controller: 'CalcScore'
   })
 
   .state('paisesaltoriesgo',{
+    cache: false,
     url:'/paisesaltoriesgo',
     templateUrl:'templates/paisesaltoriesgo.html',
     controller: 'PaisesAltoRiesgo'
   })
 
    .state('riesgobajo',{
+    cache: false,
     url:'/riesgobajo',
     templateUrl:'templates/riesgobajo.html',
     controller: 'RiesgoBajo'
   })
 
    .state('riesgomuyalto',{
+    cache: false,
     url:'/riesgomuyalto',
     templateUrl:'templates/riesgomuyalto.html',
     controller: 'RiesgoMuyAlto'
@@ -109,21 +126,31 @@ angular.module('starter', ['ionic','ui.router'])
 
 
    .state('riesgoalto',{
+    cache: false,
     url:'/riesgoalto',
     templateUrl:'templates/riesgoalto.html',
     controller: 'RiesgoAlto'
   })
 
    .state('riesgomedio',{
+    cache: false,
     url:'/riesgomedio',
     templateUrl:'templates/riesgomedio.html',
     controller: 'RiesgoMedio'
   })
 
    .state('htasevera',{
+    cache: false,
     url:'/htasevera',
     templateUrl:'templates/htasevera.html',
     controller: 'HTASevera'
+  })
+
+      .state('reduccion',{
+    cache: false,
+    url:'/reduccion',
+    templateUrl:'templates/reduccion.html',
+    controller: 'Reduccion'
   })
 
   // .state('vista2',{
@@ -136,6 +163,13 @@ angular.module('starter', ['ionic','ui.router'])
 })
 
 .controller('HomeCtrl',function($scope){
+  var totalimcRounded="0";
+var sexoimc="1";
+var resultadofiltradoredond="inicio";
+var cardio="0";
+
+var renalindex="9";
+var scoreindex="9";
  
 
 })
@@ -144,6 +178,40 @@ angular.module('starter', ['ionic','ui.router'])
 
 
 .controller('DislipFormCtrl',function($scope,$state){
+
+
+
+    $scope.comprofinal = function(){
+    ecvcheck = document.getElementById("ecvdoc");
+    renalindex=document.getElementById('funcion_renal').options.selectedIndex;
+    scoreindex=document.getElementById('selector-score').options.selectedIndex;
+
+    ldlactual = document.getElementById("ldl-actual").value;
+
+    
+    if(cardio=="1"||ecvcheck.checked||renalindex=="2"||scoreindex=="1"||scoreindex=="2"){
+      // alert("RiesgoMuyAlto");
+      $state.go('riesgomuyalto');
+
+    }
+    if(cardio=="2"||renalindex=="1"||scoreindex=="3"){
+      // alert("RiesgoAlto");
+      $state.go('riesgoalto');
+    }
+    if(scoreindex=="4"){
+      // alert("RiesgoModerado");
+      $state.go('riesgomedio');
+    }
+    if(scoreindex=="5"){
+      // alert("RiesgoBajo");
+      $state.go('riesgobajo');
+    }
+
+  }
+
+
+
+  
 
 var unidad=document.getElementById("ldl-actual-unidades").value;
 
@@ -173,15 +241,28 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
         
     }
 
+
+
+  if (resultadofiltradoredond>60) {
+    $("select#funcion_renal").val("1");
+  }
+  else if(resultadofiltradoredond<30){
+    $("select#funcion_renal").val("3");
+  }
+  else if(resultadofiltradoredond=="inicio"){
+    $("select#funcion_renal").val("4");
+  }
+  else{
+    $("select#funcion_renal").val("2");
+  }
   
-  $("select#funcion_renal").val("2");
- 
+  
 
 })
 
 
 
-.controller('FactorRiesgoCardio',function($scope){
+.controller('FactorRiesgoCardio',function($scope,$state){
 
 
   
@@ -199,6 +280,40 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
     }
     
   }
+
+
+
+  $scope.compro1 = function(){
+  
+        $state.go('formulariodislipemia');
+        
+        check1 = document.getElementById("diabetes");
+        check2 = document.getElementById("lod");
+        check3 = document.getElementById("frcv");
+        check4 = document.getElementById("hiperfam");
+        check5 = document.getElementById("htasevera");
+
+
+        if ((check1.checked&&check2.checked)||(check1.checked&&check3.checked)) {
+            cardio="1";
+            
+             
+        }
+
+        // if (check1.checked&&check3.checked) {
+        //     cardiomuyalto="1";
+             
+        // }
+
+        if(((check1.checked&&!check2.checked)&&(check1.checked&&!check3.checked))||check4.checked||check5.checked){
+          cardio="2";
+        }
+       
+    }
+
+
+
+
   
 
 })
@@ -254,6 +369,8 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 
   
 
+  
+
 })
 
 .controller('FuncionRenal',function($scope){
@@ -301,36 +418,72 @@ $("#resultadofiltrado").css("display", "block");
 
 })
 
-.controller('RiesgoBajo',function($scope, $rootScope){
-  a=1;
-  b=1;
-  c=a+b;
-  
-  test=c;
+.controller('RiesgoBajo',function($scope,$state){
+
+  document.getElementById("ldl_act_res").value=ldlactual;
+
+  document.getElementById("ldl_obj_res").value="115";
+
+  $scope.reduccion = function() {
+
+             $state.go('reduccion');
+        
+        
+    }
+
 
 
 })
 
 
-.controller("RiesgoMuyAlto",["$scope",function($scope) {
-  // .controller('RiesgoMuyAlto',function($scope, $rootScope){
-  // $rootScope.variable="Gestión de seguros médicos";
-  // $scope.mensaje=$rootScope.variable;
+.controller('RiesgoMuyAlto',function($scope,$state){
+
+  document.getElementById("ldl_act_res").value=ldlactual;
+  document.getElementById("ldl_obj_res").value="70";
+
+     $scope.reduccion = function() {
+
+             $state.go('reduccion');
+        
+        
+    }
   
   
  
-}])
+})
 
 
 
-.controller('RiesgoAlto',function($scope){
+.controller('RiesgoAlto',function($scope,$state){
+
+
+
+  document.getElementById("ldl_act_res").value=ldlactual;
+  document.getElementById("ldl_obj_res").value="100";
+
+  $scope.reduccion = function() {
+
+             $state.go('reduccion');
+        
+        
+    }
 
   
 
 })
 
 
-.controller('RiesgoMedio',function($scope){
+.controller('RiesgoMedio',function($scope,$state){
+
+  document.getElementById("ldl_act_res").value=ldlactual;
+  document.getElementById("ldl_obj_res").value="115";
+
+  $scope.reduccion = function() {
+
+             $state.go('reduccion');
+        
+        
+    }
 
   
 
@@ -339,6 +492,18 @@ $("#resultadofiltrado").css("display", "block");
 .controller('HTASevera',function($scope){
 
   
+
+})
+
+
+.controller('Reduccion',function($scope){
+var ldlobjetivo=document.getElementById("ldl_obj_res").value;
+document.getElementById("ldl_act_red").value=ldlactual;
+  document.getElementById("ldl_obj_red").value=ldlobjetivo;  
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red").value=porc_reducc+"%";
+
+
 
 })
 

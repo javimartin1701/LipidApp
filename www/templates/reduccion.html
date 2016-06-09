@@ -4,22 +4,20 @@
 
 </ion-header-bar>
 <ion-content class="form_dislipenia">
-<h2 class="subtitle">2 de 3 RIESGO CARDIOVASCULAR</h2>
+<h2 class="subtitle">REDUCCIÓN LDL</h2>
 <div class="pantalla_resultado">
-	  <img style="width:95%" src="img/riesgo_muy_alto.png">
-	  <label>OBJETIVO cLDL</label>
-	  <select id="unidades_totales">
-			  <option value="mg/dL">mg/dL</option>
-			  <option value="mmol/L">mmol/L</option>
-	  </select>
+	  
 	  <div class="campos_res">
 	  	
-	  	<input type="text" id="ldl_act_res">
-	    <input type="text" id="ldl_obj_res">
+	  	<input type="text" id="ldl_act_red">
+	    <input type="text" id="ldl_obj_red">
+
+	    <input type="text" id="porcentaje_red">
+	    <p style="margin-top: 20px;color: #95485a;">De reducción para alcanzar el objetivo</p>
 	  </div>
 	  
       
-      <img class="" src="img/mensaje_riesgo.png">
+      
 </div>
 
       
@@ -30,7 +28,7 @@
 	  </ul>
 
 </ion-content>
-<button ng-click="reduccion()" class="continuar button">CONTINUAR</button>
+<button ui-sref="" class="continuar button">CONTINUAR</button>
 <div class="tabs tabs-icon-only bar-footer">
   
 
