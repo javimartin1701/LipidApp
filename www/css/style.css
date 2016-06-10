@@ -40,6 +40,39 @@ font-size: smaller;
     color: gray;
 }
 
+#unidades_totales_alto{
+    background: white;
+    width: 85px;
+    border-radius: 0;
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+#unidades_totales_medio{
+    background: white;
+    width: 85px;
+    border-radius: 0;
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+#unidades_totales_bajo{
+    background: white;
+    width: 85px;
+    border-radius: 0;
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
 .pantalla_resultado label{
     color: #86253C;
     font-weight: 500;
@@ -65,6 +98,72 @@ font-size: smaller;
     color: #87253c;
     font-size: 31px;
 }
+
+
+#ldl_obj_res_alto{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_act_res_alto{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
+
+
+#ldl_obj_res_medio{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_act_res_medio{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
+
+#ldl_obj_res_bajo{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_act_res_bajo{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
+
 
 #porcentaje_red{
     position: relative;
@@ -101,6 +200,113 @@ font-size: smaller;
     background: url('../img/total_rojo.png');
     color: #87253c;
     font-size: 31px;
+}
+
+.tratamiento_btn_si{
+    width: 110px;
+    background: -webkit-linear-gradient(left, #924853 , #80243e);
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    display: block;
+    border-radius: 7px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.cuadro_opcion_tratamiento{
+    background: white;
+    text-align: center;
+    font-weight: 500;
+    color: #87253c;
+        padding: 55px;
+}
+
+.cuadro_opcion_tratamiento p{
+    margin-bottom: 40px;
+}
+
+.selector_medicamentos{
+    display: none;
+    background: white;
+    border: solid;
+    border-color: #c09ba5;
+    border-width: 2px;
+    margin-top: 15px;
+    padding: 7px;
+}
+
+
+
+.linea_gris{
+        background: #eeeeee !important;
+}
+
+.cuadro_dosis{
+    display: none;
+    background-size: 100% 100%;
+    position: absolute;
+    background-image: url('../img/fondo_dosis.png');
+    padding: 28px 30px 67px 27px;
+    border-radius: 5px;
+    width: 275px;
+    left: 50%;
+    margin-left: -124px;
+}
+
+.cuadro_dosis img{
+        width: 26px;
+    margin-right: 10px;
+}
+
+.cuadro_dosis p{
+    color: white;
+    line-height: 28px;
+    font-size: 16px;
+}
+
+.cuadro_dosis p input{
+       width: 18px;
+    height: 18px;
+    float: right;
+    margin-top: 6px;
+}
+
+.listado_de_medicamentos li{
+    overflow: initial;
+    z-index: 9;
+}
+
+.cuadro_dosis div{
+    position: absolute;
+    bottom: 3px;
+    right: 6px;
+    background: #bfbfbf;
+    width: 268px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.cuadro_dosis div p{
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    width: 50%;
+}
+
+.cuadro_dosis div p:first-child{}
+
+
+.tratamiento_btn_no{
+    width: 110px;
+    background: -webkit-linear-gradient(left, #7a2337 , #4e1321);
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    display: block;
+    border-radius: 7px;
+    margin: auto;
+    margin-top: 15px;
 }
 
 .datos_imc{

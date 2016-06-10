@@ -10,6 +10,7 @@ var cardio="0";
 var ldlactual="0";
 var renalindex="9";
 var scoreindex="9";
+var ldltransactual="";
 
 angular.module('starter', ['ionic','ui.router'])
 
@@ -153,6 +154,20 @@ angular.module('starter', ['ionic','ui.router'])
     controller: 'Reduccion'
   })
 
+      .state('tratamientoprevio',{
+    cache: false,
+    url:'/tratamientoprevio',
+    templateUrl:'templates/tratamientoprevio.html',
+    controller: 'TratamientoPrevio'
+  })
+
+       .state('tratamientopreviomedicamentos',{
+    cache: false,
+    url:'/tratamientopreviomedicamentos',
+    templateUrl:'templates/tratamientopreviomedicamentos.html',
+    controller: 'TratamientoPrevioMedicamentos'
+  })
+
   // .state('vista2',{
   //   url:'/vista2',
   //   template:'<div class="padding"><h2>Vista 2</h2><button class="button button-positive" ui-sref="vista1">A vista1</button></div>'
@@ -178,6 +193,22 @@ var scoreindex="9";
 
 
 .controller('DislipFormCtrl',function($scope,$state){
+    document.getElementById("ldl-actual").value=ldltransactual;
+
+    $scope.irfactorriesgo = function(){
+        ldltransactual=document.getElementById("ldl-actual").value;
+        $state.go('factorriesgocardio');
+    }
+
+    $scope.irfuncionrenal = function(){
+        ldltransactual=document.getElementById("ldl-actual").value;
+        $state.go('funcionrenal');
+    }
+
+    $scope.ircalcscore = function(){
+        ldltransactual=document.getElementById("ldl-actual").value;
+        $state.go('calcscore');
+    }
 
 
 
@@ -263,6 +294,8 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 
 
 .controller('FactorRiesgoCardio',function($scope,$state){
+
+
 
 
   
@@ -432,6 +465,21 @@ $("#resultadofiltrado").css("display", "block");
     }
 
 
+    var unidad=document.getElementById("unidades_totales_bajo").value;
+
+  $( "#unidades_totales" ).change(function() {
+  var factor = parseFloat(document.getElementById("unidades_totales_bajo").value);
+  
+  var ldl = parseFloat(document.getElementById("ldl_act_res_bajo").value);
+  var ldl2 = parseFloat(document.getElementById("ldl_obj_res_bajo").value);
+  var ldlconv=ldl*factor;
+  var ldlconv2=ldl2*factor;
+  document.getElementById("ldl_act_res_bajo").value=ldlconv.toFixed(2);
+  document.getElementById("ldl_obj_res_bajo").value=ldlconv2.toFixed(2);
+  
+});
+
+
 
 })
 
@@ -447,6 +495,20 @@ $("#resultadofiltrado").css("display", "block");
         
         
     }
+
+    var unidad=document.getElementById("unidades_totales").value;
+
+  $( "#unidades_totales" ).change(function() {
+  var factor = parseFloat(document.getElementById("unidades_totales").value);
+  
+  var ldl = parseFloat(document.getElementById("ldl_act_res").value);
+  var ldl2 = parseFloat(document.getElementById("ldl_obj_res").value);
+  var ldlconv=ldl*factor;
+  var ldlconv2=ldl2*factor;
+  document.getElementById("ldl_act_res").value=ldlconv.toFixed(2);
+  document.getElementById("ldl_obj_res").value=ldlconv2.toFixed(2);
+  
+});
   
   
  
@@ -458,8 +520,8 @@ $("#resultadofiltrado").css("display", "block");
 
 
 
-  document.getElementById("ldl_act_res").value=ldlactual;
-  document.getElementById("ldl_obj_res").value="100";
+  document.getElementById("ldl_act_res_alto").value=ldlactual;
+  document.getElementById("ldl_obj_res_alto").value="100";
 
   $scope.reduccion = function() {
 
@@ -468,7 +530,19 @@ $("#resultadofiltrado").css("display", "block");
         
     }
 
+  var unidad=document.getElementById("unidades_totales_alto").value;
+
+  $( "#unidades_totales_alto" ).change(function() {
+  var factor = parseFloat(document.getElementById("unidades_totales_alto").value);
   
+  var ldl = parseFloat(document.getElementById("ldl_act_res_alto").value);
+  var ldl2 = parseFloat(document.getElementById("ldl_obj_res_alto").value);
+  var ldlconv=ldl*factor;
+  var ldlconv2=ldl2*factor;
+  document.getElementById("ldl_act_res_alto").value=ldlconv.toFixed(2);
+  document.getElementById("ldl_obj_res_alto").value=ldlconv2.toFixed(2);
+  
+});
 
 })
 
@@ -485,7 +559,19 @@ $("#resultadofiltrado").css("display", "block");
         
     }
 
+  var unidad=document.getElementById("unidades_medio").value;
+
+  $( "#unidades_medio" ).change(function() {
+  var factor = parseFloat(document.getElementById("unidades_medio").value);
   
+  var ldl = parseFloat(document.getElementById("ldl_act_res_medio").value);
+  var ldl2 = parseFloat(document.getElementById("ldl_obj_res_medio").value);
+  var ldlconv=ldl*factor;
+  var ldlconv2=ldl2*factor;
+  document.getElementById("ldl_act_res_medio").value=ldlconv.toFixed(2);
+  document.getElementById("ldl_obj_res_medio").value=ldlconv2.toFixed(2);
+  
+});
 
 })
 
@@ -506,6 +592,262 @@ document.getElementById("ldl_act_red").value=ldlactual;
 
 
 })
+
+
+.controller('TratamientoPrevio',function($scope){
+
+  
+
+})
+
+.controller('TratamientoPrevioMedicamentos',function($scope){
+
+ 
+
+jQuery('.linea_atorvastatina').on( "click", function() { 
+
+           jQuery('.cuadro_atorvastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {   
+
+           jQuery('.cuadro_atorvastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar1').on( "click", function() { 
+          jQuery("#atorv_10").prop('checked', false);
+          jQuery("#atorv_20").prop('checked', false);
+          jQuery("#atorv_40").prop('checked', false);
+          jQuery("#atorv_80").prop('checked', false);  
+           jQuery('.cuadro_atorvastatina').hide(); //muestro mediante clase
+         });
+
+
+jQuery('.linea_rosuvastatina').on( "click", function() {    
+           jQuery('.cuadro_rosuvastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_rosuvastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar2').on( "click", function() { 
+          jQuery("#rosuv_5").prop('checked', false);
+          jQuery("#rosuv_10").prop('checked', false);
+          jQuery("#rosuv_20").prop('checked', false);
+           jQuery('.cuadro_rosuvastatina').hide(); //muestro mediante clase
+         });
+
+
+
+jQuery('.linea_simvastatina').on( "click", function() {    
+           jQuery('.cuadro_simvastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_simvastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar4').on( "click", function() { 
+          jQuery("#simv_10").prop('checked', false);
+          jQuery("#simv_20").prop('checked', false);
+          jQuery("#simv_40").prop('checked', false);
+          jQuery("#simv_80").prop('checked', false);
+           jQuery('.cuadro_simvastatina').hide(); //muestro mediante clase
+         });
+
+
+jQuery('.linea_pitavastatina').on( "click", function() {    
+           jQuery('.cuadro_pitavastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_pitavastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar3').on( "click", function() { 
+          jQuery("#pitv_1").prop('checked', false);
+          jQuery("#pitv_2").prop('checked', false);
+          jQuery("#pitv_4").prop('checked', false);
+           jQuery('.cuadro_pitavastatina').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_pravastatina').on( "click", function() {    
+           jQuery('.cuadro_pravastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_pravastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar5').on( "click", function() { 
+          jQuery("#prav_10").prop('checked', false);
+          jQuery("#prav_20").prop('checked', false);
+          jQuery("#prav_40").prop('checked', false);
+          jQuery("#prav_80").prop('checked', false);
+           jQuery('.cuadro_pravastatina').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_fluvastatina').on( "click", function() {    
+           jQuery('.cuadro_fluvastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_fluvastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar6').on( "click", function() { 
+          jQuery("#fluv_20").prop('checked', false);
+          jQuery("#fluv_40").prop('checked', false);
+          jQuery("#fluv_80").prop('checked', false);
+           jQuery('.cuadro_fluvastatina').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_lovastatina').on( "click", function() {    
+           jQuery('.cuadro_lovastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_lovastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar7').on( "click", function() { 
+          jQuery("#lov_20").prop('checked', false);
+          jQuery("#lov_40").prop('checked', false);
+           jQuery('.cuadro_lovastatina').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_ezetimibe').on( "click", function() {    
+           jQuery('.cuadro_ezetimibe').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {
+
+           jQuery('.cuadro_ezetimibe').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar8').on( "click", function() { 
+          jQuery("#ezet_10").prop('checked', false);
+           jQuery('.cuadro_ezetimibe').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_alirocumab').on( "click", function() {    
+           jQuery('.cuadro_alirocumab').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_alirocumab').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar9').on( "click", function() { 
+          jQuery("#aliroc_75").prop('checked', false);
+          jQuery("#aliroc_150").prop('checked', false);
+           jQuery('.cuadro_alirocumab').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_evolocumab').on( "click", function() {    
+           jQuery('.cuadro_evolocumab').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_evolocumab').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar10').on( "click", function() { 
+          jQuery("#evoloc_140").prop('checked', false);
+          jQuery("#evoloc_420").prop('checked', false);
+           jQuery('.cuadro_evolocumab').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_colestiramina').on( "click", function() {    
+           jQuery('.cuadro_colestiramina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_colestiramina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar11').on( "click", function() { 
+          jQuery("#colestir_4").prop('checked', false);
+           jQuery('.cuadro_colestiramina').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_colestipol').on( "click", function() {    
+           jQuery('.cuadro_colestipol').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_colestipol').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar12').on( "click", function() { 
+          jQuery("#colestip_5").prop('checked', false);
+           jQuery('.cuadro_colestipol').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_fenofibrato').on( "click", function() {    
+           jQuery('.cuadro_fenofibrato').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_fenofibrato').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar13').on( "click", function() { 
+          jQuery("#fenof_200").prop('checked', false);
+           jQuery('.cuadro_fenofibrato').hide(); //muestro mediante clase
+         });
+
+jQuery('.linea_gemfibrozilo').on( "click", function() {    
+           jQuery('.cuadro_gemfibrozilo').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_gemfibrozilo').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar13').on( "click", function() { 
+          jQuery("#gemf_900").prop('checked', false);
+          jQuery("#gemf_600").prop('checked', false);
+           jQuery('.cuadro_gemfibrozilo').hide(); //muestro mediante clase
+         });
+
+$scope.sumar = function() {
+var atorv_10v=atorv_20v=atorv_40v=atorv_80v=rosuv_5v=rosuv_10v=rosuv_20v=pitv_1v=pitv_2v=pitv_4v=simv_10v=simv_20v=simv_40v=simv_80v=prav_10v=prav_20v=prav_40v=prav_80v=fluv_20v=fluv_40v=fluv_80v=lov_20v=lov_40v=ezet_10v=aliroc_75v=aliroc_150v=evoloc_140v=evoloc_420v=colestir_4v=colestip_5v=fenof_200v=gemf_900v=gemf_600v=0;
+
+// atorv_10v=document.getElementById("atorv_10").value;
+
+// atorv_20v=parseInt(document.getElementById("atorv_20").value);
+
+if ($('#atorv_10').is(":checked")){atorv_10v=35;}
+if ($('#atorv_20').is(":checked")){atorv_20v=41;}
+if ($('#atorv_40').is(":checked")){atorv_40v=47;}
+if ($('#atorv_80').is(":checked")){atorv_80v=53;}
+
+if ($('#rosuv_5').is(":checked")){rosuv_5v=41;}
+if ($('#rosuv_10').is(":checked")){rosuv_10v=47;}
+if ($('#rosuv_20').is(":checked")){rosuv_20v=53;}
+
+if ($('#pitv_1').is(":checked")){pitv_1v=35;}
+if ($('#pitv_2').is(":checked")){pitv_2v=41;}
+if ($('#pitv_4').is(":checked")){pitv_4v=47;}
+
+if ($('#simv_10').is(":checked")){simv_10v=29;}
+if ($('#simv_20').is(":checked")){simv_20v=34;}
+if ($('#simv_40').is(":checked")){simv_40v=41;}
+if ($('#simv_80').is(":checked")){simv_80v=47;}
+
+if ($('#prav_10').is(":checked")){prav_10v=20;}
+if ($('#prav_20').is(":checked")){prav_20v=26;}
+if ($('#prav_40').is(":checked")){prav_40v=33;}
+if ($('#prav_80').is(":checked")){prav_80v=44;}
+
+if ($('#fluv_20').is(":checked")){fluv_20v=20;}
+if ($('#fluv_40').is(":checked")){fluv_40v=26;}
+if ($('#fluv_80').is(":checked")){fluv_80v=33;}
+
+if ($('#lov_20').is(":checked")){lov_20v=25;}
+if ($('#lov_40').is(":checked")){lov_20v=31;}
+
+if ($('#ezet_10v').is(":checked")){ezet_10v=20;}
+
+if ($('#aliroc_75').is(":checked")){aliroc_75v=53;}
+if ($('#aliroc_150').is(":checked")){aliroc_150v=68;}
+
+if ($('#evoloc_140').is(":checked")){evoloc_140v=61;}
+if ($('#evoloc_420').is(":checked")){evoloc_420v=61;}
+
+if ($('#colestir_4').is(":checked")){colestir_4v=12;}
+if ($('#colestip_5').is(":checked")){colestip_5v=12;}
+
+if ($('#fenof_200').is(":checked")){fenof_200v=10;}
+
+if ($('#gemf_900').is(":checked")){gemf_900v=10;}
+if ($('#gemf_600').is(":checked")){gemf_600v=10;}
+
+red_trat=atorv_10v+atorv_20v+atorv_40v+atorv_80v+rosuv_5v+rosuv_10v+rosuv_20v+pitv_1v+pitv_2v+pitv_4v+simv_10v+simv_20v+simv_40v+simv_80v+prav_10v+prav_20v+prav_40v+prav_80v+fluv_20v+fluv_40v+fluv_80v+lov_20v+lov_40v+ezet_10v+aliroc_75v+aliroc_150v+evoloc_140v+evoloc_420v+colestir_4v+colestip_5v+fenof_200v+gemf_900v+gemf_600v;
+ldlrectificado=parseFloat(ldlactual)+parseFloat(ldlactual)*(red_trat/100);
+alert(ldlrectificado);
+}
+
+})
+
+
+
+
+
 
 
 

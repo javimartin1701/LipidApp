@@ -51,3 +51,66 @@ function menu_inferior(){
 }
 
 
+function showEstatina() {
+    
+        
+        check = document.getElementById("estatinas");
+        if (check.checked) {
+             $(".sel_estatinas").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".sel_estatinas").css("display", "none");
+        }
+    }
+
+
+function showEzetimibe() {
+    
+        
+        check = document.getElementById("ezetimibe");
+        if (check.checked) {
+             $(".sel_ezetimibe").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".sel_ezetimibe").css("display", "none");
+        }
+    }
+
+function showIPCSK9() {
+    
+        
+        check = document.getElementById("ipcsk9");
+        if (check.checked) {
+             $(".sel_ipcsk9").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".sel_ipcsk9").css("display", "none");
+        }
+    }
+
+function showResinas() {
+    
+        
+        check = document.getElementById("resinas");
+        if (check.checked) {
+             $(".sel_resinas").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".sel_resinas").css("display", "none");
+        }
+    }
+
+
+function showFibratos() {
+    
+        
+        check = document.getElementById("fibratos");
+        if (check.checked) {
+             $(".sel_fibratos").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".sel_fibratos").css("display", "none");
+        }
+    }
+
+
