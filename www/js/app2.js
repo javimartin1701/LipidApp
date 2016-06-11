@@ -11,7 +11,6 @@ var ldlactual="0";
 var renalindex="9";
 var scoreindex="9";
 var ldltransactual="";
-var ldlobjetivo="0";
 
 angular.module('starter', ['ionic','ui.router'])
 
@@ -134,9 +133,9 @@ angular.module('starter', ['ionic','ui.router'])
     controller: 'RiesgoAlto'
   })
 
-   .state('riesgomedio',{
+   .state('riesgo_medio',{
     cache: false,
-    url:'/riesgomedio',
+    url:'/riesgo_medio',
     templateUrl:'templates/riesgomedio.html',
     controller: 'RiesgoMedio'
   })
@@ -297,6 +296,8 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 .controller('FactorRiesgoCardio',function($scope,$state){
 
 
+
+
   
   if(sexoimc=="1"){
     if (totalimcRounded>25) {
@@ -452,11 +453,9 @@ $("#resultadofiltrado").css("display", "block");
 
 .controller('RiesgoBajo',function($scope,$state){
 
+  document.getElementById("ldl_act_res").value=ldlactual;
 
-
-  document.getElementById("ldl_act_res_bajo").value=ldlactual;
-  document.getElementById("ldl_obj_res_bajo").value="115";
-  ldlobjetivo=115;
+  document.getElementById("ldl_obj_res").value="115";
 
   $scope.reduccion = function() {
 
@@ -465,9 +464,10 @@ $("#resultadofiltrado").css("display", "block");
         
     }
 
-  var unidad=document.getElementById("unidades_totales_bajo").value;
 
-  $( "#unidades_totales_alto" ).change(function() {
+    var unidad=document.getElementById("unidades_totales_bajo").value;
+
+  $( "#unidades_totales" ).change(function() {
   var factor = parseFloat(document.getElementById("unidades_totales_bajo").value);
   
   var ldl = parseFloat(document.getElementById("ldl_act_res_bajo").value);
@@ -479,6 +479,8 @@ $("#resultadofiltrado").css("display", "block");
   
 });
 
+
+
 })
 
 
@@ -486,7 +488,6 @@ $("#resultadofiltrado").css("display", "block");
 
   document.getElementById("ldl_act_res").value=ldlactual;
   document.getElementById("ldl_obj_res").value="70";
-  ldlobjetivo=70;
 
      $scope.reduccion = function() {
 
@@ -521,7 +522,6 @@ $("#resultadofiltrado").css("display", "block");
 
   document.getElementById("ldl_act_res_alto").value=ldlactual;
   document.getElementById("ldl_obj_res_alto").value="100";
-  ldlobjetivo=100;
 
   $scope.reduccion = function() {
 
@@ -549,11 +549,8 @@ $("#resultadofiltrado").css("display", "block");
 
 .controller('RiesgoMedio',function($scope,$state){
 
-
-
-  document.getElementById("ldl_act_res_medio").value=ldlactual;
-  document.getElementById("ldl_obj_res_medio").value="115";
-  ldlobjetivo=115;
+  document.getElementById("ldl_act_res").value=ldlactual;
+  document.getElementById("ldl_obj_res").value="115";
 
   $scope.reduccion = function() {
 
@@ -562,19 +559,7 @@ $("#resultadofiltrado").css("display", "block");
         
     }
 
-  var unidad=document.getElementById("unidades_totales_medio").value;
-
-  $( "#unidades_totales_alto" ).change(function() {
-  var factor = parseFloat(document.getElementById("unidades_totales_medio").value);
   
-  var ldl = parseFloat(document.getElementById("ldl_act_res_medio").value);
-  var ldl2 = parseFloat(document.getElementById("ldl_obj_res_medio").value);
-  var ldlconv=ldl*factor;
-  var ldlconv2=ldl2*factor;
-  document.getElementById("ldl_act_res_medio").value=ldlconv.toFixed(2);
-  document.getElementById("ldl_obj_res_medio").value=ldlconv2.toFixed(2);
-  
-});
 
 })
 
@@ -586,8 +571,7 @@ $("#resultadofiltrado").css("display", "block");
 
 
 .controller('Reduccion',function($scope){
-
-
+var ldlobjetivo=document.getElementById("ldl_obj_res").value;
 document.getElementById("ldl_act_red").value=ldlactual;
   document.getElementById("ldl_obj_red").value=ldlobjetivo;  
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
