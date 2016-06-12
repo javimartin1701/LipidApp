@@ -79,6 +79,11 @@ font-size: smaller;
     font-size: 15px;
 }
 
+.pantalla_interacciones img{
+    position: absolute;
+    right: 11px;
+}
+
 #ldl_obj_res{
     display: inline-block;
     width: 127px;
@@ -920,6 +925,16 @@ background: white;
     right: 44px;
 }
 
+.aviso_interacciones{
+    position: absolute;
+    background: #86253c;
+    color: white;
+    width: 80%;
+    margin-left: 10%;
+    padding: 15px;
+    z-index: 999999;
+    display: none;
+}
 
 
 .pantalla_interacciones .toggle input:checked + .track {
@@ -930,29 +945,36 @@ background: white;
 .sub_atorv_inter{
     display: none;
         margin-top: 2px !important;
+        font-size: 13px;
 }
 
 .sub_fluv_inter{
     display: none;
         margin-top: 2px !important;
+        font-size: 13px;
 }
 .sub_lov_inter{
     display: none;
         margin-top: 2px !important;
+        font-size: 13px;
 }
 .sub_pitav_inter{
     display: none;
         margin-top: 2px !important;
+        font-size: 13px;
 }
 .sub_prav_inter{
     display: none;
         margin-top: 2px !important;
+        font-size: 13px;
 }
 .sub_rosuv_inter{
     display: none;
         margin-top: 2px !important;
+        font-size: 13px;
 }
 .sub_simv_inter{
     display: none;
         margin-top: 2px !important;
+        font-size: 13px;
 }

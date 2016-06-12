@@ -10,146 +10,191 @@
 	  
 		<ul>
 			<li class="inter_flecha" id="atorv_inter">Atorvastatina
-				    <li class="sub_atorv_inter item item-toggle">ACO dicumarínicos 
+				    <li class="sub_atorv_inter item item-toggle aco">ACO dicumarínicos <img class="aco_atorv" src="img/alerta_baja.png">
 				    <label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Amiodarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Antagonistas del calcio<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Antiácidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Antifúngicos azólicos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Asociación Ledipasvir/Sofosbuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Barbitúricos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Bezafibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Boceprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Carbamacepina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Ciclosporina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Cilostazol<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Colchicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Daclatasvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Danazol<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Dronedarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Fenofibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Gemfibrozilo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Macrólidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Resinas<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Rifampicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Simeprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Telaprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_atorv_inter item item-toggle">Zumo de pomelo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle ami">Amiodarona<img class="ami_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Precaución. Considerar usar dosis más bajas de atorvastatina</div>
+
+					<li class="sub_atorv_inter item item-toggle ant-cal">Antagonistas del calcio<img class="ant_atorv"  src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Precaución. Considerar usar dosis más bajas de atorvastatina</div>
+
+					<li class="sub_atorv_inter item item-toggle antia">Antiácidos<img class="antia_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Separar la administración</div>
+
+					<li class="sub_atorv_inter item item-toggle antif">Antifúngicos azólicos<img class="antif_atorv" class="aco_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Evitar la administración conjunta, pero si no es posible hay que considerar el uso de las dosis iniciales y máximas más bajas de atorvastatina</div>
+
+					<li style="height: 70px;" class="sub_atorv_inter item item-toggle asocl">Asociación Ledipasvir<br>Sofosbuvir<img class="asocl_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Precaución. Considerar la administración de dosis reducidas de estatinas</div>
+
+					<li class="sub_atorv_inter item item-toggle bar">Barbitúricos<img class="bar_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Podría ser necesario ajustar la dosis de estatina por posible reducción de su eficacia</div>
+
+					<li class="sub_atorv_inter item item-toggle bez">Bezafibrato<img class="bez_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Monitorización por riesgo de toxicidad muscular</div>
+
+					<li class="sub_atorv_inter item item-toggle boc">Boceprevir<img class="boc_atorv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Evitar la administración conjunta. Si no es posible, considerar el uso de las dosis iniciales y máximas más bajas</div>
+
+					<li class="sub_atorv_inter item item-toggle carb">Carbamacepina<img class="carb_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle cicl">Ciclosporina<img class="cicl_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle cil">Cilostazol<img class="cil_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle colc">Colchicina<img class="colc_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle dacl">Daclatasvir<img class="dacl_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle dan">Danazol<img class="dan_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle dron">Dronedarona<img class="dron_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle feno">Fenofibrato<img class="feno_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle gim">Gemfibrozilo<img class="gim_atorv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle macro">Macrólidos<img class="macro_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle res">Resinas<img class="res_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle rif">Rifampicina<img class="rif_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle sime">Simeprevir<img class="sime_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle tela">Telaprevir<img class="tela_atorv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_atorv_inter item item-toggle zumo">Zumo de pomelo<img class="zumo_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
 			</li>
 			<li class="inter_flecha" id="fluv_inter">Fluvastatina
-				    <li class="sub_fluv_inter item item-toggle">ACO dicumarínicos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Antiácidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Asociación Ombitasvir/Paritaprevir/Ritonavir con o sin Dasabuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Bezafibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Boceprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Ciclosporina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Colchicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Daclatasvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Dronedarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Eritromicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Fenofibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Fluconazol<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Gemfibrozilo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_fluv_inter item item-toggle">Resinas<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_fluv_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li style="height: 100px;"class="sub_fluv_inter item item-toggle">Asociación Ombitasvir<br>Paritaprevir/Ritonavir con o<br>sin Dasabuvir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Ciclosporina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Eritromicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Fluconazol<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_fluv_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
 			</li>
 			<li class="inter_flecha" id="lov_inter">Lovastatina
-				    <li class="sub_lov_inter item item-toggle">ACO dicumarínicos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Amiodarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Antagonistas del calcio<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Antiácidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Antifúngicos azólicos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Asociación Ledipasvir/Sofosbuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Barbitúricos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Bezafibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Boceprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Carbamacepina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Ciclosporina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Cilostazol<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Colchicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Daclatasvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Danazol<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Dronedarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Fenofibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Gemfibrozilo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Macrólidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Resinas<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Rifampicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Simeprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Telaprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_lov_inter item item-toggle">Zumo de pomelo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_lov_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Amiodarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Antagonistas del calcio<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Antifúngicos azólicos<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li style="height: 70px;" class="sub_lov_inter item item-toggle">Asociación Ledipasvir<br>Sofosbuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Barbitúricos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Boceprevir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Carbamacepina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Ciclosporina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Cilostazol<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Danazol<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Macrólidos<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Rifampicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Simeprevir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Telaprevir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_lov_inter item item-toggle">Zumo de pomelo<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
 			</li>
 			<li class="inter_flecha" id="pitav_inter">Pitavastatina
-				    <li class="sub_pitav_inter item item-toggle">ACO dicumarínicos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Antiácidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Asociación Ledipasvir/Sofosbuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Asociación Ombitasvir/Paritaprevir/Ritonavir con o sin Dasabuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Bezafibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Boceprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Ciclosporina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Colchicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Daclatasvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Dronedarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Eritromicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Fenofibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Gemfibrozilo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Resinas<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_pitav_inter item item-toggle">Simeprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_pitav_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li style="height: 70px;" class="sub_pitav_inter item item-toggle">Asociación Ledipasvir<br>Sofosbuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li style="height: 100px;" class="sub_pitav_inter item item-toggle">Asociación Ombitasvir<br>Paritaprevir/Ritonavir con<br>o sin Dasabuvir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Ciclosporina<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Eritromicina<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_pitav_inter item item-toggle">Simeprevir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
 			</li>
 			<li class="inter_flecha" id="prav_inter">Pravastatina
-				    <li class="sub_prav_inter item item-toggle">ACO dicumarínicos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Antiácidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Asociación Ledipasvir/Sofosbuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Asociación Ombitasvir/Paritaprevir/Ritonavir con o sin Dasabuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Bezafibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Colchicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Daclatasvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Dronedarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Fenofibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Gemfibrozilo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Resinas<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Simeprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_prav_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li style="height: 70px;" class="sub_prav_inter item item-toggle">Asociación Ledipasvir<br>Sofosbuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li style="height: 100px;" class="sub_prav_inter item item-toggle">Asociación Ombitasvir<br>Paritaprevir/Ritonavir con<br>o sin Dasabuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_prav_inter item item-toggle">Simeprevir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
 			</li>
 			<li class="inter_flecha" id="rosuv_inter">Rosuvastatina
-				    <li class="sub_rosuv_inter item item-toggle">ACO dicumarínicos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Antiácidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Asociación Ledipasvir/Sofosbuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Asociación Ombitasvir/Paritaprevir/Ritonavir con o sin Dasabuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Barbitúricos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Bezafibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Carbamacepina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Ciclosporina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Colchicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Daclatasvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Dronedarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Eritromicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Fenofibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Gemfibrozilo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Resinas<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Rifampicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Simeprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_rosuv_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li style="height: 70px;" class="sub_rosuv_inter item item-toggle">Asociación Ledipasvir<br>Sofosbuvir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Asociación Ombitasvir/Paritaprevir/Ritonavir con o sin Dasabuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Barbitúricos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Carbamacepina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Ciclosporina<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Eritromicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Rifampicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_rosuv_inter item item-toggle">Simeprevir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
 			</li>
 			<li class="inter_flecha" id="simv_inter">Simvastatina
-				    <li class="sub_simv_inter item item-toggle">ACO dicumarínicos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Amiodarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Antagonistas del calcio<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Antiácidos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Asociación Ledipasvir/Sofosbuvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Barbitúricos<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Bezafibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Boceprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Carbamacepina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Ciclosporina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Cilostazol<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Colchicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Daclatasvir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Dronedarona<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Fenofibrato<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Gemfibrozilo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Resinas<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Rifampicina<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Simeprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Telaprevir<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Zumo de pomelo<label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_simv_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Amiodarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Antagonistas del calcio<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li style="height: 70px;" class="sub_simv_inter item item-toggle">Asociación Ledipasvir<br>Sofosbuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Barbitúricos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Boceprevir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Carbamacepina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Ciclosporina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Cilostazol<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Rifampicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Simeprevir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Telaprevir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+					<li class="sub_simv_inter item item-toggle">Zumo de pomelo<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
 			</li>
 		</ul>
     </div>
