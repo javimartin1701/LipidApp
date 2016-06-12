@@ -114,3 +114,84 @@ function showFibratos() {
     }
 
 
+function showEstatinaContra() {
+    
+        
+        check = document.getElementById("contra_abs_estatinas");
+        if (check.checked) {
+             $(".lista_contra_abs_estatinas").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".lista_contra_abs_estatinas").css("display", "none");
+        }
+    }
+
+function showEstatinaContraRel() {
+    
+        
+        check = document.getElementById("contra_rel_estatinas");
+        if (check.checked) {
+             $(".lista_contra_rel_estatinas").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".lista_contra_rel_estatinas").css("display", "none");
+        }
+    }
+
+function showEzetimibeContra() {
+    
+        
+        check = document.getElementById("contra_abs_ezetimibe");
+        if (check.checked) {
+             $(".lista_contra_abs_ezetimibe").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".lista_contra_abs_ezetimibe").css("display", "none");
+        }
+    }
+
+function showFibratosContra() {
+    
+        
+        check = document.getElementById("contra_abs_fibratos");
+        if (check.checked) {
+             $(".lista_contra_abs_fibratos").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".lista_contra_abs_fibratos").css("display", "none");
+        }
+    }
+
+function showResinasContra() {
+    
+        
+        check = document.getElementById("contra_abs_resinas");
+        if (check.checked) {
+             $(".lista_contra_abs_resinas").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".lista_contra_abs_resinas").css("display", "none");
+        }
+    }
+
+function showIPCSK9Contra() {
+    
+        
+        check = document.getElementById("contra_abs_ipcsk9");
+        if (check.checked) {
+             $(".lista_contra_abs_ipcsk9").css("display", "block");
+        }
+        else if(!(check.checked)){
+            $(".lista_contra_abs_ipcsk9").css("display", "none");
+        }
+    }
+
+
+
+
+
+
+
+
+
+

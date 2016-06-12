@@ -99,6 +99,110 @@ font-size: smaller;
     font-size: 31px;
 }
 
+#ldl_obj_tratamiento{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 26px;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+}
+
+#ldl_act_tratamiento{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    background-size: 100px 100px;
+    color: #87253c;
+    font-size: 26px;
+    background-repeat: no-repeat;
+}
+
+#ldl_obj_tratamiento2{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 26px;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+}
+
+#ldl_act_tratamiento2{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    background-size: 100px 100px;
+    color: #87253c;
+    font-size: 26px;
+    background-repeat: no-repeat;
+}
+
+#porcentaje_red_tratamiento2{
+    display: inline-block;
+    width: 65px;
+    background: transparent;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: #289e3b;
+}
+
+.pantalla_interacciones li{
+   background: white;
+    width: 90%;
+    margin: auto;
+    margin-top: 8px;
+    text-align: left;
+    height: 46px;
+    line-height: 26px;
+}
+
+
+
+.pantalla_interacciones ul{
+    margin-top: 50px;
+}
+
+
+
+
+
+
+
+.fondo_medicacion{
+    height: 180px;
+    background: -webkit-linear-gradient(#efefef, #dcd1d3);
+}
+
+.fondo_medicacion p{
+    position: absolute;
+    width: 100%;
+    top: 206px;
+    color: #87253c;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#porcentaje_red_tratamiento{
+    display: inline-block;
+    width: 65px;
+    background: transparent;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: #289e3b;
+}
+
 
 #ldl_obj_res_alto{
     display: inline-block;
@@ -164,6 +268,15 @@ font-size: smaller;
 }
 
 
+.inter_flecha{
+    background-image: url(../img/flecha.png) !important;
+    background-repeat: no-repeat !important;
+    background-position-x: 96% !important;
+    background-position-y: 50% !important;
+
+}
+
+
 
 #porcentaje_red{
     position: relative;
@@ -190,6 +303,18 @@ font-size: smaller;
     background: url('../img/total_verde.png');
     color: green;
     font-size: 31px;
+}
+
+.lista_de_interacciones input{
+        margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 3px;
+}
+
+.lista_de_interacciones li{
+    font-size: 12px;
 }
 
 #ldl_act_red{
@@ -428,6 +553,10 @@ display: inline-block;
 .pantalla_resultado{
     text-align: center;
     margin-bottom: 120px;
+}
+
+.ocultar_contra{
+    display: none;
 }
 
 
@@ -783,4 +912,47 @@ background: white;
     width: 50px !important;
     background-size: 36% !important;
     height: 32px !important;
+}
+
+
+.pantalla_interacciones .toggle{
+    top: 7px;
+    right: 44px;
+}
+
+
+
+.pantalla_interacciones .toggle input:checked + .track {
+    border-color: #86253C;
+    background-color: #86253C;
+}
+
+.sub_atorv_inter{
+    display: none;
+        margin-top: 2px !important;
+}
+
+.sub_fluv_inter{
+    display: none;
+        margin-top: 2px !important;
+}
+.sub_lov_inter{
+    display: none;
+        margin-top: 2px !important;
+}
+.sub_pitav_inter{
+    display: none;
+        margin-top: 2px !important;
+}
+.sub_prav_inter{
+    display: none;
+        margin-top: 2px !important;
+}
+.sub_rosuv_inter{
+    display: none;
+        margin-top: 2px !important;
+}
+.sub_simv_inter{
+    display: none;
+        margin-top: 2px !important;
 }

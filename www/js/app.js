@@ -169,6 +169,33 @@ angular.module('starter', ['ionic','ui.router'])
     controller: 'TratamientoPrevioMedicamentos'
   })
 
+       .state('tratamientoinicio',{
+    cache: false,
+    url:'/tratamientoinicio',
+    templateUrl:'templates/tratamientoinicio.html',
+    controller: 'TratamientoInicio'
+  })
+       .state('tratamientoinicio2',{
+    cache: false,
+    url:'/tratamientoinicio2',
+    templateUrl:'templates/tratamientoinicio2.html',
+    controller: 'TratamientoInicio2'
+  })
+
+       .state('contraindicaciones',{
+    cache: false,
+    url:'/contraindicaciones',
+    templateUrl:'templates/contraindicaciones.html',
+    controller: 'Contraindicaciones'
+  })
+
+       .state('estatinas',{
+    cache: false,
+    url:'/estatinas',
+    templateUrl:'templates/estatinas.html',
+    controller: 'Estatinas'
+  })
+
   // .state('vista2',{
   //   url:'/vista2',
   //   template:'<div class="padding"><h2>Vista 2</h2><button class="button button-positive" ui-sref="vista1">A vista1</button></div>'
@@ -604,7 +631,7 @@ document.getElementById("ldl_act_red").value=ldlactual;
 
 })
 
-.controller('TratamientoPrevioMedicamentos',function($scope){
+.controller('TratamientoPrevioMedicamentos',function($scope,$state){
 
  
 
@@ -843,8 +870,70 @@ if ($('#gemf_600').is(":checked")){gemf_600v=10;}
 
 red_trat=atorv_10v+atorv_20v+atorv_40v+atorv_80v+rosuv_5v+rosuv_10v+rosuv_20v+pitv_1v+pitv_2v+pitv_4v+simv_10v+simv_20v+simv_40v+simv_80v+prav_10v+prav_20v+prav_40v+prav_80v+fluv_20v+fluv_40v+fluv_80v+lov_20v+lov_40v+ezet_10v+aliroc_75v+aliroc_150v+evoloc_140v+evoloc_420v+colestir_4v+colestip_5v+fenof_200v+gemf_900v+gemf_600v;
 ldlrectificado=parseFloat(ldlactual)+parseFloat(ldlactual)*(red_trat/100);
-alert(ldlrectificado);
+ldlactual=ldlrectificado;
+$state.go('tratamientoinicio');
 }
+
+})
+
+
+.controller('TratamientoInicio',function($scope,$state){
+
+  document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+
+})
+
+.controller('TratamientoInicio2',function($scope,$state){
+
+  document.getElementById("ldl_act_tratamiento2").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento2").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento2").value=porc_reducc+"%";
+
+})
+
+
+
+.controller('Contraindicaciones',function($scope,$state){
+
+
+
+})
+
+.controller('Estatinas',function($scope,$state){
+
+  jQuery('#atorv_inter').on( "click", function() {
+           jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
+  });
+
+    jQuery('#fluv_inter').on( "click", function() {
+           jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
+  });
+
+      jQuery('#lov_inter').on( "click", function() {
+           jQuery('.sub_lov_inter').toggle(); //muestro mediante clase
+  });
+
+        jQuery('#pitav_inter').on( "click", function() {
+           jQuery('.sub_pitav_inter').toggle(); //muestro mediante clase
+  });
+
+          jQuery('#prav_inter').on( "click", function() {
+           jQuery('.sub_prav_inter').toggle(); //muestro mediante clase
+  });
+
+            jQuery('#rosuv_inter').on( "click", function() {
+           jQuery('.sub_rosuv_inter').toggle(); //muestro mediante clase
+  });
+
+              jQuery('#simv_inter').on( "click", function() {
+           jQuery('.sub_simv_inter').toggle(); //muestro mediante clase
+  });
+
+
 
 })
 
