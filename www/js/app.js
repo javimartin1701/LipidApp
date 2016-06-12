@@ -1368,12 +1368,332 @@ jQuery('.faco_fluv').on( "click", function() {
            jQuery('.sub_prav_inter').toggle(); //muestro mediante clase
   });
 
+jQuery('.praco_prav').on( "click", function() {
+           jQuery('.praco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prami_prav').on( "click", function() {
+           jQuery('.prami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prant_prav').on( "click", function() {
+           jQuery('.prant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prantia_prav').on( "click", function() {
+           jQuery('.prantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prantif_prav').on( "click", function() {
+           jQuery('.prantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasocl_prav').on( "click", function() {
+           jQuery('.prasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasoco_prav').on( "click", function() {
+           jQuery('.prasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbar_prav').on( "click", function() {
+           jQuery('.prbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbez_prav').on( "click", function() {
+           jQuery('.prbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prboc_prav').on( "click", function() {
+           jQuery('.prboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prcarb_prav').on( "click", function() {
+           jQuery('.prcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prcicl_prav').on( "click", function() {
+           jQuery('.prcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prcil_prav').on( "click", function() {
+           jQuery('.prcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prcolc_prav').on( "click", function() {
+           jQuery('.prcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prdacl_prav').on( "click", function() {
+           jQuery('.prdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prdan_prav').on( "click", function() {
+           jQuery('.prdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prdrone_prav').on( "click", function() {
+           jQuery('.prdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prfeno_prav').on( "click", function() {
+           jQuery('.prfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.prgem_prav').on( "click", function() {
+           jQuery('.prgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.prmacro_prav').on( "click", function() {
+           jQuery('.prmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prres_prav').on( "click", function() {
+           jQuery('.prres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prrif_prav').on( "click", function() {
+           jQuery('.prrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prsim_prav').on( "click", function() {
+           jQuery('.prsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prtela_prav').on( "click", function() {
+           jQuery('.prtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.przumo_prav').on( "click", function() {
+           jQuery('.przumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
             jQuery('#rosuv_inter').on( "click", function() {
            jQuery('.sub_rosuv_inter').toggle(); //muestro mediante clase
   });
+jQuery('.raco_rosuv').on( "click", function() {
+           jQuery('.raco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rami_rosuv').on( "click", function() {
+           jQuery('.rami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rant_rosuv').on( "click", function() {
+           jQuery('.rant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rantia_rosuv').on( "click", function() {
+           jQuery('.rantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rantif_rosuv').on( "click", function() {
+           jQuery('.rantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasocl_rosuv').on( "click", function() {
+           jQuery('.rasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasoco_rosuv').on( "click", function() {
+           jQuery('.rasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbar_rosuv').on( "click", function() {
+           jQuery('.rbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbez_rosuv').on( "click", function() {
+           jQuery('.rbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rboc_rosuv').on( "click", function() {
+           jQuery('.rboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rcarb_rosuv').on( "click", function() {
+           jQuery('.rcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rcicl_rosuv').on( "click", function() {
+           jQuery('.rcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rcil_rosuv').on( "click", function() {
+           jQuery('.rcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rcolc_rosuv').on( "click", function() {
+           jQuery('.rcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rdacl_rosuv').on( "click", function() {
+           jQuery('.rdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rdan_rosuv').on( "click", function() {
+           jQuery('.rdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rdrone_rosuv').on( "click", function() {
+           jQuery('.rdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rfen_rosuv').on( "click", function() {
+           jQuery('.rfen+div').toggle(); //muestro mediante clase
+ 
+  });
+                                    jQuery('.rerit_rosuv').on( "click", function() {
+           jQuery('.rerit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.rgem_rosuv').on( "click", function() {
+           jQuery('.rgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.rmacro_rosuv').on( "click", function() {
+           jQuery('.rmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rres_rosuv').on( "click", function() {
+           jQuery('.rres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rrif_rosuv').on( "click", function() {
+           jQuery('.rrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rsim_rosuv').on( "click", function() {
+           jQuery('.rsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rtela_rosuv').on( "click", function() {
+           jQuery('.rtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rzumo_rosuv').on( "click", function() {
+           jQuery('.rzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
 
               jQuery('#simv_inter').on( "click", function() {
            jQuery('.sub_simv_inter').toggle(); //muestro mediante clase
+
+  });
+              jQuery('.saco_simv').on( "click", function() {
+           jQuery('.saco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.sami_simv').on( "click", function() {
+           jQuery('.sami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santa_simv').on( "click", function() {
+           jQuery('.santa+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santia_simv').on( "click", function() {
+           jQuery('.santia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.santif_simv').on( "click", function() {
+           jQuery('.santif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.sasocl_simv').on( "click", function() {
+           jQuery('.sasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbarb_simv').on( "click", function() {
+           jQuery('.sbarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbez_simv').on( "click", function() {
+           jQuery('.sbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.sboce_simv').on( "click", function() {
+           jQuery('.sboce+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.scarb_simv').on( "click", function() {
+           jQuery('.scarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.scicl_simv').on( "click", function() {
+           jQuery('.scicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.scil_simv').on( "click", function() {
+           jQuery('.scil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.scolc_simv').on( "click", function() {
+           jQuery('.scolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.sdacl_simv').on( "click", function() {
+           jQuery('.sdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sdan_simv').on( "click", function() {
+           jQuery('.sdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sdrone_simv').on( "click", function() {
+           jQuery('.sdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sfeno_simv').on( "click", function() {
+           jQuery('.sfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.sgem_simv').on( "click", function() {
+           jQuery('.sgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.smacro_simv').on( "click", function() {
+           jQuery('.smacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sres_simv').on( "click", function() {
+           jQuery('.sres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.srif_simv').on( "click", function() {
+           jQuery('.srif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.ssim_simv').on( "click", function() {
+           jQuery('.ssim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.stel_simv').on( "click", function() {
+           jQuery('.stel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.szumo_simv').on( "click", function() {
+           jQuery('.szumo+div').toggle(); //muestro mediante clase
+ 
   });
 
 

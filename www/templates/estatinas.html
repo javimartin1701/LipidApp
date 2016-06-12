@@ -8,7 +8,7 @@
 <div class="pantalla_resultado pantalla_interacciones">
 	  
 	  
-		<ul>
+		<ul style="margin-bottom: 300px;">
 			<li class="inter_flecha" id="atorv_inter">Atorvastatina
 				    <li class="sub_atorv_inter item item-toggle aco">ACO dicumarínicos <img class="aco_atorv" src="img/alerta_baja.png">
 				    <label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
@@ -246,60 +246,170 @@
 
 
 			<li class="inter_flecha" id="prav_inter">Pravastatina
-				    <li class="sub_prav_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li style="height: 70px;" class="sub_prav_inter item item-toggle">Asociación Ledipasvir<br>Sofosbuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li style="height: 100px;" class="sub_prav_inter item item-toggle">Asociación Ombitasvir<br>Paritaprevir/Ritonavir con<br>o sin Dasabuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_prav_inter item item-toggle">Simeprevir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_prav_inter item item-toggle praco">ACO dicumarínicos<img class="praco_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_prav_inter item item-toggle prantia">Antiácidos<img class="prantia_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Separar la administración</div>
+
+					<li style="height: 70px;" class="sub_prav_inter item item-toggle prasocl">Asociación Ledipasvir<br>Sofosbuvir<img class="prasocl_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución. Considerar la administración de dosis reducidas de estatinas</div>
+
+					<li style="height: 100px;" class="sub_prav_inter item item-toggle prasoco">Asociación Ombitasvir<br>Paritaprevir/Ritonavir con<br>o sin Dasabuvir<img class="prasoco_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Reducir la dosis de pravastatina en un 50%</div>
+
+					<li class="sub_prav_inter item item-toggle prbez">Bezafibrato<img class="prbez_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Monitorización por riesgo de toxicidad muscular</div>
+
+					<li class="sub_prav_inter item item-toggle prcolc">Colchicina<img class="prcolc_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Puede potenciar el riesgo de miopatías. Precaución en insuficiencia renal</div>
+
+					<li class="sub_prav_inter item item-toggle prdacl">Daclatasvir<img class="prdacl_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución</div>
+
+					<li class="sub_prav_inter item item-toggle prdrone">Dronedarona<img class="prdrone_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución. Iniciar las estatinas a las dosis más bajas</div>
+
+					<li class="sub_prav_inter item item-toggle prfeno">Fenofibrato<img class="prfeno_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Monitorización por riesgo de toxicidad muscular</div>
+
+					<li class="sub_prav_inter item item-toggle prgem">Gemfibrozilo<img class="prgem_prav" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Evitar uso conjunto</div>
+
+					<li class="sub_prav_inter item item-toggle prres">Resinas<img class="prres_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Separar de la administración de hipolipemiantes</div>
+
+					<li class="sub_prav_inter item item-toggle prsim">Simeprevir<img class="prsim_prav" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución. Ajustar la dosis de la estatina y usar la dosis miínima necesaria mientras se monitoriza la seguridad</div>
 			</li>
+
+
+
+
+
+
 			<li class="inter_flecha" id="rosuv_inter">Rosuvastatina
-				    <li class="sub_rosuv_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li style="height: 70px;" class="sub_rosuv_inter item item-toggle">Asociación Ledipasvir<br>Sofosbuvir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Asociación Ombitasvir/Paritaprevir/Ritonavir con o sin Dasabuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Barbitúricos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Carbamacepina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Ciclosporina<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Eritromicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Rifampicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_rosuv_inter item item-toggle">Simeprevir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_rosuv_inter item item-toggle raco">ACO dicumarínicos<img class="raco_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_rosuv_inter item item-toggle rantia">Antiácidos<img class="rantia_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Separar la administración</div>
+
+					<li style="height: 70px;" class="sub_rosuv_inter item item-toggle rasocl">Asociación Ledipasvir<br>Sofosbuvir<img class="rasocl_rosuv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Contraindicado su uso conjunto</div>
+
+					<li style="height: 100px;" class="sub_rosuv_inter item item-toggle rasoco">Asociación Ombitasvir<br>Paritaprevir/Ritonavir con<br>o sin Dasabuvir<img class="rasoco_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Utilizar una dosis máxima de 10 mg 
+Si el tratamiento incluye Dasabuvir se recomienda utilizar una dosis máxima de 5 mg</div>
+
+					<li class="sub_rosuv_inter item item-toggle rbar">Barbitúricos<img class="rbar_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Podría ser necesario ajustar la dosis de estatina por posible reducción de su eficacia 
+</div>
+
+					<li class="sub_rosuv_inter item item-toggle rbez">Bezafibrato<img class="rbez_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Monitorización por riesgo de toxicidad muscular</div>
+
+					<li class="sub_rosuv_inter item item-toggle rcarb">Carbamacepina<img class="rcarb_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Podría ser necesario ajustar la dosis de estatina por posible reducción de su eficacia</div>
+
+					<li class="sub_rosuv_inter item item-toggle rcicl">Ciclosporina<img class="rcicl_rosuv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Contraindicado su uso conjunto</div>
+
+					<li class="sub_rosuv_inter item item-toggle rcolc">Colchicina<img class="rcolc_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Puede potenciar el riesgo de miopatías. Precaución en insuficiencia renal</div>
+
+					<li class="sub_rosuv_inter item item-toggle rdacl">Daclatasvir<img class="rdacl_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución</div>
+
+					<li class="sub_rosuv_inter item item-toggle rdrone">Dronedarona<img class="rdrone_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución. Iniciar las estatinas a las dosis más bajas</div>
+
+					<li class="sub_rosuv_inter item item-toggle rerit">Eritromicina<img class="rerit_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución con el uso conjunto</div>
+
+					<li class="sub_rosuv_inter item item-toggle rfen">Fenofibrato<img class="rfen_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Monitorización por riesgo de toxicidad muscular</div>
+
+					<li class="sub_rosuv_inter item item-toggle rgem">Gemfibrozilo<img class="rgem_rosuv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Evitar uso conjunto</div>
+
+					<li class="sub_rosuv_inter item item-toggle rres">Resinas<img class="rres_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Separar de la administración de hipolipemiantes</div>
+
+					<li class="sub_rosuv_inter item item-toggle rrif">Rifampicina<img class="rrif_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Podría ser necesario ajustar la dosis de estatina por posible reducción de su eficacia</div>
+
+					<li class="sub_rosuv_inter item item-toggle rsim">Simeprevir<img class="rsim_rosuv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución. Ajustar la dosis de la estatina y usar la dosis mínima necesaria mientras se monitoriza la seguridad
+Utilizar una dosis máxima de 10 mg</div>
 			</li>
+
+
 			<li class="inter_flecha" id="simv_inter">Simvastatina
-				    <li class="sub_simv_inter item item-toggle">ACO dicumarínicos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Amiodarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Antagonistas del calcio<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Antiácidos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li style="height: 70px;" class="sub_simv_inter item item-toggle">Asociación Ledipasvir<br>Sofosbuvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Barbitúricos<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Bezafibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Boceprevir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Carbamacepina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Ciclosporina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Cilostazol<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Colchicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Daclatasvir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Dronedarona<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Fenofibrato<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Gemfibrozilo<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Resinas<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Rifampicina<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Simeprevir<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Telaprevir<img src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
-					<li class="sub_simv_inter item item-toggle">Zumo de pomelo<img src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <li class="sub_simv_inter item item-toggle saco">ACO dicumarínicos<img class="saco_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Se debe monitorizar el INR cuando se inicia, se modifica la dosis o se interrumpe el tratamiento con una estatina</div>
+
+					<li class="sub_simv_inter item item-toggle sami">Amiodarona<img class="sami_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Con amiodarona, amlodipino, verapamilo o diltiazem: dosis máxima de simvastatina 20 mg</div>
+
+					<li class="sub_simv_inter item item-toggle santa">Antagonistas del calcio<img class="santa_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Con amiodarona, amlodipino, verapamilo o diltiazem: dosis máxima de simvastatina 20 mg </div>
+
+					<li class="sub_simv_inter item item-toggle santia">Antiácidos<img class="santia_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Separar la administración</div>
+
+					<li style="height: 70px;" class="sub_simv_inter item item-toggle sasocl">Asociación Ledipasvir<br>Sofosbuvir<img class="sasocl_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución. Considerar la administración de dosis reducidas de estatinas</div>
+
+					<li class="sub_simv_inter item item-toggle sbarb">Barbitúricos<img class="sbarb_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Podría ser necesario ajustar la dosis de estatina por posible reducción de su eficacia</div>
+
+					<li class="sub_simv_inter item item-toggle sbez">Bezafibrato<img class="sbez_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Monitorización por riesgo de toxicidad muscular</div>
+
+					<li class="sub_simv_inter item item-toggle sboce">Boceprevir<img class="sboce_simv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Evitar la administración conjunta. Si no es posible, considerar el uso de las dosis iniciales y máximas más bajas</div>
+
+					<li class="sub_simv_inter item item-toggle scarb">Carbamacepina<img class="scarb_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Podría ser necesario ajustar la dosis de estatina por posible reducción de su eficacia </div>
+
+					<li class="sub_simv_inter item item-toggle scicl">Ciclosporina<img class="scicl_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Utilizar una dosis máxima de 10 mg</div>
+
+					<li class="sub_simv_inter item item-toggle scil">Cilostazol<img class="scil_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución con el uso conjunto</div>
+
+					<li class="sub_simv_inter item item-toggle scolc">Colchicina<img class="scolc_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Puede potenciar el riesgo de miopatías. Precaución en insuficiencia renal</div>
+
+					<li class="sub_simv_inter item item-toggle sdacl">Daclatasvir<img class="sdacl_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución</div>
+
+					<li class="sub_simv_inter item item-toggle sdrone">Dronedarona<img class="sdrone_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución. Iniciar las estatinas a las dosis más bajas </div>
+
+					<li class="sub_simv_inter item item-toggle sfeno">Fenofibrato<img class="sfeno_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Monitorización por riesgo de toxicidad muscular</div>
+
+					<li class="sub_simv_inter item item-toggle sgem">Gemfibrozilo<img class="sgem_simv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Evitar uso conjunto</div>
+
+					<li class="sub_simv_inter item item-toggle sres">Resinas<img class="sres_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Separar de la administración de hipolipemiantese</div>
+
+					<li class="sub_simv_inter item item-toggle srif">Rifampicina<img class="srif_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Podría ser necesario ajustar la dosis de estatina por posible reducción de su eficacia</div>
+
+					<li class="sub_simv_inter item item-toggle ssim">Simeprevir<img class="ssim_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Precaución. Ajustar la dosis de la estatina y usar la dosis mínima necesaria mientras se monitoriza la seguridad
+Utilizar una dosis máxima de 40 mg
+</div>
+
+					<li class="sub_simv_inter item item-toggle stel">Telaprevir<img class="stel_simv" src="img/alerta.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Evitar la administración conjunta. Si no es posible, considerar el uso de las dosis iniciales y máximas más bajas</div>
+
+					<li class="sub_simv_inter item item-toggle szumo">Zumo de pomelo<img class="szumo_simv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Debe evitarse el consumo de zumo de pomelo durante el tratamiento</div>
 			</li>
 		</ul>
     </div>
