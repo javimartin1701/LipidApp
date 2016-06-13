@@ -441,6 +441,20 @@ $("#resultadofiltrado").css("display", "block");
 
 .controller('CalcScore',function($scope){
 
+  var sexoscore=document.getElementById("sexoscore").value;
+
+
+  $scope.calculoScore = function() {
+
+  if(sexoscore="V"){
+    alert("Hombre");
+  }
+  else if(sexoscore="M"){
+    alert("Mujer";)
+  }
+
+}
+
   
 
 })

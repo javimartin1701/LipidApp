@@ -12,6 +12,7 @@ var renalindex="9";
 var scoreindex="9";
 var ldltransactual="";
 var ldlobjetivo="0";
+var score_calculado="-";
 
 angular.module('starter', ['ionic','ui.router'])
 
@@ -314,6 +315,25 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
   else{
     $("select#funcion_renal").val("2");
   }
+
+
+
+   if (score_calculado>19) {
+    $("select#selector-score").val("20");
+  }
+  if (score_calculado>9&&score_calculado<20) {
+    $("select#selector-score").val("10-20");
+  }
+    if (score_calculado>4&&score_calculado<10) {
+    $("select#selector-score").val("5-9");
+  }
+  if (score_calculado>1&&score_calculado<5) {
+    $("select#selector-score").val("1-4");
+  }
+  if (score_calculado<2) {
+    $("select#selector-score").val("1");
+  }
+  
   
   
 
@@ -465,7 +485,3777 @@ $("#resultadofiltrado").css("display", "block");
 
 })
 
-.controller('CalcScore',function($scope){
+.controller('CalcScore',function($scope,$state){
+
+
+  
+
+
+  $scope.calculoScore = function() {
+    var sexoscore=document.getElementById("sexoscore").value;
+    var tabaquismoscore=document.getElementById("tabaquismoscore").value;
+    var edadscore=document.getElementById("edadscore").value;
+    var PAS=document.getElementById("PAS").value;
+    var colesterolscore2=document.getElementById("colesterolscore2").value;
+    var checkPais = document.getElementById("selector_alto_riesgo");
+
+   
+
+
+  
+
+if(checkPais.checked){
+  if(sexoscore=="M")
+  {
+
+    // alert(sexoscore+tabaquismoscore+edadscore+PAS+colesterolscore2);
+    if(tabaquismoscore=="NF"){
+
+      if(edadscore=="49"){
+
+        if(PAS=="PAS120"){
+          
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+              
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+          
+      }
+      if(edadscore=="50-54"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+
+          
+      }
+      if(edadscore=="55-59"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="4";
+
+          }
+        }
+          
+      }
+      if(edadscore=="60-64"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";            
+
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";            
+
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="2"; 
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="3"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="5";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="7";
+
+          }
+        }
+          
+      }
+      if(edadscore=="65"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="4";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="6";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="8";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="10";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="12";
+
+          }
+        }
+          
+      }
+
+    }
+      if(tabaquismoscore=="F"){
+        
+
+      if(edadscore=="49"){
+
+        if(PAS=="PAS120"){
+          
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+              
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+          
+      }
+      if(edadscore=="50-54"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="4";
+
+          }
+        }
+
+          
+      }
+      if(edadscore=="55-59"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="5";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="7";
+
+          }
+        }
+          
+      }
+      if(edadscore=="60-64"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";            
+
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="3";            
+
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="3"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="4"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="4"; 
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="3"; 
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="4"; 
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="5"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="5"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="6";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="9";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="10";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="11";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="13";
+
+          }
+        }
+          
+      }
+      if(edadscore=="65"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="7";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="11";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="10";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="12";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="13";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="16";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="13";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="15";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="17";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="19";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="22";
+
+          }
+        }
+          
+      }
+
+        
+      }
+    
+  }
+
+
+  else if(sexoscore=="V")
+  {
+    // alert(sexoscore+tabaquismoscore+edadscore+PAS+colesterolscore2);
+    if(tabaquismoscore=="NF"){
+
+      if(edadscore=="49"){
+
+        if(PAS=="PAS120"){
+          
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+              
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+          
+      }
+      if(edadscore=="50-54"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="5";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="7";
+
+          }
+        }
+
+          
+      }
+      if(edadscore=="55-59"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="4";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="6";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="7";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="8";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="7";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="8";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="10";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="12";
+
+          }
+        }
+          
+      }
+      if(edadscore=="60-64"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="3";            
+
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="3";            
+
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="4"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="5"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="6"; 
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="4"; 
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="5"; 
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="6"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="7"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="9";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="10";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="12";
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="11";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="13";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="15";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="18";
+
+          }
+        }
+          
+      }
+      if(edadscore=="65"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="9";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="11";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="13";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="11";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="13";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="15";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="16";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="14";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="16";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="19";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="22";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="26";
+
+          }
+        }
+          
+      }
+
+    }
+      if(tabaquismoscore=="F"){
+        
+
+      if(edadscore=="49"){
+
+        if(PAS=="PAS120"){
+          
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+              
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="4";
+
+          }
+        }
+          
+      }
+      if(edadscore=="50-54"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="2"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="3"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="3"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="5";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="7";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="7";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="8";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="10";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="7";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="8";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="10";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="12";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="14";
+
+          }
+        }
+
+          
+      }
+      if(edadscore=="55-59"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="8";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="8";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="9";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="11";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="8";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="9";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="11";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="13";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="16";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="12";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="13";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="16";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="19";
+
+          }
+          if(colesterolscore2=="12"){
+              score_calculado="22";
+
+          }
+        }
+          
+      }
+      if(edadscore=="60-64"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="6";            
+
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="7";            
+
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="8"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="10"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="12"; 
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="8"; 
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="10"; 
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="12"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="14"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="17";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="12";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="14";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="17";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="20";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="24";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="18";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="21";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="24";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="28";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="33";
+
+          }
+        }
+          
+      }
+      if(edadscore=="65"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="10";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="12";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="14";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="17";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="13";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="15";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="17";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="20";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="24";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="18";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="21";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="25";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="29";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="34";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="26";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="30";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="35";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="41";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="47";
+
+          }
+        }
+          
+      }
+
+        
+      }
+    
+  }
+}
+else{
+  if(sexoscore=="M")
+  {
+
+    // alert(sexoscore+tabaquismoscore+edadscore+PAS+colesterolscore2);
+    if(tabaquismoscore=="NF"){
+
+      if(edadscore=="49"){
+
+        if(PAS=="PAS120"){
+          
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+              
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+          
+      }
+      if(edadscore=="50-54"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+
+          
+      }
+      if(edadscore=="55-59"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+          
+      }
+      if(edadscore=="60-64"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";            
+
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";            
+
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="1"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="1"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="1"; 
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="1"; 
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="1"; 
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="1"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="4";
+
+          }
+        }
+          
+      }
+      if(edadscore=="65"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+            score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="5";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="7";
+
+          }
+        }
+          
+      }
+
+    }
+      if(tabaquismoscore=="F"){
+        
+
+      if(edadscore=="49"){
+
+        if(PAS=="PAS120"){
+          
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+              
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+          
+      }
+      if(edadscore=="50-54"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+
+          
+      }
+      if(edadscore=="55-59"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="4";
+
+          }
+        }
+          
+      }
+      if(edadscore=="60-64"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";            
+
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";            
+
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="3"; 
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="3"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="3"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="4";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="5";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="8";
+
+          }
+        }
+          
+      }
+      if(edadscore=="65"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="4";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="7";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="10";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="11";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="12";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="14";
+
+          }
+        }
+          
+      }
+
+        
+      }
+    
+  }
+
+
+  else if(sexoscore=="V")
+  {
+    // alert(sexoscore+tabaquismoscore+edadscore+PAS+colesterolscore2);
+    if(tabaquismoscore=="NF"){
+
+      if(edadscore=="49"){
+
+        if(PAS=="PAS120"){
+          
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+              
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="0";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+          
+      }
+      if(edadscore=="50-54"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="4";
+
+          }
+        }
+
+          
+      }
+      if(edadscore=="55-59"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="4";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="6";
+
+          }
+        }
+          
+      }
+      if(edadscore=="60-64"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";            
+
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";            
+
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="3"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="3"; 
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="2"; 
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="3"; 
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="3"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="4"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="4";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="6";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="9";
+
+          }
+        }
+          
+      }
+      if(edadscore=="65"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+            score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="5";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="7";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="10";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="10";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="12";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="14";
+
+          }
+        }
+          
+      }
+
+    }
+      if(tabaquismoscore=="F"){
+        
+
+      if(edadscore=="49"){
+
+        if(PAS=="PAS120"){
+          
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+              
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="0";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="1";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+          
+      }
+      if(edadscore=="50-54"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="1";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="2";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="3";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="5";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="7";
+
+          }
+        }
+
+          
+      }
+      if(edadscore=="55-59"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="2";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="4";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="3";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="6";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+              score_calculado="4";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="7";
+
+          }
+          if(colesterolscore2=="8"){
+              score_calculado="8";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+              score_calculado="6";
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="7";
+
+          }
+          if(colesterolscore2=="6"){
+              score_calculado="8";
+
+          }
+          if(colesterolscore2=="7"){
+              score_calculado="10";
+
+          }
+          if(colesterolscore2=="12"){
+              score_calculado="4";
+
+          }
+        }
+          
+      }
+      if(edadscore=="60-64"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+              score_calculado="3";            
+
+
+          }
+          if(colesterolscore2=="5"){
+              score_calculado="4";            
+
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="4"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="5"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="6"; 
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="5"; 
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="5"; 
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="6"; 
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="7"; 
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="9";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="11";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="13";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="10";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="11";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="13";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="15";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="18";
+
+          }
+        }
+          
+      }
+      if(edadscore=="65"){
+                if(PAS=="PAS120"){
+          if(colesterolscore2=="4"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="5";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="6";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="9";
+
+          }
+        }
+        if(PAS=="PAS140"){
+          if(colesterolscore2=="4"){
+            score_calculado="7";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="8";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="9";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="11";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="13";
+
+          }
+        }
+        if(PAS=="PAS160"){
+          if(colesterolscore2=="4"){
+            score_calculado="10";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="12";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="14";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="16";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="19";
+
+          }
+        }
+        if(PAS=="PAS180"){
+          if(colesterolscore2=="4"){
+            score_calculado="15";
+
+          }
+          if(colesterolscore2=="5"){
+            score_calculado="17";
+
+          }
+          if(colesterolscore2=="6"){
+            score_calculado="20";
+
+          }
+          if(colesterolscore2=="7"){
+            score_calculado="23";
+
+          }
+          if(colesterolscore2=="8"){
+            score_calculado="26";
+
+          }
+        }
+          
+      }
+
+        
+      }
+    
+  }
+}
+score_calculado=parseInt(score_calculado);
+$state.go('formulariodislipemia');
+}
 
   
 

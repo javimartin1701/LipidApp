@@ -18,8 +18,8 @@
 			  <option value="50-54">50-54 años</option>
 			  <option value="55-59">55-59 años</option>
 			  <option value="60-64">60-64 años</option>
-			  <option value="65-75">65-75 años</option>
-			  <option value="75">&ge;75 años</option>
+			  <option value="65">&gt;65 años</option>
+			  
 		 </select>
 	    </li>
 
@@ -88,7 +88,7 @@
 	    <li class="item item-toggle" style="margin-bottom:33px;">
      <label>Países de alto riesgo<br>de ECV</label>
 		     <label class="toggle toggle-assertive">
-		       <input type="checkbox">
+		       <input type="checkbox" id="selector_alto_riesgo">
 		       <div class="track">
 		         <div class="handle"></div>
 		       </div>
@@ -107,7 +107,7 @@
 
 	  
 	
-	<button ui-sref="formulariodislipemia" class="continuar_imc button">CONTINUAR</button>
+	<button ng-click="calculoScore()" class="continuar_imc button">CONTINUAR</button>
 	  
 
 </ion-content>
