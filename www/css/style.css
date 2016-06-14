@@ -557,14 +557,29 @@ display: inline-block;
 
 .pantalla_resultado{
     text-align: center;
-    margin-bottom: 120px;
+    margin-bottom: 150px;
 }
 
 .ocultar_contra{
     display: none;
 }
 
+.listado_medicacion p{
+    text-transform: uppercase;
+    color: #606366;
+    margin-left: 15px;
+}
 
+.listado_medicacion div{
+       background: green;
+    height: 25px;
+}
+
+.listado_medicacion span{
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+}
 
 .resultado-filtrado p{
     color: #5d5d5d;

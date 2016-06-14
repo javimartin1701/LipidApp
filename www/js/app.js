@@ -13,8 +13,10 @@ var scoreindex="9";
 var ldltransactual="";
 var ldlobjetivo="0";
 var score_calculado="-";
+var vih="no";
+var objetivo_vih=0;
 
-angular.module('starter', ['ionic','ui.router'])
+angular.module('starter', ['ionic','ui.router','firebase'])
 
 .run(function($ionicPlatform) {
   
@@ -142,6 +144,41 @@ angular.module('starter', ['ionic','ui.router'])
     controller: 'RiesgoMedio'
   })
 
+
+
+.state('riesgobajo_vih',{
+    cache: false,
+    url:'/riesgobajo_vih',
+    templateUrl:'templates/riesgobajo_vih.html',
+    controller: 'RiesgoBajoVIH'
+  })
+
+   .state('riesgoalto_vih',{
+    cache: false,
+    url:'/riesgoalto_vih',
+    templateUrl:'templates/riesgoalto_vih.html',
+    controller: 'RiesgoAltoVIH'
+  })
+
+
+   .state('riesgomoderadoalto_vih',{
+    cache: false,
+    url:'/riesgomoderadoalto_vih',
+    templateUrl:'templates/riesgomoderadoalto_vih.html',
+    controller: 'RiesgoModeradoAltoVIH'
+  })
+
+   .state('riesgomoderadobajo_vih',{
+    cache: false,
+    url:'/riesgomoderadobajo_vih',
+    templateUrl:'templates/riesgomoderadobajo_vih.html',
+    controller: 'RiesgoModeradoBajoVIH'
+  })
+
+
+
+
+
    .state('htasevera',{
     cache: false,
     url:'/htasevera',
@@ -169,6 +206,12 @@ angular.module('starter', ['ionic','ui.router'])
     templateUrl:'templates/tratamientopreviomedicamentos.html',
     controller: 'TratamientoPrevioMedicamentos'
   })
+  //      .state('tratamientopreviomedicamentos_vih',{
+  //   cache: false,
+  //   url:'/tratamientopreviomedicamentos_vih',
+  //   templateUrl:'templates/tratamientopreviomedicamentos_vih.html',
+  //   controller: 'TratamientoPrevioMedicamentos_vih'
+  // })
 
        .state('tratamientoinicio',{
     cache: false,
@@ -245,10 +288,36 @@ var scoreindex="9";
     ecvcheck = document.getElementById("ecvdoc");
     renalindex=document.getElementById('funcion_renal').options.selectedIndex;
     scoreindex=document.getElementById('selector-score').options.selectedIndex;
-
+    tiene_vih=document.getElementById('VIH');
     ldlactual = document.getElementById("ldl-actual").value;
 
     
+
+
+    if (tiene_vih.checked){
+      if(cardio=="2"||ecvcheck.checked||scoreindex=="1"){
+      // alert("RiesgoMuyAlto");
+      alert("Riesgo alto");
+      objetivo_vih=70;
+
+    }
+    if(cardio=="1"||scoreindex=="2"){
+      // alert("RiesgoAlto");
+      alert("Riesgo moderado-alto");
+      objetivo_vih=100;
+    }
+    if(cardio=="1"||scoreindex=="3"){
+      // alert("RiesgoModerado");
+      alert("Riesgo moderado-bajo");
+      objetivo_vih=130;
+    }
+    if(cardio=="1"){
+      // alert("RiesgoBajo");
+      alert("Riesgo bajo");
+      objetivo_vih=130;
+    }
+    }
+    else{
     if(cardio=="1"||ecvcheck.checked||renalindex=="2"||scoreindex=="1"||scoreindex=="2"){
       // alert("RiesgoMuyAlto");
       $state.go('riesgomuyalto');
@@ -266,6 +335,8 @@ var scoreindex="9";
       // alert("RiesgoBajo");
       $state.go('riesgobajo');
     }
+
+  }
 
   }
 
@@ -298,10 +369,58 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
         if (check.checked) {
              $state.go('modalvih');
         }
+        vih="yes";
+        ldltransactual=document.getElementById("ldl-actual").value;
         
+        renalindex=document.getElementById('funcion_renal').options.selectedIndex;
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+
+        if(renalindex==0){
+          resultadofiltradoredond=70;
+        }
+
+        if(renalindex==1){
+          resultadofiltradoredond=40;
+        }
+
+        if(renalindex==2){
+         resultadofiltradoredond=25;
+        }
+
+        if(renalindex==3){
+          resultadofiltradoredond="inicio";
+        }
+
+
+
+        // if(scoreindex==0){
+        //   resultadofiltradoredond=70;
+        // }
+
+        if(scoreindex==1){
+          score_calculado=25;
+        }
+
+        if(scoreindex==2){
+         score_calculado=15;
+        }
+
+        if(scoreindex==3){
+          score_calculado=8;
+        }
+        if(scoreindex==4){
+         score_calculado=3;
+        }
+
+        if(scoreindex==0){
+          score_calculado="-";
+        }
+
     }
 
-
+if(vih=="yes"){    
+document.getElementById('VIH').checked=true;
+}
 
   if (resultadofiltradoredond>60) {
     $("select#funcion_renal").val("1");
@@ -4350,6 +4469,7 @@ $state.go('formulariodislipemia');
   var unidad=document.getElementById("unidades_totales_alto").value;
 
   $( "#unidades_totales_alto" ).change(function() {
+
   var factor = parseFloat(document.getElementById("unidades_totales_alto").value);
   
   var ldl = parseFloat(document.getElementById("ldl_act_res_alto").value);
@@ -4381,7 +4501,8 @@ $state.go('formulariodislipemia');
 
   var unidad=document.getElementById("unidades_totales_medio").value;
 
-  $( "#unidades_totales_alto" ).change(function() {
+  $( "#unidades_totales_medio" ).change(function() {
+
   var factor = parseFloat(document.getElementById("unidades_totales_medio").value);
   
   var ldl = parseFloat(document.getElementById("ldl_act_res_medio").value);
@@ -4667,14 +4788,76 @@ $state.go('tratamientoinicio');
 })
 
 
-.controller('TratamientoInicio',function($scope,$state){
 
-  document.getElementById("ldl_act_tratamiento").value=ldlactual;
+
+
+
+
+
+
+
+
+
+.controller('TratamientoInicio',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAXx_Kp0wEDLonlMBTo5NgfkuWxEVHwU9M",
+      authDomain: "lipid-app.firebaseapp.com",
+      databaseURL: "https://lipid-app.firebaseio.com",
+      storageBucket: "lipid-app.appspot.com",
+    };
+    firebase.initializeApp(config);
+
+    firebase.auth().signInAnonymously();
+
+    var ref = firebase.database().ref('dislipemia').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          var cols = [value.col4, value.col3, value.col2, value.col1];
+          //console.log(cols);
+          if(key == 0){
+            for(var i = 0; i < cols.length; i++){
+              if(cols[i]){
+                col = i;
+                break;
+              }
+            }
+            //console.log(col);
+          }
+          if(cols[col]){
+            $scope.displenias.push(value);
+          }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+ 
+
+
+
 
 })
+
+
+
+
+
+
+
+
+
+
+
 
 .controller('TratamientoInicio2',function($scope,$state){
 
@@ -5489,6 +5672,140 @@ jQuery('.raco_rosuv').on( "click", function() {
 
 
 })
+
+
+
+.controller('RiesgoAltoVIH',function($scope,$state){
+
+
+
+  document.getElementById("ldl_act_res_alto_vih").value=ldlactual;
+  document.getElementById("ldl_obj_res_alto_vih").value="100";
+  ldlobjetivo=100;
+
+  $scope.reduccion = function() {
+
+             $state.go('reduccion');
+        
+        
+    }
+    var unidad=document.getElementById("unidades_totales_alto_vih").value;
+
+  $( "#unidades_totales_alto" ).change(function() {
+  var factor = parseFloat(document.getElementById("unidades_totales_alto_vih").value);
+  
+  var ldl = parseFloat(document.getElementById("ldl_act_res_alto_vih").value);
+  var ldl2 = parseFloat(document.getElementById("ldl_obj_res_alto_vih").value);
+  var ldlconv=ldl*factor;
+  var ldlconv2=ldl2*factor;
+  document.getElementById("ldl_act_res_alto_vih").value=ldlconv.toFixed(2);
+  document.getElementById("ldl_obj_res_alto_vih").value=ldlconv2.toFixed(2);
+  
+});
+
+})
+
+
+
+
+
+.controller('RiesgoModeradoAltoVIH',function($scope,$state){
+
+
+
+  document.getElementById("ldl_act_res_moderado_alto_vih").value=ldlactual;
+  document.getElementById("ldl_obj_res_moderado_alto_vih").value="100";
+  ldlobjetivo=100;
+
+  $scope.reduccion = function() {
+
+             $state.go('reduccion');
+        
+        
+    }
+    var unidad=document.getElementById("unidades_totales_moderado_alto_vih").value;
+
+  $( "#unidades_totales_alto" ).change(function() {
+  var factor = parseFloat(document.getElementById("unidades_totales_moderado_alto_vih").value);
+  
+  var ldl = parseFloat(document.getElementById("ldl_act_res_moderado_alto_vih").value);
+  var ldl2 = parseFloat(document.getElementById("ldl_obj_res_moderado_alto_vih").value);
+  var ldlconv=ldl*factor;
+  var ldlconv2=ldl2*factor;
+  document.getElementById("ldl_act_res_moderado_alto_vih").value=ldlconv.toFixed(2);
+  document.getElementById("ldl_obj_res_moderado_alto_vih").value=ldlconv2.toFixed(2);
+  
+});
+
+})
+
+
+.controller('RiesgoModeradoBajoVIH',function($scope,$state){
+
+
+
+  document.getElementById("ldl_act_res_moderado_bajo_vih").value=ldlactual;
+  document.getElementById("ldl_obj_res_moderado_bajo_vih").value="130";
+  ldlobjetivo=130;
+
+  $scope.reduccion = function() {
+
+             $state.go('reduccion');
+        
+        
+    }
+    var unidad=document.getElementById("unidades_totales_moderado_bajo_vih").value;
+
+  $( "#unidades_totales_alto" ).change(function() {
+  var factor = parseFloat(document.getElementById("unidades_totales_moderado_bajo_vih").value);
+  
+  var ldl = parseFloat(document.getElementById("ldl_act_res_moderado_bajo_vih").value);
+  var ldl2 = parseFloat(document.getElementById("ldl_obj_res_moderado_bajo_vih").value);
+  var ldlconv=ldl*factor;
+  var ldlconv2=ldl2*factor;
+  document.getElementById("ldl_act_res_moderado_bajo_vih").value=ldlconv.toFixed(2);
+  document.getElementById("ldl_obj_res_moderado_bajo_vih").value=ldlconv2.toFixed(2);
+  
+});
+
+})
+
+
+
+
+.controller('RiesgoBajoVIH',function($scope,$state){
+
+
+
+  document.getElementById("ldl_act_res_bajo_vih").value=ldlactual;
+  document.getElementById("ldl_obj_res_bajo_vih").value="130";
+  ldlobjetivo=130;
+
+  $scope.reduccion = function() {
+
+             $state.go('reduccion');
+        
+        
+    }
+    var unidad=document.getElementById("unidades_totales_bajo_vih").value;
+
+  $( "#unidades_totales_alto" ).change(function() {
+  var factor = parseFloat(document.getElementById("unidades_totales_bajo_vih").value);
+  
+  var ldl = parseFloat(document.getElementById("ldl_act_res_bajo_vih").value);
+  var ldl2 = parseFloat(document.getElementById("ldl_obj_res_bajo_vih").value);
+  var ldlconv=ldl*factor;
+  var ldlconv2=ldl2*factor;
+  document.getElementById("ldl_act_res_bajo_vih").value=ldlconv.toFixed(2);
+  document.getElementById("ldl_obj_res_bajo_vih").value=ldlconv2.toFixed(2);
+  
+});
+
+})
+
+
+
+
 
 
 
