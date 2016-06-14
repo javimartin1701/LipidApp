@@ -15,6 +15,19 @@ var ldlobjetivo="0";
 var score_calculado="-";
 var vih="no";
 var objetivo_vih=0;
+var contra_abs_estatina=null;
+var contra_rel_estatina=null;
+var contra_abs_ezetimibe=null;
+var contra_abs_fibratos=null;
+var contra_abs_resinas=null;
+var contra_abs_ipcsk9=null;
+var quitar_estatina=false;
+var quitar_ezetimibe=false;
+var quitar_fibratos=false;
+var quitar_resinas=false;
+var quitar_ipcsk9=false;
+
+
 
 angular.module('starter', ['ionic','ui.router','firebase'])
 
@@ -4841,7 +4854,7 @@ $state.go('tratamientoinicio');
     });
 
 
- 
+
 
 
 
@@ -4866,11 +4879,42 @@ $state.go('tratamientoinicio');
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   document.getElementById("porcentaje_red_tratamiento2").value=porc_reducc+"%";
 
+
+
+
 })
 
 
 
 .controller('Contraindicaciones',function($scope,$state){
+
+
+  contra_abs_estatina = document.getElementById("contra_abs_estatinas");
+  contra_abs_ezetimibe = document.getElementById("contra_abs_ezetimibe");
+  contra_abs_fibratos = document.getElementById("contra_abs_fibratos");
+  contra_abs_resinas = document.getElementById("contra_abs_resinas");
+  contra_abs_ipcsk9 = document.getElementById("contra_abs_ipcsk9");
+
+  $scope.filtro_contra = function() {
+      if(contra_abs_estatina.checked){
+        quitar_estatina=true;
+      }
+      if(contra_abs_ezetimibe.checked){
+        quitar_ezetimibe=true;
+      }
+      if(contra_abs_fibratos.checked){
+        quitar_fibratos=true;
+      }
+      if(contra_abs_resinas.checked){
+        quitar_resinas=true;
+      }
+      if(contra_abs_ipcsk9.checked){
+        quitar_ipcsk9=true;
+      }
+      console.log(quitar_estatina+","+quitar_ezetimibe+","+quitar_fibratos+","+quitar_resinas+","+quitar_ipcsk9);
+  }
+
+
 
 
 
