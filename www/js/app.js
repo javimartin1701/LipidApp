@@ -47,6 +47,15 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    var config = {
+      apiKey: "AIzaSyAXx_Kp0wEDLonlMBTo5NgfkuWxEVHwU9M",
+      authDomain: "lipid-app.firebaseapp.com",
+      databaseURL: "https://lipid-app.firebaseio.com",
+      storageBucket: "lipid-app.appspot.com",
+    };
+    firebase.initializeApp(config);
+
+    firebase.auth().signInAnonymously();
   });
 
 
@@ -232,6 +241,59 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     templateUrl:'templates/tratamientoinicio.html',
     controller: 'TratamientoInicio'
   })
+       .state('tratamientoinicio_sin_estatina',{
+    cache: false,
+    url:'/tratamientoinicio_sin_estatina',
+    templateUrl:'templates/tratamientoinicio_sin_estatina.html',
+    controller: 'TratamientoInicioSinEstatina'
+  })
+
+
+       .state('tratamientoinicio_sin_resina',{
+    cache: false,
+    url:'/tratamientoinicio_sin_resina',
+    templateUrl:'templates/tratamientoinicio_sin_resina.html',
+    controller: 'TratamientoInicioSinResina'
+  })
+
+       .state('tratamientoinicio_sin_fibratos',{
+    cache: false,
+    url:'/tratamientoinicio_sin_fibratos',
+    templateUrl:'templates/tratamientoinicio_sin_fibratos.html',
+    controller: 'TratamientoInicioSinFibratos'
+  })
+
+       .state('tratamientoinicio_sin_ipcsk9',{
+    cache: false,
+    url:'/tratamientoinicio_sin_ipcsk9',
+    templateUrl:'templates/tratamientoinicio_sin_ipcsk9.html',
+    controller: 'TratamientoInicioSinIPCSK9'
+  })
+
+       .state('tratamientoinicio_sin_ipcsk9_ni_resinas',{
+    cache: false,
+    url:'/tratamientoinicio_sin_ipcsk9_ni_resinas',
+    templateUrl:'templates/tratamientoinicio_sin_ipcsk9_ni_resinas.html',
+    controller: 'TratamientoInicioSinIPCSK9NiResinas'
+  })
+
+       .state('tratamientoinicio_sin_ezetimive',{
+    cache: false,
+    url:'/tratamientoinicio_sin_ezetimive',
+    templateUrl:'templates/tratamientoinicio_sin_ezetimive.html',
+    controller: 'TratamientoInicioSinEzetimive'
+  })
+
+
+
+
+
+
+
+
+
+
+
        .state('tratamientoinicio2',{
     cache: false,
     url:'/tratamientoinicio2',
@@ -4817,15 +4879,89 @@ $state.go('tratamientoinicio');
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyAXx_Kp0wEDLonlMBTo5NgfkuWxEVHwU9M",
-      authDomain: "lipid-app.firebaseapp.com",
-      databaseURL: "https://lipid-app.firebaseio.com",
-      storageBucket: "lipid-app.appspot.com",
-    };
-    firebase.initializeApp(config);
+    
 
-    firebase.auth().signInAnonymously();
+    var ref = firebase.database().ref('dislipemia').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          var cols = [value.col4, value.col3, value.col2, value.col1];
+          //console.log(cols);
+          if(key == 0){
+            for(var i = 0; i < cols.length; i++){
+              if(cols[i]){
+                col = i;
+                break;
+              }
+            }
+          }
+          if(cols[col]){
+            $scope.displenias.push(value);
+          }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+})
+
+
+
+.controller('TratamientoInicioSinEstatina',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+
+
+    var ref = firebase.database().ref('dislipemia2').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
+            $scope.displenias.push(value);
+          // }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+})
+
+
+
+
+
+
+
+
+.controller('TratamientoInicioSinEzetimive',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    
 
     var ref = firebase.database().ref('dislipemia').orderByChild("porcentaje").startAt(porc_reducc);
     $scope.disp = $firebaseArray(ref);
@@ -4854,9 +4990,160 @@ $state.go('tratamientoinicio');
     });
 
 
+})
 
 
 
+.controller('TratamientoInicioSinIPCSK9',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    
+
+    var ref = firebase.database().ref('dislipemia').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          var cols = [value.col4, value.col3, value.col2, value.col1];
+          //console.log(cols);
+          if(key == 0){
+            for(var i = 0; i < cols.length; i++){
+              if(cols[i]){
+                col = i;
+                break;
+              }
+            }
+            //console.log(col);
+          }
+          if(cols[col]){
+            $scope.displenias.push(value);
+          }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+})
+
+
+
+.controller('TratamientoInicioSinIPCSK9NiResinas',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    
+
+    var ref = firebase.database().ref('dislipemia').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          var cols = [value.col4, value.col3, value.col2, value.col1];
+          //console.log(cols);
+          if(key == 0){
+            for(var i = 0; i < cols.length; i++){
+              if(cols[i]){
+                col = i;
+                break;
+              }
+            }
+            //console.log(col);
+          }
+          if(cols[col]){
+            $scope.displenias.push(value);
+          }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+})
+
+
+
+.controller('TratamientoInicioSinFibratos',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    
+
+    var ref = firebase.database().ref('dislipemia').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          var cols = [value.col4, value.col3, value.col2, value.col1];
+          //console.log(cols);
+          if(key == 0){
+            for(var i = 0; i < cols.length; i++){
+              if(cols[i]){
+                col = i;
+                break;
+              }
+            }
+            //console.log(col);
+          }
+          if(cols[col]){
+            $scope.displenias.push(value);
+          }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+})
+
+
+
+.controller('TratamientoInicioSinResina',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    
+
+    var ref = firebase.database().ref('dislipemia').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          var cols = [value.col4, value.col3, value.col2, value.col1];
+          //console.log(cols);
+          if(key == 0){
+            for(var i = 0; i < cols.length; i++){
+              if(cols[i]){
+                col = i;
+                break;
+              }
+            }
+            //console.log(col);
+          }
+          if(cols[col]){
+            $scope.displenias.push(value);
+          }
+        });
+        console.log($scope.displenias);
+
+    });
 
 
 })
@@ -4872,12 +5159,39 @@ $state.go('tratamientoinicio');
 
 
 
-.controller('TratamientoInicio2',function($scope,$state){
+.controller('TratamientoInicio2',function($scope,$state,$firebaseArray){
 
   document.getElementById("ldl_act_tratamiento2").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento2").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   document.getElementById("porcentaje_red_tratamiento2").value=porc_reducc+"%";
+    // Initialize Firebase
+    
+
+    var ref = firebase.database().ref('dislipemia').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          var cols = [value.col4, value.col3, value.col2, value.col1];
+          //console.log(cols);
+          if(key == 0){
+            for(var i = 0; i < cols.length; i++){
+              if(cols[i]){
+                col = i;
+                break;
+              }
+            }
+          }
+          if(cols[col]){
+            $scope.displenias.push(value);
+          }
+        });
+        console.log($scope.displenias);
+
+    });
 
 
 
@@ -4898,18 +5212,31 @@ $state.go('tratamientoinicio');
   $scope.filtro_contra = function() {
       if(contra_abs_estatina.checked){
         quitar_estatina=true;
+        $state.go('tratamientoinicio_sin_estatina');
       }
-      if(contra_abs_ezetimibe.checked){
+      else if(contra_abs_ezetimibe.checked){
         quitar_ezetimibe=true;
+        $state.go('tratamientoinicio_sin_ezetimive');
       }
-      if(contra_abs_fibratos.checked){
+      else if(contra_abs_fibratos.checked){
         quitar_fibratos=true;
+        $state.go('tratamientoinicio_sin_fibratos');
       }
-      if(contra_abs_resinas.checked){
+      else if(contra_abs_resinas.checked){
         quitar_resinas=true;
+        $state.go('tratamientoinicio_sin_resina');
       }
-      if(contra_abs_ipcsk9.checked){
+      else if(contra_abs_ipcsk9.checked){
         quitar_ipcsk9=true;
+        $state.go('tratamientoinicio_sin_ipcsk9');
+      }
+       else if(contra_abs_ipcsk9.checked&&contra_abs_resinas.checked){
+        quitar_ipcsk9=true;
+        $state.go('tratamientoinicio_sin_ipcsk9_ni_resinas');
+      }
+      else{
+        $state.go('tratamientoinicio2');
+        
       }
       console.log(quitar_estatina+","+quitar_ezetimibe+","+quitar_fibratos+","+quitar_resinas+","+quitar_ipcsk9);
   }
