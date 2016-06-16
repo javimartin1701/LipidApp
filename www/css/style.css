@@ -230,6 +230,27 @@ font-size: smaller;
 }
 
 
+#ldl_obj_res_alto_vih{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_act_res_alto_vih{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
+
 
 #ldl_obj_res_medio{
     display: inline-block;
@@ -242,6 +263,68 @@ font-size: smaller;
 }
 
 #ldl_act_res_medio{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
+
+#ldl_obj_res_moderado_alto_vih{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_act_res_moderado_alto_vih{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
+#ldl_obj_res_moderado_bajo_vih{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_act_res_moderado_bajo_vih{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
+
+#ldl_obj_res_bajo_vih{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_act_res_bajo_vih{
     display: inline-block;
     width: 127px;
     height: 127px;

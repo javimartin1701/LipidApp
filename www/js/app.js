@@ -26,6 +26,15 @@ var quitar_ezetimibe=false;
 var quitar_fibratos=false;
 var quitar_resinas=false;
 var quitar_ipcsk9=false;
+var quitar_ator_inter=false;
+var quitar_fluv_inter=false;
+var quitar_lov_inter=false;
+var quitar_pito_inter=false;
+var quitar_pra_inter=false;
+var quitar_rosu_inter=false;
+var quitar_sim_inter=false;
+var objetivo_vih=null;
+
 
 
 
@@ -372,23 +381,27 @@ var scoreindex="9";
     if (tiene_vih.checked){
       if(cardio=="2"||ecvcheck.checked||scoreindex=="1"){
       // alert("RiesgoMuyAlto");
-      alert("Riesgo alto");
+      // alert("Riesgo alto");
+      $state.go('riesgoalto_vih');
       objetivo_vih=70;
 
     }
     if(cardio=="1"||scoreindex=="2"){
       // alert("RiesgoAlto");
-      alert("Riesgo moderado-alto");
+      // alert("Riesgo moderado-alto");
+      $state.go('riesgomoderadoalto_vih');
       objetivo_vih=100;
     }
     if(cardio=="1"||scoreindex=="3"){
       // alert("RiesgoModerado");
-      alert("Riesgo moderado-bajo");
+      // alert("Riesgo moderado-bajo");
+      $state.go('riesgomoderadobajo_vih');
       objetivo_vih=130;
     }
     if(cardio=="1"){
       // alert("RiesgoBajo");
-      alert("Riesgo bajo");
+      // alert("Riesgo bajo");
+      $state.go('riesgobajo_vih');
       objetivo_vih=130;
     }
     }
@@ -5194,6 +5207,28 @@ $state.go('tratamientoinicio');
     });
 
 
+if (quitar_ator_inter==true) {
+  // alert(quitar_ator_inter);
+  $('.ator').hide();
+};
+if (quitar_fluv_inter==true) {
+  $('.fluv').hide();
+};
+if (quitar_lov_inter==true) {
+  $('.lov').hide();
+};
+if (quitar_pito_inter==true) {
+  $('.pito').hide();
+};
+if (quitar_pra_inter==true) {
+  $('.pra').hide();
+};
+if (quitar_rosu_inter==true) {
+  $('.rosu').hide();
+};
+if (quitar_sim_inter==true) {
+  $('.sim').hide();
+};
 
 
 })
@@ -6040,6 +6075,42 @@ jQuery('.raco_rosuv').on( "click", function() {
  
   });
 
+$scope.filtrar_inter = function() {
+
+
+
+  
+
+ if( $('.check_ator').is(':checked') ) {
+    quitar_ator_inter=true;
+}
+if( $('.check_fluv').is(':checked') ) {
+    quitar_fluv_inter=true;
+}
+if( $('.check_lov').is(':checked') ) {
+    quitar_lov_inter=true;
+}
+if( $('.check_pita').is(':checked') ) {
+    quitar_pito_inter=true;
+}
+if( $('.check_prav').is(':checked') ) {
+    quitar_pra_inter=true;
+}
+if( $('.check_rosu').is(':checked') ) {
+    quitar_rosu_inter=true;
+}
+if( $('.check_sim').is(':checked') ) {
+    aquitar_sim_inter=true;
+}
+
+$state.go('tratamientoinicio2');
+   
+        
+        
+    }
+
+              
+
 
 
 })
@@ -6051,7 +6122,7 @@ jQuery('.raco_rosuv').on( "click", function() {
 
 
   document.getElementById("ldl_act_res_alto_vih").value=ldlactual;
-  document.getElementById("ldl_obj_res_alto_vih").value="100";
+  document.getElementById("ldl_obj_res_alto_vih").value="70";
   ldlobjetivo=100;
 
   $scope.reduccion = function() {
