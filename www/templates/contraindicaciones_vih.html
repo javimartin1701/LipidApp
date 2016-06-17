@@ -1,0 +1,90 @@
+<ion-header-bar class="bar-stable bar-home">
+ 
+        <h1 class="title">TRATAMIENTO DE LA DISLIPEMIA</h1>
+
+</ion-header-bar>
+<ion-content class="form_dislipenia">
+<h2 class="subtitle">3 de 3 TRATAMIENTO<br>Contraindicaciones</h2>
+
+      
+	  <ul class="list lista lista_de_interacciones" style="margin-bottom: 200px;">
+	    <li class="item item-toggle" style="border-top: 0; overflow:initial; z-index:14;">
+     <label>Absolutas Estatinas</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="contra_abs_estatinas" onchange="javascript:showEstatinaContra()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		<div class="lista_contra_abs_estatinas ocultar_contra">
+			<ul>
+				<li><input type="checkbox">Hipersensibilidad al fármaco</li>
+				<li><input type="checkbox">Hepatopatía activa o elevaciones persistentes<br>e inexplicables de las transaminasas séricas<br>(>3 veces LSN)</li>
+				<li><input type="checkbox">Miopatía</li>
+				<li><input type="checkbox">Embarazo y lactancia</li>
+			</ul>
+			
+		</div>
+		  </li>
+		  <li class="item item-toggle" style="border-top: 0; overflow:initial; z-index:14;">
+     <label>Relativas Estatinas</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="contra_rel_estatinas" onchange="javascript:showEstatinaContraRel()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		<div class="lista_contra_rel_estatinas ocultar_contra">
+			<ul>
+				<li><input type="checkbox">Edad > 70 años</li>
+				<li><input type="checkbox">Insuficiencia renal</li>
+				<li><input type="checkbox">Hipotiroidismo no controlado</li>
+				<li><input type="checkbox">Antecedentes personales o familiares<br>de trastornos musculares hereditarios</li>
+				<li><input type="checkbox">Antecedentes de toxicidad muscular<br>con una estatina o un fibrato</li>
+				<li><input type="checkbox">Alcoholismo</li>
+			</ul>
+		</div>
+		  </li>
+		  <li class="item item-toggle" style="border-top: 0; overflow:initial; z-index:13;">
+     <label>Absolutas Ezetimibe</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="contra_abs_ezetimibe" onchange="javascript:showEzetimibeContra()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		   <div class="lista_contra_abs_ezetimibe ocultar_contra">
+			<ul>
+				<li><input type="checkbox">Hipersensibilidad al fármaco</li>
+				<li><input type="checkbox">Hepatopatía activa o elevaciones persistentes<br>e inexplicables de las transaminasas séricas<br>(>3 veces LSN)</li>
+				<li><input type="checkbox">Embarazo y lactancia</li>
+			</ul>
+		</div>
+		  </li>
+
+
+
+		   
+	    
+		 
+	     
+	    
+		  
+	  </ul>
+
+</ion-content>
+<button ng-click="filtro_contra()" class="continuar button">CONTINUAR</button>
+<div class="tabs tabs-icon-only bar-footer">
+  
+
+        <a ui-sref="tratamientoinicio" class="tab-item">
+          <i class="icon ion-android-arrow-back"></i>
+        </a>
+
+        <a ui-sref="presentacion" class="tab-item">
+          <i class="icon ion-ios-information-outline inf-red"></i>
+        </a>
+        <a onclick="javascript:menu_inferior()" class="tab-item">
+          <i class="icon ion-navicon-round"></i>
+        </a>
+</div>

@@ -383,7 +383,34 @@ font-size: smaller;
     background-position-y: 25px;
 }
 
+#porcentaje_red_vih{
+    position: relative;
+    left: 50%;
+    margin-left: -112px;
+    width: 224px;
+    height: 120px;
+    margin-top: 48px;
+    background: url('../img/input_reduccion.png');
+    text-align: center;
+    font-size: 64px;
+    font-weight: 600;
+    color: #3C874A;
+    background-repeat: no-repeat;
+    line-height: 10px;
+    background-position-y: 25px;
+}
+
 #ldl_obj_red{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 31px;
+}
+
+#ldl_obj_red_vih{
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -414,6 +441,17 @@ font-size: smaller;
     color: #87253c;
     font-size: 31px;
 }
+
+#ldl_act_red_vih{
+    display: inline-block;
+    width: 127px;
+    height: 127px;
+    text-align: center;
+    background: url('../img/total_rojo.png');
+    color: #87253c;
+    font-size: 31px;
+}
+
 
 .tratamiento_btn_si{
     width: 110px;

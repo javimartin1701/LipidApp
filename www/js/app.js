@@ -224,11 +224,24 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     controller: 'Reduccion'
   })
 
+            .state('reduccion_vih',{
+    cache: false,
+    url:'/reduccion_vih',
+    templateUrl:'templates/reduccion_vih.html',
+    controller: 'Reduccion_vih'
+  })
+
       .state('tratamientoprevio',{
     cache: false,
     url:'/tratamientoprevio',
     templateUrl:'templates/tratamientoprevio.html',
     controller: 'TratamientoPrevio'
+  })
+      .state('tratamientoprevio_vih',{
+    cache: false,
+    url:'/tratamientoprevio_vih',
+    templateUrl:'templates/tratamientoprevio_vih.html',
+    controller: 'TratamientoPrevio_vih'
   })
 
        .state('tratamientopreviomedicamentos',{
@@ -236,6 +249,13 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     url:'/tratamientopreviomedicamentos',
     templateUrl:'templates/tratamientopreviomedicamentos.html',
     controller: 'TratamientoPrevioMedicamentos'
+  })
+
+       .state('tratamientopreviomedicamentos_vih',{
+    cache: false,
+    url:'/tratamientopreviomedicamentos_vih',
+    templateUrl:'templates/tratamientopreviomedicamentos_vih.html',
+    controller: 'TratamientoPrevioMedicamentos_vih'
   })
   //      .state('tratamientopreviomedicamentos_vih',{
   //   cache: false,
@@ -250,11 +270,26 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     templateUrl:'templates/tratamientoinicio.html',
     controller: 'TratamientoInicio'
   })
+
+              .state('tratamientoinicio_vih',{
+    cache: false,
+    url:'/tratamientoinicio_vih',
+    templateUrl:'templates/tratamientoinicio_vih.html',
+    controller: 'TratamientoInicio_vih'
+  })
+
        .state('tratamientoinicio_sin_estatina',{
     cache: false,
     url:'/tratamientoinicio_sin_estatina',
     templateUrl:'templates/tratamientoinicio_sin_estatina.html',
     controller: 'TratamientoInicioSinEstatina'
+  })
+
+       .state('tratamientoinicio_sin_estatina_vih',{
+    cache: false,
+    url:'/tratamientoinicio_sin_estatina_vih',
+    templateUrl:'templates/tratamientoinicio_sin_estatina_vih.html',
+    controller: 'TratamientoInicioSinEstatina_vih'
   })
 
 
@@ -293,6 +328,13 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     controller: 'TratamientoInicioSinEzetimive'
   })
 
+ .state('tratamientoinicio_sin_ezetimive_vih',{
+    cache: false,
+    url:'/tratamientoinicio_sin_ezetimive_vih',
+    templateUrl:'templates/tratamientoinicio_sin_ezetimive_vih.html',
+    controller: 'TratamientoInicioSinEzetimive_vih'
+  })
+
 
 
 
@@ -315,6 +357,14 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     url:'/contraindicaciones',
     templateUrl:'templates/contraindicaciones.html',
     controller: 'Contraindicaciones'
+  })
+
+
+       .state('contraindicaciones_vih',{
+    cache: false,
+    url:'/contraindicaciones_vih',
+    templateUrl:'templates/contraindicaciones_vih.html',
+    controller: 'Contraindicaciones_vih'
   })
 
        .state('estatinas',{
@@ -4624,11 +4674,33 @@ document.getElementById("ldl_act_red").value=ldlactual;
 })
 
 
+.controller('Reduccion_vih',function($scope){
+
+
+document.getElementById("ldl_act_red_vih").value=ldlactual;
+  document.getElementById("ldl_obj_red_vih").value=ldlobjetivo;  
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_vih").value=porc_reducc+"%";
+
+
+
+})
+
+
 .controller('TratamientoPrevio',function($scope){
 
   
 
 })
+
+.controller('TratamientoPrevio_vih',function($scope){
+
+  
+
+})
+
+
+
 
 .controller('TratamientoPrevioMedicamentos',function($scope,$state){
 
@@ -4886,6 +4958,125 @@ $state.go('tratamientoinicio');
 
 
 
+.controller('TratamientoPrevioMedicamentos_vih',function($scope,$state){
+
+ 
+
+jQuery('.linea_atorvastatina').on( "click", function() { 
+
+           jQuery('.cuadro_atorvastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {   
+
+           jQuery('.cuadro_atorvastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar1').on( "click", function() { 
+          jQuery("#atorv_10").prop('checked', false);
+          jQuery("#atorv_20").prop('checked', false); 
+           jQuery('.cuadro_atorvastatina').hide(); //muestro mediante clase
+         });
+
+
+jQuery('.linea_rosuvastatina').on( "click", function() {    
+           jQuery('.cuadro_rosuvastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_rosuvastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar2').on( "click", function() { 
+         
+          jQuery("#rosuv_10").prop('checked', false);
+         
+           jQuery('.cuadro_rosuvastatina').hide(); //muestro mediante clase
+         });
+
+
+
+
+
+
+
+jQuery('.linea_pravastatina').on( "click", function() {    
+           jQuery('.cuadro_pravastatina').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {    
+           jQuery('.cuadro_pravastatina').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar5').on( "click", function() { 
+          jQuery("#prav_10").prop('checked', false);
+          jQuery("#prav_20").prop('checked', false);
+          jQuery("#prav_40").prop('checked', false);
+          jQuery("#prav_80").prop('checked', false);
+           jQuery('.cuadro_pravastatina').hide(); //muestro mediante clase
+         });
+
+
+
+
+
+jQuery('.linea_ezetimibe').on( "click", function() {    
+           jQuery('.cuadro_ezetimibe').show(); //muestro mediante clase
+         });
+jQuery('.ok_guardar').on( "click", function() {
+
+           jQuery('.cuadro_ezetimibe').hide(); //muestro mediante clase
+         });
+jQuery('.cancelar8').on( "click", function() { 
+          jQuery("#ezet_10").prop('checked', false);
+           jQuery('.cuadro_ezetimibe').hide(); //muestro mediante clase
+         });
+
+
+
+$scope.sumar_vih = function() {
+var atorv_10v=atorv_20v=atorv_40v=rosuv_10v=prav_40v=ezet_10v=atorv_10v_ezet_10v=atorv_20v_ezet_10v=rosuv_10v_ezet_10v=prav_40v_ezet_10v=rosuv_10v_ezet_10v=0;
+
+// atorv_10v=document.getElementById("atorv_10").value;
+
+// atorv_20v=parseInt(document.getElementById("atorv_20").value);
+
+if (($('#atorv_10').is(":checked"))&&!($('#ezet_10').is(":checked"))){atorv_10v=35;}
+if (($('#atorv_20').is(":checked"))&&!($('#ezet_10').is(":checked"))){atorv_20v=41;}
+
+if (($('#rosuv_10').is(":checked"))&&!($('#ezet_10').is(":checked"))){rosuv_10v=47;}
+
+if (($('#prav_40').is(":checked"))&&!($('#ezet_10').is(":checked"))){prav_40v=33;}
+
+if (($('#ezet_10').is(":checked"))&&!($('#atorv_10').is(":checked"))&&!($('#atorv_20').is(":checked"))&&!($('#rosuv_10').is(":checked"))&&!($('#prav_40').is(":checked"))){ezet_10v=20;}
+
+
+
+
+if (($('#atorv_10').is(":checked"))&&($('#ezet_10').is(":checked"))){atorv_10v_ezet_10v=41.5;}
+if (($('#atorv_20').is(":checked"))&&($('#ezet_10').is(":checked"))){atorv_20v_ezet_10v=46.9;}
+if (($('#rosuv_10').is(":checked"))&&($('#ezet_10').is(":checked"))){rosuv_10v_ezet_10v=52.3;}
+if (($('#prav_40').is(":checked"))&&($('#ezet_10').is(":checked"))){prav_40v_ezet_10v=39.7;}
+
+
+
+
+
+
+red_trat=atorv_10v+atorv_20v+rosuv_10v+prav_40v+ezet_10v+atorv_10v_ezet_10v+atorv_20v_ezet_10v+rosuv_10v_ezet_10v+prav_40v_ezet_10v;
+
+ldlrectificado=parseFloat(ldlactual)+parseFloat(ldlactual)*(red_trat/100);
+ldlactual=ldlrectificado;
+$state.go('tratamientoinicio_vih');
+}
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
 .controller('TratamientoInicio',function($scope,$state, $firebaseArray){
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
@@ -4923,6 +5114,43 @@ $state.go('tratamientoinicio');
 })
 
 
+.controller('TratamientoInicio_vih',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    
+
+    var ref = firebase.database().ref('dislipemia3').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          // }
+          // if(cols[col]){
+            $scope.displenias.push(value);
+          // }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+})
+
+
 
 .controller('TratamientoInicioSinEstatina',function($scope,$state, $firebaseArray){
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
@@ -4933,6 +5161,44 @@ $state.go('tratamientoinicio');
 
 
     var ref = firebase.database().ref('dislipemia2').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
+            $scope.displenias.push(value);
+          // }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+})
+
+
+.controller('TratamientoInicioSinEstatina_vih',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+
+
+    var ref = firebase.database().ref('dislipemia3').orderByChild("porcentaje").startAt(porc_reducc);
     $scope.disp = $firebaseArray(ref);
 
     $scope.displenias = [];
@@ -5004,6 +5270,46 @@ $state.go('tratamientoinicio');
 
 
 })
+
+
+
+.controller('TratamientoInicioSinEzetimive_vih',function($scope,$state, $firebaseArray){
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+
+
+    var ref = firebase.database().ref('dislipemia3').orderByChild("porcentaje").startAt(porc_reducc);
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.displenias = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
+            $scope.displenias.push(value);
+          // }
+        });
+        console.log($scope.displenias);
+
+    });
+
+
+})
+
 
 
 
@@ -5281,6 +5587,43 @@ if (quitar_sim_inter==true) {
 
 
 })
+
+
+
+.controller('Contraindicaciones_vih',function($scope,$state){
+
+
+  contra_abs_estatina = document.getElementById("contra_abs_estatinas");
+  contra_abs_ezetimibe = document.getElementById("contra_abs_ezetimibe");
+  contra_abs_fibratos = document.getElementById("contra_abs_fibratos");
+  contra_abs_resinas = document.getElementById("contra_abs_resinas");
+  contra_abs_ipcsk9 = document.getElementById("contra_abs_ipcsk9");
+
+  $scope.filtro_contra = function() {
+      if(contra_abs_estatina.checked){
+        quitar_estatina=true;
+        $state.go('tratamientoinicio_sin_estatina_vih');
+      }
+      else if(contra_abs_ezetimibe.checked){
+        quitar_ezetimibe=true;
+        $state.go('tratamientoinicio_sin_ezetimive_vih');
+      }
+      else{
+        $state.go('tratamientoinicio2_vih');
+        
+      }
+      console.log(quitar_estatina+","+quitar_ezetimibe+","+quitar_fibratos+","+quitar_resinas+","+quitar_ipcsk9);
+  }
+
+
+
+
+
+})
+
+
+
+
 
 .controller('Estatinas',function($scope,$state){
 
@@ -6127,7 +6470,7 @@ $state.go('tratamientoinicio2');
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion');
+             $state.go('reduccion_vih');
         
         
     }
@@ -6161,7 +6504,7 @@ $state.go('tratamientoinicio2');
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion');
+             $state.go('reduccion_vih');
         
         
     }
@@ -6192,7 +6535,7 @@ $state.go('tratamientoinicio2');
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion');
+             $state.go('reduccion_vih');
         
         
     }
@@ -6225,7 +6568,7 @@ $state.go('tratamientoinicio2');
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion');
+             $state.go('reduccion_vih');
         
         
     }
