@@ -29,6 +29,11 @@ font-size: smaller;
 	color:#87253c !important;
 }
 
+.lov{
+    
+}
+
+
 #unidades_totales{
     background: white;
     width: 85px;
@@ -683,6 +688,10 @@ display: inline-block;
 
 .ocultar_contra{
     display: none;
+}
+
+.listado_medicacion{
+    margin-bottom: 120px;
 }
 
 .listado_medicacion p{

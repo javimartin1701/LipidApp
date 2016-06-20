@@ -1,0 +1,52 @@
+<ion-header-bar class="bar-stable bar-home">
+ 
+        <h1 class="title">FIBRATOS</h1>
+
+</ion-header-bar>
+<ion-content class="form_dislipenia">
+
+<div class="pantalla_resultado pantalla_interacciones">
+	  
+	  
+		<ul style="margin-bottom: 300px;">
+			<li class="inter_flecha" id="atorv_inter">Fenofibrato
+				    <li class="sub_atorv_inter item item-toggle aco">ACO dicumarínicos <img class="aco_atorv" src="img/alerta_baja.png">
+				    <label class="toggle"><input type="checkbox" class="check_ator"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">La dosis de ACO deberá ser reducida un tercio al comienzo del tratamiento y se ajustará gradualmente en función de los controles INR</div>
+
+					<li class="sub_atorv_inter item item-toggle ami">Ciclosporina<img class="ami_atorv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox" class="check_ator"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Control de la fnción renal</div>
+
+			</li>
+			<li class="inter_flecha" id="fluv_inter">Gemfibrozilo
+				    <li class="sub_fluv_inter item item-toggle faco">ACO dicumarínicos<img class="faco_fluv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox" class="check_fluv"><div class="track"><div class="handle"></div></div></label></li>
+				    <div class="aviso_interacciones">Control estricto de la ACO</div>
+
+					<li class="sub_fluv_inter item item-toggle fantia">Repaglinida<img class="fantia_fluv"src="img/alerta.png"><label class="toggle"><input type="checkbox" class="check_fluv"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Contraindicado el uso conjunto</div>
+
+					<li style="height: 100px;"class="sub_fluv_inter item item-toggle fasoco">Rosiglitazona<img class="fasoco_fluv" src="img/alerta_baja.png"><label class="toggle"><input type="checkbox" class="check_fluv"><div class="track"><div class="handle"></div></div></label></li>
+					<div class="aviso_interacciones">Precaución</div>
+			</li>
+
+			
+		</ul>
+    </div>
+
+
+</ion-content>
+<button ng-click="filtrar_inter()" class="continuar button">CONTINUAR</button>
+<div class="tabs tabs-icon-only bar-footer">
+  
+
+        <a back class="tab-item">
+          <i class="icon ion-android-arrow-back"></i>
+        </a>
+
+        <a ui-sref="presentacion" class="tab-item">
+          <i class="icon ion-ios-information-outline inf-red"></i>
+        </a>
+        <a onclick="javascript:menu_inferior()" class="tab-item">
+          <i class="icon ion-navicon-round"></i>
+        </a>
+</div>

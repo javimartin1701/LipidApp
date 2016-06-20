@@ -23,6 +23,7 @@
         }
     }
 
+
 function showDislipemia() {
         element = document.getElementById("HIPERCOL");
         
