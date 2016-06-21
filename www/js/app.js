@@ -35,6 +35,7 @@ var quitar_rosu_inter=false;
 var quitar_sim_inter=false;
 var objetivo_vih=null;
 var eliminar_sim=false;
+var total_score_mialgias=null;
 
 
 
@@ -92,76 +93,76 @@ angular.module('starter', ['ionic','ui.router','firebase'])
   .state('formulariodislipemia',{
     cache: false,
     url:'/formulariodislipemia',
-    templateUrl:'templates/formulariodislipemia.html',
+    templateUrl:'templates/dislipemia/formulariodislipemia.html',
     controller: 'DislipFormCtrl'
   })
 
    .state('factorriesgocardio',{
     cache: false,
     url:'/factorriesgocardio',
-    templateUrl:'templates/factorriesgocardio.html',
+    templateUrl:'templates/dislipemia/factorriesgocardio.html',
     controller: 'FactorRiesgoCardio'
   })
 
    .state('calculadoraimc',{
     cache: false,
     url:'/calculadoraimc',
-    templateUrl:'templates/calculadoraimc.html',
+    templateUrl:'templates/dislipemia/calculadoraimc.html',
     controller: 'CalculadoraIMC'
   })
 
    .state('modalcardiodoc',{
     cache: false,
     url:'/modalcardiodoc',
-    templateUrl:'templates/modalcardiodoc.html',
+    templateUrl:'templates/dislipemia/modalcardiodoc.html',
     controller: 'ModalCardioDoc'
   })
 
    .state('modalvih',{
     cache: false,
     url:'/modalvih',
-    templateUrl:'templates/modalvih.html',
+    templateUrl:'templates/dislipemia/modalvih.html',
     controller: 'ModalVIH'
   })
 
   .state('presentacion',{
     cache: false,
     url:'/presentacion',
-    templateUrl:'templates/presentacion.html',
+    templateUrl:'templates/dislipemia/presentacion.html',
     controller: 'Presentacion'
   })
 
   .state('funcionrenal',{
     cache: false,
     url:'/funcionrenal',
-    templateUrl:'templates/funcionrenal.html',
+    templateUrl:'templates/dislipemia/funcionrenal.html',
     controller: 'FuncionRenal'
   })
   .state('calcscore',{
     cache: false,
     url:'/calcscore',
-    templateUrl:'templates/calcscore.html',
+    templateUrl:'templates/dislipemia/calcscore.html',
     controller: 'CalcScore'
   })
 
   .state('paisesaltoriesgo',{
     cache: false,
     url:'/paisesaltoriesgo',
-    templateUrl:'templates/paisesaltoriesgo.html',
+    templateUrl:'templates/dislipemia/paisesaltoriesgo.html',
     controller: 'PaisesAltoRiesgo'
   })
 
    .state('riesgobajo',{
     cache: false,
     url:'/riesgobajo',
-    templateUrl:'templates/riesgobajo.html',
+    templateUrl:'templates/dislipemia/riesgobajo.html',
     controller: 'RiesgoBajo'
   })
 
    .state('riesgomuyalto',{
     cache: false,
     url:'/riesgomuyalto',
-    templateUrl:'templates/riesgomuyalto.html',
+    templateUrl:'templates/dislipemia/riesgomuyalto.html',
     controller: 'RiesgoMuyAlto'
   })
 
@@ -169,14 +170,14 @@ angular.module('starter', ['ionic','ui.router','firebase'])
    .state('riesgoalto',{
     cache: false,
     url:'/riesgoalto',
-    templateUrl:'templates/riesgoalto.html',
+    templateUrl:'templates/dislipemia/riesgoalto.html',
     controller: 'RiesgoAlto'
   })
 
    .state('riesgomedio',{
     cache: false,
     url:'/riesgomedio',
-    templateUrl:'templates/riesgomedio.html',
+    templateUrl:'templates/dislipemia/riesgomedio.html',
     controller: 'RiesgoMedio'
   })
 
@@ -185,14 +186,14 @@ angular.module('starter', ['ionic','ui.router','firebase'])
 .state('riesgobajo_vih',{
     cache: false,
     url:'/riesgobajo_vih',
-    templateUrl:'templates/riesgobajo_vih.html',
+    templateUrl:'templates/dislipemia/riesgobajo_vih.html',
     controller: 'RiesgoBajoVIH'
   })
 
    .state('riesgoalto_vih',{
     cache: false,
     url:'/riesgoalto_vih',
-    templateUrl:'templates/riesgoalto_vih.html',
+    templateUrl:'templates/dislipemia/riesgoalto_vih.html',
     controller: 'RiesgoAltoVIH'
   })
 
@@ -200,14 +201,14 @@ angular.module('starter', ['ionic','ui.router','firebase'])
    .state('riesgomoderadoalto_vih',{
     cache: false,
     url:'/riesgomoderadoalto_vih',
-    templateUrl:'templates/riesgomoderadoalto_vih.html',
+    templateUrl:'templates/dislipemia/riesgomoderadoalto_vih.html',
     controller: 'RiesgoModeradoAltoVIH'
   })
 
    .state('riesgomoderadobajo_vih',{
     cache: false,
     url:'/riesgomoderadobajo_vih',
-    templateUrl:'templates/riesgomoderadobajo_vih.html',
+    templateUrl:'templates/dislipemia/riesgomoderadobajo_vih.html',
     controller: 'RiesgoModeradoBajoVIH'
   })
 
@@ -218,82 +219,82 @@ angular.module('starter', ['ionic','ui.router','firebase'])
    .state('htasevera',{
     cache: false,
     url:'/htasevera',
-    templateUrl:'templates/htasevera.html',
+    templateUrl:'templates/dislipemia/htasevera.html',
     controller: 'HTASevera'
   })
 
       .state('reduccion',{
     cache: false,
     url:'/reduccion',
-    templateUrl:'templates/reduccion.html',
+    templateUrl:'templates/dislipemia/reduccion.html',
     controller: 'Reduccion'
   })
 
             .state('reduccion_vih',{
     cache: false,
     url:'/reduccion_vih',
-    templateUrl:'templates/reduccion_vih.html',
+    templateUrl:'templates/dislipemia/reduccion_vih.html',
     controller: 'Reduccion_vih'
   })
 
       .state('tratamientoprevio',{
     cache: false,
     url:'/tratamientoprevio',
-    templateUrl:'templates/tratamientoprevio.html',
+    templateUrl:'templates/dislipemia/tratamientoprevio.html',
     controller: 'TratamientoPrevio'
   })
       .state('tratamientoprevio_vih',{
     cache: false,
     url:'/tratamientoprevio_vih',
-    templateUrl:'templates/tratamientoprevio_vih.html',
+    templateUrl:'templates/dislipemia/tratamientoprevio_vih.html',
     controller: 'TratamientoPrevio_vih'
   })
 
        .state('tratamientopreviomedicamentos',{
     cache: false,
     url:'/tratamientopreviomedicamentos',
-    templateUrl:'templates/tratamientopreviomedicamentos.html',
+    templateUrl:'templates/dislipemia/tratamientopreviomedicamentos.html',
     controller: 'TratamientoPrevioMedicamentos'
   })
 
        .state('tratamientopreviomedicamentos_vih',{
     cache: false,
     url:'/tratamientopreviomedicamentos_vih',
-    templateUrl:'templates/tratamientopreviomedicamentos_vih.html',
+    templateUrl:'templates/dislipemia/tratamientopreviomedicamentos_vih.html',
     controller: 'TratamientoPrevioMedicamentos_vih'
   })
   //      .state('tratamientopreviomedicamentos_vih',{
   //   cache: false,
   //   url:'/tratamientopreviomedicamentos_vih',
-  //   templateUrl:'templates/tratamientopreviomedicamentos_vih.html',
+  //   templateUrl:'templates/dislipemia/tratamientopreviomedicamentos_vih.html',
   //   controller: 'TratamientoPrevioMedicamentos_vih'
   // })
 
        .state('tratamientoinicio',{
     cache: false,
     url:'/tratamientoinicio',
-    templateUrl:'templates/tratamientoinicio.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio.html',
     controller: 'TratamientoInicio'
   })
 
               .state('tratamientoinicio_vih',{
     cache: false,
     url:'/tratamientoinicio_vih',
-    templateUrl:'templates/tratamientoinicio_vih.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_vih.html',
     controller: 'TratamientoInicio_vih'
   })
 
        .state('tratamientoinicio_sin_estatina',{
     cache: false,
     url:'/tratamientoinicio_sin_estatina',
-    templateUrl:'templates/tratamientoinicio_sin_estatina.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_sin_estatina.html',
     controller: 'TratamientoInicioSinEstatina'
   })
 
        .state('tratamientoinicio_sin_estatina_vih',{
     cache: false,
     url:'/tratamientoinicio_sin_estatina_vih',
-    templateUrl:'templates/tratamientoinicio_sin_estatina_vih.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_sin_estatina_vih.html',
     controller: 'TratamientoInicioSinEstatina_vih'
   })
 
@@ -301,42 +302,42 @@ angular.module('starter', ['ionic','ui.router','firebase'])
        .state('tratamientoinicio_sin_resina',{
     cache: false,
     url:'/tratamientoinicio_sin_resina',
-    templateUrl:'templates/tratamientoinicio_sin_resina.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_sin_resina.html',
     controller: 'TratamientoInicioSinResina'
   })
 
        .state('tratamientoinicio_sin_fibratos',{
     cache: false,
     url:'/tratamientoinicio_sin_fibratos',
-    templateUrl:'templates/tratamientoinicio_sin_fibratos.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_sin_fibratos.html',
     controller: 'TratamientoInicioSinFibratos'
   })
 
        .state('tratamientoinicio_sin_ipcsk9',{
     cache: false,
     url:'/tratamientoinicio_sin_ipcsk9',
-    templateUrl:'templates/tratamientoinicio_sin_ipcsk9.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_sin_ipcsk9.html',
     controller: 'TratamientoInicioSinIPCSK9'
   })
 
        .state('tratamientoinicio_sin_ipcsk9_ni_resinas',{
     cache: false,
     url:'/tratamientoinicio_sin_ipcsk9_ni_resinas',
-    templateUrl:'templates/tratamientoinicio_sin_ipcsk9_ni_resinas.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_sin_ipcsk9_ni_resinas.html',
     controller: 'TratamientoInicioSinIPCSK9NiResinas'
   })
 
        .state('tratamientoinicio_sin_ezetimive',{
     cache: false,
     url:'/tratamientoinicio_sin_ezetimive',
-    templateUrl:'templates/tratamientoinicio_sin_ezetimive.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_sin_ezetimive.html',
     controller: 'TratamientoInicioSinEzetimive'
   })
 
  .state('tratamientoinicio_sin_ezetimive_vih',{
     cache: false,
     url:'/tratamientoinicio_sin_ezetimive_vih',
-    templateUrl:'templates/tratamientoinicio_sin_ezetimive_vih.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio_sin_ezetimive_vih.html',
     controller: 'TratamientoInicioSinEzetimive_vih'
   })
 
@@ -353,14 +354,14 @@ angular.module('starter', ['ionic','ui.router','firebase'])
        .state('tratamientoinicio2',{
     cache: false,
     url:'/tratamientoinicio2',
-    templateUrl:'templates/tratamientoinicio2.html',
+    templateUrl:'templates/dislipemia/tratamientoinicio2.html',
     controller: 'TratamientoInicio2'
   })
 
        .state('contraindicaciones',{
     cache: false,
     url:'/contraindicaciones',
-    templateUrl:'templates/contraindicaciones.html',
+    templateUrl:'templates/dislipemia/contraindicaciones.html',
     controller: 'Contraindicaciones'
   })
 
@@ -368,22 +369,71 @@ angular.module('starter', ['ionic','ui.router','firebase'])
        .state('contraindicaciones_vih',{
     cache: false,
     url:'/contraindicaciones_vih',
-    templateUrl:'templates/contraindicaciones_vih.html',
+    templateUrl:'templates/dislipemia/contraindicaciones_vih.html',
     controller: 'Contraindicaciones_vih'
   })
 
        .state('estatinas',{
     cache: false,
     url:'/estatinas',
-    templateUrl:'templates/estatinas.html',
+    templateUrl:'templates/dislipemia/estatinas.html',
     controller: 'Estatinas'
   })
 
        .state('fibratos',{
     cache: false,
     url:'/fibratos',
-    templateUrl:'templates/fibratos.html',
+    templateUrl:'templates/dislipemia/fibratos.html',
     controller: 'Fibratos'
+  })
+
+///////////////////////LIMITACIONES/////////////////////////
+
+       .state('limitaciones1',{
+    cache: false,
+    url:'/limitaciones1',
+    templateUrl:'templates/limitaciones/limitaciones1.html',
+    controller: 'Limitaciones'
+  })
+
+      .state('mialgias1',{
+    cache: false,
+    url:'/mialgias1',
+    templateUrl:'templates/limitaciones/mialgias1.html',
+    controller: 'Mialgias1'
+  })
+
+      .state('manejo_mialgias',{
+    cache: false,
+    url:'/manejo_mialgias',
+    templateUrl:'templates/limitaciones/manejo_mialgias.html',
+    controller: 'ManejoMialgias'
+  })
+
+      .state('mialgiasscore',{
+    cache: false,
+    url:'/mialgiasscore',
+    templateUrl:'templates/limitaciones/mialgiasscore.html',
+    controller: 'MialgiasScore'
+  })
+
+      .state('score_probable',{
+    cache: false,
+    url:'/score_probable',
+    templateUrl:'templates/limitaciones/score_probable.html',
+    controller: 'ScoreProbable'
+  })
+      .state('score_posible',{
+    cache: false,
+    url:'/score_posible',
+    templateUrl:'templates/limitaciones/score_posible.html',
+    controller: 'ScorePosible'
+  })
+      .state('score_improbable',{
+    cache: false,
+    url:'/score_improbable',
+    templateUrl:'templates/limitaciones/score_improbable.html',
+    controller: 'ScoreImprobable'
   })
 
   // .state('vista2',{
@@ -7515,6 +7565,121 @@ $state.go('tratamientoinicio2');
 });
 
 })
+
+/////////////////////////LIMITACIONES///////////////////////////////
+
+.controller('Limitaciones',function($scope,$state){
+
+
+
+})
+
+
+
+.controller('Mialgias1',function($scope,$state){
+
+
+
+})
+
+
+.controller('ManejoMialgias',function($scope,$state){
+
+$scope.sintomatico = function() {
+
+             jQuery('.content_sintomatico').toggle();
+        
+        
+    }
+
+$scope.persisten = function() {
+
+             jQuery('.persisten_sintomas').toggle();
+        
+        
+    }
+
+$scope.mejoran = function() {
+
+             jQuery('.mejoran_sintomas').toggle();
+        
+        
+    }
+
+$scope.asintomatico = function() {
+
+             jQuery('.asintomatico').toggle();
+        
+        
+    }
+
+$scope.reaparecen_sintomas = function() {
+
+             jQuery('.reaparecen_sintomas').toggle();
+        
+        
+    }
+
+
+$scope.rabdomiolisis = function() {
+
+             jQuery('.content_rabdomiolisis').toggle();
+        
+        
+    }
+
+
+
+})
+
+
+.controller('MialgiasScore',function($scope,$state){
+
+$scope.score_mialgias = function() {
+  var patron_distribucion=parseInt(document.getElementById("patron_distribucion").value);
+  var patron_temporal=parseInt(document.getElementById("patron_temporal").value);
+  var retirada_estatina=parseInt(document.getElementById("retirada_estatina").value);
+  var reintroduccion_estatina=parseInt(document.getElementById("reintroduccion_estatina").value);
+
+  total_score_mialgias=patron_distribucion+patron_temporal+retirada_estatina+reintroduccion_estatina;
+
+  if(total_score_mialgias<7){
+   $state.go('score_improbable');
+  }
+  else if((total_score_mialgias>=9)&&(total_score_mialgias<=11)){
+    $state.go('score_probable');
+  }
+  else if((total_score_mialgias>=7)&&(total_score_mialgias<=8)){
+    $state.go('score_posible');
+  }
+  console.log(total_score_mialgias);
+
+}
+
+})
+
+
+.controller('ScoreImprobable',function($scope,$state){
+
+  document.getElementById("resultado_score_mialgias_verde").value=total_score_mialgias;
+
+})
+
+.controller('ScorePosible',function($scope,$state){
+
+  document.getElementById("resultado_score_mialgias_naranja").value=total_score_mialgias;
+
+})
+
+.controller('ScoreProbable',function($scope,$state){
+  
+  document.getElementById("resultado_score_mialgias").value=total_score_mialgias;
+
+})
+
+
+
+
 
 
 

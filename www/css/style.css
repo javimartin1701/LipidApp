@@ -30,7 +30,11 @@ font-size: smaller;
 }
 
 .lov{
-    
+
+}
+
+.ion-ios-plus-outline{
+    display: none;
 }
 
 
@@ -921,12 +925,101 @@ display: inline-block;
 	color:white !important;
 }
 
+.limitaciones{
+    background: #efefef;
+    text-align: center;
+}
+
+.limitaciones img{
+    margin-top: 23%;
+    width: 90%;
+}
+
+.limitaciones button{
+    background-color: #ce9ca7 !important;
+    color:white !important;
+}
+
 .inicio{
     background: #efefef;
 }
 
 .form_dislipenia{
     background: #efefef;
+}
+
+.content_sintomatico{
+    display: none;
+}
+
+.content_sintomatico p{
+        height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #86253c;
+    font-weight: 600;
+    background: #cbc1c4;
+    margin-bottom: 0;
+}
+
+.content_rabdomiolisis{
+    display: none;
+}
+
+.persisten_sintomas{
+    display: none;
+}
+.mejoran_sintomas{
+    display: none;
+}
+
+.asintomatico{
+    display: none;
+}
+.reaparecen_sintomas{
+    display: none;
+}
+
+
+.content_rabdomiolisis p {
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #86253c;
+    font-weight: 600;
+    background: #cbc1c4;
+    margin-bottom: 0;
+}
+
+
+.siguiente_paso{
+    width: 40px;
+    height: 40px;
+    background: #cbc1c4;
+    position: absolute;
+    transform: rotate(45deg);
+    margin-left: 23px;
+    margin-top: -34px;
+    z-index: 1;
+}
+
+.botones_limitaciones{
+
+    width: 100%;
+    
+    margin-bottom: 50px;
+    color: white;
+    font-weight: 600;
+    position: absolute;
+    z-index: 9999999;
+    bottom: 0;
+
+}
+
+.botones_limitaciones button{
+        background-color: #ce9ca7 !important;
+    color:white !important;
+        line-height: 20px;
 }
 
 .form_dislipenia .toggle.toggle-assertive input:checked + .track {
@@ -998,6 +1091,150 @@ background: white;
     border-width: 1px;
     display: inline-block;
 }
+#patron_distribucion{
+        background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    padding: 7px 0px 7px 0;
+    width: 230px;
+    border-width: 1px;
+    display: inline-block;
+}
+
+.puntuacion_score{
+
+    width: 100%;
+    height: 300px;
+    background: url('../img/circulo_rojo.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+.puntuacion_score_naranja{
+
+    width: 100%;
+    height: 300px;
+    background: url('../img/circulo_naranja.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+.puntuacion_score_verde{
+
+    width: 100%;
+    height: 300px;
+    background: url('../img/circulo_verde.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+.texto_calculo_score{
+    width: 100%;
+    text-align: center;
+    margin-top: 210px;
+    position: absolute;
+    color: #606366;
+}
+
+.texto_calculo_score h3{
+    font-size: 30px;
+    font-weight: 600;
+    color: #9e203a;
+}
+
+#resultado_score_mialgias{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    padding-top: 21px;
+    padding-left: 28px;
+    text-align: center;
+    font-size: 72px;
+    font-weight: 600;
+    color: white;
+    height: 300px;
+    background: url('../img/circulo_rojo.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#resultado_score_mialgias_naranja{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    padding-top: 21px;
+    padding-left: 28px;
+    text-align: center;
+    font-size: 72px;
+    font-weight: 600;
+    color: white;
+    height: 300px;
+    background: url('../img/circulo_naranja.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#resultado_score_mialgias_verde{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    padding-top: 21px;
+    padding-left: 28px;
+    text-align: center;
+    font-size: 72px;
+    font-weight: 600;
+    color: white;
+    height: 300px;
+    background: url('../img/circulo_verde.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#patron_temporal{
+    background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    padding: 7px 0px 7px 0;
+    width: 230px;
+    border-width: 1px;
+    display: inline-block;
+}
+
+#retirada_estatina{
+    background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    padding: 7px 0px 7px 0;
+    width: 230px;
+    border-width: 1px;
+    display: inline-block;
+}
+
+#reintroduccion_estatina{
+    background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    padding: 7px 0px 7px 0;
+    width: 230px;
+    border-width: 1px;
+    display: inline-block;
+}
+
+
+
 
 .subtitle{
     font-size: 15px;
@@ -1006,7 +1243,14 @@ background: white;
     color: #86253C;
     padding-bottom: 20px;
 }
+.subtitle span{
+    font-weight: 300;
+}
 
+.form_score_mialgias li{
+    padding-top: 16px !important;
+    padding-bottom: 23px !important;
+}
 .lista li{
     background: transparent !important;
 }

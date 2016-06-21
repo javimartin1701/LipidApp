@@ -1,0 +1,75 @@
+
+<ion-header-bar class="bar-stable bar-home">
+ 
+        <h1 class="title">LIMITACIONES ESTANINAS</h1>
+
+</ion-header-bar>
+<ion-content class="form_dislipenia" style="padding-bottom:300px;">
+<h2 class="subtitle">MIALGIAS<br><span>Cálculo Score</span></h2>
+
+
+      
+	  <ul class="list lista form_score_mialgias">
+
+	     <li class="item">
+	      <p>Patrón/distribución regional<br>de las mialgias</p>
+	      <p>
+	      	<select id="patron_distribucion">
+			  <option value="-">Seleccione una opción</option>
+			  <option value="3">Simétricas de los flexores de la cadera/muslos</option>
+			  <option value="2">Simétricas de las pantorrillas</option>
+			  <option value="2">Simétricas proximales de los MMSS</option>
+			  <option value="1">No específicas, asimétricas, intermitentes</option>
+		 	</select>
+		 </p>
+		</li>
+		  <li class="item">
+		 <p>Patrón temporal</p>
+	      <p>
+	      	<select id="patron_temporal">
+			  <option value="-">Seleccione una opción</option>
+			  <option value="3">Inicio &lt;4 semanas</option>
+			  <option value="2">Inicio 4-12 semanas</option>
+			  <option value="1">Inicio &gt;12 semanas</option>
+		 	</select>
+		 </p>
+	    </li>
+	     <li class="item">
+	      <p>Retirada estatina</p>
+	      <p>
+	      	<select id="retirada_estatina">
+			  <option value="-">Seleccione una opción</option>
+			  <option value="2">Mejoría en &lt;2 semanas</option>
+			  <option value="1">Mejoría en 2-4 semanas</option>
+			  <option value="0">Sin mejoría en &gt;4 semanas</option>
+		 	</select>
+		 </p>
+		</li>
+		  <li class="item">
+		 <p>Reintroducción estatina</p>
+	      <p>
+	      	<select id="reintroduccion_estatina">
+			  <option value="-">Seleccione una opción</option>
+			  <option value="3">Reaparecen los mismos síntomas en &lt;4 semanas</option>
+			  <option value="1">Reaparecen los mismos síntomas en 4-12 semanas</option>
+		 	</select>
+		 </p>
+	    </li>
+
+	  </ul>
+	  <button ng-click="score_mialgias()" class="continuar_imc button">CALCULAR</button>
+</ion-content>
+<div class="tabs tabs-icon-only bar-footer">
+  
+
+        <a back class="tab-item">
+          <i class="icon ion-android-arrow-back"></i>
+        </a>
+
+        <a ui-sref="presentacion" class="tab-item">
+          <i class="icon ion-ios-information-outline inf-red"></i>
+        </a>
+        <a onclick="javascript:menu_inferior()" class="tab-item">
+          <i class="icon ion-navicon-round"></i>
+        </a>
+</div>

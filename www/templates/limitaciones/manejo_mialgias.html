@@ -1,0 +1,121 @@
+
+<ion-header-bar class="bar-stable bar-home">
+ 
+        <h1 class="title">LIMITACIONES ESTANINAS</h1>
+
+</ion-header-bar>
+<ion-content class="form_dislipenia" style="padding-bottom:300px;">
+<h2 class="subtitle">MIALGIAS MANEJO</h2>
+
+      
+	  <ul class="list lista">
+	     <li class="item item-toggle" style="border-top:0px;">
+     <label>Sintomático & CK&lt;4 x LSN </label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="sintomatico" ng-click="sintomatico()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		     
+		  </li>
+		  <div class="content_sintomatico">
+		     	<p>2-4 SEMANAS DE LAVADO DE ESTATINA</p>
+		     	<li class="item item-toggle" style="border-top:0px;">
+     <label>Persisten los síntomas</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="persisten" ng-click="persisten()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		     
+		  </li>
+		  <li class="item item-toggle" style="border-top:0px;">
+     <label>Mejoran los sintomas</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="mejoran" ng-click="mejoran()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		     
+		  </li>
+		  <div class="persisten_sintomas">
+		  	<p style="line-height: 50px;text-align: left;padding-left: 10px;position:relative; z-index:99;">REINTRODUCIR LA ESTATINA</p><div class="siguiente_paso"></div>
+		  	<p style="line-height: 19px;margin-top: 20px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative; z-index:99;">NO ALCANZA EL OBJETIVO cLDL<br>RECOMENDADO</p><div class="siguiente_paso"></div>
+		  	<p style="line-height: 19px;margin-top: 20px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative; z-index:99;">ASOCIAR EZETIMIBE, IPCSK9,<br>RESINAS O FIBRATOS</p>
+		  </div>
+		  <div class="mejoran_sintomas">
+		  	<p style="line-height: 20px;text-align: left;padding-left: 10px;position:relative;z-index:99;height: 53px;padding-top: 6px;">INDUCIR UNA 2ª ESTATINA<br>A LA DOSIS HABITUAL DE INICIO</p>
+		  	<li class="item item-toggle" style="border-top:0px;">
+     <label>Asintomático</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="persisten" ng-click="asintomatico()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		     
+		  </li>
+		  <li class="item item-toggle" style="border-top:0px;">
+     <label>Reaparecen los sintomas</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="mejoran" ng-click="reaparecen_sintomas()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		     
+		  </li>
+		  <div class="asintomatico">
+		  	<p style="line-height: 33px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative;z-index:99;">CONTINUAR LA ESTATINA</p><div class="siguiente_paso"></div>
+		  	<p style="line-height: 19px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative;z-index:99;    margin-top: 22px;">NO ALCANZA EL OBJETIVO cLDL<br>RECOMENDADO</p><div class="siguiente_paso"></div>
+		  	<p style="line-height: 19px;margin-top: 20px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative; z-index:99;">ASOCIAR EZETIMIBE, IPCSK9,<br>RESINAS O FIBRATOS</p>
+		  </div>
+
+		  <div class="reaparecen_sintomas">
+		  	<p style="line-height: 21px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative;z-index:99;height: 119px;">INTRODUCIR UNA 3ª ESTATINA<br>A DOSIS BAJAS,<br>O<br>ESTATINA A DÍAS ALTERNOS<br>O UNA/DOS VECES POR SEMANA</p><div class="siguiente_paso"></div>
+		  	<p style="line-height: 19px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative;z-index:99;    margin-top: 22px;">NO ALCANZA EL OBJETIVO cLDL<br>RECOMENDADO</p><div class="siguiente_paso"></div>
+		  	<p style="line-height: 19px;margin-top: 20px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative; z-index:99;">ASOCIAR EZETIMIBE, IPCSK9,<br>RESINAS O FIBRATOS</p>
+		  </div>
+
+		  	
+		  </div>
+		  
+		     </div>
+		  <li class="item item-toggle">
+     <label>CK&ge; x LSN &plusmn; rabdomiolisis</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="rabdomiolisis" ng-click="rabdomiolisis()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>
+		     
+		  </li>
+			 <div class="content_rabdomiolisis" style="margin-bottom:300px">
+			 	<p style="line-height: 21px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative;z-index:99;height: 83px;">6 SEMANAS DE LAVADO DE ESTATINA<br>HASTA LA NORMALIZACIÓN DE<br>CK/CREATININA Y SÍNTOMAS</p><div class="siguiente_paso"></div>
+		     	<p style="line-height: 21px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative;z-index:99;height: 119px;margin-top: 21px;">INTRODUCIR UNA 2ª ESTATINA<br>A DOSIS BAJAS,<br>O<br>ESTATINA A DÍAS ALTERNOS<br>O UNA/DOS VECES POR SEMANA</p><div class="siguiente_paso"></div>
+			  	<p style="line-height: 19px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative;z-index:99;    margin-top: 22px;">NO ALCANZA EL OBJETIVO cLDL<br>RECOMENDADO</p><div class="siguiente_paso"></div>
+			  	<p style="line-height: 19px;margin-top: 20px;padding-top: 6px;text-align: left;padding-left: 10px;position:relative; z-index:99;">ASOCIAR EZETIMIBE, IPCSK9,<br>RESINAS O FIBRATOS</p>
+		     </div>
+	  </ul>
+
+	  
+</ion-content>
+<button back class="continuar button">VOLVER</button>
+<div class="tabs tabs-icon-only bar-footer">
+  
+
+        <a back class="tab-item">
+          <i class="icon ion-android-arrow-back"></i>
+        </a>
+
+        <a ui-sref="presentacion" class="tab-item">
+          <i class="icon ion-ios-information-outline inf-red"></i>
+        </a>
+        <a onclick="javascript:menu_inferior()" class="tab-item">
+          <i class="icon ion-navicon-round"></i>
+        </a>
+</div>
