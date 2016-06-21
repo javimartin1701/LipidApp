@@ -1,0 +1,125 @@
+
+<ion-header-bar class="bar-stable bar-home">
+ 
+        <h1 class="title">LIMITACIONES ESTANINAS</h1>
+
+</ion-header-bar>
+<ion-content class="form_dislipenia" style="padding-bottom:300px;">
+<h2 class="subtitle">MIALGIAS<br><span>Factores de riesgo</span></h2>
+
+      
+	  <ul class="list lista">
+	     <li class="item item-toggle" style="border-top:0px;">
+     <label>Antropométricos</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="antropometricos" ng-click="antropometricos()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>		     
+		  </li>
+	<li class="item item-toggle content_antropometricos" style="background: #f5f5f5 !important;">
+		<ul>
+			<li>Edad &gt;80 años<br>(se recomienda precaución en &gt;75 años</li>
+			<li>Sexo femenino</li>
+			<li>IMC bajo</li>
+			<li>Origen asiático</li>
+		</ul>
+	</li>
+	<li class="item item-toggle">
+     <label>Comorbilidades</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="comorbilidades" ng-click="comorbilidades()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>		     
+		  </li>
+	<li class="item item-toggle content_comorbilidades" style="background: #f5f5f5 !important;">
+		<ul>
+			<li>Infección aguda</li>
+			<li>Hipotiroidísmo</li>
+			<li>Insuficiencia renal (estadio ≥3)</li>
+			<li>Insuficiencia hepática</li>
+			<li>Obstrucción biliar</li>
+			<li>Trasplante reciente</li>
+			<li>VIH</li>
+			<li>Diabetes</li>
+			<li>Enfermedades reumáticas<br>(artritis, fibromialgia, LES, tendinitis o patología articular)</li>
+			<li>Déficit de vitamina D</li>
+			<li>Cirugía con alta demanda metabólica</li>
+		</ul>
+	</li>
+		  <li class="item item-toggle">
+     <label>Historia relacionada</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="historia_relacionada" ng-click="historia_relacionada()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>		     
+		  </li>
+	<li class="item item-toggle content_historia_relacionada" style="background: #f5f5f5 !important;">
+		<ul>
+			<li>Historia de CK >10 x LSN</li>
+			<li>Enfermedades neuromusculares inflamatorias o metabólicas</li>
+			<li>Miopatías primarias (distrofias musculares, polimialgia reumática, polimiositis, rabdomiolisis, miopatía esteroidea)</li>
+			<li>Miopatía previa inducida por estatinas</li>
+			<li>Historia de miopatía con otros hipolipemiantes</li>
+		</ul>
+	</li>
+		  <li class="item item-toggle">
+     <label>Genética</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="genetica" ng-click="genetica()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>		     
+		  </li>
+		  <li class="item item-toggle content_genetica" style="background: #f5f5f5 !important;">
+		<ul>
+			<li>Polimorfismos en genes que codifican</li>
+		</ul>
+	</li>
+		  <li class="item item-toggle">
+     <label>Otros factores de riesgo</label>
+		     <label class="toggle toggle-assertive" style="top: 5px;">
+		       <input type="checkbox" id="otros_factores" ng-click="otros_factores()">
+		       <div class="track">
+		         <div class="handle"></div>
+		       </div>
+		     </label>		     
+		  </li>
+		  <li class="item item-toggle content_otros_factores" style="background: #f5f5f5 !important;">
+		<ul>
+			<li>Elevada actividad física</li>
+			<li>Dieta (ingesta excesiva de zumo de pomelo o arándanos)</li>
+			<li>Abuso de alcohol</li>
+			<li>Drogas (cocaina, anfetaminas, heroína)</li>
+		</ul>
+	</li>
+
+   
+			 
+	  </ul>
+
+	  <div style="width:100%; height:300px;"></div>
+
+	  
+</ion-content>
+<button back class="continuar button">VOLVER</button>
+<div class="tabs tabs-icon-only bar-footer">
+  
+
+        <a back class="tab-item">
+          <i class="icon ion-android-arrow-back"></i>
+        </a>
+
+        <a ui-sref="presentacion" class="tab-item">
+          <i class="icon ion-ios-information-outline inf-red"></i>
+        </a>
+        <a onclick="javascript:menu_inferior()" class="tab-item">
+          <i class="icon ion-navicon-round"></i>
+        </a>
+</div>

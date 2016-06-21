@@ -436,6 +436,20 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     controller: 'ScoreImprobable'
   })
 
+      .state('factor_riesgo_mialgias',{
+    cache: false,
+    url:'/factor_riesgo_mialgias',
+    templateUrl:'templates/limitaciones/factor_riesgo_mialgias.html',
+    controller: 'FactorRiesgoMialgias'
+  })
+
+            .state('interacciones_mialgias',{
+    cache: false,
+    url:'/interacciones_mialgias',
+    templateUrl:'templates/limitaciones/interacciones_mialgias.html',
+    controller: 'InteraccionesMialgias'
+  })
+
   // .state('vista2',{
   //   url:'/vista2',
   //   template:'<div class="padding"><h2>Vista 2</h2><button class="button button-positive" ui-sref="vista1">A vista1</button></div>'
@@ -7677,6 +7691,79 @@ $scope.score_mialgias = function() {
 
 })
 
+
+.controller('FactorRiesgoMialgias',function($scope,$state){
+
+$scope.antropometricos = function() {
+
+             jQuery('.content_antropometricos').toggle();
+        
+        
+    }
+
+$scope.comorbilidades = function() {
+
+             jQuery('.content_comorbilidades').toggle();
+        
+        
+    }
+
+$scope.historia_relacionada = function() {
+
+             jQuery('.content_historia_relacionada').toggle();
+        
+        
+    }
+
+$scope.genetica = function() {
+
+             jQuery('.content_genetica').toggle();
+        
+        
+    }
+
+$scope.otros_factores = function() {
+
+             jQuery('.content_otros_factores').toggle();
+        
+        
+}
+
+
+
+  
+  
+
+})
+
+
+
+.controller('InteraccionesMialgias',function($scope,$state){
+
+
+$scope.antropometricos = function() {
+
+             jQuery('.content_antropometricos').toggle();
+        
+        
+    }
+
+$scope.comorbilidades = function() {
+
+             jQuery('.content_comorbilidades').toggle();
+        
+        
+    }
+
+$scope.historia_relacionada = function() {
+
+             jQuery('.content_historia_relacionada').toggle();
+        
+        
+    }
+  
+
+})
 
 
 
