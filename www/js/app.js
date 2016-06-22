@@ -36,6 +36,7 @@ var quitar_sim_inter=false;
 var objetivo_vih=null;
 var eliminar_sim=false;
 var total_score_mialgias=null;
+var calc_diabeto_total=null;
 
 
 
@@ -443,12 +444,50 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     controller: 'FactorRiesgoMialgias'
   })
 
-            .state('interacciones_mialgias',{
+        .state('interacciones_mialgias',{
     cache: false,
     url:'/interacciones_mialgias',
     templateUrl:'templates/limitaciones/interacciones_mialgias.html',
     controller: 'InteraccionesMialgias'
   })
+
+        .state('form_diabetogenicidad',{
+    cache: false,
+    url:'/form_diabetogenicidad',
+    templateUrl:'templates/limitaciones/form_diabetogenicidad.html',
+    controller: 'FormDiabetogenicidad'
+  })
+                .state('diabeto_muy_alto',{
+    cache: false,
+    url:'/diabeto_muy_alto',
+    templateUrl:'templates/limitaciones/diabeto_muy_alto.html',
+    controller: 'DiabetoMuyAlto'
+  })
+
+                .state('diabeto_alto',{
+    cache: false,
+    url:'/diabeto_alto',
+    templateUrl:'templates/limitaciones/diabeto_alto.html',
+    controller: 'DiabetoAlto'
+  })
+                  .state('diabeto_ligeramente_elevado',{
+    cache: false,
+    url:'/diabeto_ligeramente_elevado',
+    templateUrl:'templates/limitaciones/diabeto_ligeramente_elevado.html',
+    controller: 'DiabetoLigeramenteElevado'
+  })
+                  .state('diabeto_moderado',{
+    cache: false,
+    url:'/diabeto_moderado',
+    templateUrl:'templates/limitaciones/diabeto_moderado.html',
+    controller: 'DiabetoModerado'
+  })
+                  .state('diabeto_bajo',{
+    cache: false,
+    url:'/diabeto_bajo',
+    templateUrl:'templates/limitaciones/diabeto_bajo.html',
+    controller: 'DiabetoBajo'
+  })             
 
   // .state('vista2',{
   //   url:'/vista2',
@@ -7764,6 +7803,101 @@ $scope.historia_relacionada = function() {
   
 
 })
+
+
+.controller('FormDiabetogenicidad',function($scope,$state){
+
+
+  $scope.selector_sexo = function() {
+
+      var selector_sexo2=document.getElementById("sexo_diabet").value;
+      
+        if(selector_sexo2=="M"){
+          jQuery('.perimetro_hombre_diabet').hide();
+          jQuery('.perimetro_mujer_diabet').show();
+        }
+        else if(selector_sexo2=="H"){
+          jQuery('.perimetro_hombre_diabet').show();
+          jQuery('.perimetro_mujer_diabet').hide();
+        }
+        
+    }
+
+  $scope.calc_diabeto = function() {
+
+      var edad_diabet=parseInt(document.getElementById("edad_diabet").value);
+      var imc_diabet=parseInt(document.getElementById("imc_diabet").value);
+      var perimetro_hombre_diabet=parseInt(document.getElementById("perimetro_hombre_diabet").value);
+      var perimetro_mujer_diabet=parseInt(document.getElementById("perimetro_mujer_diabet").value);
+      var ejercicio_diabet=parseInt(document.getElementById("ejercicio_diabet").value);
+      var verdura_diabet=parseInt(document.getElementById("verdura_diabet").value);
+      var antihiper_diabet=parseInt(document.getElementById("antihiper_diabet").value);
+      var glucemias_diabet=parseInt(document.getElementById("glucemias_diabet").value);
+      var antecedentes_diabet=parseInt(document.getElementById("antecedentes_diabet").value);
+  
+  console.log(edad_diabet+","+imc_diabet+","+perimetro_hombre_diabet+","+perimetro_mujer_diabet+","+ejercicio_diabet+","+verdura_diabet+","+antihiper_diabet+","+glucemias_diabet+","+antecedentes_diabet)
+      calc_diabeto_total=edad_diabet+imc_diabet+perimetro_hombre_diabet+perimetro_mujer_diabet+ejercicio_diabet+verdura_diabet+antihiper_diabet+glucemias_diabet+antecedentes_diabet;
+      if(calc_diabeto_total<7){
+        console.log("BAJO");
+        $state.go('diabeto_bajo');
+      }
+      else if((calc_diabeto_total>6)&&(calc_diabeto_total<12)){
+        console.log("LIGERAMENTE ELEVADO");
+        $state.go('diabeto_ligeramente_elevado');
+      }
+      else if((calc_diabeto_total>11)&&(calc_diabeto_total<15)){
+        console.log("MODERADO");
+        $state.go('diabeto_moderado');
+      }
+      else if((calc_diabeto_total>14)&&(calc_diabeto_total<21)){
+        console.log("ALTO");
+        $state.go('diabeto_alto');
+      }
+      else if(calc_diabeto_total>20){
+        console.log("MUY ALTO");
+        $state.go('diabeto_muy_alto');
+      }
+
+
+      
+    }
+
+  
+
+})
+
+
+
+.controller('DiabetoMuyAlto',function($scope,$state){
+  
+  $("#texto_diabeto").text(calc_diabeto_total);
+
+})
+
+.controller('DiabetoAlto',function($scope,$state){
+  
+  $("#texto_diabeto").text(calc_diabeto_total);
+
+})
+
+.controller('DiabetoModerado',function($scope,$state){
+  
+  $("#texto_diabeto").text(calc_diabeto_total);
+
+})
+
+.controller('DiabetoLigeramenteElevado',function($scope,$state){
+  
+  $("#texto_diabeto").text(calc_diabeto_total);
+
+})
+.controller('DiabetoBajo',function($scope,$state){
+  var cadena="Hola";
+  // document.getElementById("resultado_score_mialgias_verde2").value=calc_diabeto_total;
+  $("#texto_diabeto").text(calc_diabeto_total);
+
+})
+
 
 
 
