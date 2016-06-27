@@ -37,6 +37,11 @@ var objetivo_vih=null;
 var eliminar_sim=false;
 var total_score_mialgias=null;
 var calc_diabeto_total=null;
+var calc_diabeto_total2=null;
+var totalimcRounded_diabet=".";
+var edad_diabet=".";
+var edad_diabet_index=0;
+var sexo_diabet_index=0;
 
 
 
@@ -463,12 +468,25 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     templateUrl:'templates/limitaciones/diabeto_muy_alto.html',
     controller: 'DiabetoMuyAlto'
   })
+               .state('diabeto_muy_alto2',{
+    cache: false,
+    url:'/diabeto_muy_alto2',
+    templateUrl:'templates/limitaciones/diabeto_muy_alto2.html',
+    controller: 'DiabetoMuyAlto2'
+  })
 
                 .state('diabeto_alto',{
     cache: false,
     url:'/diabeto_alto',
     templateUrl:'templates/limitaciones/diabeto_alto.html',
     controller: 'DiabetoAlto'
+  })
+
+             .state('diabeto_alto2',{
+    cache: false,
+    url:'/diabeto_alto2',
+    templateUrl:'templates/limitaciones/diabeto_alto2.html',
+    controller: 'DiabetoAlto2'
   })
                   .state('diabeto_ligeramente_elevado',{
     cache: false,
@@ -487,7 +505,14 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     url:'/diabeto_bajo',
     templateUrl:'templates/limitaciones/diabeto_bajo.html',
     controller: 'DiabetoBajo'
-  })             
+  })  
+
+                    .state('calculadoraimc_score',{
+    cache: false,
+    url:'/calculadoraimc_score',
+    templateUrl:'templates/limitaciones/calculadoraimc_score.html',
+    controller: 'CalculadoraIMCScore'
+  })            
 
   // .state('vista2',{
   //   url:'/vista2',
@@ -7714,19 +7739,21 @@ $scope.score_mialgias = function() {
 
 .controller('ScoreImprobable',function($scope,$state){
 
-  document.getElementById("resultado_score_mialgias_verde").value=total_score_mialgias;
+  $("#texto_diabeto").text(total_score_mialgias);
 
 })
 
 .controller('ScorePosible',function($scope,$state){
 
-  document.getElementById("resultado_score_mialgias_naranja").value=total_score_mialgias;
+  $("#texto_diabeto").text(total_score_mialgias);
+
 
 })
 
 .controller('ScoreProbable',function($scope,$state){
+
+  $("#texto_diabeto").text(total_score_mialgias);
   
-  document.getElementById("resultado_score_mialgias").value=total_score_mialgias;
 
 })
 
@@ -7806,6 +7833,9 @@ $scope.historia_relacionada = function() {
 
 
 .controller('FormDiabetogenicidad',function($scope,$state){
+document.getElementById('edad_diabet').options.selectedIndex=edad_diabet_index;
+document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
+
 
 
   $scope.selector_sexo = function() {
@@ -7822,10 +7852,20 @@ $scope.historia_relacionada = function() {
         }
         
     }
+   
+
+    
+
+     $scope.calcular_imc_score = function() {
+         edad_diabet_index=document.getElementById('edad_diabet').options.selectedIndex;
+         sexo_diabet_index=document.getElementById('sexo_diabet').options.selectedIndex;
+         $state.go('calculadoraimc_score');
+      }
 
   $scope.calc_diabeto = function() {
+    
 
-      var edad_diabet=parseInt(document.getElementById("edad_diabet").value);
+      edad_diabet=parseInt(document.getElementById("edad_diabet").value);
       var imc_diabet=parseInt(document.getElementById("imc_diabet").value);
       var perimetro_hombre_diabet=parseInt(document.getElementById("perimetro_hombre_diabet").value);
       var perimetro_mujer_diabet=parseInt(document.getElementById("perimetro_mujer_diabet").value);
@@ -7834,6 +7874,8 @@ $scope.historia_relacionada = function() {
       var antihiper_diabet=parseInt(document.getElementById("antihiper_diabet").value);
       var glucemias_diabet=parseInt(document.getElementById("glucemias_diabet").value);
       var antecedentes_diabet=parseInt(document.getElementById("antecedentes_diabet").value);
+
+
   
   console.log(edad_diabet+","+imc_diabet+","+perimetro_hombre_diabet+","+perimetro_mujer_diabet+","+ejercicio_diabet+","+verdura_diabet+","+antihiper_diabet+","+glucemias_diabet+","+antecedentes_diabet)
       calc_diabeto_total=edad_diabet+imc_diabet+perimetro_hombre_diabet+perimetro_mujer_diabet+ejercicio_diabet+verdura_diabet+antihiper_diabet+glucemias_diabet+antecedentes_diabet;
@@ -7861,8 +7903,16 @@ $scope.historia_relacionada = function() {
 
       
     }
-
-  
+    $("select#imc_diabet").val(".");
+  if (totalimcRounded_diabet<25) {
+    $("select#imc_diabet").val("0");
+  }
+  if (totalimcRounded_diabet>24&&totalimcRounded_diabet<31) {
+    $("select#imc_diabet").val("1");
+  }
+    if (totalimcRounded_diabet>30) {
+    $("select#imc_diabet").val("3");
+  }
 
 })
 
@@ -7871,6 +7921,27 @@ $scope.historia_relacionada = function() {
 .controller('DiabetoMuyAlto',function($scope,$state){
   
   $("#texto_diabeto").text(calc_diabeto_total);
+  calc_diabeto_total2=calc_diabeto_total;
+
+})
+
+.controller('DiabetoMuyAlto2',function($scope,$state){
+  jQuery('.btn_left').on( "click", function() {
+           jQuery('.diabeto_texto1').toggle();
+           jQuery('.diabeto_texto2').hide();
+ 
+  });
+  jQuery('.btn_right').on( "click", function() {
+           jQuery('.diabeto_texto2').toggle();
+           jQuery('.diabeto_texto1').hide();
+ 
+  });
+ 
+ 
+
+ console.log(calc_diabeto_total2);
+  
+  $("#texto_diabeto2").text(calc_diabeto_total2);
 
 })
 
@@ -7878,6 +7949,24 @@ $scope.historia_relacionada = function() {
   
   $("#texto_diabeto").text(calc_diabeto_total);
 
+})
+
+.controller('DiabetoAlto2',function($scope,$state){
+
+  jQuery('.btn_left').on( "click", function() {
+           jQuery('.diabeto_texto1').toggle();
+           jQuery('.diabeto_texto2').hide();
+ 
+  });
+  jQuery('.btn_right').on( "click", function() {
+           jQuery('.diabeto_texto2').toggle();
+           jQuery('.diabeto_texto1').hide();
+ 
+  });
+  
+ console.log(calc_diabeto_total2);
+  
+  $("#texto_diabeto2").text(calc_diabeto_total2);
 })
 
 .controller('DiabetoModerado',function($scope,$state){
@@ -7895,6 +7984,43 @@ $scope.historia_relacionada = function() {
   var cadena="Hola";
   // document.getElementById("resultado_score_mialgias_verde2").value=calc_diabeto_total;
   $("#texto_diabeto").text(calc_diabeto_total);
+
+})
+
+
+.controller('CalculadoraIMCScore',function($scope,$state){
+
+  $( ".M" ).click(function() {
+      $( ".M" ).addClass( "activo" );
+      $( ".H" ).removeClass( "activo" );
+      sexoimc="0";
+  });
+  $( ".H" ).click(function() {
+      $( ".H" ).addClass( "activo" );
+      $( ".M" ).removeClass( "activo" );
+      sexoimc="1";
+  });
+
+  $scope.calculoIMC = function() {
+    
+    
+    var calcPeso = parseInt(document.getElementById("peso").value);
+    var calcAltura = parseInt(document.getElementById("altura").value);
+    var calcAlturaCuadrado=(calcAltura/100)*(calcAltura/100);
+
+    var totalimc = calcPeso/(calcAlturaCuadrado);
+
+    totalimcRounded_diabet = totalimc.toFixed(1);
+
+    document.getElementById("resultado").value=totalimcRounded_diabet;
+    $("#resultado").css("display", "block");
+
+    
+    
+
+
+}
+  // totalimcRounded=90;
 
 })
 

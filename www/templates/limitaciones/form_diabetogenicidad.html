@@ -13,7 +13,7 @@
 	      <label>Edad</label>
 	      
 	      <select id="edad_diabet" >
-			  <option value="0"></option>
+			  <option value="."></option>
 			  <option value="0">&lt;45 años</option>
 			  <option value="2">45-54 años</option>
 			  <option value="3">55-64 años</option>
@@ -22,9 +22,14 @@
 		</li>
 		<li class="item">
 	      <label>Sexo</label>
+
+	      <select 
+    ng-model="selectedOption" 
+    ng-options="option.name for option in options">
+</select>
 	      
 	      <select id="sexo_diabet" ng-model="sexo" ng-change="selector_sexo()">
-			  <option value="0"></option>
+			  <option value="."></option>
 			  <option value="H">Hombre</option>
 			  <option value="M">Mujer</option>
 		 </select>
@@ -33,11 +38,12 @@
 		<label>IMC</label>
 	      
 	      <select id="imc_diabet" >
-			  <option value="0"></option>
+			  <option value="."></option>
 			  <option value="0">&lt;25 Kg/m2</option>
 			  <option value="1">25-30 Kg/m2</option>
 			  <option value="3">&gt;30 Kg/m2</option>
 		 </select>
+		 <div style="position: relative;left: 50%;width: 200px;margin-left: -100px;margin-top: 15px;"><button ng-click="calcular_imc_score()" class="button cal_imc"></button></div>
 		</li>
 		<li class="item perimetro_hombre_diabet">
 		<label>Perímetro cintura</label>

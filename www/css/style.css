@@ -222,6 +222,8 @@ font-size: smaller;
 }
 
 
+
+
 #ldl_obj_res_alto{
     display: inline-block;
     width: 127px;
@@ -1432,7 +1434,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1444,7 +1447,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1456,7 +1460,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1468,7 +1473,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1480,7 +1486,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1495,7 +1502,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1508,7 +1516,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1521,7 +1530,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1535,7 +1545,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1548,7 +1559,8 @@ background: white;
     border-color: #ccc;
     border-style: solid;
     border-radius: 0;
-    height: 30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     width: 110px;
     border-width: 1px;
     display: inline-block;
@@ -1574,6 +1586,37 @@ background: white;
 .diabetogenicidad p:first-child{
     font-weight: 600;
     font-size: 17px;
+}
+
+.diabeto_texto1{
+
+    width: 100%;
+    display: none;
+    background: #9e203a;
+    color: white;
+    height: 90px;
+    padding-top: 10px;
+    margin-top: 4px;
+}
+
+.diabeto_texto2{
+    display: none;
+        width: 100%;
+    display: none;
+    background: #9e203a;
+    color: white;
+    height: 90px;
+    padding-top: 10px;
+    margin-top: 4px;
+}
+
+.botones_diabeto{
+        width: 49.5%;
+    float: left;
+    background: #9e203a;
+    color: white;
+    height: 90px;
+    padding-top: 10px;
 }
 .diabetogenicidad p:nth-child(2){
     border-top-color: #cccaca !important;
@@ -1636,6 +1679,16 @@ background: white;
 }
 
 #texto_diabeto{
+  position: absolute;
+    font-size: 68px;
+    width: 100%;
+    text-align: center;
+    top: 133px;
+    font-weight: 600;
+    color: white;
+}
+
+#texto_diabeto2{
   position: absolute;
     font-size: 68px;
     width: 100%;
