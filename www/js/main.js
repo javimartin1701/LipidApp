@@ -12,7 +12,20 @@
     }
 
     function showDiabetes() {
+        if($("#tabaquismo").is(':checked')) {  
+            check1_imc=true;
+        }
+        if($("#hipertension").is(':checked')) {  
+            check2_imc=true;
+
+        }
+        if($("#sobrepeso").is(':checked')) {  
+            check9_imc=true;
+        }
         element = document.getElementById("LOD");
+        if ((check1_imc==true)||(check2_imc==true)||(check9_imc==true)) {
+            document.getElementById('frcv').checked=true;
+        }
         
         check = document.getElementById("diabetes");
         if (check.checked) {
@@ -186,6 +199,9 @@ function showIPCSK9Contra() {
             $(".lista_contra_abs_ipcsk9").css("display", "none");
         }
     }
+
+
+
 
 
 

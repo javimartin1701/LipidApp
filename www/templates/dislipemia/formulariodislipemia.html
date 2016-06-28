@@ -11,10 +11,10 @@
 	  <ul class="list lista">
 	    <li class="item">
 	      <label>LDL Actual</label>
-	      <input type="text" id="ldl-actual" required>
+	      <input type="number" id="ldl-actual" required>
 	      <select id="ldl-actual-unidades" >
-			  <option value="18.018">mg/dL</option>
-			  <option value="0.0555">mmol/L</option>
+			  <option value="4">mg/dL</option>
+			  <option value="0.25">mmol/L</option>
 		 </select>
 	    </li>
 	     <li class="item">
@@ -28,13 +28,13 @@
 		         <div class="handle"></div>
 		       </div>
 		     </label>
-		     <a class="info" ui-sref="modalcardiodoc"></a>
+		     <a class="info" ng-click="ir_info_cardio()"></a>
 		  </li>
 	     <li class="item">
 	      <p>Función renal<button ng-click="irfuncionrenal()" style="top:21px" class="button calculadora"></button></p>
 	      <p>
 	      	<select id="funcion_renal">
-			  <option value="1">IFG &#8925; 60 mL/min/1.73m<sup>2</sup></option>
+			  <option value="1">IFG &ge; 60 mL/min/1.73m<sup>2</sup></option>
 			  <option value="2">IFG 30-59 mL/min/1.73m<sup>2</sup></option>
 			  <option value="3">IFG < 30 mL/min/1.73m<sup>2</sup></option>
 			  <option value="4">Seleccione una opción</option>
@@ -48,7 +48,7 @@
 			  <option value="10-20">SCORE >10 - 20%</option>
 			  <option value="5-9">SCORE >5 - 9%</option>
 			  <option value="1-4">SCORE >1 - 4%</option>
-			  <option value="1">SCORE >1%</option>
+			  <option value="1">SCORE &lt;1%</option>
 		 	</select>
 		 </p>
 	    </li>

@@ -1,7 +1,17 @@
 /* Empty. Add your own CSS if you like */
 
 
+button:hover{
+    color:white !important;
+}
 
+button:active{
+    color:white !important;
+}
+
+button:focus{
+    color:white !important;
+}
 
 a{
     color:inherit;
@@ -1696,4 +1706,112 @@ background: white;
     top: 133px;
     font-weight: 600;
     color: white;
+}
+
+.info_modal_HF{
+        position: absolute;
+    right: 0;
+    top: 294px;
+}
+
+
+.tratamiento_btn_homo {
+    width: 213px;
+    background: -webkit-linear-gradient(left, #924853 , #80243e);
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    border-radius: 7px;
+    margin: auto;
+    margin-top: 15px;
+    line-height: 17px;
+}
+
+.titulo_modal{
+    font-size: 16px;
+    width: 214px;
+    position: relative;
+    left: 50%;
+    margin-left: -107px;
+}
+
+.cumple_criterior{
+    margin-left: -125px;
+    left: 50%;
+    background: #86253C;
+    width: 250px;
+    margin-bottom: 50px;
+    color: white;
+    font-weight: 600;
+    position: absolute;
+    z-index: 9999999;
+    margin-top: 50px;
+    line-height: 21px;
+    padding: 5px 0 5px 0;
+}
+
+.formulario_criterio input{
+     float: left;
+    width: 18px;
+    height: 18px;
+    top: 1px;
+    margin-right: 10px;
+    border-color: red;
+    border-style: solid;
+    border-width: 1px;
+    -webkit-appearance: none;
+    color: red;
+   border-radius:0px; 
+}
+
+.regular-checkbox:active, .regular-checkbox:checked:active {
+color: red
+    }
+
+.regular-checkbox:checked {
+    background-color: red;
+    color: red
+}
+
+
+
+
+
+.formulario_criterio p{
+    width: 90%;
+    float: left;
+}
+
+
+.encabezado_gris_top{
+    background: #e6e4e4;
+    border-bottom-width: 1px;
+    border-bottom-color: #c0c0c0;
+    border-style: solid;
+    color: #606366;
+    font-weight: 600;
+    padding-left: 17px !important;
+}
+
+.encabezado_gris_mid{
+    background: #e6e4e4;
+    border-bottom-width: 1px;
+    border-bottom-color: #c0c0c0;
+    border-top-width: 1px;
+    border-top-color: #c0c0c0;
+    border-style: solid;
+    color: #606366;
+    font-weight: 600;
+    padding-left: 17px !important;
+}
+
+
+.button.button-positive {
+background-color: #86253C !important;
+    border-radius: 5px !important;
+}
+
+.popup-body{
+    text-align: center;
 }

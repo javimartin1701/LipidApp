@@ -43,6 +43,17 @@ var edad_diabet=".";
 var edad_diabet_index=0;
 var sexo_diabet_index=0;
 
+var check1_imc = null;
+var check2_imc = null;
+var check3_imc = null;
+var check4_imc = null;
+var check5_imc = null;
+var check6_imc = null;
+var check7_imc = null;
+var check8_imc = null;
+var check9_imc = null;
+
+var check1_form = null;
 
 
 
@@ -512,7 +523,62 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     url:'/calculadoraimc_score',
     templateUrl:'templates/limitaciones/calculadoraimc_score.html',
     controller: 'CalculadoraIMCScore'
-  })            
+  })   
+
+
+  ///////////////////////////HIPERCOLESTEROLEMIA///////////////////////////////
+
+        .state('hipercolesterolemia',{
+    cache: false,
+    url:'/hipercolesterolemia',
+    templateUrl:'templates/hipercolesterolemia/hipercolesterolemia.html',
+    controller: 'Hipercolesterolemia'
+  }) 
+
+          .state('sospechahf',{
+    cache: false,
+    url:'/sospechahf',
+    templateUrl:'templates/hipercolesterolemia/sospechahf.html',
+    controller: 'SospechaHF'
+  })  
+
+            .state('modal_criterio_sospecha_hf',{
+    cache: false,
+    url:'/modal_criterio_sospecha_hf',
+    templateUrl:'templates/hipercolesterolemia/modal_criterio_sospecha_hf.html',
+    controller: 'ModalCriterioSospechaHF'
+  }) 
+
+
+            .state('sospechahf_homo',{
+    cache: false,
+    url:'/sospechahf_homo',
+    templateUrl:'templates/hipercolesterolemia/sospechahf_homo.html',
+    controller: 'SospechaHFHOMO'
+  }) 
+
+              .state('modal_criterio_sospecha_hf_homo',{
+    cache: false,
+    url:'/modal_criterio_sospecha_hf_homo',
+    templateUrl:'templates/hipercolesterolemia/modal_criterio_sospecha_hf_homo.html',
+    controller: 'ModalCriterioSospechaHFHomo'
+  }) 
+
+
+
+                .state('modal_criterio_diagnostico',{
+    cache: false,
+    url:'/modal_criterio_diagnostico',
+    templateUrl:'templates/hipercolesterolemia/modal_criterio_diagnostico.html',
+    controller: 'ModalCriterioDiagnostico'
+  }) 
+
+                  .state('form_criterio_diagnostico',{
+    cache: false,
+    url:'/form_criterio_diagnostico',
+    templateUrl:'templates/hipercolesterolemia/form_criterio_diagnostico.html',
+    controller: 'FormCriterioDiagnostico'
+  })             
 
   // .state('vista2',{
   //   url:'/vista2',
@@ -551,21 +617,165 @@ var scoreindex="9";
 
 
 .controller('DislipFormCtrl',function($scope,$state){
+  // resultadofiltradoredond=90;
     document.getElementById("ldl-actual").value=ldltransactual;
-
+    if (check1_form==true) {
+          document.getElementById('ecvdoc').checked=true;
+    
+        }
+   
     $scope.irfactorriesgo = function(){
+        
+        if($("#ecvdoc").is(':checked')) {  
+            check1_form=true;
+        }
+
+        renalindex=document.getElementById('funcion_renal').options.selectedIndex;
+        if(renalindex==0){
+          resultadofiltradoredond=90;
+        }
+                if(renalindex==1){
+          resultadofiltradoredond=35;
+        }
+                if(renalindex==2){
+          resultadofiltradoredond=10;
+        }
+
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(scoreindex==1){
+          score_calculado=25;
+        }
+
+        if(scoreindex==2){
+         score_calculado=15;
+        }
+
+        if(scoreindex==3){
+          score_calculado=8;
+        }
+        if(scoreindex==4){
+         score_calculado=3;
+        }
+        if(scoreindex==5){
+         score_calculado=0;
+        }
+       
         ldltransactual=document.getElementById("ldl-actual").value;
-        $state.go('factorriesgocardio');
+      $state.go('factorriesgocardio');
+        
     }
 
     $scope.irfuncionrenal = function(){
+      if($("#ecvdoc").is(':checked')) {  
+            check1_form=true;
+        }
+
+        renalindex=document.getElementById('funcion_renal').options.selectedIndex;
+        if(renalindex==0){
+          resultadofiltradoredond=90;
+        }
+                if(renalindex==1){
+          resultadofiltradoredond=35;
+        }
+                if(renalindex==2){
+          resultadofiltradoredond=10;
+        }
+
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(scoreindex==1){
+          score_calculado=25;
+        }
+
+        if(scoreindex==2){
+         score_calculado=15;
+        }
+
+        if(scoreindex==3){
+          score_calculado=8;
+        }
+        if(scoreindex==4){
+         score_calculado=3;
+        }
+        if(scoreindex==5){
+         score_calculado=0;
+        }
         ldltransactual=document.getElementById("ldl-actual").value;
         $state.go('funcionrenal');
     }
 
     $scope.ircalcscore = function(){
+      if($("#ecvdoc").is(':checked')) {  
+            check1_form=true;
+        }
+
+        renalindex=document.getElementById('funcion_renal').options.selectedIndex;
+        if(renalindex==0){
+          resultadofiltradoredond=90;
+        }
+                if(renalindex==1){
+          resultadofiltradoredond=35;
+        }
+                if(renalindex==2){
+          resultadofiltradoredond=10;
+        }
+
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(scoreindex==1){
+          score_calculado=25;
+        }
+
+        if(scoreindex==2){
+         score_calculado=15;
+        }
+
+        if(scoreindex==3){
+          score_calculado=8;
+        }
+        if(scoreindex==4){
+         score_calculado=3;
+        }
+        if(scoreindex==5){
+         score_calculado=0;
+        }
         ldltransactual=document.getElementById("ldl-actual").value;
         $state.go('calcscore');
+    }
+    $scope.ir_info_cardio = function(){
+      if($("#ecvdoc").is(':checked')) {  
+            check1_form=true;
+        }
+
+        renalindex=document.getElementById('funcion_renal').options.selectedIndex;
+        if(renalindex==0){
+          resultadofiltradoredond=90;
+        }
+                if(renalindex==1){
+          resultadofiltradoredond=35;
+        }
+                if(renalindex==2){
+          resultadofiltradoredond=10;
+        }
+
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(scoreindex==1){
+          score_calculado=25;
+        }
+
+        if(scoreindex==2){
+         score_calculado=15;
+        }
+
+        if(scoreindex==3){
+          score_calculado=8;
+        }
+        if(scoreindex==4){
+         score_calculado=3;
+        }
+        if(scoreindex==5){
+         score_calculado=0;
+        }
+        ldltransactual=document.getElementById("ldl-actual").value;
+        $state.go('modalcardiodoc');
     }
 
 
@@ -641,7 +851,7 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
   
   var ldl = parseFloat(document.getElementById("ldl-actual").value);
   var ldlconv=ldl*factor;
-  document.getElementById("ldl-actual").value=ldlconv;
+  document.getElementById("ldl-actual").value=ldlconv.toFixed(2);
   
 });
 
@@ -770,6 +980,128 @@ document.getElementById('VIH').checked=true;
   }
 
 
+if (check1_imc==true) {
+    document.getElementById('tabaquismo').checked=true;
+    
+    }
+if (check2_imc==true) {
+    document.getElementById('hipertension').checked=true;
+    $("#HTA").show();
+    
+    }
+  if (check3_imc==true) {
+    document.getElementById('htasevera').checked=true;
+    
+    }
+if (check4_imc==true) {
+    document.getElementById('diabetes').checked=true;
+    $("#LOD").show();
+    
+    }
+if (check5_imc==true) {
+    document.getElementById('lod').checked=true;
+    
+    }
+if (check6_imc==true) {
+    document.getElementById('frcv').checked=true;
+    
+    }
+if (check7_imc==true) {
+    document.getElementById('hiperfam').checked=true;
+    
+    }
+if (check8_imc==true) {
+    document.getElementById('dislipemia').checked=true;
+     $("#HIPERCOL").show();
+    
+    }
+if (check9_imc==true) {
+    document.getElementById('sobrepeso').checked=true;
+     
+    
+    }
+
+
+$scope.ir_calc_imc = function(){
+
+
+  
+        if($("#tabaquismo").is(':checked')) {  
+            check1_imc=true;
+        }
+        if($("#hipertension").is(':checked')) {  
+            check2_imc=true;
+
+        }
+        if($("#htasevera").is(':checked')) {  
+            check3_imc=true;
+        }
+        if($("#diabetes").is(':checked')) {  
+            check4_imc=true;
+        }
+        if($("#lod").is(':checked')) {  
+            check5_imc=true;
+        }
+        if($("#frcv").is(':checked')) {  
+            check6_imc=true;
+        }
+                if($("#hiperfam").is(':checked')) {  
+            check7_imc=true;
+        }
+                        if($("#dislipemia").is(':checked')) {  
+            check8_imc=true;
+        }
+                if($("#sobrepeso").is(':checked')) {  
+                  check9_imc=true;
+            
+        }
+      
+
+       $state.go('calculadoraimc');
+
+}
+
+
+$scope.ir_info = function(){
+
+
+  
+        if($("#tabaquismo").is(':checked')) {  
+            check1_imc=true;
+        }
+        if($("#hipertension").is(':checked')) {  
+            check2_imc=true;
+
+        }
+        if($("#htasevera").is(':checked')) {  
+            check3_imc=true;
+        }
+        if($("#diabetes").is(':checked')) {  
+            check4_imc=true;
+        }
+        if($("#lod").is(':checked')) {  
+            check5_imc=true;
+        }
+        if($("#frcv").is(':checked')) {  
+            check6_imc=true;
+        }
+                if($("#hiperfam").is(':checked')) {  
+            check7_imc=true;
+        }
+                        if($("#dislipemia").is(':checked')) {  
+            check8_imc=true;
+        }
+                    if($("#sobrepeso").is(':checked')) {  
+            check9_imc=true;
+        }
+      
+
+       $state.go('htasevera');
+
+}
+
+
+
 
   $scope.compro1 = function(){
   
@@ -806,7 +1138,7 @@ document.getElementById('VIH').checked=true;
 
 })
 
-.controller('CalculadoraIMC',function($scope,$state){
+.controller('CalculadoraIMC',function($scope,$state,$ionicPopup){
 
   $( ".M" ).click(function() {
       $( ".M" ).addClass( "activo" );
@@ -818,6 +1150,8 @@ document.getElementById('VIH').checked=true;
       $( ".M" ).removeClass( "activo" );
       sexoimc="1";
   });
+
+
 
   $scope.calculoIMC = function() {
     
@@ -831,8 +1165,24 @@ document.getElementById('VIH').checked=true;
     totalimcRounded = totalimc.toFixed(1);
 
     document.getElementById("resultado").value=totalimcRounded;
-    $("#resultado").css("display", "block");
 
+    if(totalimcRounded>100){
+      
+   var alertPopup = $ionicPopup.alert({
+     title: '¡Atención!',
+     template: 'Algunos de los campos introducidos son incorrectos'
+   });
+
+   alertPopup.then(function(res) {
+     
+   });
+
+
+
+    }
+    else{
+    $("#resultado").css("display", "block");
+    }
     
     
 
@@ -7988,7 +8338,7 @@ document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
 })
 
 
-.controller('CalculadoraIMCScore',function($scope,$state){
+.controller('CalculadoraIMCScore',function($scope,$state,$ionicPopup){
 
   $( ".M" ).click(function() {
       $( ".M" ).addClass( "activo" );
@@ -8013,7 +8363,23 @@ document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
     totalimcRounded_diabet = totalimc.toFixed(1);
 
     document.getElementById("resultado").value=totalimcRounded_diabet;
+    if(totalimcRounded_diabet>100){
+      
+   var alertPopup = $ionicPopup.alert({
+     title: '¡Atención!',
+     template: 'Algunos de los campos introducidos son incorrectos'
+   });
+
+   alertPopup.then(function(res) {
+     
+   });
+
+
+
+    }
+    else{
     $("#resultado").css("display", "block");
+    }
 
     
     
@@ -8023,6 +8389,52 @@ document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
   // totalimcRounded=90;
 
 })
+
+
+
+
+
+.controller('Hipercolesterolemia',function($scope,$state){
+
+
+})
+
+
+.controller('SospechaHF',function($scope,$state){
+
+
+})
+
+.controller('SospechaHFHOMO',function($scope,$state){
+
+
+})
+
+
+.controller('ModalCriterioSospechaHF',function($scope,$state){
+
+
+})
+
+
+.controller('ModalCriterioSospechaHFHomo',function($scope,$state){
+
+
+})
+
+
+.controller('ModalCriterioDiagnostico',function($scope,$state){
+
+
+})
+
+
+.controller('FormCriterioDiagnostico',function($scope,$state){
+
+
+})
+
+
 
 
 
