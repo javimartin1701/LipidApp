@@ -597,13 +597,64 @@ angular.module('starter', ['ionic','ui.router','firebase'])
 })
 
 .controller('HomeCtrl',function($scope){
-  var totalimcRounded="0";
-var sexoimc="1";
-var resultadofiltradoredond="inicio";
-var cardio="0";
+ totalimcRounded="0";
+ sexoimc="1";
+ resultadofiltradoredond="inicio";
+ cardio="0";
+ ldlactual="0";
+ renalindex="9";
+ scoreindex="9";
+ ldltransactual="";
+ ldlobjetivo="0";
+ score_calculado="-";
+ vih="no";
+ objetivo_vih=0;
+ contra_abs_estatina=null;
+ contra_rel_estatina=null;
+ contra_abs_ezetimibe=null;
+ contra_abs_fibratos=null;
+ contra_abs_resinas=null;
+ contra_abs_ipcsk9=null;
+ quitar_estatina=false;
+ quitar_ezetimibe=false;
+ quitar_fibratos=false;
+ quitar_resinas=false;
+ quitar_ipcsk9=false;
+ quitar_ator_inter=false;
+ quitar_fluv_inter=false;
+ quitar_lov_inter=false;
+ quitar_pito_inter=false;
+ quitar_pra_inter=false;
+ quitar_rosu_inter=false;
+ quitar_sim_inter=false;
+ objetivo_vih=null;
+ eliminar_sim=false;
+ total_score_mialgias=null;
+ calc_diabeto_total=null;
+ calc_diabeto_total2=null;
+ totalimcRounded_diabet=".";
+ edad_diabet=".";
+ edad_diabet_index=0;
+ sexo_diabet_index=0;
 
-var renalindex="9";
-var scoreindex="9";
+ check1_imc = null;
+ check2_imc = null;
+ check3_imc = null;
+ check4_imc = null;
+ check5_imc = null;
+ check6_imc = null;
+ check7_imc = null;
+ check8_imc = null;
+ check9_imc = null;
+
+ check1_form = null;
+
+ check1_score = null;
+ check2_score = null;
+ check3_score = null;
+ check4_score = null;
+ check5_score = null;
+ check6_score = null;
  
 
 })
@@ -991,6 +1042,9 @@ if (check1_imc==true) {
     document.getElementById('tabaquismo').checked=true;
     
     }
+else{
+    document.getElementById('tabaquismo').checked=false;
+}
 if (check2_imc==true) {
     document.getElementById('hipertension').checked=true;
     $("#HTA").show();
@@ -1111,6 +1165,41 @@ $scope.ir_info = function(){
 
 
   $scope.compro1 = function(){
+
+
+
+     if($("#tabaquismo").is(':checked')) {  
+            check1_imc=true;
+        }
+      else{
+        check1_imc=false;
+      }
+        if($("#hipertension").is(':checked')) {  
+            check2_imc=true;
+
+        }
+        if($("#htasevera").is(':checked')) {  
+            check3_imc=true;
+        }
+        if($("#diabetes").is(':checked')) {  
+            check4_imc=true;
+        }
+        if($("#lod").is(':checked')) {  
+            check5_imc=true;
+        }
+        if($("#frcv").is(':checked')) {  
+            check6_imc=true;
+        }
+                if($("#hiperfam").is(':checked')) {  
+            check7_imc=true;
+        }
+                        if($("#dislipemia").is(':checked')) {  
+            check8_imc=true;
+        }
+                if($("#sobrepeso").is(':checked')) {  
+                  check9_imc=true;
+            
+        }
   
         $state.go('formulariodislipemia');
         
@@ -1253,6 +1342,47 @@ $("#resultadofiltrado").css("display", "block");
 
 .controller('CalcScore',function($scope,$state){
 
+    $scope.pasar_var = function() {
+      var tempo=document.getElementById('colesterolscore1').options.selectedIndex;
+      if(tempo=="1"){
+       $('#colesterolscore2> option[value="4"]').attr('selected', 'selected');
+      }
+      if(tempo=="2"){
+       $('#colesterolscore2> option[value="5"]').attr('selected', 'selected');
+      }
+      if(tempo=="3"){
+       $('#colesterolscore2> option[value="6"]').attr('selected', 'selected');
+      }
+      if(tempo=="4"){
+       $('#colesterolscore2> option[value="7"]').attr('selected', 'selected');
+      }
+      if(tempo=="5"){
+       $('#colesterolscore2> option[value="8"]').attr('selected', 'selected');
+      }
+      
+    }
+
+
+
+    $scope.pasar_var2 = function() {
+      var tempo2=document.getElementById('colesterolscore2').options.selectedIndex;
+      if(tempo2=="1"){
+       $('#colesterolscore1> option[value="150"]').attr('selected', 'selected');
+      }
+      if(tempo2=="2"){
+       $('#colesterolscore1> option[value="150199"]').attr('selected', 'selected');
+      }
+      if(tempo2=="3"){
+       $('#colesterolscore1> option[value="200249"]').attr('selected', 'selected');
+      }
+      if(tempo2=="4"){
+       $('#colesterolscore1> option[value="250299"]').attr('selected', 'selected');
+      }
+      if(tempo2=="5"){
+       $('#colesterolscore1> option[value="300"]').attr('selected', 'selected');
+      }
+      
+    }
 
 
     if(check1_score=="49"){
