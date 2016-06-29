@@ -650,19 +650,21 @@ display: inline-block;
 #colesterolscore1{
     float: right;
     background: white;
-    width: 85px;
-    height: 26px;
+/*    width: 85px;
+    height: 26px;*/
     border-radius: 0;
     float: initial;
+    font-size: 12px;
 }
 
 #colesterolscore2{
     float: right;
     background: white;
-    width: 85px;
-    height: 26px;
-    border-radius: 0;
+    width: 65px;
+/*    height: 26px;
+*/    border-radius: 0;
      float: initial;
+     font-size: 12px;
 }
 
 .paises_cuadro {
@@ -1757,7 +1759,7 @@ background: white;
     height: 18px;
     top: 1px;
     margin-right: 10px;
-    border-color: red;
+    border-color: #9e203a;
     border-style: solid;
     border-width: 1px;
     -webkit-appearance: none;
@@ -1765,12 +1767,12 @@ background: white;
    border-radius:0px; 
 }
 
-.regular-checkbox:active, .regular-checkbox:checked:active {
+.formulario_criterio input:active, ..formulario_criterio input:checked:active {
 color: red
     }
 
-.regular-checkbox:checked {
-    background-color: red;
+.formulario_criterio input:checked {
+    background: url('../img/check.png');
     color: red
 }
 

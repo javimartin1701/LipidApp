@@ -60,6 +60,7 @@ var check2_score = null;
 var check3_score = null;
 var check4_score = null;
 var check5_score = null;
+var check5b_score = null;
 var check6_score = null;
 
 
@@ -1341,48 +1342,95 @@ $("#resultadofiltrado").css("display", "block");
 })
 
 .controller('CalcScore',function($scope,$state){
+// $('#colesterolscore2> option[value="5"]').attr('selected', 'selected');
+  $( "#colesterolscore1" ).change(function() {
 
-    $scope.pasar_var = function() {
-      var tempo=document.getElementById('colesterolscore1').options.selectedIndex;
+   var tempo=document.getElementById('colesterolscore1').options.selectedIndex;
+   
       if(tempo=="1"){
-       $('#colesterolscore2> option[value="4"]').attr('selected', 'selected');
+        $('#colesterolscore2').val('4');
       }
       if(tempo=="2"){
-       $('#colesterolscore2> option[value="5"]').attr('selected', 'selected');
+        $('#colesterolscore2').val('5');
+       // $('#colesterolscore2> option[value="5"]').attr('selected', 'selected');
       }
       if(tempo=="3"){
-       $('#colesterolscore2> option[value="6"]').attr('selected', 'selected');
+        $('#colesterolscore2').val('6');
       }
       if(tempo=="4"){
-       $('#colesterolscore2> option[value="7"]').attr('selected', 'selected');
+        $('#colesterolscore2').val('7');
       }
       if(tempo=="5"){
-       $('#colesterolscore2> option[value="8"]').attr('selected', 'selected');
+        $('#colesterolscore2').val('8');
       }
-      
-    }
+});
 
 
+  $( "#colesterolscore2" ).change(function() {
 
-    $scope.pasar_var2 = function() {
-      var tempo2=document.getElementById('colesterolscore2').options.selectedIndex;
+   var tempo2=document.getElementById('colesterolscore2').options.selectedIndex;
+   
       if(tempo2=="1"){
-       $('#colesterolscore1> option[value="150"]').attr('selected', 'selected');
+        $('#colesterolscore1').val('150');
       }
       if(tempo2=="2"){
-       $('#colesterolscore1> option[value="150199"]').attr('selected', 'selected');
+        $('#colesterolscore1').val('150199');
+       // $('#colesterolscore2> option[value="5"]').attr('selected', 'selected');
       }
       if(tempo2=="3"){
-       $('#colesterolscore1> option[value="200249"]').attr('selected', 'selected');
+        $('#colesterolscore1').val('200249');
       }
       if(tempo2=="4"){
-       $('#colesterolscore1> option[value="250299"]').attr('selected', 'selected');
+        $('#colesterolscore1').val('250299');
       }
       if(tempo2=="5"){
-       $('#colesterolscore1> option[value="300"]').attr('selected', 'selected');
+        $('#colesterolscore1').val('300');
       }
+});
+
+
+
+    // $scope.pasar_var = function() {
+    //   var tempo=document.getElementById('colesterolscore1').options.selectedIndex;
+    //   if(tempo=="1"){
+    //    $('#colesterolscore2> option[value="4"]').attr('selected', 'selected');
+    //   }
+    //   if(tempo=="2"){
+    //    $('#colesterolscore2> option[value="5"]').attr('selected', 'selected');
+    //   }
+    //   if(tempo=="3"){
+    //    $('#colesterolscore2> option[value="6"]').attr('selected', 'selected');
+    //   }
+    //   if(tempo=="4"){
+    //    $('#colesterolscore2> option[value="7"]').attr('selected', 'selected');
+    //   }
+    //   if(tempo=="5"){
+    //    $('#colesterolscore2> option[value="8"]').attr('selected', 'selected');
+    //   }
       
-    }
+    // }
+
+
+
+    // $scope.pasar_var2 = function() {
+    //   var tempo2=document.getElementById('colesterolscore2').options.selectedIndex;
+    //   if(tempo2=="1"){
+    //    $('#colesterolscore1> option[value="150"]').attr('selected', 'selected');
+    //   }
+    //   if(tempo2=="2"){
+    //    $('#colesterolscore1> option[value="150199"]').attr('selected', 'selected');
+    //   }
+    //   if(tempo2=="3"){
+    //    $('#colesterolscore1> option[value="200249"]').attr('selected', 'selected');
+    //   }
+    //   if(tempo2=="4"){
+    //    $('#colesterolscore1> option[value="250299"]').attr('selected', 'selected');
+    //   }
+    //   if(tempo2=="5"){
+    //    $('#colesterolscore1> option[value="300"]').attr('selected', 'selected');
+    //   }
+      
+    // }
 
 
     if(check1_score=="49"){
@@ -1433,6 +1481,23 @@ $("#resultadofiltrado").css("display", "block");
     }
 
 
+    if(check5b_score=="150"){
+    $('#colesterolscore1> option[value="150"]').attr('selected', 'selected');
+    }
+    if(check5b_score=="150199"){
+    $('#colesterolscore1> option[value="150199"]').attr('selected', 'selected');
+    }
+    if(check5b_score=="200249"){
+    $('#colesterolscore1> option[value="200249"]').attr('selected', 'selected');
+    }
+    if(check5b_score=="250299"){
+    $('#colesterolscore1> option[value="250299"]').attr('selected', 'selected');
+    }
+    if(check5b_score=="300"){
+    $('#colesterolscore1> option[value="300"]').attr('selected', 'selected');
+    }
+
+
     if(check5_score=="4"){
     $('#colesterolscore2> option[value="4"]').attr('selected', 'selected');
     }
@@ -1460,11 +1525,11 @@ $("#resultadofiltrado").css("display", "block");
     check1_score=document.getElementById("edadscore").value;
     check4_score=document.getElementById("PAS").value;
     check5_score=document.getElementById("colesterolscore2").value;
+    check5b_score=document.getElementById("colesterolscore1").value;
     if($("#selector_alto_riesgo").is(':checked')) {  
             check6_score=true;
         }
-    
-   
+
        $state.go('paisesaltoriesgo');
   }
 
@@ -8652,6 +8717,59 @@ document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
 
 
 .controller('FormCriterioDiagnostico',function($scope,$state){
+
+  $scope.procesar = function() {
+
+    var hff1=0;
+    var hff2=0;
+    var hff3=0;
+    var hff4=0;
+    var hff5=0;
+    var hff6=0;
+    var hff7=0;
+    var hff8=0;
+    var hff9=0;
+    var hff10=0;
+    var hff11=0;
+
+  if($("#hff1").is(':checked')) {  
+            hff1=document.getElementById("hff1").value;
+        }
+  if($("#hff2").is(':checked')) {  
+            hff2=document.getElementById("hff2").value;
+        }
+  if($("#hff3").is(':checked')) {  
+            hff3=document.getElementById("hff3").value;
+        }
+  if($("#hff4").is(':checked')) {  
+            hff3=document.getElementById("hff4").value;
+        }
+  if($("#hff5").is(':checked')) {  
+            hff5=document.getElementById("hff5").value;
+        }
+  if($("#hff6").is(':checked')) {  
+            hff6=document.getElementById("hff6").value;
+        }
+  if($("#hff7").is(':checked')) {  
+            hff7=document.getElementById("hff7").value;
+        }
+  if($("#hff8").is(':checked')) {  
+            hff8=document.getElementById("hff8").value;
+        }
+  if($("#hff9").is(':checked')) {  
+            hff9=document.getElementById("hff9").value;
+        }
+  if($("#hff10").is(':checked')) {  
+            hff10=document.getElementById("hff10").value;
+        }
+  if($("#hff11").is(':checked')) {  
+            hff11=document.getElementById("hff11").value;
+        }
+
+  var total_criterios_het=parseInt(hff1)+parseInt(hff2)+parseInt(hff3)+parseInt(hff4)+parseInt(hff5)+parseInt(hff6)+parseInt(hff7)+parseInt(hff8)+parseInt(hff9)+parseInt(hff10)+parseInt(hff11);
+alert(total_criterios_het);
+        
+  }
 
 
 })
