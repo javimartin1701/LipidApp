@@ -55,6 +55,13 @@ var check9_imc = null;
 
 var check1_form = null;
 
+var check1_score = null;
+var check2_score = null;
+var check3_score = null;
+var check4_score = null;
+var check5_score = null;
+var check6_score = null;
+
 
 
 angular.module('starter', ['ionic','ui.router','firebase'])
@@ -1245,6 +1252,91 @@ $("#resultadofiltrado").css("display", "block");
 })
 
 .controller('CalcScore',function($scope,$state){
+
+
+
+    if(check1_score=="49"){
+    $('#edadscore> option[value="49"]').attr('selected', 'selected');
+    }
+    if(check1_score=="50-54"){
+    $('#edadscore> option[value="50-54"]').attr('selected', 'selected');
+    }
+    if(check1_score=="55-59"){
+    $('#edadscore> option[value="55-59"]').attr('selected', 'selected');
+    }
+    if(check1_score=="60-64"){
+    $('#edadscore> option[value="60-64"]').attr('selected', 'selected');
+    }
+    if(check1_score=="65"){
+    $('#edadscore> option[value="65"]').attr('selected', 'selected');
+    }
+
+
+
+    if(check2_score=="V"){
+    $('#sexoscore> option[value="V"]').attr('selected', 'selected');
+    }
+    if(check2_score=="M"){
+    $('#sexoscore> option[value="M"]').attr('selected', 'selected');
+    }
+
+
+    if(check3_score=="F"){
+    $('#tabaquismoscore> option[value="F"]').attr('selected', 'selected');
+    }
+    if(check3_score=="NF"){
+    $('#tabaquismoscore> option[value="NF"]').attr('selected', 'selected');
+    }
+
+
+    if(check4_score=="PAS120"){
+    $('#PAS> option[value="PAS120]').attr('selected', 'selected');
+    }
+    if(check4_score=="PAS140"){
+    $('#PAS> option[value="PAS140"]').attr('selected', 'selected');
+    }
+    if(check4_score=="PAS160"){
+    $('#PAS> option[value="PAS160"]').attr('selected', 'selected');
+    }
+    if(check4_score=="PAS180"){
+    $('#PAS> option[value="PAS180"]').attr('selected', 'selected');
+    }
+
+
+    if(check5_score=="4"){
+    $('#colesterolscore2> option[value="4"]').attr('selected', 'selected');
+    }
+    if(check5_score=="5"){
+    $('#colesterolscore2> option[value="5"]').attr('selected', 'selected');
+    }
+    if(check5_score=="6"){
+    $('#colesterolscore2> option[value="6"]').attr('selected', 'selected');
+    }
+    if(check5_score=="7"){
+    $('#colesterolscore2> option[value="7"]').attr('selected', 'selected');
+    }
+    if(check5_score=="8"){
+    $('#colesterolscore2> option[value="8"]').attr('selected', 'selected');
+    }
+    if (check6_score==true) {
+          document.getElementById('selector_alto_riesgo').checked=true;
+    
+        }
+
+
+  $scope.info_paises = function() {
+    check2_score=document.getElementById("sexoscore").value;
+    check3_score=document.getElementById("tabaquismoscore").value;
+    check1_score=document.getElementById("edadscore").value;
+    check4_score=document.getElementById("PAS").value;
+    check5_score=document.getElementById("colesterolscore2").value;
+    if($("#selector_alto_riesgo").is(':checked')) {  
+            check6_score=true;
+        }
+    
+   
+       $state.go('paisesaltoriesgo');
+  }
 
 
   
