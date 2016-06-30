@@ -62,6 +62,7 @@ var check4_score = null;
 var check5_score = null;
 var check5b_score = null;
 var check6_score = null;
+var total_criterios_het = null;
 
 
 
@@ -586,6 +587,58 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     url:'/form_criterio_diagnostico',
     templateUrl:'templates/hipercolesterolemia/form_criterio_diagnostico.html',
     controller: 'FormCriterioDiagnostico'
+  })             
+
+
+.state('diagnostico_hf_homo',{
+    cache: false,
+    url:'/diagnostico_hf_homo',
+    templateUrl:'templates/hipercolesterolemia/diagnostico_hf_homo.html',
+    controller: 'DiagnosticoHFHomo'
+  }) 
+
+
+  .state('diagnostico_hf_hete',{
+    cache: false,
+    url:'/diagnostico_hf_hete',
+    templateUrl:'templates/hipercolesterolemia/diagnostico_hf_hete.html',
+    controller: 'DiagnosticoHFHete'
+  })   
+
+
+    .state('modal4_secciones',{
+    cache: false,
+    url:'/modal4_secciones',
+    templateUrl:'templates/hipercolesterolemia/modal4_secciones.html',
+    controller: 'Modal4Secciones'
+  })
+
+  .state('modal_diagnostico_ninos',{
+    cache: false,
+    url:'/modal_diagnostico_ninos',
+    templateUrl:'templates/hipercolesterolemia/modal_diagnostico_ninos.html',
+    controller: 'ModalDiagnosticoNinos'
+  })
+
+    .state('modal_diagnostico_genetico',{
+    cache: false,
+    url:'/modal_diagnostico_genetico',
+    templateUrl:'templates/hipercolesterolemia/modal_diagnostico_genetico.html',
+    controller: 'ModalDiagnosticoGenetico'
+  })
+
+    .state('modal_diagnostico_cribado',{
+    cache: false,
+    url:'/modal_diagnostico_cribado',
+    templateUrl:'templates/hipercolesterolemia/modal_diagnostico_cribado.html',
+    controller: 'ModalDiagnosticoCribado'
+  })
+
+    .state('modal_diagnostico_combinado',{
+    cache: false,
+    url:'/modal_diagnostico_combinado',
+    templateUrl:'templates/hipercolesterolemia/modal_diagnostico_combinado.html',
+    controller: 'ModalDiagnosticoCombinado'
   })             
 
   // .state('vista2',{
@@ -8766,14 +8819,76 @@ document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
             hff11=document.getElementById("hff11").value;
         }
 
-  var total_criterios_het=parseInt(hff1)+parseInt(hff2)+parseInt(hff3)+parseInt(hff4)+parseInt(hff5)+parseInt(hff6)+parseInt(hff7)+parseInt(hff8)+parseInt(hff9)+parseInt(hff10)+parseInt(hff11);
-alert(total_criterios_het);
+total_criterios_het=parseInt(hff1)+parseInt(hff2)+parseInt(hff3)+parseInt(hff4)+parseInt(hff5)+parseInt(hff6)+parseInt(hff7)+parseInt(hff8)+parseInt(hff9)+parseInt(hff10)+parseInt(hff11);
+$state.go('diagnostico_hf_hete');
         
   }
 
 
 })
 
+
+
+
+.controller('DiagnosticoHFHomo',function($scope,$state){
+
+
+})
+
+
+.controller('DiagnosticoHFHete',function($scope,$state){
+
+if(total_criterios_het>7){
+  $(".certeza").css("display", "block");
+  $(".btn_trat").css("display", "block");
+
+}
+if((total_criterios_het>5)&&(total_criterios_het<8)){
+$(".posible").css("display", "block");
+$(".btn_trat").css("display", "block");
+}
+
+
+if((total_criterios_het>2)&&(total_criterios_het<6)){
+  $(".probable").css("display", "block");
+  $(".btn_trat").css("display", "block");
+}
+
+if((total_criterios_het>0)&&(total_criterios_het<3)){
+  $(".improbable").css("display", "block");
+  $(".btn_no_trat").css("display", "block");
+}
+
+})
+
+
+.controller('Modal4Secciones',function($scope,$state){
+
+
+})
+
+
+
+.controller('ModalDiagnosticoNinos',function($scope,$state){
+
+
+})
+
+.controller('ModalDiagnosticoGenetico',function($scope,$state){
+
+
+})
+
+
+.controller('ModalDiagnosticoCribado',function($scope,$state){
+
+
+})
+
+.controller('ModalDiagnosticoCombinado',function($scope,$state){
+
+
+})
 
 
 

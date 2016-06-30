@@ -1817,3 +1817,97 @@ background-color: #86253C !important;
 .popup-body{
     text-align: center;
 }
+
+
+.content_diagnostico_hf{
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.content_diagnostico_hf p{
+    color:#606366;
+    font-weight: 300;
+}
+
+.content_diagnostico_hf img{
+    margin:auto;
+}
+
+
+.certeza2 span{
+    font-size: 28px;
+    font-weight: 600;
+    color: #9e203a;
+}
+
+.certeza span{
+    font-size: 28px;
+    font-weight: 600;
+    color: #9e203a;
+}
+
+.posible span{
+    font-size: 28px;
+    font-weight: 600;
+    color: #ce7b41;
+}
+
+.probable span{
+    font-size: 28px;
+    font-weight: 600;
+    color: #ce7b41;
+}
+
+.improbable span{
+    font-size: 28px;
+    font-weight: 600;
+    color: #87b64b;
+}
+
+.botones_limitaciones p{
+        color: #4b4e50;
+    font-weight: 300;
+    font-size: 14px;
+    width: 280px;
+    margin-left: -126px;
+    text-align: justify;
+    left: 50%;
+    position: relative;
+    margin-bottom: 6%;
+}
+.certeza{
+    display: none;
+}
+.posible{
+    display: none;
+}
+.probable{
+    display: none;
+}
+.improbable{
+    display: none;
+}
+
+
+.btn_trat{
+    display: none;
+}
+
+.btn_no_trat{
+    display: none;
+}
+
+.modal4{
+    background: #efefef;
+    text-align: center;
+}
+
+.modal4 img{
+    width: 170px;
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    margin-left: -85px;
+}
