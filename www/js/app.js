@@ -8375,6 +8375,10 @@ $state.go('tratamientoinicio2');
 .controller('ManejoMialgias',function($scope,$state){
 
 $scope.sintomatico = function() {
+  if( $('.content_rabdomiolisis').is(":visible") ){
+              $('#rabdomiolisis').attr('checked', false);
+    jQuery('.content_rabdomiolisis').toggle();
+}
 
              jQuery('.content_sintomatico').toggle();
         
@@ -8413,6 +8417,11 @@ $scope.reaparecen_sintomas = function() {
 $scope.rabdomiolisis = function() {
 
              jQuery('.content_rabdomiolisis').toggle();
+             if( $('.content_sintomatico').is(":visible") ){
+              $('#sintomatico').attr('checked', false);
+    jQuery('.content_sintomatico').toggle();
+}
+             
         
         
     }
