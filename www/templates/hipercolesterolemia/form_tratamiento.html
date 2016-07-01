@@ -1,0 +1,60 @@
+<ion-header-bar class="bar-stable bar-home">
+ 
+        <h1 class="title">HIPERCOLESTEROLEMIA FAMILIAR</h1>
+
+</ion-header-bar>
+
+<ion-content class="form_dislipenia2">
+
+<ul>
+    <li class="encabezado_gris_mid item" style="font-weight:400;border: none;"><h2 style="padding:0" class="subtitle">TRATAMIENTO</h2>
+    <label>LDL Actual</label>
+        <input type="number" id="ldl-actual" required>
+        <select id="ldl-actual-unidades" >
+        <option value="4">mg/dL</option>
+        <option value="0.25">mmol/L</option>
+     </select>
+    </li>
+
+  <li class="encabezado_gris_mid" style="font-weight:400">Estratificación del riesgo<br>cardiovascular en HF</li>
+    <ul class="formulario_criterio">
+      <li><input value="70" id="riesgo_muy_alto" type="checkbox"><p>Riesgo muy alto</p>
+        <p style="margin-left: 29px;">ECV clínica<br>Ateroesclerosis subclínica significativa<br>Diabetes melitus tipo2<br>HF homocigótica</p>
+        <div style="clear:both"></div></li>
+    </ul>
+  <li class="encabezado_gris_mid" style="font-weight:400"><span style="color: #86253c;font-weight: 600;">Objetivo cLDL</span><br>&gt;70 mg/dL o reducción ≥50<br>&gt;1.8 mmol/L o reducción ≥50%</li>
+    <ul class="formulario_criterio">
+      <li><input value="100" id="riesgo_alto" type="checkbox"><p>Riesgo alto</p>
+        <p style="margin-left: 29px;">&ge;1 FRCVc<br>Ateroesclerosis subclínica<br>Sin ECV clínica</p>
+        <div style="clear:both"></div></li>
+    </ul>
+  <li class="encabezado_gris_mid" style="font-weight:400"><span style="color: #86253c;font-weight: 600;">Objetivo cLDL</span><br>&gt;100 mg/dL o reducción ≥50<br>&gt;2.5 mmol/L o reducción ≥50%</li>
+    <ul class="formulario_criterio">
+      <li><input value="130" id="riesgo_moderado" type="checkbox"><p>Riesgo moderado</p>
+        <p style="margin-left: 29px;">Varón 18-30 años o mujer 18-40 años sin FRCV</p>
+        <div style="clear:both"></div></li>
+    </ul>
+  <li class="encabezado_gris_mid" style="font-weight:400"><span style="color: #86253c;font-weight: 600;">Objetivo cLDL</span><br>&gt;130 mg/dL o reducción ≥50<br>&gt;3.8 mmol/L o reducción ≥50%</li>
+  
+</ul>
+<div style="width:100%; height:150px;"></div>
+
+      
+
+
+</ion-content>
+<button  ng-click="procesar2()" class="continuar button">CONTINUAR</button>
+<div class="tabs tabs-icon-only bar-footer">
+  
+
+        <a back class="tab-item">
+          <i class="icon ion-android-arrow-back"></i>
+        </a>
+
+        <a ui-sref="presentacion" class="tab-item">
+          <i class="icon ion-ios-information-outline inf-red"></i>
+        </a>
+        <a onclick="javascript:menu_inferior()" class="tab-item">
+          <i class="icon ion-navicon-round"></i>
+        </a>
+</div>

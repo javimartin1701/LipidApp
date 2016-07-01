@@ -639,6 +639,27 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     url:'/modal_diagnostico_combinado',
     templateUrl:'templates/hipercolesterolemia/modal_diagnostico_combinado.html',
     controller: 'ModalDiagnosticoCombinado'
+  }) 
+
+    .state('modal_diagnostico_combinado2',{
+    cache: false,
+    url:'/modal_diagnostico_combinado2',
+    templateUrl:'templates/hipercolesterolemia/modal_diagnostico_combinado2.html',
+    controller: 'ModalDiagnosticoCombinado2'
+  })  
+
+      .state('form_tratamiento',{
+    cache: false,
+    url:'/form_tratamiento',
+    templateUrl:'templates/hipercolesterolemia/form_tratamiento.html',
+    controller: 'FormTratamiento'
+  })  
+
+      .state('form_tratamiento2',{
+    cache: false,
+    url:'/form_tratamiento2',
+    templateUrl:'templates/hipercolesterolemia/form_tratamiento2.html',
+    controller: 'FormTratamiento2'
   })             
 
   // .state('vista2',{
@@ -8854,7 +8875,7 @@ if((total_criterios_het>2)&&(total_criterios_het<6)){
   $(".btn_trat").css("display", "block");
 }
 
-if((total_criterios_het>0)&&(total_criterios_het<3)){
+if((total_criterios_het>=0)&&(total_criterios_het<3)){
   $(".improbable").css("display", "block");
   $(".btn_no_trat").css("display", "block");
 }
@@ -8891,6 +8912,50 @@ if((total_criterios_het>0)&&(total_criterios_het<3)){
 })
 
 
+.controller('ModalDiagnosticoCombinado2',function($scope,$state){
+
+
+})
+
+.controller('FormTratamiento',function($scope,$state){
+var unidad=document.getElementById("ldl-actual-unidades").value;
+
+  $( "#ldl-actual-unidades" ).change(function() {
+  var factor = parseFloat(document.getElementById("ldl-actual-unidades").value);
+  
+  var ldl = parseFloat(document.getElementById("ldl-actual").value);
+  var ldlconv=ldl*factor;
+  document.getElementById("ldl-actual").value=ldlconv.toFixed(2);
+  
+});
+
+   $scope.procesar2 = function() {
+
+    if($("#riesgo_muy_alto").is(':checked')) {  
+            ldlobjetivo=document.getElementById("riesgo_muy_alto").value;
+        }
+    if($("#riesgo_alto").is(':checked')) {  
+            ldlobjetivo=document.getElementById("riesgo_alto").value;
+        }
+    if($("#riesgo_moderado").is(':checked')) {  
+            ldlobjetivo=document.getElementById("riesgo_moderado").value;
+        }
+
+      $state.go('form_tratamiento2');
+      ldlactual=document.getElementById("ldl-actual").value;
+   }
+
+})
+
+
+.controller('FormTratamiento2',function($scope,$state){
+  document.getElementById("ldl_act_tratamiento2").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento2").value=ldlobjetivo;
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_tratamiento2").value=porc_reducc+"%";
+
+
+})
 
 
 
