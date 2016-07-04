@@ -64,7 +64,11 @@ var check5b_score = null;
 var check6_score = null;
 var total_criterios_het = null;
 
-
+var historia=[];
+var penul=null;
+var previo2=null;
+    var longhistoria=null;
+    var pen=null;
 
 angular.module('starter', ['ionic','ui.router','firebase'])
 
@@ -105,6 +109,17 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     $rootScope.currentState = to.name;
     console.log('Previous state:'+$rootScope.previousState)
     console.log('Current state:'+$rootScope.currentState)
+    console.log($rootScope);
+    previo2=$rootScope.previousState;
+    longhistoria=historia.length;
+    pen=longhistoria-2;
+
+    historia.push(previo2);
+
+    penul=historia[pen];
+    console.log(historia);
+    console.log(penul);
+
 });
 
 
@@ -9014,8 +9029,8 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 .controller('MenuInteracciones',function($scope,$state,$rootScope){
 
 $scope.volver = function() {
-  var previo=$rootScope.previousState;
-  $state.go(previo);
+  
+  $state.go(penul);
 
 }
 
