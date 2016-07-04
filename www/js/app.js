@@ -68,7 +68,7 @@ var total_criterios_het = null;
 
 angular.module('starter', ['ionic','ui.router','firebase'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope) {
   
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -94,6 +94,18 @@ angular.module('starter', ['ionic','ui.router','firebase'])
 
     firebase.auth().signInAnonymously();
   });
+
+
+
+
+  $rootScope.previousState;
+$rootScope.currentState;
+$rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+    $rootScope.previousState = from.name;
+    $rootScope.currentState = to.name;
+    console.log('Previous state:'+$rootScope.previousState)
+    console.log('Current state:'+$rootScope.currentState)
+});
 
 
 
@@ -411,6 +423,20 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     url:'/fibratos',
     templateUrl:'templates/dislipemia/fibratos.html',
     controller: 'Fibratos'
+  })
+
+             .state('menu_interacciones',{
+    cache: false,
+    url:'/menu_interacciones',
+    templateUrl:'templates/dislipemia/menu_interacciones.html',
+    controller: 'MenuInteracciones'
+  })
+
+             .state('menu_interacciones2',{
+    cache: false,
+    url:'/menu_interacciones2',
+    templateUrl:'templates/dislipemia/menu_interacciones2.html',
+    controller: 'MenuInteracciones2'
   })
 
 ///////////////////////LIMITACIONES/////////////////////////
@@ -6541,7 +6567,18 @@ if(quitar_sim_inter==true){
 
 
 
-.controller('Estatinas',function($scope,$state){
+.controller('Estatinas',function($scope,$state,$rootScope){
+
+var previo=$rootScope.previousState;
+if (previo=="menu_interacciones"){
+  jQuery('.procedencia1').toggle();
+}
+else{
+  jQuery('.procedencia2').toggle();
+}
+
+
+
 
   jQuery('#atorv_inter').on( "click", function() {
            jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
@@ -7362,7 +7399,7 @@ if( $('.check_sim').is(':checked') ) {
     quitar_sim_inter=true;
 }
 
-$state.go('tratamientoinicio2');
+$state.go('menu_interacciones');
    console.log(quitar_ator_inter+","+quitar_fluv_inter+","+quitar_lov_inter+","+quitar_pito_inter+","+quitar_pra_inter+","+quitar_rosu_inter+","+quitar_sim_inter);
         
         
@@ -7383,7 +7420,14 @@ $state.go('tratamientoinicio2');
 
 
 
-.controller('Fibratos',function($scope,$state){
+.controller('Fibratos',function($scope,$state,$rootScope){
+  var previo=$rootScope.previousState;
+if (previo=="menu_interacciones"){
+  jQuery('.procedencia1').toggle();
+}
+else{
+  jQuery('.procedencia2').toggle();
+}
 
   jQuery('#atorv_inter').on( "click", function() {
            jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
@@ -8207,7 +8251,7 @@ if( $('.check_sim').is(':checked') ) {
 
 
 
-$state.go('tratamientoinicio2');
+$state.go('menu_interacciones');
    
         
         
@@ -8967,7 +9011,20 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 })
 
 
+.controller('MenuInteracciones',function($scope,$state,$rootScope){
 
+$scope.volver = function() {
+  var previo=$rootScope.previousState;
+  $state.go(previo);
+
+}
+
+})
+
+.controller('MenuInteracciones2',function($scope,$state,$rootScope){
+
+
+})
 
 
 
