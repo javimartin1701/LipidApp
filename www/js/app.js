@@ -10443,10 +10443,12 @@ document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
         if(selector_sexo2=="M"){
           jQuery('.perimetro_hombre_diabet').hide();
           jQuery('.perimetro_mujer_diabet').show();
+          jQuery('.perimetro_sin_diabet').hide();
         }
         else if(selector_sexo2=="H"){
           jQuery('.perimetro_hombre_diabet').show();
           jQuery('.perimetro_mujer_diabet').hide();
+          jQuery('.perimetro_sin_diabet').hide();
         }
         else if(selector_sexo2=="."){
 var alertPopup = $ionicPopup.alert({

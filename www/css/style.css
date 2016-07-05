@@ -1537,6 +1537,19 @@ background: white;
     float: right;
     margin-right: 20px;
 }
+#perimetro_sin_diabet{
+    background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 110px;
+    border-width: 1px;
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+}
 #perimetro_mujer_diabet{
     background: white;
     border-color: #ccc;
@@ -1551,6 +1564,9 @@ background: white;
     margin-right: 20px;
 }
 .perimetro_mujer_diabet{
+    display: none;
+}
+.perimetro_hombre_diabet{
     display: none;
 }
 #ejercicio_diabet{
