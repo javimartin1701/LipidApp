@@ -70,6 +70,9 @@ var previo2=null;
     var longhistoria=null;
     var pen=null;
 
+
+var unidad_seleccionada=null;
+
 angular.module('starter', ['ionic','ui.router','firebase'])
 
 .run(function($ionicPlatform,$rootScope) {
@@ -969,12 +972,24 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 
 
     $scope.comprofinal = function(){
+    unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
+
+    
     ecvcheck = document.getElementById("ecvdoc");
     renalindex=document.getElementById('funcion_renal').options.selectedIndex;
     scoreindex=document.getElementById('selector-score').options.selectedIndex;
     tiene_vih=document.getElementById('VIH');
-    ldlactual = document.getElementById("ldl-actual").value;
+    if(unidad_seleccionada=="1"){
+      ldlactual = document.getElementById("ldl-actual").value;
+      console.log(ldlactual);
+      ldlactual=parseInt(ldlactual*4);
+      console.log(ldlactual);
 
+      
+    }
+    if(unidad_seleccionada=="0"){
+    ldlactual = document.getElementById("ldl-actual").value;
+    }
     
 
 
@@ -1071,6 +1086,7 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
       ldlobjetivo=115;
       $state.go('riesgobajo');
     }
+
 
   }
 
@@ -5492,10 +5508,21 @@ $state.go('formulariodislipemia');
 
 .controller('RiesgoBajo',function($scope,$state){
 
-
+  if(unidad_seleccionada=="1"){
+    $("select#unidades_totales_bajo").val("0.25");
+    document.getElementById("ldl_act_res_bajo").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_res_bajo").value=ldlobjetivo*0.25;
+  }
+  else{
 
   document.getElementById("ldl_act_res_bajo").value=ldlactual;
   document.getElementById("ldl_obj_res_bajo").value=ldlobjetivo;
+}
+
+
+
+  // document.getElementById("ldl_act_res_bajo").value=ldlactual;
+  // document.getElementById("ldl_obj_res_bajo").value=ldlobjetivo;
   // ldlobjetivo=115;
 
   $scope.reduccion = function() {
@@ -5523,9 +5550,16 @@ $state.go('formulariodislipemia');
 
 
 .controller('RiesgoMuyAlto',function($scope,$state){
+  if(unidad_seleccionada=="1"){
+    $("select#unidades_totales").val("0.25");
+    document.getElementById("ldl_act_res").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_res").value=ldlobjetivo*0.25;
+  }
+  else{
 
   document.getElementById("ldl_act_res").value=ldlactual;
   document.getElementById("ldl_obj_res").value=ldlobjetivo;
+}
   // ldlobjetivo=70;
 
      $scope.reduccion = function() {
@@ -5557,11 +5591,20 @@ $state.go('formulariodislipemia');
 
 .controller('RiesgoAlto',function($scope,$state){
 
-
+if(unidad_seleccionada=="1"){
+    $("select#unidades_totales_alto").val("0.25");
+    document.getElementById("ldl_act_res_alto").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_res_alto").value=ldlobjetivo*0.25;
+  }
+  else{
 
   document.getElementById("ldl_act_res_alto").value=ldlactual;
-  document.getElementById("ldl_obj_res_alto").value="100";
-  ldlobjetivo=100;
+  document.getElementById("ldl_obj_res_alto").value=ldlobjetivo;
+}
+
+  // document.getElementById("ldl_act_res_alto").value=ldlactual;
+  // document.getElementById("ldl_obj_res_alto").value=ldlobjetivo;
+  // ldlobjetivo=100;
 
   $scope.reduccion = function() {
 
@@ -5590,11 +5633,20 @@ $state.go('formulariodislipemia');
 
 .controller('RiesgoMedio',function($scope,$state){
 
-
+if(unidad_seleccionada=="1"){
+    $("select#unidades_totales_medio").val("0.25");
+    document.getElementById("ldl_act_res_medio").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_res_medio").value=ldlobjetivo*0.25;
+  }
+  else{
 
   document.getElementById("ldl_act_res_medio").value=ldlactual;
-  document.getElementById("ldl_obj_res_medio").value="115";
-  ldlobjetivo=115;
+  document.getElementById("ldl_obj_res_medio").value=ldlobjetivo;
+}
+
+  // document.getElementById("ldl_act_res_medio").value=ldlactual;
+  // document.getElementById("ldl_obj_res_medio").value="115";
+  // ldlobjetivo=115;
 
   $scope.reduccion = function() {
 
@@ -10107,11 +10159,21 @@ $state.go('menu_interacciones');
 
 .controller('RiesgoAltoVIH',function($scope,$state){
 
-
+if(unidad_seleccionada=="1"){
+    $("select#unidades_totales_alto_vih").val("0.25");
+    document.getElementById("ldl_act_res_alto_vih").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_res_alto_vih").value=objetivo_vih*0.25;
+  }
+  else{
 
   document.getElementById("ldl_act_res_alto_vih").value=ldlactual;
   document.getElementById("ldl_obj_res_alto_vih").value=objetivo_vih;
-  // ldlobjetivo=100;
+}
+
+
+  // document.getElementById("ldl_act_res_alto_vih").value=ldlactual;
+  // document.getElementById("ldl_obj_res_alto_vih").value=objetivo_vih;
+  // // ldlobjetivo=100;
 
   $scope.reduccion = function() {
 
@@ -10121,7 +10183,7 @@ $state.go('menu_interacciones');
     }
     var unidad=document.getElementById("unidades_totales_alto_vih").value;
 
-  $( "#unidades_totales_alto" ).change(function() {
+  $( "#unidades_totales_alto_vih" ).change(function() {
   var factor = parseFloat(document.getElementById("unidades_totales_alto_vih").value);
   
   var ldl = parseFloat(document.getElementById("ldl_act_res_alto_vih").value);
@@ -10141,10 +10203,21 @@ $state.go('menu_interacciones');
 
 .controller('RiesgoModeradoAltoVIH',function($scope,$state){
 
-
+  if(unidad_seleccionada=="1"){
+    $("select#unidades_totales_moderado_alto_vih").val("0.25");
+    document.getElementById("ldl_act_res_moderado_alto_vih").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_res_moderado_alto_vih").value=objetivo_vih*0.25;
+  }
+  else{
 
   document.getElementById("ldl_act_res_moderado_alto_vih").value=ldlactual;
   document.getElementById("ldl_obj_res_moderado_alto_vih").value=objetivo_vih;
+}
+
+
+
+  // document.getElementById("ldl_act_res_moderado_alto_vih").value=ldlactual;
+  // document.getElementById("ldl_obj_res_moderado_alto_vih").value=objetivo_vih;
   // ldlobjetivo=100;
 
   $scope.reduccion = function() {
@@ -10155,7 +10228,7 @@ $state.go('menu_interacciones');
     }
     var unidad=document.getElementById("unidades_totales_moderado_alto_vih").value;
 
-  $( "#unidades_totales_alto" ).change(function() {
+  $( "#unidades_totales_moderado_alto" ).change(function() {
   var factor = parseFloat(document.getElementById("unidades_totales_moderado_alto_vih").value);
   
   var ldl = parseFloat(document.getElementById("ldl_act_res_moderado_alto_vih").value);
@@ -10172,10 +10245,19 @@ $state.go('menu_interacciones');
 
 .controller('RiesgoModeradoBajoVIH',function($scope,$state){
 
-
+if(unidad_seleccionada=="1"){
+    $("select#unidades_totales_moderado_bajo_vih").val("0.25");
+    document.getElementById("ldl_act_res_moderado_bajo_vih").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_res_moderado_bajo_vih").value=objetivo_vih*0.25;
+  }
+  else{
 
   document.getElementById("ldl_act_res_moderado_bajo_vih").value=ldlactual;
   document.getElementById("ldl_obj_res_moderado_bajo_vih").value=objetivo_vih;
+}
+
+  // document.getElementById("ldl_act_res_moderado_bajo_vih").value=ldlactual;
+  // document.getElementById("ldl_obj_res_moderado_bajo_vih").value=objetivo_vih;
   // ldlobjetivo=130;
 
   $scope.reduccion = function() {
@@ -10186,7 +10268,7 @@ $state.go('menu_interacciones');
     }
     var unidad=document.getElementById("unidades_totales_moderado_bajo_vih").value;
 
-  $( "#unidades_totales_alto" ).change(function() {
+  $( "#unidades_totales_moderado_alto_vih" ).change(function() {
   var factor = parseFloat(document.getElementById("unidades_totales_moderado_bajo_vih").value);
   
   var ldl = parseFloat(document.getElementById("ldl_act_res_moderado_bajo_vih").value);
@@ -10205,10 +10287,20 @@ $state.go('menu_interacciones');
 
 .controller('RiesgoBajoVIH',function($scope,$state){
 
-
+if(unidad_seleccionada=="1"){
+    $("select#unidades_totales_bajo_vih").val("0.25");
+    document.getElementById("ldl_act_res_bajo_vih").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_res_bajo_vih").value=objetivo_vih*0.25;
+  }
+  else{
 
   document.getElementById("ldl_act_res_bajo_vih").value=ldlactual;
   document.getElementById("ldl_obj_res_bajo_vih").value=objetivo_vih;
+}
+
+
+  // document.getElementById("ldl_act_res_bajo_vih").value=ldlactual;
+  // document.getElementById("ldl_obj_res_bajo_vih").value=objetivo_vih;
   // ldlobjetivo=130;
 
   $scope.reduccion = function() {
@@ -10219,7 +10311,7 @@ $state.go('menu_interacciones');
     }
     var unidad=document.getElementById("unidades_totales_bajo_vih").value;
 
-  $( "#unidades_totales_alto" ).change(function() {
+  $( "#unidades_totales_bajo_vih" ).change(function() {
   var factor = parseFloat(document.getElementById("unidades_totales_bajo_vih").value);
   
   var ldl = parseFloat(document.getElementById("ldl_act_res_bajo_vih").value);
