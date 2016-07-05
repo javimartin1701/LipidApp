@@ -980,23 +980,45 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 
     if (tiene_vih.checked){
       if(cardio=="2"||ecvcheck.checked||scoreindex=="1"){
+
+         objetivo_vih=70;
+      if (ldlactual>70) {
+        $state.go('riesgoalto_vih');
+        
+      }
+      else if (ldlactual<71){
+        $state.go('riesgobajo_vih');
+      }
       // alert("RiesgoMuyAlto");
       // alert("Riesgo alto");
-      $state.go('riesgoalto_vih');
-      objetivo_vih=70;
+  
+     
 
     }
     if(cardio=="1"||scoreindex=="2"){
+      objetivo_vih=100;
+      if (ldlactual>100) {
+        $state.go('riesgomoderadoalto_vih');
+        
+      }
+      else if (ldlactual<101){
+        $state.go('riesgobajo_vih');
+      }
       // alert("RiesgoAlto");
       // alert("Riesgo moderado-alto");
-      $state.go('riesgomoderadoalto_vih');
-      objetivo_vih=100;
     }
     if(cardio=="1"||scoreindex=="3"){
+      objetivo_vih=130;
+      if (ldlactual>130) {
+        $state.go('riesgomoderadobajo_vih');
+        
+      }
+      else if (ldlactual<131){
+        $state.go('riesgobajo_vih');
+      }
       // alert("RiesgoModerado");
       // alert("Riesgo moderado-bajo");
-      $state.go('riesgomoderadobajo_vih');
-      objetivo_vih=130;
+      
     }
     if(cardio=="1"){
       // alert("RiesgoBajo");
@@ -1007,20 +1029,46 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     }
     else{
     if(cardio=="1"||ecvcheck.checked||renalindex=="2"||scoreindex=="1"||scoreindex=="2"){
+      ldlobjetivo=70;
+      if (ldlactual>70) {
+        $state.go('riesgomuyalto');
+        
+      }
+      else if (ldlactual<71){
+        $state.go('riesgobajo');
+      }
       // alert("RiesgoMuyAlto");
-      $state.go('riesgomuyalto');
+      
 
     }
     if(cardio=="2"||renalindex=="1"||scoreindex=="3"){
       // alert("RiesgoAlto");
-      $state.go('riesgoalto');
+      ldlobjetivo=100;
+      if (ldlactual>100) {
+        $state.go('riesgoalto');
+        
+      }
+      else if (ldlactual<101){
+        $state.go('riesgobajo');
+      }
+
+      
     }
     if(scoreindex=="4"){
+      ldlobjetivo=115;
+      if (ldlactual>115) {
+        $state.go('riesgomedio');
+        
+      }
+      else if (ldlactual<116){
+        $state.go('riesgobajo');
+      }
       // alert("RiesgoModerado");
-      $state.go('riesgomedio');
+      
     }
     if(scoreindex=="5"){
       // alert("RiesgoBajo");
+      ldlobjetivo=115;
       $state.go('riesgobajo');
     }
 
@@ -5447,8 +5495,8 @@ $state.go('formulariodislipemia');
 
 
   document.getElementById("ldl_act_res_bajo").value=ldlactual;
-  document.getElementById("ldl_obj_res_bajo").value="115";
-  ldlobjetivo=115;
+  document.getElementById("ldl_obj_res_bajo").value=ldlobjetivo;
+  // ldlobjetivo=115;
 
   $scope.reduccion = function() {
 
@@ -5477,8 +5525,8 @@ $state.go('formulariodislipemia');
 .controller('RiesgoMuyAlto',function($scope,$state){
 
   document.getElementById("ldl_act_res").value=ldlactual;
-  document.getElementById("ldl_obj_res").value="70";
-  ldlobjetivo=70;
+  document.getElementById("ldl_obj_res").value=ldlobjetivo;
+  // ldlobjetivo=70;
 
      $scope.reduccion = function() {
 
@@ -10062,8 +10110,8 @@ $state.go('menu_interacciones');
 
 
   document.getElementById("ldl_act_res_alto_vih").value=ldlactual;
-  document.getElementById("ldl_obj_res_alto_vih").value="70";
-  ldlobjetivo=100;
+  document.getElementById("ldl_obj_res_alto_vih").value=objetivo_vih;
+  // ldlobjetivo=100;
 
   $scope.reduccion = function() {
 
@@ -10096,8 +10144,8 @@ $state.go('menu_interacciones');
 
 
   document.getElementById("ldl_act_res_moderado_alto_vih").value=ldlactual;
-  document.getElementById("ldl_obj_res_moderado_alto_vih").value="100";
-  ldlobjetivo=100;
+  document.getElementById("ldl_obj_res_moderado_alto_vih").value=objetivo_vih;
+  // ldlobjetivo=100;
 
   $scope.reduccion = function() {
 
@@ -10127,8 +10175,8 @@ $state.go('menu_interacciones');
 
 
   document.getElementById("ldl_act_res_moderado_bajo_vih").value=ldlactual;
-  document.getElementById("ldl_obj_res_moderado_bajo_vih").value="130";
-  ldlobjetivo=130;
+  document.getElementById("ldl_obj_res_moderado_bajo_vih").value=objetivo_vih;
+  // ldlobjetivo=130;
 
   $scope.reduccion = function() {
 
@@ -10160,8 +10208,8 @@ $state.go('menu_interacciones');
 
 
   document.getElementById("ldl_act_res_bajo_vih").value=ldlactual;
-  document.getElementById("ldl_obj_res_bajo_vih").value="130";
-  ldlobjetivo=130;
+  document.getElementById("ldl_obj_res_bajo_vih").value=objetivo_vih;
+  // ldlobjetivo=130;
 
   $scope.reduccion = function() {
 
@@ -10382,7 +10430,7 @@ $scope.historia_relacionada = function() {
 })
 
 
-.controller('FormDiabetogenicidad',function($scope,$state){
+.controller('FormDiabetogenicidad',function($scope,$state,$ionicPopup){
 document.getElementById('edad_diabet').options.selectedIndex=edad_diabet_index;
 document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
 
@@ -10399,6 +10447,16 @@ document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
         else if(selector_sexo2=="H"){
           jQuery('.perimetro_hombre_diabet').show();
           jQuery('.perimetro_mujer_diabet').hide();
+        }
+        else if(selector_sexo2=="."){
+var alertPopup = $ionicPopup.alert({
+     title: '¡Atención!',
+     template: 'Seleccione antes el sexo del paciente'
+   });
+
+   alertPopup.then(function(res) {
+     
+   });
         }
         
     }

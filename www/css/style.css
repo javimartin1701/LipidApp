@@ -63,7 +63,29 @@ font-size: smaller;
     color: gray;
 }
 
+#unidades_totales_vih{
+    background: white;
+    width: 85px;
+    border-radius: 0;
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
 #unidades_totales_alto{
+    background: white;
+    width: 85px;
+    border-radius: 0;
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+#unidades_totales_alto_vih{
     background: white;
     width: 85px;
     border-radius: 0;
@@ -85,7 +107,29 @@ font-size: smaller;
     color: gray;
 }
 
+#unidades_totales_medio_vih{
+    background: white;
+    width: 85px;
+    border-radius: 0;
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
 #unidades_totales_bajo{
+    background: white;
+    width: 85px;
+    border-radius: 0;
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+#unidades_totales_bajo_vih{
     background: white;
     width: 85px;
     border-radius: 0;

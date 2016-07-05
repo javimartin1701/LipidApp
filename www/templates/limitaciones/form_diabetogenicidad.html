@@ -22,13 +22,8 @@
 		</li>
 		<li class="item">
 	      <label>Sexo</label>
-
-	      <select 
-    ng-model="selectedOption" 
-    ng-options="option.name for option in options">
-</select>
 	      
-	      <select id="sexo_diabet" ng-model="sexo" ng-change="selector_sexo()">
+	      <select id="sexo_diabet">
 			  <option value="."></option>
 			  <option value="H">Hombre</option>
 			  <option value="M">Mujer</option>
@@ -48,17 +43,21 @@
 		<li class="item perimetro_hombre_diabet">
 		<label>Perímetro cintura</label>
 	      
-	      <select id="perimetro_hombre_diabet" >
+	      <select id="perimetro_hombre_diabet" ng-click="selector_sexo()">
 			  <option value="0"></option>
 			  <option value="0">&lt;94 cm</option>
 			  <option value="3">94-102 cm</option>
 			  <option value="4">&gt;102 cm</option>
 		 </select>
 		</li>
+		<li class="item perimetro_hombre_diabet">
+		<label>Perímetro cintura</label>
+	      <div style="height: 27px;" id="perimetro_hombre_diabet" ng-click="selector_sexo()"></div>
+		</li>
 		<li class="item perimetro_mujer_diabet">
 		<label>Perímetro cintura</label>
 	      
-	      <select id="perimetro_mujer_diabet" >
+	      <select id="perimetro_mujer_diabet" ng-click="selector_sexo()">
 			  <option value="0"></option>
 			  <option value="0">&lt;80 cm</option>
 			  <option value="3">80-88 cm</option>
