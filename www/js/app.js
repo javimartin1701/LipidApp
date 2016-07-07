@@ -69,7 +69,7 @@ var penul=null;
 var previo2=null;
 var longhistoria=null;
 var pen=null;
-
+var rama_vih=false;
 
 var unidad_seleccionada=null;
 
@@ -77,7 +77,7 @@ var check_ecvdoc=false;
 
 angular.module('starter', ['ionic','ui.router','firebase'])
 
-.run(function($ionicPlatform,$rootScope) {
+.run(function($ionicPlatform,$rootScope,$ionicPopup,$state) {
   
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -103,6 +103,52 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     firebase.initializeApp(config);
 
     firebase.auth().signInAnonymously();
+
+
+    
+
+    $( "#volver_home" ).click(function() {
+
+
+
+
+
+
+
+   var confirmPopup = $ionicPopup.confirm({
+
+      title: '¡Atención!',
+
+      template: '¿Está seguro que desea acceder al menú principal de la app?',
+
+      cancelText: 'Cancelar',
+
+      okText: 'Aceptar',
+
+   });
+
+   confirmPopup.then(function(res) {
+
+      if (res) {
+
+         $state.go('home');
+
+      } else {
+
+         console.log('You clicked on "Cancel" button');
+
+      }
+
+   });
+
+
+
+
+
+
+
+});
+
   });
 
 
@@ -488,11 +534,25 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     controller: 'MenuInteraccionesVIH'
   })
 
+.state('menu_interacciones_vih_pre',{
+    cache: false,
+    url:'/menu_interacciones_vih_pre',
+    templateUrl:'templates/dislipemia/menu_interacciones_vih_pre.html',
+    controller: 'MenuInteraccionesVIHpre'
+  })
+
              .state('menu_interacciones2',{
     cache: false,
     url:'/menu_interacciones2',
     templateUrl:'templates/dislipemia/menu_interacciones2.html',
     controller: 'MenuInteracciones2'
+  })
+
+.state('premenu_interacciones2',{
+    cache: false,
+    url:'/premenu_interacciones2',
+    templateUrl:'templates/dislipemia/premenu_interacciones2.html',
+    controller: 'PreMenuInteracciones2'
   })
 
 ///////////////////////LIMITACIONES/////////////////////////
@@ -834,6 +894,11 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 .controller('DislipFormCtrl',function($scope,$state){
 
 
+  if(unidad_seleccionada=="1"){
+    $("select#ldl-actual-unidades").val("0.25");
+  }
+
+
   // resultadofiltradoredond=90;
     document.getElementById("ldl-actual").value=ldltransactual;
     if (check1_form==true) {
@@ -842,6 +907,8 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
         }
    
     $scope.irfactorriesgo = function(){
+
+      unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
         
         if($("#ecvdoc").is(':checked')) {  
             check1_form=true;
@@ -883,6 +950,8 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     }
 
     $scope.irfuncionrenal = function(){
+
+      unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
       if($("#ecvdoc").is(':checked')) {  
             check1_form=true;
         }
@@ -921,6 +990,7 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     }
 
     $scope.ircalcscore = function(){
+      unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
       if($("#ecvdoc").is(':checked')) {  
             check1_form=true;
         }
@@ -958,6 +1028,7 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
         $state.go('calcscore');
     }
     $scope.ir_info_cardio = function(){
+      unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
       if($("#ecvdoc").is(':checked')) {  
             check1_form=true;
         }
@@ -1020,6 +1091,7 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 
 
     if (tiene_vih.checked){
+      rama_vih=true;
       if(cardio=="2"||ecvcheck.checked||scoreindex=="1"){
 
          objetivo_vih=70;
@@ -5717,9 +5789,20 @@ if(unidad_seleccionada=="1"){
 
 .controller('Reduccion',function($scope){
 
+  if(unidad_seleccionada=="1"){
+    $("select#unidades_totales").val("0.25");
+    document.getElementById("ldl_act_red").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_red").value=ldlobjetivo*0.25;
+  }
+  else{
 
-document.getElementById("ldl_act_red").value=ldlactual;
-  document.getElementById("ldl_obj_red").value=ldlobjetivo;  
+  document.getElementById("ldl_act_red").value=ldlactual;
+  document.getElementById("ldl_obj_red").value=ldlobjetivo;
+}
+
+
+// document.getElementById("ldl_act_red").value=ldlactual;
+//   document.getElementById("ldl_obj_red").value=ldlobjetivo;  
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   document.getElementById("porcentaje_red").value=porc_reducc+"%";
 
@@ -5730,9 +5813,20 @@ document.getElementById("ldl_act_red").value=ldlactual;
 
 .controller('Reduccion_vih',function($scope){
 
+  if(unidad_seleccionada=="1"){
+    $("select#unidades_totales").val("0.25");
+    document.getElementById("ldl_act_red_vih").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_red_vih").value=objetivo_vih*0.25;
+  }
+  else{
 
-document.getElementById("ldl_act_red_vih").value=ldlactual;
-  document.getElementById("ldl_obj_red_vih").value=objetivo_vih;  
+  document.getElementById("ldl_act_red_vih").value=ldlactual;
+  document.getElementById("ldl_obj_red_vih").value=objetivo_vih;
+}
+
+
+// document.getElementById("ldl_act_red_vih").value=ldlactual;
+//   document.getElementById("ldl_obj_red_vih").value=objetivo_vih;  
   var porc_reducc=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlactual))*100);
   document.getElementById("porcentaje_red_vih").value=porc_reducc+"%";
 
@@ -7753,6 +7847,13 @@ $state.go('menu_interacciones');
 
 .controller('EstatinasVIH',function($scope,$state,$rootScope){
 
+  if(rama_vih==true){
+    jQuery('.estatinasbtn_vih1').toggle();
+  }
+   else if(rama_vih==false){
+    jQuery('.estatinasbtn_vih2').toggle();
+  }
+
 var previo=$rootScope.previousState;
 
 
@@ -9480,6 +9581,12 @@ $state.go('menu_interacciones');
 
 
 .controller('FibratosVIH',function($scope,$state,$rootScope){
+  if(rama_vih==true){
+    jQuery('.estatinasbtn_vih1').toggle();
+  }
+   else if(rama_vih==false){
+    jQuery('.estatinasbtn_vih2').toggle();
+  }
   var previo=$rootScope.previousState;
 if (previo=="menu_interacciones"){
   jQuery('.procedencia1').toggle();
@@ -10327,6 +10434,12 @@ $state.go('menu_interacciones_vih');
 
 
 .controller('EzetimibeVIH',function($scope,$state,$rootScope){
+  if(rama_vih==true){
+    jQuery('.estatinasbtn_vih1').toggle();
+  }
+   else if(rama_vih==false){
+    jQuery('.estatinasbtn_vih2').toggle();
+  }
   var previo=$rootScope.previousState;
 if (previo=="menu_interacciones"){
   jQuery('.procedencia1').toggle();
@@ -11990,7 +12103,7 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 
 $scope.volver = function() {
   
-  $state.go(penul);
+  $state.go("tratamientoinicio2");
 
 }
 
@@ -12001,13 +12114,28 @@ $scope.volver = function() {
 
 $scope.volver = function() {
   
-  $state.go(penul);
+  $state.go("tratamientoinicio2vih");
+
+}
+
+})
+
+.controller('MenuInteraccionesVIHpre',function($scope,$state,$rootScope){
+
+$scope.volver = function() {
+  
+  $state.go("tratamientoinicio2vih");
 
 }
 
 })
 
 .controller('MenuInteracciones2',function($scope,$state,$rootScope){
+
+
+})
+
+.controller('PreMenuInteracciones2',function($scope,$state,$rootScope){
 
 
 })
