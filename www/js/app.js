@@ -105,15 +105,76 @@ angular.module('starter', ['ionic','ui.router','firebase'])
     firebase.auth().signInAnonymously();
 
 
+//////////////LOGIN APP///////////////////
+
+
+
+
+var arreglo = ["1", "2", "4", "5"]            
+for(var i = 0; i < arreglo.length; i++) {
+    if (arreglo[i] == "10") {
+        console.log("objeto encontrado");
+    }
+    else{
+        console.log("objeto NO encontrado")
+    }
+}
+
+// var pwd='1qaZXsw2';
+// var titulo_login="Login";
+// var texto_login="Introduce tu password";
+// var place_login="Tu password";
+
+// function incorrecto(){
+//   place_login="Password Incorrecto"
+//   $ionicPopup.prompt({
+//    title: titulo_login,
+//    template: texto_login,
+//    inputType: 'password',
+//    cssClass: 'login',
+//    inputPlaceholder: place_login
+//  }).then(function(res) {
+//    if (res==pwd) {
+
+//          $state.go('home');
+//          console.log("Correcto");
+
+//       } else {
+
+//          incorrecto();
+
+//       }
+//  });
+// }
+
+ //  $ionicPopup.prompt({
+ //   title: titulo_login,
+ //   template: texto_login,
+ //   inputType: 'password',
+ //   inputPlaceholder: place_login
+ // }).then(function(res) {
+ //   if (res==pwd) {
+
+ //         $state.go('home');
+ //         console.log("Correcto");
+
+ //      } else {
+
+ //         incorrecto();
+
+ //      }
+ // });
+
+
+
+////////////////////FIN LOGIN APP////////////////////////     
+
+
+
+
     
 
     $( "#volver_home" ).click(function() {
-
-
-
-
-
-
 
    var confirmPopup = $ionicPopup.confirm({
 
@@ -140,11 +201,6 @@ angular.module('starter', ['ionic','ui.router','firebase'])
       }
 
    });
-
-
-
-
-
 
 
 });
@@ -1212,6 +1268,7 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 
 
   $scope.govih = function() {
+    unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
 
      if($("#ecvdoc").is(':checked')) {  
             check1_form=true;
@@ -5627,7 +5684,14 @@ $state.go('formulariodislipemia');
   document.getElementById("ldl_obj_res_bajo").value=ldlobjetivo;
 }
 
-
+if(ldlactual>ldlobjetivo){
+  jQuery('.riesgo').toggle();
+  console.log("RIESGO");
+}
+else{
+  jQuery('.no_riesgo').toggle();
+  console.log("NO RIESGO");
+}
 
   // document.getElementById("ldl_act_res_bajo").value=ldlactual;
   // document.getElementById("ldl_obj_res_bajo").value=ldlobjetivo;
@@ -11446,6 +11510,16 @@ if(unidad_seleccionada=="1"){
 
   document.getElementById("ldl_act_res_bajo_vih").value=ldlactual;
   document.getElementById("ldl_obj_res_bajo_vih").value=objetivo_vih;
+}
+
+
+if(ldlactual>objetivo_vih){
+  jQuery('.riesgo').toggle();
+  console.log("RIESGO");
+}
+else{
+  jQuery('.no_riesgo').toggle();
+  console.log("NO RIESGO");
 }
 
 

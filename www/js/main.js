@@ -52,11 +52,35 @@ function showDislipemia() {
 var totalimcRounded;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function(){
   jQuery('.menu_bottom').on( "click", function() {
     
-           jQuery('.menu_bottom').toggle(); //muestro mediante clase
+           jQuery('.menu_bottom').toggle();
+           
          });
+
+
+   jQuery('.fondo_menu_bottom').on( "click", function() {
+   
+           jQuery('.menu_bottom').toggle();
+          
+         });
+
+ 
+
+  
 
 });
 

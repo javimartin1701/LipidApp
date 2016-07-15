@@ -922,6 +922,12 @@ display: inline-block;
 }
 
 .menu_bottom li:first-child{
+    background: transparent;
+    border: 0;
+    height: 1000px;
+}
+
+.menu_bottom li:nth-child(2){
     background: #7f1223;
     text-align: center;
     border: none;
@@ -2016,3 +2022,28 @@ background-color: #86253C !important;
     display: none;
 }
 
+.login input{
+        background: #ecd0d0;
+        text-align: center;
+}
+
+.login ::-webkit-input-placeholder {
+   color: red;
+}
+
+.riesgo{
+    display: none;
+}
+
+.no_riesgo{
+    display: none;
+}
+.fondo_menu_bottom{
+    display: none;
+    position: absolute;
+    width: 100%;
+    background: blue;
+    height: 1000px;
+    z-index: 99;
+    bottom: 50px;
+}
