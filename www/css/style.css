@@ -1423,13 +1423,17 @@ background: white;
 
 .aviso_interacciones{
     position: absolute;
-    background: #86253c;
+    background: green;
     color: white;
     width: 80%;
     margin-left: 10%;
     padding: 15px;
     z-index: 999999;
     display: none;
+}
+
+.aviso_rojo{
+    background: red !important;
 }
 
 
@@ -2046,4 +2050,10 @@ background-color: #86253C !important;
     height: 1000px;
     z-index: 99;
     bottom: 50px;
+}
+.superindice 
+{vertical-align:super} 
+
+.directo .toggle{
+    display: none;
 }

@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 var totalimcRounded="0";
 var sexoimc="1";
-var resultadofiltradoredond="inicio";
+var resultadofiltradoredond="100";
 var cardio="0";
-var ldlactual="0";
+var ldlactual=0;
 var renalindex="9";
 var scoreindex="9";
 var ldltransactual="";
@@ -547,12 +547,24 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     templateUrl:'templates/dislipemia/estatinas.html',
     controller: 'Estatinas'
   })
+            .state('estatinas_dir',{
+    cache: false,
+    url:'/estatinas_dir',
+    templateUrl:'templates/dislipemia/estatinas_dir.html',
+    controller: 'EstatinasDir'
+  })
 
        .state('estatinas_vih',{
     cache: false,
     url:'/estatinas_vih',
     templateUrl:'templates/dislipemia/estatinas_vih.html',
     controller: 'EstatinasVIH'
+  })
+       .state('estatinas_vih_dir',{
+    cache: false,
+    url:'/estatinas_vih_dir',
+    templateUrl:'templates/dislipemia/estatinas_vih_dir.html',
+    controller: 'EstatinasVIHDir'
   })
 
        .state('fibratos',{
@@ -561,6 +573,12 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     templateUrl:'templates/dislipemia/fibratos.html',
     controller: 'Fibratos'
   })
+           .state('fibratos_dir',{
+    cache: false,
+    url:'/fibratos_dir',
+    templateUrl:'templates/dislipemia/fibratos_dir.html',
+    controller: 'FibratosDir'
+  })
 
               .state('fibratos_vih',{
     cache: false,
@@ -568,12 +586,24 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     templateUrl:'templates/dislipemia/fibratos_vih.html',
     controller: 'FibratosVIH'
   })
+               .state('fibratos_vih_dir',{
+    cache: false,
+    url:'/fibratos_vih_dir',
+    templateUrl:'templates/dislipemia/fibratos_vih_dir.html',
+    controller: 'FibratosVIHDir'
+  })
 
        .state('ezetimibe_vih',{
     cache: false,
     url:'/ezetimibe_vih',
     templateUrl:'templates/dislipemia/ezetimibe_vih.html',
     controller: 'EzetimibeVIH'
+  })
+             .state('ezetimibe_vih_dir',{
+    cache: false,
+    url:'/ezetimibe_vih_dir',
+    templateUrl:'templates/dislipemia/ezetimibe_vih_dir.html',
+    controller: 'EzetimibeVIHDir'
   })
 
              .state('menu_interacciones',{
@@ -870,11 +900,12 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 })
 
 .controller('HomeCtrl',function($scope){
- totalimcRounded="0";
+
+  totalimcRounded="0";
  sexoimc="1";
  resultadofiltradoredond="inicio";
  cardio="0";
- ldlactual="0";
+ ldlactual=0;
  renalindex="9";
  scoreindex="9";
  ldltransactual="";
@@ -927,7 +958,20 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
  check3_score = null;
  check4_score = null;
  check5_score = null;
+ check5b_score = null;
  check6_score = null;
+ total_criterios_het = null;
+
+ historia=[];
+ penul=null;
+ previo2=null;
+ longhistoria=null;
+ pen=null;
+ rama_vih=false;
+
+ unidad_seleccionada=null;
+
+ check_ecvdoc=false;
  
 
 })
@@ -947,7 +991,7 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 
 
 
-.controller('DislipFormCtrl',function($scope,$state){
+.controller('DislipFormCtrl',function($scope,$state,$ionicPopup){
 
 
   if(unidad_seleccionada=="1"){
@@ -1125,6 +1169,8 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 
 
     $scope.comprofinal = function(){
+
+
     unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
 
     
@@ -1144,8 +1190,8 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     ldlactual = document.getElementById("ldl-actual").value;
     }
     
-
-
+if(ldlactual>0){
+    console.log(ldlactual);
     if (tiene_vih.checked){
       rama_vih=true;
       if(cardio=="2"||ecvcheck.checked||scoreindex=="1"){
@@ -1243,6 +1289,18 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 
 
   }
+
+}
+else if(ldlactual==0){
+  var alertPopup = $ionicPopup.alert({
+     title: '¡Atención!',
+     template: 'No ha completado el dato de LDL actual'
+   });
+
+   alertPopup.then(function(res) {
+     
+   });
+}
 
   }
 
@@ -1355,7 +1413,7 @@ document.getElementById('VIH').checked=true;
 
 
    if (score_calculado>19) {
-    $("select#selector-score").val("20");
+    $("select#selector-score").val("10-20");
   }
   if (score_calculado>9&&score_calculado<20) {
     $("select#selector-score").val("10-20");
@@ -7908,6 +7966,863 @@ $state.go('menu_interacciones');
 
 
 
+.controller('EstatinasDir',function($scope,$state,$rootScope){
+
+var previo=$rootScope.previousState;
+if (previo=="menu_interacciones"){
+  jQuery('.procedencia1').toggle();
+}
+else{
+  jQuery('.procedencia2').toggle();
+}
+
+
+
+
+  jQuery('#atorv_inter').on( "click", function() {
+           jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
+
+  });
+
+  jQuery('.aco_atorv').on( "click", function() {
+           jQuery('.aco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.ami_atorv').on( "click", function() {
+           jQuery('.ami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.ant_atorv').on( "click", function() {
+           jQuery('.ant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.antia_atorv').on( "click", function() {
+           jQuery('.antia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.antif_atorv').on( "click", function() {
+           jQuery('.antif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.asocl_atorv').on( "click", function() {
+           jQuery('.asocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bar_atorv').on( "click", function() {
+           jQuery('.bar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bez_atorv').on( "click", function() {
+           jQuery('.bez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.boc_atorv').on( "click", function() {
+           jQuery('.boc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.carb_atorv').on( "click", function() {
+           jQuery('.carb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.cicl_atorv').on( "click", function() {
+           jQuery('.cicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.cil_atorv').on( "click", function() {
+           jQuery('.cil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.colc_atorv').on( "click", function() {
+           jQuery('.colc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.dacl_atorv').on( "click", function() {
+           jQuery('.dacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.dan_atorv').on( "click", function() {
+           jQuery('.dan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.dron_atorv').on( "click", function() {
+           jQuery('.dron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.feno_atorv').on( "click", function() {
+           jQuery('.feno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.gim_atorv').on( "click", function() {
+           jQuery('.gim+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.macro_atorv').on( "click", function() {
+           jQuery('.macro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.res_atorv').on( "click", function() {
+           jQuery('.res+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rif_atorv').on( "click", function() {
+           jQuery('.rif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.sime_atorv').on( "click", function() {
+           jQuery('.sime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.tela_atorv').on( "click", function() {
+           jQuery('.tela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.zumo_atorv').on( "click", function() {
+           jQuery('.zumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    jQuery('#fluv_inter').on( "click", function() {
+           jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.faco_fluv').on( "click", function() {
+           jQuery('.faco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fami_fluv').on( "click", function() {
+           jQuery('.fami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fant_fluv').on( "click", function() {
+           jQuery('.fant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fantia_fluv').on( "click", function() {
+           jQuery('.fantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fantif_fluv').on( "click", function() {
+           jQuery('.fantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.fasoco_fluv').on( "click", function() {
+           jQuery('.fasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbar_fluv').on( "click", function() {
+           jQuery('.fbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbez_fluv').on( "click", function() {
+           jQuery('.fbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fboc_fluv').on( "click", function() {
+           jQuery('.fboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fcarb_fluv').on( "click", function() {
+           jQuery('.fcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fcicl_fluv').on( "click", function() {
+           jQuery('.fcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fcil_fluv').on( "click", function() {
+           jQuery('.fcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fcolc_fluv').on( "click", function() {
+           jQuery('.fcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fdacl_fluv').on( "click", function() {
+           jQuery('.fdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fdan_fluv').on( "click", function() {
+           jQuery('.fdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.fdron_fluv').on( "click", function() {
+           jQuery('.fdron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ferit_fluv').on( "click", function() {
+           jQuery('.ferit+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ffen_fluv').on( "click", function() {
+           jQuery('.ffen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.fgem_fluv').on( "click", function() {
+           jQuery('.fgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.fmacro_fluv').on( "click", function() {
+           jQuery('.fmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fres_fluv').on( "click", function() {
+           jQuery('.fres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.ffluc_fluv').on( "click", function() {
+           jQuery('.ffluc+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fsime_fluv').on( "click", function() {
+           jQuery('.fsime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ftela_fluv').on( "click", function() {
+           jQuery('.ftela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fzumo_fluv').on( "click", function() {
+           jQuery('.fzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+      jQuery('#lov_inter').on( "click", function() {
+           jQuery('.sub_lov_inter').toggle(); //muestro mediante clase
+  });
+ jQuery('.laco_lov').on( "click", function() {
+           jQuery('.laco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lami_lov').on( "click", function() {
+           jQuery('.lami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lanta_lov').on( "click", function() {
+           jQuery('.lanta+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lantia_lov').on( "click", function() {
+           jQuery('.lantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lantif_lov').on( "click", function() {
+           jQuery('.lantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.lasocl_lov').on( "click", function() {
+           jQuery('.lasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbar_lov').on( "click", function() {
+           jQuery('.lbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbez_lov').on( "click", function() {
+           jQuery('.lbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lboc_lov').on( "click", function() {
+           jQuery('.lboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lcarb_lov').on( "click", function() {
+           jQuery('.lcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lcicl_lov').on( "click", function() {
+           jQuery('.lcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lcil_lov').on( "click", function() {
+           jQuery('.lcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lcol_lov').on( "click", function() {
+           jQuery('.lcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ldac_lov').on( "click", function() {
+           jQuery('.ldac+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.ldan_lov').on( "click", function() {
+           jQuery('.ldan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ldron_lov').on( "click", function() {
+           jQuery('.ldron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.lfen_lov').on( "click", function() {
+           jQuery('.lfen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.lgem_lov').on( "click", function() {
+           jQuery('.lgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.lmacro_lov').on( "click", function() {
+           jQuery('.lmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lres_lov').on( "click", function() {
+           jQuery('.lres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lrif_lov').on( "click", function() {
+           jQuery('.lrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lsim_lov').on( "click", function() {
+           jQuery('.lsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ltel_lov').on( "click", function() {
+           jQuery('.ltel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.lzumo_lov').on( "click", function() {
+           jQuery('.lzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+        jQuery('#pitav_inter').on( "click", function() {
+           jQuery('.sub_pitav_inter').toggle(); //muestro mediante clase
+  });
+
+  jQuery('.paco_pitav').on( "click", function() {
+           jQuery('.paco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pami_pitav').on( "click", function() {
+           jQuery('.pami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pant_pitav').on( "click", function() {
+           jQuery('.pant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pantia_pitav').on( "click", function() {
+           jQuery('.pantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pantif_pitav').on( "click", function() {
+           jQuery('.pantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.pasocl_pitav').on( "click", function() {
+           jQuery('.pasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pasoco_pitav').on( "click", function() {
+           jQuery('.pasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbar_pitav').on( "click", function() {
+           jQuery('.pbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbez_pitav').on( "click", function() {
+           jQuery('.pbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pboc_pitav').on( "click", function() {
+           jQuery('.pboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pcarb_pitav').on( "click", function() {
+           jQuery('.pcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pcicl_pitav').on( "click", function() {
+           jQuery('.pcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.pcil_pitav').on( "click", function() {
+           jQuery('.pcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pcol_pitav').on( "click", function() {
+           jQuery('.pcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pdacl_pitav').on( "click", function() {
+           jQuery('.pdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pdan_pitav').on( "click", function() {
+           jQuery('.pdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pdrone_pitav').on( "click", function() {
+           jQuery('.pdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pfen_pitav').on( "click", function() {
+           jQuery('.pfen+div').toggle(); //muestro mediante clase
+ 
+  });
+          jQuery('.perit_pitav').on( "click", function() {
+           jQuery('.perit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.pgem_pitav').on( "click", function() {
+           jQuery('.pgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.pmacro_pitav').on( "click", function() {
+           jQuery('.pmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pres_pitav').on( "click", function() {
+           jQuery('.pres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prif_pitav').on( "click", function() {
+           jQuery('.prif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.psim_pitav').on( "click", function() {
+           jQuery('.psim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ptela_pitav').on( "click", function() {
+           jQuery('.ptela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pzumo_pitav').on( "click", function() {
+           jQuery('.pzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+          jQuery('#prav_inter').on( "click", function() {
+           jQuery('.sub_prav_inter').toggle(); //muestro mediante clase
+  });
+
+jQuery('.praco_prav').on( "click", function() {
+           jQuery('.praco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prami_prav').on( "click", function() {
+           jQuery('.prami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prant_prav').on( "click", function() {
+           jQuery('.prant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prantia_prav').on( "click", function() {
+           jQuery('.prantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prantif_prav').on( "click", function() {
+           jQuery('.prantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasocl_prav').on( "click", function() {
+           jQuery('.prasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasoco_prav').on( "click", function() {
+           jQuery('.prasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbar_prav').on( "click", function() {
+           jQuery('.prbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbez_prav').on( "click", function() {
+           jQuery('.prbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prboc_prav').on( "click", function() {
+           jQuery('.prboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prcarb_prav').on( "click", function() {
+           jQuery('.prcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prcicl_prav').on( "click", function() {
+           jQuery('.prcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prcil_prav').on( "click", function() {
+           jQuery('.prcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prcolc_prav').on( "click", function() {
+           jQuery('.prcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prdacl_prav').on( "click", function() {
+           jQuery('.prdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prdan_prav').on( "click", function() {
+           jQuery('.prdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prdrone_prav').on( "click", function() {
+           jQuery('.prdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prfeno_prav').on( "click", function() {
+           jQuery('.prfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.prgem_prav').on( "click", function() {
+           jQuery('.prgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.prmacro_prav').on( "click", function() {
+           jQuery('.prmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prres_prav').on( "click", function() {
+           jQuery('.prres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prrif_prav').on( "click", function() {
+           jQuery('.prrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prsim_prav').on( "click", function() {
+           jQuery('.prsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prtela_prav').on( "click", function() {
+           jQuery('.prtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.przumo_prav').on( "click", function() {
+           jQuery('.przumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+            jQuery('#rosuv_inter').on( "click", function() {
+           jQuery('.sub_rosuv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.raco_rosuv').on( "click", function() {
+           jQuery('.raco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rami_rosuv').on( "click", function() {
+           jQuery('.rami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rant_rosuv').on( "click", function() {
+           jQuery('.rant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rantia_rosuv').on( "click", function() {
+           jQuery('.rantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rantif_rosuv').on( "click", function() {
+           jQuery('.rantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasocl_rosuv').on( "click", function() {
+           jQuery('.rasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasoco_rosuv').on( "click", function() {
+           jQuery('.rasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbar_rosuv').on( "click", function() {
+           jQuery('.rbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbez_rosuv').on( "click", function() {
+           jQuery('.rbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rboc_rosuv').on( "click", function() {
+           jQuery('.rboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rcarb_rosuv').on( "click", function() {
+           jQuery('.rcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rcicl_rosuv').on( "click", function() {
+           jQuery('.rcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rcil_rosuv').on( "click", function() {
+           jQuery('.rcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rcolc_rosuv').on( "click", function() {
+           jQuery('.rcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rdacl_rosuv').on( "click", function() {
+           jQuery('.rdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rdan_rosuv').on( "click", function() {
+           jQuery('.rdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rdrone_rosuv').on( "click", function() {
+           jQuery('.rdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rfen_rosuv').on( "click", function() {
+           jQuery('.rfen+div').toggle(); //muestro mediante clase
+ 
+  });
+                                    jQuery('.rerit_rosuv').on( "click", function() {
+           jQuery('.rerit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.rgem_rosuv').on( "click", function() {
+           jQuery('.rgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.rmacro_rosuv').on( "click", function() {
+           jQuery('.rmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rres_rosuv').on( "click", function() {
+           jQuery('.rres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rrif_rosuv').on( "click", function() {
+           jQuery('.rrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rsim_rosuv').on( "click", function() {
+           jQuery('.rsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rtela_rosuv').on( "click", function() {
+           jQuery('.rtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rzumo_rosuv').on( "click", function() {
+           jQuery('.rzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+              jQuery('#simv_inter').on( "click", function() {
+           jQuery('.sub_simv_inter').toggle(); //muestro mediante clase
+
+  });
+              jQuery('.saco_simv').on( "click", function() {
+           jQuery('.saco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.sami_simv').on( "click", function() {
+           jQuery('.sami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santa_simv').on( "click", function() {
+           jQuery('.santa+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santia_simv').on( "click", function() {
+           jQuery('.santia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.santif_simv').on( "click", function() {
+           jQuery('.santif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.sasocl_simv').on( "click", function() {
+           jQuery('.sasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbarb_simv').on( "click", function() {
+           jQuery('.sbarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbez_simv').on( "click", function() {
+           jQuery('.sbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.sboce_simv').on( "click", function() {
+           jQuery('.sboce+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.scarb_simv').on( "click", function() {
+           jQuery('.scarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.scicl_simv').on( "click", function() {
+           jQuery('.scicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.scil_simv').on( "click", function() {
+           jQuery('.scil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.scolc_simv').on( "click", function() {
+           jQuery('.scolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.sdacl_simv').on( "click", function() {
+           jQuery('.sdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sdan_simv').on( "click", function() {
+           jQuery('.sdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sdrone_simv').on( "click", function() {
+           jQuery('.sdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sfeno_simv').on( "click", function() {
+           jQuery('.sfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.sgem_simv').on( "click", function() {
+           jQuery('.sgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.smacro_simv').on( "click", function() {
+           jQuery('.smacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sres_simv').on( "click", function() {
+           jQuery('.sres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.srif_simv').on( "click", function() {
+           jQuery('.srif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.ssim_simv').on( "click", function() {
+           jQuery('.ssim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.stel_simv').on( "click", function() {
+           jQuery('.stel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.szumo_simv').on( "click", function() {
+           jQuery('.szumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+$scope.filtrar_inter = function() {
+
+
+
+  
+
+ if( $('.check_ator').is(':checked') ) {
+    quitar_ator_inter=true;
+}
+if( $('.check_fluv').is(':checked') ) {
+    quitar_fluv_inter=true;
+}
+if( $('.check_lov').is(':checked') ) {
+    quitar_lov_inter=true;
+}
+if( $('.check_pita').is(':checked') ) {
+    quitar_pito_inter=true;
+}
+if( $('.check_prav').is(':checked') ) {
+    quitar_pra_inter=true;
+}
+if( $('.check_rosu').is(':checked') ) {
+    quitar_rosu_inter=true;
+}
+if( $('.check_sim').is(':checked') ) {
+    quitar_sim_inter=true;
+}
+
+$state.go('menu_interacciones');
+   console.log(quitar_ator_inter+","+quitar_fluv_inter+","+quitar_lov_inter+","+quitar_pito_inter+","+quitar_pra_inter+","+quitar_rosu_inter+","+quitar_sim_inter);
+        
+        
+    }
+
+              
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .controller('EstatinasVIH',function($scope,$state,$rootScope){
 
@@ -8767,16 +9682,20 @@ $state.go('menu_interacciones_vih');
 
 
 
+.controller('EstatinasVIHDir',function($scope,$state,$rootScope){
+
+  if(rama_vih==true){
+    jQuery('.estatinasbtn_vih1').toggle();
+  }
+   else if(rama_vih==false){
+    jQuery('.estatinasbtn_vih2').toggle();
+  }
+
+var previo=$rootScope.previousState;
 
 
-.controller('Fibratos',function($scope,$state,$rootScope){
-  var previo=$rootScope.previousState;
-if (previo=="menu_interacciones"){
-  jQuery('.procedencia1').toggle();
-}
-else{
-  jQuery('.procedencia2').toggle();
-}
+
+
 
   jQuery('#atorv_inter').on( "click", function() {
            jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
@@ -8903,6 +9822,863 @@ else{
   });
 jQuery('.faco_fluv').on( "click", function() {
            jQuery('.faco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fami_fluv').on( "click", function() {
+           jQuery('.fami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fant_fluv').on( "click", function() {
+           jQuery('.fant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fantia_fluv').on( "click", function() {
+           jQuery('.fantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fantif_fluv').on( "click", function() {
+           jQuery('.fantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.fasoco_fluv').on( "click", function() {
+           jQuery('.fasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbar_fluv').on( "click", function() {
+           jQuery('.fbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbez_fluv').on( "click", function() {
+           jQuery('.fbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fboc_fluv').on( "click", function() {
+           jQuery('.fboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fcarb_fluv').on( "click", function() {
+           jQuery('.fcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fcicl_fluv').on( "click", function() {
+           jQuery('.fcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fcil_fluv').on( "click", function() {
+           jQuery('.fcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fcolc_fluv').on( "click", function() {
+           jQuery('.fcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fdacl_fluv').on( "click", function() {
+           jQuery('.fdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fdan_fluv').on( "click", function() {
+           jQuery('.fdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.fdron_fluv').on( "click", function() {
+           jQuery('.fdron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ferit_fluv').on( "click", function() {
+           jQuery('.ferit+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ffen_fluv').on( "click", function() {
+           jQuery('.ffen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.fgem_fluv').on( "click", function() {
+           jQuery('.fgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.fmacro_fluv').on( "click", function() {
+           jQuery('.fmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fres_fluv').on( "click", function() {
+           jQuery('.fres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.ffluc_fluv').on( "click", function() {
+           jQuery('.ffluc+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fsime_fluv').on( "click", function() {
+           jQuery('.fsime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ftela_fluv').on( "click", function() {
+           jQuery('.ftela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fzumo_fluv').on( "click", function() {
+           jQuery('.fzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+      jQuery('#lov_inter').on( "click", function() {
+           jQuery('.sub_lov_inter').toggle(); //muestro mediante clase
+  });
+ jQuery('.laco_lov').on( "click", function() {
+           jQuery('.laco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lami_lov').on( "click", function() {
+           jQuery('.lami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lanta_lov').on( "click", function() {
+           jQuery('.lanta+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lantia_lov').on( "click", function() {
+           jQuery('.lantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lantif_lov').on( "click", function() {
+           jQuery('.lantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.lasocl_lov').on( "click", function() {
+           jQuery('.lasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbar_lov').on( "click", function() {
+           jQuery('.lbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbez_lov').on( "click", function() {
+           jQuery('.lbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lboc_lov').on( "click", function() {
+           jQuery('.lboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lcarb_lov').on( "click", function() {
+           jQuery('.lcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lcicl_lov').on( "click", function() {
+           jQuery('.lcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lcil_lov').on( "click", function() {
+           jQuery('.lcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lcol_lov').on( "click", function() {
+           jQuery('.lcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ldac_lov').on( "click", function() {
+           jQuery('.ldac+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.ldan_lov').on( "click", function() {
+           jQuery('.ldan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ldron_lov').on( "click", function() {
+           jQuery('.ldron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.lfen_lov').on( "click", function() {
+           jQuery('.lfen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.lgem_lov').on( "click", function() {
+           jQuery('.lgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.lmacro_lov').on( "click", function() {
+           jQuery('.lmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lres_lov').on( "click", function() {
+           jQuery('.lres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lrif_lov').on( "click", function() {
+           jQuery('.lrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lsim_lov').on( "click", function() {
+           jQuery('.lsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ltel_lov').on( "click", function() {
+           jQuery('.ltel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.lzumo_lov').on( "click", function() {
+           jQuery('.lzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+        jQuery('#pitav_inter').on( "click", function() {
+           jQuery('.sub_pitav_inter').toggle(); //muestro mediante clase
+  });
+
+  jQuery('.paco_pitav').on( "click", function() {
+           jQuery('.paco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pami_pitav').on( "click", function() {
+           jQuery('.pami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pant_pitav').on( "click", function() {
+           jQuery('.pant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pantia_pitav').on( "click", function() {
+           jQuery('.pantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pantif_pitav').on( "click", function() {
+           jQuery('.pantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.pasocl_pitav').on( "click", function() {
+           jQuery('.pasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pasoco_pitav').on( "click", function() {
+           jQuery('.pasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbar_pitav').on( "click", function() {
+           jQuery('.pbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbez_pitav').on( "click", function() {
+           jQuery('.pbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pboc_pitav').on( "click", function() {
+           jQuery('.pboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pcarb_pitav').on( "click", function() {
+           jQuery('.pcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pcicl_pitav').on( "click", function() {
+           jQuery('.pcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.pcil_pitav').on( "click", function() {
+           jQuery('.pcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pcol_pitav').on( "click", function() {
+           jQuery('.pcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pdacl_pitav').on( "click", function() {
+           jQuery('.pdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pdan_pitav').on( "click", function() {
+           jQuery('.pdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pdrone_pitav').on( "click", function() {
+           jQuery('.pdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pfen_pitav').on( "click", function() {
+           jQuery('.pfen+div').toggle(); //muestro mediante clase
+ 
+  });
+          jQuery('.perit_pitav').on( "click", function() {
+           jQuery('.perit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.pgem_pitav').on( "click", function() {
+           jQuery('.pgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.pmacro_pitav').on( "click", function() {
+           jQuery('.pmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pres_pitav').on( "click", function() {
+           jQuery('.pres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prif_pitav').on( "click", function() {
+           jQuery('.prif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.psim_pitav').on( "click", function() {
+           jQuery('.psim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ptela_pitav').on( "click", function() {
+           jQuery('.ptela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pzumo_pitav').on( "click", function() {
+           jQuery('.pzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+          jQuery('#prav_inter').on( "click", function() {
+           jQuery('.sub_prav_inter').toggle(); //muestro mediante clase
+  });
+
+jQuery('.praco_prav').on( "click", function() {
+           jQuery('.praco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prami_prav').on( "click", function() {
+           jQuery('.prami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prant_prav').on( "click", function() {
+           jQuery('.prant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prantia_prav').on( "click", function() {
+           jQuery('.prantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prantif_prav').on( "click", function() {
+           jQuery('.prantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasocl_prav').on( "click", function() {
+           jQuery('.prasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasoco_prav').on( "click", function() {
+           jQuery('.prasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbar_prav').on( "click", function() {
+           jQuery('.prbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbez_prav').on( "click", function() {
+           jQuery('.prbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prboc_prav').on( "click", function() {
+           jQuery('.prboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prcarb_prav').on( "click", function() {
+           jQuery('.prcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prcicl_prav').on( "click", function() {
+           jQuery('.prcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prcil_prav').on( "click", function() {
+           jQuery('.prcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prcolc_prav').on( "click", function() {
+           jQuery('.prcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prdacl_prav').on( "click", function() {
+           jQuery('.prdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prdan_prav').on( "click", function() {
+           jQuery('.prdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prdrone_prav').on( "click", function() {
+           jQuery('.prdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prfeno_prav').on( "click", function() {
+           jQuery('.prfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.prgem_prav').on( "click", function() {
+           jQuery('.prgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.prmacro_prav').on( "click", function() {
+           jQuery('.prmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prres_prav').on( "click", function() {
+           jQuery('.prres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prrif_prav').on( "click", function() {
+           jQuery('.prrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prsim_prav').on( "click", function() {
+           jQuery('.prsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prtela_prav').on( "click", function() {
+           jQuery('.prtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.przumo_prav').on( "click", function() {
+           jQuery('.przumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+            jQuery('#rosuv_inter').on( "click", function() {
+           jQuery('.sub_rosuv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.raco_rosuv').on( "click", function() {
+           jQuery('.raco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rami_rosuv').on( "click", function() {
+           jQuery('.rami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rant_rosuv').on( "click", function() {
+           jQuery('.rant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rantia_rosuv').on( "click", function() {
+           jQuery('.rantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rantif_rosuv').on( "click", function() {
+           jQuery('.rantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasocl_rosuv').on( "click", function() {
+           jQuery('.rasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasoco_rosuv').on( "click", function() {
+           jQuery('.rasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbar_rosuv').on( "click", function() {
+           jQuery('.rbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbez_rosuv').on( "click", function() {
+           jQuery('.rbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rboc_rosuv').on( "click", function() {
+           jQuery('.rboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rcarb_rosuv').on( "click", function() {
+           jQuery('.rcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rcicl_rosuv').on( "click", function() {
+           jQuery('.rcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rcil_rosuv').on( "click", function() {
+           jQuery('.rcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rcolc_rosuv').on( "click", function() {
+           jQuery('.rcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rdacl_rosuv').on( "click", function() {
+           jQuery('.rdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rdan_rosuv').on( "click", function() {
+           jQuery('.rdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rdrone_rosuv').on( "click", function() {
+           jQuery('.rdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rfen_rosuv').on( "click", function() {
+           jQuery('.rfen+div').toggle(); //muestro mediante clase
+ 
+  });
+                                    jQuery('.rerit_rosuv').on( "click", function() {
+           jQuery('.rerit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.rgem_rosuv').on( "click", function() {
+           jQuery('.rgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.rmacro_rosuv').on( "click", function() {
+           jQuery('.rmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rres_rosuv').on( "click", function() {
+           jQuery('.rres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rrif_rosuv').on( "click", function() {
+           jQuery('.rrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rsim_rosuv').on( "click", function() {
+           jQuery('.rsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rtela_rosuv').on( "click", function() {
+           jQuery('.rtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rzumo_rosuv').on( "click", function() {
+           jQuery('.rzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+              jQuery('#simv_inter').on( "click", function() {
+           jQuery('.sub_simv_inter').toggle(); //muestro mediante clase
+
+  });
+              jQuery('.saco_simv').on( "click", function() {
+           jQuery('.saco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.sami_simv').on( "click", function() {
+           jQuery('.sami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santa_simv').on( "click", function() {
+           jQuery('.santa+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santia_simv').on( "click", function() {
+           jQuery('.santia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.santif_simv').on( "click", function() {
+           jQuery('.santif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.sasocl_simv').on( "click", function() {
+           jQuery('.sasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbarb_simv').on( "click", function() {
+           jQuery('.sbarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbez_simv').on( "click", function() {
+           jQuery('.sbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.sboce_simv').on( "click", function() {
+           jQuery('.sboce+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.scarb_simv').on( "click", function() {
+           jQuery('.scarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.scicl_simv').on( "click", function() {
+           jQuery('.scicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.scil_simv').on( "click", function() {
+           jQuery('.scil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.scolc_simv').on( "click", function() {
+           jQuery('.scolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.sdacl_simv').on( "click", function() {
+           jQuery('.sdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sdan_simv').on( "click", function() {
+           jQuery('.sdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sdrone_simv').on( "click", function() {
+           jQuery('.sdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sfeno_simv').on( "click", function() {
+           jQuery('.sfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.sgem_simv').on( "click", function() {
+           jQuery('.sgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.smacro_simv').on( "click", function() {
+           jQuery('.smacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sres_simv').on( "click", function() {
+           jQuery('.sres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.srif_simv').on( "click", function() {
+           jQuery('.srif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.ssim_simv').on( "click", function() {
+           jQuery('.ssim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.stel_simv').on( "click", function() {
+           jQuery('.stel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.szumo_simv').on( "click", function() {
+           jQuery('.szumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+$scope.filtrar_inter = function() {
+
+
+
+  
+
+ if( $('.check_ator').is(':checked') ) {
+    quitar_ator_inter=true;
+}
+if( $('.check_fluv').is(':checked') ) {
+    quitar_fluv_inter=true;
+}
+if( $('.check_lov').is(':checked') ) {
+    quitar_lov_inter=true;
+}
+if( $('.check_pita').is(':checked') ) {
+    quitar_pito_inter=true;
+}
+if( $('.check_prav').is(':checked') ) {
+    quitar_pra_inter=true;
+}
+if( $('.check_rosu').is(':checked') ) {
+    quitar_rosu_inter=true;
+}
+if( $('.check_sim').is(':checked') ) {
+    quitar_sim_inter=true;
+}
+
+$state.go('menu_interacciones_vih');
+   console.log(quitar_ator_inter+","+quitar_fluv_inter+","+quitar_lov_inter+","+quitar_pito_inter+","+quitar_pra_inter+","+quitar_rosu_inter+","+quitar_sim_inter);
+        
+        
+    }
+
+              
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+.controller('Fibratos',function($scope,$state,$rootScope){
+  var previo=$rootScope.previousState;
+if (previo=="menu_interacciones"){
+  jQuery('.procedencia1').toggle();
+}
+else{
+  jQuery('.procedencia2').toggle();
+}
+
+  jQuery('#atorv_inter').on( "click", function() {
+           jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
+
+  });
+ 
+
+  jQuery('.aco_atorv').on( "click", function() {
+           jQuery('.aco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.ami_atorv').on( "click", function() {
+           jQuery('.ami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.ant_atorv').on( "click", function() {
+           jQuery('.ant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.antia_atorv').on( "click", function() {
+           jQuery('.antia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.antif_atorv').on( "click", function() {
+           jQuery('.antif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.asocl_atorv').on( "click", function() {
+           jQuery('.asocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bar_atorv').on( "click", function() {
+           jQuery('.bar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bez_atorv').on( "click", function() {
+           jQuery('.bez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.boc_atorv').on( "click", function() {
+           jQuery('.boc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.carb_atorv').on( "click", function() {
+           jQuery('.carb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.cicl_atorv').on( "click", function() {
+           jQuery('.cicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.cil_atorv').on( "click", function() {
+           jQuery('.cil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.colc_atorv').on( "click", function() {
+           jQuery('.colc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.dacl_atorv').on( "click", function() {
+           jQuery('.dacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.dan_atorv').on( "click", function() {
+           jQuery('.dan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.dron_atorv').on( "click", function() {
+           jQuery('.dron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.feno_atorv').on( "click", function() {
+           jQuery('.feno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.gim_atorv').on( "click", function() {
+           jQuery('.gim+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.macro_atorv').on( "click", function() {
+           jQuery('.macro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.res_atorv').on( "click", function() {
+           jQuery('.res+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rif_atorv').on( "click", function() {
+           jQuery('.rif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.sime_atorv').on( "click", function() {
+           jQuery('.sime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.tela_atorv').on( "click", function() {
+           jQuery('.tela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.zumo_atorv').on( "click", function() {
+           jQuery('.zumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    jQuery('#fluv_inter').on( "click", function() {
+           jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.faco_fluv').on( "click", function() {
+           jQuery('.faco+div').toggle(); //muestro mediante clase
+ 
+  });
+
+jQuery('.esta_fluv').on( "click", function() {
+           jQuery('.esta+div').toggle(); //muestro mediante clase
  
   });
   jQuery('.fami_fluv').on( "click", function() {
@@ -9631,6 +11407,857 @@ $state.go('menu_interacciones');
 
 
 
+.controller('FibratosDir',function($scope,$state,$rootScope){
+  var previo=$rootScope.previousState;
+if (previo=="menu_interacciones"){
+  jQuery('.procedencia1').toggle();
+}
+else{
+  jQuery('.procedencia2').toggle();
+}
+
+  jQuery('#atorv_inter').on( "click", function() {
+           jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
+
+  });
+
+  jQuery('.aco_atorv').on( "click", function() {
+           jQuery('.aco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.ami_atorv').on( "click", function() {
+           jQuery('.ami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.ant_atorv').on( "click", function() {
+           jQuery('.ant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.antia_atorv').on( "click", function() {
+           jQuery('.antia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.antif_atorv').on( "click", function() {
+           jQuery('.antif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.asocl_atorv').on( "click", function() {
+           jQuery('.asocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bar_atorv').on( "click", function() {
+           jQuery('.bar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bez_atorv').on( "click", function() {
+           jQuery('.bez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.boc_atorv').on( "click", function() {
+           jQuery('.boc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.carb_atorv').on( "click", function() {
+           jQuery('.carb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.cicl_atorv').on( "click", function() {
+           jQuery('.cicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.cil_atorv').on( "click", function() {
+           jQuery('.cil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.colc_atorv').on( "click", function() {
+           jQuery('.colc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.dacl_atorv').on( "click", function() {
+           jQuery('.dacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.dan_atorv').on( "click", function() {
+           jQuery('.dan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.dron_atorv').on( "click", function() {
+           jQuery('.dron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.feno_atorv').on( "click", function() {
+           jQuery('.feno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.gim_atorv').on( "click", function() {
+           jQuery('.gim+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.macro_atorv').on( "click", function() {
+           jQuery('.macro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.res_atorv').on( "click", function() {
+           jQuery('.res+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rif_atorv').on( "click", function() {
+           jQuery('.rif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.sime_atorv').on( "click", function() {
+           jQuery('.sime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.tela_atorv').on( "click", function() {
+           jQuery('.tela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.zumo_atorv').on( "click", function() {
+           jQuery('.zumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    jQuery('#fluv_inter').on( "click", function() {
+           jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.faco_fluv').on( "click", function() {
+           jQuery('.faco+div').toggle(); //muestro mediante clase
+ 
+  });
+jQuery('.esta_fluv').on( "click", function() {
+           jQuery('.esta+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fami_fluv').on( "click", function() {
+           jQuery('.fami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fant_fluv').on( "click", function() {
+           jQuery('.fant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fantia_fluv').on( "click", function() {
+           jQuery('.fantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fantif_fluv').on( "click", function() {
+           jQuery('.fantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.fasoco_fluv').on( "click", function() {
+           jQuery('.fasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbar_fluv').on( "click", function() {
+           jQuery('.fbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbez_fluv').on( "click", function() {
+           jQuery('.fbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fboc_fluv').on( "click", function() {
+           jQuery('.fboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fcarb_fluv').on( "click", function() {
+           jQuery('.fcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fcicl_fluv').on( "click", function() {
+           jQuery('.fcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fcil_fluv').on( "click", function() {
+           jQuery('.fcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fcolc_fluv').on( "click", function() {
+           jQuery('.fcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fdacl_fluv').on( "click", function() {
+           jQuery('.fdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fdan_fluv').on( "click", function() {
+           jQuery('.fdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.fdron_fluv').on( "click", function() {
+           jQuery('.fdron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ferit_fluv').on( "click", function() {
+           jQuery('.ferit+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ffen_fluv').on( "click", function() {
+           jQuery('.ffen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.fgem_fluv').on( "click", function() {
+           jQuery('.fgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.fmacro_fluv').on( "click", function() {
+           jQuery('.fmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fres_fluv').on( "click", function() {
+           jQuery('.fres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.ffluc_fluv').on( "click", function() {
+           jQuery('.ffluc+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fsime_fluv').on( "click", function() {
+           jQuery('.fsime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ftela_fluv').on( "click", function() {
+           jQuery('.ftela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fzumo_fluv').on( "click", function() {
+           jQuery('.fzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+      jQuery('#lov_inter').on( "click", function() {
+           jQuery('.sub_lov_inter').toggle(); //muestro mediante clase
+  });
+ jQuery('.laco_lov').on( "click", function() {
+           jQuery('.laco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lami_lov').on( "click", function() {
+           jQuery('.lami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lanta_lov').on( "click", function() {
+           jQuery('.lanta+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lantia_lov').on( "click", function() {
+           jQuery('.lantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lantif_lov').on( "click", function() {
+           jQuery('.lantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.lasocl_lov').on( "click", function() {
+           jQuery('.lasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbar_lov').on( "click", function() {
+           jQuery('.lbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbez_lov').on( "click", function() {
+           jQuery('.lbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lboc_lov').on( "click", function() {
+           jQuery('.lboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lcarb_lov').on( "click", function() {
+           jQuery('.lcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lcicl_lov').on( "click", function() {
+           jQuery('.lcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lcil_lov').on( "click", function() {
+           jQuery('.lcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lcol_lov').on( "click", function() {
+           jQuery('.lcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ldac_lov').on( "click", function() {
+           jQuery('.ldac+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.ldan_lov').on( "click", function() {
+           jQuery('.ldan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ldron_lov').on( "click", function() {
+           jQuery('.ldron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.lfen_lov').on( "click", function() {
+           jQuery('.lfen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.lgem_lov').on( "click", function() {
+           jQuery('.lgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.lmacro_lov').on( "click", function() {
+           jQuery('.lmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lres_lov').on( "click", function() {
+           jQuery('.lres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lrif_lov').on( "click", function() {
+           jQuery('.lrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lsim_lov').on( "click", function() {
+           jQuery('.lsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ltel_lov').on( "click", function() {
+           jQuery('.ltel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.lzumo_lov').on( "click", function() {
+           jQuery('.lzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+        jQuery('#pitav_inter').on( "click", function() {
+           jQuery('.sub_pitav_inter').toggle(); //muestro mediante clase
+  });
+
+  jQuery('.paco_pitav').on( "click", function() {
+           jQuery('.paco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pami_pitav').on( "click", function() {
+           jQuery('.pami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pant_pitav').on( "click", function() {
+           jQuery('.pant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pantia_pitav').on( "click", function() {
+           jQuery('.pantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pantif_pitav').on( "click", function() {
+           jQuery('.pantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.pasocl_pitav').on( "click", function() {
+           jQuery('.pasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pasoco_pitav').on( "click", function() {
+           jQuery('.pasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbar_pitav').on( "click", function() {
+           jQuery('.pbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbez_pitav').on( "click", function() {
+           jQuery('.pbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pboc_pitav').on( "click", function() {
+           jQuery('.pboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pcarb_pitav').on( "click", function() {
+           jQuery('.pcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pcicl_pitav').on( "click", function() {
+           jQuery('.pcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.pcil_pitav').on( "click", function() {
+           jQuery('.pcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pcol_pitav').on( "click", function() {
+           jQuery('.pcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pdacl_pitav').on( "click", function() {
+           jQuery('.pdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pdan_pitav').on( "click", function() {
+           jQuery('.pdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pdrone_pitav').on( "click", function() {
+           jQuery('.pdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pfen_pitav').on( "click", function() {
+           jQuery('.pfen+div').toggle(); //muestro mediante clase
+ 
+  });
+          jQuery('.perit_pitav').on( "click", function() {
+           jQuery('.perit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.pgem_pitav').on( "click", function() {
+           jQuery('.pgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.pmacro_pitav').on( "click", function() {
+           jQuery('.pmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pres_pitav').on( "click", function() {
+           jQuery('.pres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prif_pitav').on( "click", function() {
+           jQuery('.prif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.psim_pitav').on( "click", function() {
+           jQuery('.psim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ptela_pitav').on( "click", function() {
+           jQuery('.ptela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pzumo_pitav').on( "click", function() {
+           jQuery('.pzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+          jQuery('#prav_inter').on( "click", function() {
+           jQuery('.sub_prav_inter').toggle(); //muestro mediante clase
+  });
+
+jQuery('.praco_prav').on( "click", function() {
+           jQuery('.praco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prami_prav').on( "click", function() {
+           jQuery('.prami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prant_prav').on( "click", function() {
+           jQuery('.prant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prantia_prav').on( "click", function() {
+           jQuery('.prantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prantif_prav').on( "click", function() {
+           jQuery('.prantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasocl_prav').on( "click", function() {
+           jQuery('.prasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasoco_prav').on( "click", function() {
+           jQuery('.prasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbar_prav').on( "click", function() {
+           jQuery('.prbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbez_prav').on( "click", function() {
+           jQuery('.prbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prboc_prav').on( "click", function() {
+           jQuery('.prboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prcarb_prav').on( "click", function() {
+           jQuery('.prcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prcicl_prav').on( "click", function() {
+           jQuery('.prcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prcil_prav').on( "click", function() {
+           jQuery('.prcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prcolc_prav').on( "click", function() {
+           jQuery('.prcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prdacl_prav').on( "click", function() {
+           jQuery('.prdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prdan_prav').on( "click", function() {
+           jQuery('.prdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prdrone_prav').on( "click", function() {
+           jQuery('.prdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prfeno_prav').on( "click", function() {
+           jQuery('.prfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.prgem_prav').on( "click", function() {
+           jQuery('.prgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.prmacro_prav').on( "click", function() {
+           jQuery('.prmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prres_prav').on( "click", function() {
+           jQuery('.prres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prrif_prav').on( "click", function() {
+           jQuery('.prrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prsim_prav').on( "click", function() {
+           jQuery('.prsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prtela_prav').on( "click", function() {
+           jQuery('.prtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.przumo_prav').on( "click", function() {
+           jQuery('.przumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+            jQuery('#rosuv_inter').on( "click", function() {
+           jQuery('.sub_rosuv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.raco_rosuv').on( "click", function() {
+           jQuery('.raco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rami_rosuv').on( "click", function() {
+           jQuery('.rami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rant_rosuv').on( "click", function() {
+           jQuery('.rant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rantia_rosuv').on( "click", function() {
+           jQuery('.rantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rantif_rosuv').on( "click", function() {
+           jQuery('.rantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasocl_rosuv').on( "click", function() {
+           jQuery('.rasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasoco_rosuv').on( "click", function() {
+           jQuery('.rasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbar_rosuv').on( "click", function() {
+           jQuery('.rbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbez_rosuv').on( "click", function() {
+           jQuery('.rbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rboc_rosuv').on( "click", function() {
+           jQuery('.rboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rcarb_rosuv').on( "click", function() {
+           jQuery('.rcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rcicl_rosuv').on( "click", function() {
+           jQuery('.rcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rcil_rosuv').on( "click", function() {
+           jQuery('.rcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rcolc_rosuv').on( "click", function() {
+           jQuery('.rcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rdacl_rosuv').on( "click", function() {
+           jQuery('.rdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rdan_rosuv').on( "click", function() {
+           jQuery('.rdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rdrone_rosuv').on( "click", function() {
+           jQuery('.rdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rfen_rosuv').on( "click", function() {
+           jQuery('.rfen+div').toggle(); //muestro mediante clase
+ 
+  });
+                                    jQuery('.rerit_rosuv').on( "click", function() {
+           jQuery('.rerit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.rgem_rosuv').on( "click", function() {
+           jQuery('.rgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.rmacro_rosuv').on( "click", function() {
+           jQuery('.rmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rres_rosuv').on( "click", function() {
+           jQuery('.rres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rrif_rosuv').on( "click", function() {
+           jQuery('.rrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rsim_rosuv').on( "click", function() {
+           jQuery('.rsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rtela_rosuv').on( "click", function() {
+           jQuery('.rtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rzumo_rosuv').on( "click", function() {
+           jQuery('.rzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+              jQuery('#simv_inter').on( "click", function() {
+           jQuery('.sub_simv_inter').toggle(); //muestro mediante clase
+
+  });
+              jQuery('.saco_simv').on( "click", function() {
+           jQuery('.saco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.sami_simv').on( "click", function() {
+           jQuery('.sami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santa_simv').on( "click", function() {
+           jQuery('.santa+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santia_simv').on( "click", function() {
+           jQuery('.santia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.santif_simv').on( "click", function() {
+           jQuery('.santif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.sasocl_simv').on( "click", function() {
+           jQuery('.sasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbarb_simv').on( "click", function() {
+           jQuery('.sbarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbez_simv').on( "click", function() {
+           jQuery('.sbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.sboce_simv').on( "click", function() {
+           jQuery('.sboce+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.scarb_simv').on( "click", function() {
+           jQuery('.scarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.scicl_simv').on( "click", function() {
+           jQuery('.scicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.scil_simv').on( "click", function() {
+           jQuery('.scil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.scolc_simv').on( "click", function() {
+           jQuery('.scolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.sdacl_simv').on( "click", function() {
+           jQuery('.sdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sdan_simv').on( "click", function() {
+           jQuery('.sdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sdrone_simv').on( "click", function() {
+           jQuery('.sdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sfeno_simv').on( "click", function() {
+           jQuery('.sfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.sgem_simv').on( "click", function() {
+           jQuery('.sgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.smacro_simv').on( "click", function() {
+           jQuery('.smacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sres_simv').on( "click", function() {
+           jQuery('.sres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.srif_simv').on( "click", function() {
+           jQuery('.srif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.ssim_simv').on( "click", function() {
+           jQuery('.ssim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.stel_simv').on( "click", function() {
+           jQuery('.stel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.szumo_simv').on( "click", function() {
+           jQuery('.szumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+$scope.filtrar_inter = function() {
+
+
+
+
+ if( $('.check_ator').is(':checked') ) {
+    quitar_ator_inter=true;
+}
+if( $('.check_fluv').is(':checked') ) {
+    quitar_fluv_inter=true;
+}
+if( $('.check_lov').is(':checked') ) {
+    quitar_lov_inter=true;
+}
+if( $('.check_pita').is(':checked') ) {
+    quitar_pito_inter=true;
+}
+if( $('.check_prav').is(':checked') ) {
+    quitar_pra_inter=true;
+}
+if( $('.check_rosu').is(':checked') ) {
+    quitar_rosu_inter=true;
+    
+}
+if( $('.check_sim').is(':checked') ) {
+    quitar_sim_inter=true;
+    eliminar_sim=true;
+}
+
+
+
+$state.go('menu_interacciones');
+   
+        
+        
+    }
+
+              
+
+
+
+})
+
+
+
+
+
 
 
 
@@ -9784,6 +12411,10 @@ else{
   });
 jQuery('.faco_fluv').on( "click", function() {
            jQuery('.faco+div').toggle(); //muestro mediante clase
+ 
+  });
+jQuery('.esta_fluv').on( "click", function() {
+           jQuery('.esta+div').toggle(); //muestro mediante clase
  
   });
   jQuery('.fami_fluv').on( "click", function() {
@@ -10492,6 +13123,871 @@ $state.go('menu_interacciones_vih');
 
 
 })
+
+
+
+
+
+
+
+
+.controller('FibratosVIHDir',function($scope,$state,$rootScope){
+  if(rama_vih==true){
+    jQuery('.estatinasbtn_vih1').toggle();
+  }
+   else if(rama_vih==false){
+    jQuery('.estatinasbtn_vih2').toggle();
+  }
+  var previo=$rootScope.previousState;
+if (previo=="menu_interacciones"){
+  jQuery('.procedencia1').toggle();
+}
+else{
+  jQuery('.procedencia2').toggle();
+}
+
+  jQuery('#atorv_inter').on( "click", function() {
+           jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
+
+  });
+
+  jQuery('.aco_atorv').on( "click", function() {
+           jQuery('.aco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.ami_atorv').on( "click", function() {
+           jQuery('.ami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.ant_atorv').on( "click", function() {
+           jQuery('.ant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.antia_atorv').on( "click", function() {
+           jQuery('.antia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.antif_atorv').on( "click", function() {
+           jQuery('.antif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.asocl_atorv').on( "click", function() {
+           jQuery('.asocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bar_atorv').on( "click", function() {
+           jQuery('.bar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bez_atorv').on( "click", function() {
+           jQuery('.bez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.boc_atorv').on( "click", function() {
+           jQuery('.boc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.carb_atorv').on( "click", function() {
+           jQuery('.carb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.cicl_atorv').on( "click", function() {
+           jQuery('.cicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.cil_atorv').on( "click", function() {
+           jQuery('.cil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.colc_atorv').on( "click", function() {
+           jQuery('.colc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.dacl_atorv').on( "click", function() {
+           jQuery('.dacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.dan_atorv').on( "click", function() {
+           jQuery('.dan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.dron_atorv').on( "click", function() {
+           jQuery('.dron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.feno_atorv').on( "click", function() {
+           jQuery('.feno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.gim_atorv').on( "click", function() {
+           jQuery('.gim+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.macro_atorv').on( "click", function() {
+           jQuery('.macro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.res_atorv').on( "click", function() {
+           jQuery('.res+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rif_atorv').on( "click", function() {
+           jQuery('.rif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.sime_atorv').on( "click", function() {
+           jQuery('.sime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.tela_atorv').on( "click", function() {
+           jQuery('.tela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.zumo_atorv').on( "click", function() {
+           jQuery('.zumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    jQuery('#fluv_inter').on( "click", function() {
+           jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.faco_fluv').on( "click", function() {
+           jQuery('.faco+div').toggle(); //muestro mediante clase
+ 
+  });
+jQuery('.esta_fluv').on( "click", function() {
+           jQuery('.esta+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fami_fluv').on( "click", function() {
+           jQuery('.fami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fant_fluv').on( "click", function() {
+           jQuery('.fant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fantia_fluv').on( "click", function() {
+           jQuery('.fantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fantif_fluv').on( "click", function() {
+           jQuery('.fantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.fasoco_fluv').on( "click", function() {
+           jQuery('.fasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbar_fluv').on( "click", function() {
+           jQuery('.fbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbez_fluv').on( "click", function() {
+           jQuery('.fbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fboc_fluv').on( "click", function() {
+           jQuery('.fboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fcarb_fluv').on( "click", function() {
+           jQuery('.fcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fcicl_fluv').on( "click", function() {
+           jQuery('.fcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fcil_fluv').on( "click", function() {
+           jQuery('.fcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fcolc_fluv').on( "click", function() {
+           jQuery('.fcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fdacl_fluv').on( "click", function() {
+           jQuery('.fdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fdan_fluv').on( "click", function() {
+           jQuery('.fdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.fdron_fluv').on( "click", function() {
+           jQuery('.fdron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ferit_fluv').on( "click", function() {
+           jQuery('.ferit+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ffen_fluv').on( "click", function() {
+           jQuery('.ffen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.fgem_fluv').on( "click", function() {
+           jQuery('.fgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.fmacro_fluv').on( "click", function() {
+           jQuery('.fmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fres_fluv').on( "click", function() {
+           jQuery('.fres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.ffluc_fluv').on( "click", function() {
+           jQuery('.ffluc+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fsime_fluv').on( "click", function() {
+           jQuery('.fsime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ftela_fluv').on( "click", function() {
+           jQuery('.ftela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fzumo_fluv').on( "click", function() {
+           jQuery('.fzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+      jQuery('#lov_inter').on( "click", function() {
+           jQuery('.sub_lov_inter').toggle(); //muestro mediante clase
+  });
+ jQuery('.laco_lov').on( "click", function() {
+           jQuery('.laco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lami_lov').on( "click", function() {
+           jQuery('.lami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lanta_lov').on( "click", function() {
+           jQuery('.lanta+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lantia_lov').on( "click", function() {
+           jQuery('.lantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lantif_lov').on( "click", function() {
+           jQuery('.lantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.lasocl_lov').on( "click", function() {
+           jQuery('.lasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbar_lov').on( "click", function() {
+           jQuery('.lbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbez_lov').on( "click", function() {
+           jQuery('.lbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lboc_lov').on( "click", function() {
+           jQuery('.lboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lcarb_lov').on( "click", function() {
+           jQuery('.lcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lcicl_lov').on( "click", function() {
+           jQuery('.lcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lcil_lov').on( "click", function() {
+           jQuery('.lcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lcol_lov').on( "click", function() {
+           jQuery('.lcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ldac_lov').on( "click", function() {
+           jQuery('.ldac+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.ldan_lov').on( "click", function() {
+           jQuery('.ldan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ldron_lov').on( "click", function() {
+           jQuery('.ldron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.lfen_lov').on( "click", function() {
+           jQuery('.lfen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.lgem_lov').on( "click", function() {
+           jQuery('.lgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.lmacro_lov').on( "click", function() {
+           jQuery('.lmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lres_lov').on( "click", function() {
+           jQuery('.lres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lrif_lov').on( "click", function() {
+           jQuery('.lrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lsim_lov').on( "click", function() {
+           jQuery('.lsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ltel_lov').on( "click", function() {
+           jQuery('.ltel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.lzumo_lov').on( "click", function() {
+           jQuery('.lzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+        jQuery('#pitav_inter').on( "click", function() {
+           jQuery('.sub_pitav_inter').toggle(); //muestro mediante clase
+  });
+
+  jQuery('.paco_pitav').on( "click", function() {
+           jQuery('.paco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pami_pitav').on( "click", function() {
+           jQuery('.pami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pant_pitav').on( "click", function() {
+           jQuery('.pant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pantia_pitav').on( "click", function() {
+           jQuery('.pantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pantif_pitav').on( "click", function() {
+           jQuery('.pantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.pasocl_pitav').on( "click", function() {
+           jQuery('.pasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pasoco_pitav').on( "click", function() {
+           jQuery('.pasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbar_pitav').on( "click", function() {
+           jQuery('.pbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbez_pitav').on( "click", function() {
+           jQuery('.pbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pboc_pitav').on( "click", function() {
+           jQuery('.pboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pcarb_pitav').on( "click", function() {
+           jQuery('.pcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pcicl_pitav').on( "click", function() {
+           jQuery('.pcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.pcil_pitav').on( "click", function() {
+           jQuery('.pcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pcol_pitav').on( "click", function() {
+           jQuery('.pcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pdacl_pitav').on( "click", function() {
+           jQuery('.pdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pdan_pitav').on( "click", function() {
+           jQuery('.pdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pdrone_pitav').on( "click", function() {
+           jQuery('.pdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pfen_pitav').on( "click", function() {
+           jQuery('.pfen+div').toggle(); //muestro mediante clase
+ 
+  });
+          jQuery('.perit_pitav').on( "click", function() {
+           jQuery('.perit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.pgem_pitav').on( "click", function() {
+           jQuery('.pgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.pmacro_pitav').on( "click", function() {
+           jQuery('.pmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pres_pitav').on( "click", function() {
+           jQuery('.pres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prif_pitav').on( "click", function() {
+           jQuery('.prif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.psim_pitav').on( "click", function() {
+           jQuery('.psim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ptela_pitav').on( "click", function() {
+           jQuery('.ptela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pzumo_pitav').on( "click", function() {
+           jQuery('.pzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+          jQuery('#prav_inter').on( "click", function() {
+           jQuery('.sub_prav_inter').toggle(); //muestro mediante clase
+  });
+
+jQuery('.praco_prav').on( "click", function() {
+           jQuery('.praco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prami_prav').on( "click", function() {
+           jQuery('.prami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prant_prav').on( "click", function() {
+           jQuery('.prant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prantia_prav').on( "click", function() {
+           jQuery('.prantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prantif_prav').on( "click", function() {
+           jQuery('.prantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasocl_prav').on( "click", function() {
+           jQuery('.prasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasoco_prav').on( "click", function() {
+           jQuery('.prasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbar_prav').on( "click", function() {
+           jQuery('.prbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbez_prav').on( "click", function() {
+           jQuery('.prbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prboc_prav').on( "click", function() {
+           jQuery('.prboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prcarb_prav').on( "click", function() {
+           jQuery('.prcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prcicl_prav').on( "click", function() {
+           jQuery('.prcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prcil_prav').on( "click", function() {
+           jQuery('.prcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prcolc_prav').on( "click", function() {
+           jQuery('.prcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prdacl_prav').on( "click", function() {
+           jQuery('.prdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prdan_prav').on( "click", function() {
+           jQuery('.prdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prdrone_prav').on( "click", function() {
+           jQuery('.prdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prfeno_prav').on( "click", function() {
+           jQuery('.prfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.prgem_prav').on( "click", function() {
+           jQuery('.prgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.prmacro_prav').on( "click", function() {
+           jQuery('.prmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prres_prav').on( "click", function() {
+           jQuery('.prres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prrif_prav').on( "click", function() {
+           jQuery('.prrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prsim_prav').on( "click", function() {
+           jQuery('.prsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prtela_prav').on( "click", function() {
+           jQuery('.prtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.przumo_prav').on( "click", function() {
+           jQuery('.przumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+            jQuery('#rosuv_inter').on( "click", function() {
+           jQuery('.sub_rosuv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.raco_rosuv').on( "click", function() {
+           jQuery('.raco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rami_rosuv').on( "click", function() {
+           jQuery('.rami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rant_rosuv').on( "click", function() {
+           jQuery('.rant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rantia_rosuv').on( "click", function() {
+           jQuery('.rantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rantif_rosuv').on( "click", function() {
+           jQuery('.rantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasocl_rosuv').on( "click", function() {
+           jQuery('.rasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasoco_rosuv').on( "click", function() {
+           jQuery('.rasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbar_rosuv').on( "click", function() {
+           jQuery('.rbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbez_rosuv').on( "click", function() {
+           jQuery('.rbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rboc_rosuv').on( "click", function() {
+           jQuery('.rboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rcarb_rosuv').on( "click", function() {
+           jQuery('.rcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rcicl_rosuv').on( "click", function() {
+           jQuery('.rcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rcil_rosuv').on( "click", function() {
+           jQuery('.rcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rcolc_rosuv').on( "click", function() {
+           jQuery('.rcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rdacl_rosuv').on( "click", function() {
+           jQuery('.rdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rdan_rosuv').on( "click", function() {
+           jQuery('.rdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rdrone_rosuv').on( "click", function() {
+           jQuery('.rdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rfen_rosuv').on( "click", function() {
+           jQuery('.rfen+div').toggle(); //muestro mediante clase
+ 
+  });
+                                    jQuery('.rerit_rosuv').on( "click", function() {
+           jQuery('.rerit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.rgem_rosuv').on( "click", function() {
+           jQuery('.rgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.rmacro_rosuv').on( "click", function() {
+           jQuery('.rmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rres_rosuv').on( "click", function() {
+           jQuery('.rres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rrif_rosuv').on( "click", function() {
+           jQuery('.rrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rsim_rosuv').on( "click", function() {
+           jQuery('.rsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rtela_rosuv').on( "click", function() {
+           jQuery('.rtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rzumo_rosuv').on( "click", function() {
+           jQuery('.rzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+              jQuery('#simv_inter').on( "click", function() {
+           jQuery('.sub_simv_inter').toggle(); //muestro mediante clase
+
+  });
+              jQuery('.saco_simv').on( "click", function() {
+           jQuery('.saco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.sami_simv').on( "click", function() {
+           jQuery('.sami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santa_simv').on( "click", function() {
+           jQuery('.santa+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santia_simv').on( "click", function() {
+           jQuery('.santia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.santif_simv').on( "click", function() {
+           jQuery('.santif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.sasocl_simv').on( "click", function() {
+           jQuery('.sasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbarb_simv').on( "click", function() {
+           jQuery('.sbarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbez_simv').on( "click", function() {
+           jQuery('.sbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.sboce_simv').on( "click", function() {
+           jQuery('.sboce+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.scarb_simv').on( "click", function() {
+           jQuery('.scarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.scicl_simv').on( "click", function() {
+           jQuery('.scicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.scil_simv').on( "click", function() {
+           jQuery('.scil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.scolc_simv').on( "click", function() {
+           jQuery('.scolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.sdacl_simv').on( "click", function() {
+           jQuery('.sdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sdan_simv').on( "click", function() {
+           jQuery('.sdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sdrone_simv').on( "click", function() {
+           jQuery('.sdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sfeno_simv').on( "click", function() {
+           jQuery('.sfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.sgem_simv').on( "click", function() {
+           jQuery('.sgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.smacro_simv').on( "click", function() {
+           jQuery('.smacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sres_simv').on( "click", function() {
+           jQuery('.sres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.srif_simv').on( "click", function() {
+           jQuery('.srif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.ssim_simv').on( "click", function() {
+           jQuery('.ssim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.stel_simv').on( "click", function() {
+           jQuery('.stel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.szumo_simv').on( "click", function() {
+           jQuery('.szumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+$scope.filtrar_inter = function() {
+
+
+
+
+ if( $('.check_ator').is(':checked') ) {
+    quitar_ator_inter=true;
+}
+if( $('.check_fluv').is(':checked') ) {
+    quitar_fluv_inter=true;
+}
+if( $('.check_lov').is(':checked') ) {
+    quitar_lov_inter=true;
+}
+if( $('.check_pita').is(':checked') ) {
+    quitar_pito_inter=true;
+}
+if( $('.check_prav').is(':checked') ) {
+    quitar_pra_inter=true;
+}
+if( $('.check_rosu').is(':checked') ) {
+    quitar_rosu_inter=true;
+    
+}
+if( $('.check_sim').is(':checked') ) {
+    quitar_sim_inter=true;
+    eliminar_sim=true;
+}
+
+
+
+$state.go('menu_interacciones_vih');
+   
+        
+        
+    }
+
+              
+
+
+
+})
+
+
+
+
+
 
 
 
@@ -11357,6 +14853,864 @@ $state.go('menu_interacciones_vih');
 
 
 
+.controller('EzetimibeVIHDir',function($scope,$state,$rootScope){
+  if(rama_vih==true){
+    jQuery('.estatinasbtn_vih1').toggle();
+  }
+   else if(rama_vih==false){
+    jQuery('.estatinasbtn_vih2').toggle();
+  }
+  var previo=$rootScope.previousState;
+if (previo=="menu_interacciones"){
+  jQuery('.procedencia1').toggle();
+}
+else{
+  jQuery('.procedencia2').toggle();
+}
+
+  jQuery('#atorv_inter').on( "click", function() {
+           jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
+
+  });
+
+  jQuery('.aco_atorv').on( "click", function() {
+           jQuery('.aco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.ami_atorv').on( "click", function() {
+           jQuery('.ami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.ant_atorv').on( "click", function() {
+           jQuery('.ant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.antia_atorv').on( "click", function() {
+           jQuery('.antia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.antif_atorv').on( "click", function() {
+           jQuery('.antif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.asocl_atorv').on( "click", function() {
+           jQuery('.asocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bar_atorv').on( "click", function() {
+           jQuery('.bar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.bez_atorv').on( "click", function() {
+           jQuery('.bez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.boc_atorv').on( "click", function() {
+           jQuery('.boc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.carb_atorv').on( "click", function() {
+           jQuery('.carb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.cicl_atorv').on( "click", function() {
+           jQuery('.cicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.cil_atorv').on( "click", function() {
+           jQuery('.cil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.colc_atorv').on( "click", function() {
+           jQuery('.colc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.dacl_atorv').on( "click", function() {
+           jQuery('.dacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.dan_atorv').on( "click", function() {
+           jQuery('.dan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.dron_atorv').on( "click", function() {
+           jQuery('.dron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.feno_atorv').on( "click", function() {
+           jQuery('.feno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.gim_atorv').on( "click", function() {
+           jQuery('.gim+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.macro_atorv').on( "click", function() {
+           jQuery('.macro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.res_atorv').on( "click", function() {
+           jQuery('.res+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rif_atorv').on( "click", function() {
+           jQuery('.rif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.sime_atorv').on( "click", function() {
+           jQuery('.sime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.tela_atorv').on( "click", function() {
+           jQuery('.tela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.zumo_atorv').on( "click", function() {
+           jQuery('.zumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    jQuery('#fluv_inter').on( "click", function() {
+           jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.faco_fluv').on( "click", function() {
+           jQuery('.faco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fami_fluv').on( "click", function() {
+           jQuery('.fami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fant_fluv').on( "click", function() {
+           jQuery('.fant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.fantia_fluv').on( "click", function() {
+           jQuery('.fantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.fantif_fluv').on( "click", function() {
+           jQuery('.fantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.fasoco_fluv').on( "click", function() {
+           jQuery('.fasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbar_fluv').on( "click", function() {
+           jQuery('.fbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fbez_fluv').on( "click", function() {
+           jQuery('.fbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fboc_fluv').on( "click", function() {
+           jQuery('.fboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.fcarb_fluv').on( "click", function() {
+           jQuery('.fcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.fcicl_fluv').on( "click", function() {
+           jQuery('.fcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fcil_fluv').on( "click", function() {
+           jQuery('.fcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fcolc_fluv').on( "click", function() {
+           jQuery('.fcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fdacl_fluv').on( "click", function() {
+           jQuery('.fdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fdan_fluv').on( "click", function() {
+           jQuery('.fdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.fdron_fluv').on( "click", function() {
+           jQuery('.fdron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ferit_fluv').on( "click", function() {
+           jQuery('.ferit+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ffen_fluv').on( "click", function() {
+           jQuery('.ffen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.fgem_fluv').on( "click", function() {
+           jQuery('.fgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.fmacro_fluv').on( "click", function() {
+           jQuery('.fmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.fres_fluv').on( "click", function() {
+           jQuery('.fres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.ffluc_fluv').on( "click", function() {
+           jQuery('.ffluc+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.fsime_fluv').on( "click", function() {
+           jQuery('.fsime+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ftela_fluv').on( "click", function() {
+           jQuery('.ftela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.fzumo_fluv').on( "click", function() {
+           jQuery('.fzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+      jQuery('#lov_inter').on( "click", function() {
+           jQuery('.sub_lov_inter').toggle(); //muestro mediante clase
+  });
+ jQuery('.laco_lov').on( "click", function() {
+           jQuery('.laco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lami_lov').on( "click", function() {
+           jQuery('.lami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lanta_lov').on( "click", function() {
+           jQuery('.lanta+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.lantia_lov').on( "click", function() {
+           jQuery('.lantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.lantif_lov').on( "click", function() {
+           jQuery('.lantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.lasocl_lov').on( "click", function() {
+           jQuery('.lasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbar_lov').on( "click", function() {
+           jQuery('.lbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lbez_lov').on( "click", function() {
+           jQuery('.lbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lboc_lov').on( "click", function() {
+           jQuery('.lboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.lcarb_lov').on( "click", function() {
+           jQuery('.lcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lcicl_lov').on( "click", function() {
+           jQuery('.lcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lcil_lov').on( "click", function() {
+           jQuery('.lcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lcol_lov').on( "click", function() {
+           jQuery('.lcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ldac_lov').on( "click", function() {
+           jQuery('.ldac+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.ldan_lov').on( "click", function() {
+           jQuery('.ldan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.ldron_lov').on( "click", function() {
+           jQuery('.ldron+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.lfen_lov').on( "click", function() {
+           jQuery('.lfen+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.lgem_lov').on( "click", function() {
+           jQuery('.lgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.lmacro_lov').on( "click", function() {
+           jQuery('.lmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.lres_lov').on( "click", function() {
+           jQuery('.lres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.lrif_lov').on( "click", function() {
+           jQuery('.lrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.lsim_lov').on( "click", function() {
+           jQuery('.lsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ltel_lov').on( "click", function() {
+           jQuery('.ltel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.lzumo_lov').on( "click", function() {
+           jQuery('.lzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+        jQuery('#pitav_inter').on( "click", function() {
+           jQuery('.sub_pitav_inter').toggle(); //muestro mediante clase
+  });
+
+  jQuery('.paco_pitav').on( "click", function() {
+           jQuery('.paco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pami_pitav').on( "click", function() {
+           jQuery('.pami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pant_pitav').on( "click", function() {
+           jQuery('.pant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.pantia_pitav').on( "click", function() {
+           jQuery('.pantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.pantif_pitav').on( "click", function() {
+           jQuery('.pantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.pasocl_pitav').on( "click", function() {
+           jQuery('.pasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pasoco_pitav').on( "click", function() {
+           jQuery('.pasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbar_pitav').on( "click", function() {
+           jQuery('.pbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pbez_pitav').on( "click", function() {
+           jQuery('.pbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pboc_pitav').on( "click", function() {
+           jQuery('.pboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.pcarb_pitav').on( "click", function() {
+           jQuery('.pcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.pcicl_pitav').on( "click", function() {
+           jQuery('.pcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.pcil_pitav').on( "click", function() {
+           jQuery('.pcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pcol_pitav').on( "click", function() {
+           jQuery('.pcol+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pdacl_pitav').on( "click", function() {
+           jQuery('.pdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pdan_pitav').on( "click", function() {
+           jQuery('.pdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pdrone_pitav').on( "click", function() {
+           jQuery('.pdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.pfen_pitav').on( "click", function() {
+           jQuery('.pfen+div').toggle(); //muestro mediante clase
+ 
+  });
+          jQuery('.perit_pitav').on( "click", function() {
+           jQuery('.perit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.pgem_pitav').on( "click", function() {
+           jQuery('.pgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.pmacro_pitav').on( "click", function() {
+           jQuery('.pmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.pres_pitav').on( "click", function() {
+           jQuery('.pres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prif_pitav').on( "click", function() {
+           jQuery('.prif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.psim_pitav').on( "click", function() {
+           jQuery('.psim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.ptela_pitav').on( "click", function() {
+           jQuery('.ptela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.pzumo_pitav').on( "click", function() {
+           jQuery('.pzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+
+          jQuery('#prav_inter').on( "click", function() {
+           jQuery('.sub_prav_inter').toggle(); //muestro mediante clase
+  });
+
+jQuery('.praco_prav').on( "click", function() {
+           jQuery('.praco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prami_prav').on( "click", function() {
+           jQuery('.prami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prant_prav').on( "click", function() {
+           jQuery('.prant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.prantia_prav').on( "click", function() {
+           jQuery('.prantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.prantif_prav').on( "click", function() {
+           jQuery('.prantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasocl_prav').on( "click", function() {
+           jQuery('.prasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.prasoco_prav').on( "click", function() {
+           jQuery('.prasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbar_prav').on( "click", function() {
+           jQuery('.prbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prbez_prav').on( "click", function() {
+           jQuery('.prbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prboc_prav').on( "click", function() {
+           jQuery('.prboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.prcarb_prav').on( "click", function() {
+           jQuery('.prcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prcicl_prav').on( "click", function() {
+           jQuery('.prcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prcil_prav').on( "click", function() {
+           jQuery('.prcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prcolc_prav').on( "click", function() {
+           jQuery('.prcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prdacl_prav').on( "click", function() {
+           jQuery('.prdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prdan_prav').on( "click", function() {
+           jQuery('.prdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prdrone_prav').on( "click", function() {
+           jQuery('.prdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.prfeno_prav').on( "click", function() {
+           jQuery('.prfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.prgem_prav').on( "click", function() {
+           jQuery('.prgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.prmacro_prav').on( "click", function() {
+           jQuery('.prmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.prres_prav').on( "click", function() {
+           jQuery('.prres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.prrif_prav').on( "click", function() {
+           jQuery('.prrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.prsim_prav').on( "click", function() {
+           jQuery('.prsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.prtela_prav').on( "click", function() {
+           jQuery('.prtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.przumo_prav').on( "click", function() {
+           jQuery('.przumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+
+
+
+
+            jQuery('#rosuv_inter').on( "click", function() {
+           jQuery('.sub_rosuv_inter').toggle(); //muestro mediante clase
+  });
+jQuery('.raco_rosuv').on( "click", function() {
+           jQuery('.raco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rami_rosuv').on( "click", function() {
+           jQuery('.rami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rant_rosuv').on( "click", function() {
+           jQuery('.rant-cal+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.rantia_rosuv').on( "click", function() {
+           jQuery('.rantia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.rantif_rosuv').on( "click", function() {
+           jQuery('.rantif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasocl_rosuv').on( "click", function() {
+           jQuery('.rasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.rasoco_rosuv').on( "click", function() {
+           jQuery('.rasoco+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbar_rosuv').on( "click", function() {
+           jQuery('.rbar+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rbez_rosuv').on( "click", function() {
+           jQuery('.rbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rboc_rosuv').on( "click", function() {
+           jQuery('.rboc+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.rcarb_rosuv').on( "click", function() {
+           jQuery('.rcarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rcicl_rosuv').on( "click", function() {
+           jQuery('.rcicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rcil_rosuv').on( "click", function() {
+           jQuery('.rcil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rcolc_rosuv').on( "click", function() {
+           jQuery('.rcolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rdacl_rosuv').on( "click", function() {
+           jQuery('.rdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rdan_rosuv').on( "click", function() {
+           jQuery('.rdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rdrone_rosuv').on( "click", function() {
+           jQuery('.rdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.rfen_rosuv').on( "click", function() {
+           jQuery('.rfen+div').toggle(); //muestro mediante clase
+ 
+  });
+                                    jQuery('.rerit_rosuv').on( "click", function() {
+           jQuery('.rerit+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.rgem_rosuv').on( "click", function() {
+           jQuery('.rgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.rmacro_rosuv').on( "click", function() {
+           jQuery('.rmacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.rres_rosuv').on( "click", function() {
+           jQuery('.rres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.rrif_rosuv').on( "click", function() {
+           jQuery('.rrif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.rsim_rosuv').on( "click", function() {
+           jQuery('.rsim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rtela_rosuv').on( "click", function() {
+           jQuery('.rtela+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.rzumo_rosuv').on( "click", function() {
+           jQuery('.rzumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+
+
+
+
+              jQuery('#simv_inter').on( "click", function() {
+           jQuery('.sub_simv_inter').toggle(); //muestro mediante clase
+
+  });
+              jQuery('.saco_simv').on( "click", function() {
+           jQuery('.saco+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.sami_simv').on( "click", function() {
+           jQuery('.sami+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santa_simv').on( "click", function() {
+           jQuery('.santa+div').toggle(); //muestro mediante clase
+ 
+  });
+ jQuery('.santia_simv').on( "click", function() {
+           jQuery('.santia+div').toggle(); //muestro mediante clase
+ 
+  });
+  jQuery('.santif_simv').on( "click", function() {
+           jQuery('.santif+div').toggle(); //muestro mediante clase
+ 
+  });
+    jQuery('.sasocl_simv').on( "click", function() {
+           jQuery('.sasocl+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbarb_simv').on( "click", function() {
+           jQuery('.sbarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.sbez_simv').on( "click", function() {
+           jQuery('.sbez+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.sboce_simv').on( "click", function() {
+           jQuery('.sboce+div').toggle(); //muestro mediante clase
+ 
+  });
+        jQuery('.scarb_simv').on( "click", function() {
+           jQuery('.scarb+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.scicl_simv').on( "click", function() {
+           jQuery('.scicl+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.scil_simv').on( "click", function() {
+           jQuery('.scil+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.scolc_simv').on( "click", function() {
+           jQuery('.scolc+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.sdacl_simv').on( "click", function() {
+           jQuery('.sdacl+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sdan_simv').on( "click", function() {
+           jQuery('.sdan+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sdrone_simv').on( "click", function() {
+           jQuery('.sdrone+div').toggle(); //muestro mediante clase
+ 
+  });
+                  jQuery('.sfeno_simv').on( "click", function() {
+           jQuery('.sfeno+div').toggle(); //muestro mediante clase
+ 
+  });
+
+                jQuery('.sgem_simv').on( "click", function() {
+           jQuery('.sgem+div').toggle(); //muestro mediante clase
+ 
+  });
+
+              jQuery('.smacro_simv').on( "click", function() {
+           jQuery('.smacro+div').toggle(); //muestro mediante clase
+ 
+  });
+                jQuery('.sres_simv').on( "click", function() {
+           jQuery('.sres+div').toggle(); //muestro mediante clase
+ 
+  });
+      jQuery('.srif_simv').on( "click", function() {
+           jQuery('.srif+div').toggle(); //muestro mediante clase
+ 
+  });
+            jQuery('.ssim_simv').on( "click", function() {
+           jQuery('.ssim+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.stel_simv').on( "click", function() {
+           jQuery('.stel+div').toggle(); //muestro mediante clase
+ 
+  });
+              jQuery('.szumo_simv').on( "click", function() {
+           jQuery('.szumo+div').toggle(); //muestro mediante clase
+ 
+  });
+
+$scope.filtrar_inter = function() {
+
+
+
+
+ if( $('.check_ator').is(':checked') ) {
+    quitar_ator_inter=true;
+}
+if( $('.check_fluv').is(':checked') ) {
+    quitar_fluv_inter=true;
+}
+if( $('.check_lov').is(':checked') ) {
+    quitar_lov_inter=true;
+}
+if( $('.check_pita').is(':checked') ) {
+    quitar_pito_inter=true;
+}
+if( $('.check_prav').is(':checked') ) {
+    quitar_pra_inter=true;
+}
+if( $('.check_rosu').is(':checked') ) {
+    quitar_rosu_inter=true;
+    
+}
+if( $('.check_sim').is(':checked') ) {
+    quitar_sim_inter=true;
+    eliminar_sim=true;
+}
+
+
+
+$state.go('menu_interacciones_vih');
+   
+        
+        
+    }
+
+              
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11580,6 +15934,10 @@ $scope.sintomatico = function() {
     }
 
 $scope.persisten = function() {
+  if( $('.mejoran_sintomas').is(":visible") ){
+              $('#mejoran').attr('checked', false);
+    jQuery('.mejoran_sintomas').toggle();
+}
 
              jQuery('.persisten_sintomas').toggle();
         
@@ -11587,6 +15945,10 @@ $scope.persisten = function() {
     }
 
 $scope.mejoran = function() {
+  if( $('.persisten_sintomas').is(":visible") ){
+              $('#persisten').attr('checked', false);
+    jQuery('.persisten_sintomas').toggle();
+}
 
              jQuery('.mejoran_sintomas').toggle();
         
@@ -11675,6 +16037,22 @@ $scope.score_mialgias = function() {
 .controller('FactorRiesgoMialgias',function($scope,$state){
 
 $scope.antropometricos = function() {
+  if( $('.content_comorbilidades').is(":visible") ){
+              $('#comorbilidades').attr('checked', false);
+    jQuery('.content_comorbilidades').toggle();
+}
+  if( $('.content_historia_relacionada').is(":visible") ){
+              $('#historia_relacionada').attr('checked', false);
+    jQuery('.content_historia_relacionada').toggle();
+}
+  if( $('.content_genetica').is(":visible") ){
+              $('#genetica').attr('checked', false);
+    jQuery('.content_genetica').toggle();
+}
+  if( $('.content_otros_factores').is(":visible") ){
+              $('#otros_factores').attr('checked', false);
+    jQuery('.content_otros_factores').toggle();
+}
 
              jQuery('.content_antropometricos').toggle();
         
@@ -11682,6 +16060,22 @@ $scope.antropometricos = function() {
     }
 
 $scope.comorbilidades = function() {
+  if( $('.content_antropometricos').is(":visible") ){
+              $('#antropometricos').attr('checked', false);
+    jQuery('.content_antropometricos').toggle();
+}
+  if( $('.content_historia_relacionada').is(":visible") ){
+              $('#historia_relacionada').attr('checked', false);
+    jQuery('.content_historia_relacionada').toggle();
+}
+  if( $('.content_genetica').is(":visible") ){
+              $('#genetica').attr('checked', false);
+    jQuery('.content_genetica').toggle();
+}
+  if( $('.content_otros_factores').is(":visible") ){
+              $('#otros_factores').attr('checked', false);
+    jQuery('.content_otros_factores').toggle();
+}
 
              jQuery('.content_comorbilidades').toggle();
         
@@ -11689,6 +16083,22 @@ $scope.comorbilidades = function() {
     }
 
 $scope.historia_relacionada = function() {
+  if( $('.content_antropometricos').is(":visible") ){
+              $('#antropometricos').attr('checked', false);
+    jQuery('.content_antropometricos').toggle();
+}
+  if( $('.content_comorbilidades').is(":visible") ){
+              $('#comorbilidades').attr('checked', false);
+    jQuery('.content_comorbilidades').toggle();
+}
+  if( $('.content_genetica').is(":visible") ){
+              $('#genetica').attr('checked', false);
+    jQuery('.content_genetica').toggle();
+}
+  if( $('.content_otros_factores').is(":visible") ){
+              $('#otros_factores').attr('checked', false);
+    jQuery('.content_otros_factores').toggle();
+}
 
              jQuery('.content_historia_relacionada').toggle();
         
@@ -11697,12 +16107,45 @@ $scope.historia_relacionada = function() {
 
 $scope.genetica = function() {
 
+  if( $('.content_antropometricos').is(":visible") ){
+              $('#antropometricos').attr('checked', false);
+    jQuery('.content_antropometricos').toggle();
+}
+  if( $('.content_comorbilidades').is(":visible") ){
+              $('#comorbilidades').attr('checked', false);
+    jQuery('.content_comorbilidades').toggle();
+}
+  if( $('.content_historia_relacionada').is(":visible") ){
+              $('#historia_relacionada').attr('checked', false);
+    jQuery('.content_historia_relacionada').toggle();
+}
+  if( $('.content_otros_factores').is(":visible") ){
+              $('#otros_factores').attr('checked', false);
+    jQuery('.content_otros_factores').toggle();
+}
+
              jQuery('.content_genetica').toggle();
         
         
     }
 
 $scope.otros_factores = function() {
+  if( $('.content_antropometricos').is(":visible") ){
+              $('#antropometricos').attr('checked', false);
+    jQuery('.content_antropometricos').toggle();
+}
+  if( $('.content_comorbilidades').is(":visible") ){
+              $('#comorbilidades').attr('checked', false);
+    jQuery('.content_comorbilidades').toggle();
+}
+  if( $('.content_historia_relacionada').is(":visible") ){
+              $('#historia_relacionada').attr('checked', false);
+    jQuery('.content_historia_relacionada').toggle();
+}
+   if( $('.content_genetica').is(":visible") ){
+              $('#genetica').attr('checked', false);
+    jQuery('.content_genetica').toggle();
+}
 
              jQuery('.content_otros_factores').toggle();
         
@@ -11722,6 +16165,14 @@ $scope.otros_factores = function() {
 
 
 $scope.antropometricos = function() {
+  if( $('.content_historia_relacionada').is(":visible") ){
+              $('#historia_relacionada').attr('checked', false);
+    jQuery('.content_historia_relacionada').toggle();
+}
+  if( $('.content_comorbilidades').is(":visible") ){
+              $('#comorbilidades').attr('checked', false);
+    jQuery('.content_comorbilidades').toggle();
+}
 
              jQuery('.content_antropometricos').toggle();
         
@@ -11729,6 +16180,14 @@ $scope.antropometricos = function() {
     }
 
 $scope.comorbilidades = function() {
+  if( $('.content_historia_relacionada').is(":visible") ){
+              $('#historia_relacionada').attr('checked', false);
+    jQuery('.content_historia_relacionada').toggle();
+}
+  if( $('.content_antropometricos').is(":visible") ){
+              $('#antropometricos').attr('checked', false);
+    jQuery('.content_antropometricos').toggle();
+}
 
              jQuery('.content_comorbilidades').toggle();
         
@@ -11736,6 +16195,14 @@ $scope.comorbilidades = function() {
     }
 
 $scope.historia_relacionada = function() {
+  if( $('.content_comorbilidades').is(":visible") ){
+              $('#comorbilidades').attr('checked', false);
+    jQuery('.content_comorbilidades').toggle();
+}
+  if( $('.content_antropometricos').is(":visible") ){
+              $('#antropometricos').attr('checked', false);
+    jQuery('.content_antropometricos').toggle();
+}
 
              jQuery('.content_historia_relacionada').toggle();
         
@@ -12132,7 +16599,7 @@ if((total_criterios_het>=0)&&(total_criterios_het<3)){
 
 })
 
-.controller('FormTratamiento',function($scope,$state){
+.controller('FormTratamiento',function($scope,$state,$ionicPopup){
 var unidad=document.getElementById("ldl-actual-unidades").value;
 
   $( "#ldl-actual-unidades" ).change(function() {
@@ -12146,6 +16613,10 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 
    $scope.procesar2 = function() {
 
+    ldlactual=document.getElementById("ldl-actual").value;
+
+    if(ldlactual>0){
+
     if($("#riesgo_muy_alto").is(':checked')) {  
             ldlobjetivo=document.getElementById("riesgo_muy_alto").value;
         }
@@ -12157,8 +16628,24 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
         }
 
       $state.go('form_tratamiento2');
-      ldlactual=document.getElementById("ldl-actual").value;
+
+    }
+    else if(ldlactual==0){
+
+        var alertPopup = $ionicPopup.alert({
+     title: '¡Atención!',
+     template: 'No ha completado el dato de LDL actual'
+   });
+
+   alertPopup.then(function(res) {
+     
+   });
+
+    }
+      
    }
+
+
 
 })
 
