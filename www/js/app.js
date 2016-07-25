@@ -1719,7 +1719,66 @@ $scope.ir_info = function(){
 .controller('Presentacion',function($scope){
 
   
+jQuery('.ver_interior_presentacion').on( "click", function() { 
 
+           jQuery('.interior_presentacion').toggle(); //muestro mediante clase
+            jQuery('.interior_nota_autores').hide();
+            jQuery('.interior_autores').hide();
+            jQuery('.interior_creditos').hide();
+            jQuery('.interior_referencias').hide();
+            jQuery('.interior_abreviaturas').hide();
+
+         });
+jQuery('.ver_interior_nota_autores').on( "click", function() { 
+
+           jQuery('.interior_presentacion').hide(); //muestro mediante clase
+            jQuery('.interior_nota_autores').toggle();
+            jQuery('.interior_autores').hide();
+            jQuery('.interior_creditos').hide();
+            jQuery('.interior_referencias').hide();
+            jQuery('.interior_abreviaturas').hide();
+
+         });
+jQuery('.ver_interior_autores').on( "click", function() { 
+
+           jQuery('.interior_presentacion').hide(); //muestro mediante clase
+            jQuery('.interior_nota_autores').hide();
+            jQuery('.interior_autores').toggle();
+            jQuery('.interior_creditos').hide();
+            jQuery('.interior_referencias').hide();
+            jQuery('.interior_abreviaturas').hide();
+
+         });
+jQuery('.ver_interior_creditos').on( "click", function() { 
+
+           jQuery('.interior_presentacion').hide(); //muestro mediante clase
+            jQuery('.interior_nota_autores').hide();
+            jQuery('.interior_autores').hide();
+            jQuery('.interior_creditos').toggle();
+            jQuery('.interior_referencias').hide();
+            jQuery('.interior_abreviaturas').hide();
+
+         });
+jQuery('.ver_interior_referencias').on( "click", function() { 
+
+           jQuery('.interior_presentacion').hide(); //muestro mediante clase
+            jQuery('.interior_nota_autores').hide();
+            jQuery('.interior_autores').hide();
+            jQuery('.interior_creditos').hide();
+            jQuery('.interior_referencias').toggle();
+            jQuery('.interior_abreviaturas').hide();
+
+         });
+jQuery('.ver_interior_abreviaturas').on( "click", function() { 
+
+           jQuery('.interior_presentacion').hide(); //muestro mediante clase
+            jQuery('.interior_nota_autores').hide();
+            jQuery('.interior_autores').hide();
+            jQuery('.interior_creditos').hide();
+            jQuery('.interior_referencias').hide();
+            jQuery('.interior_abreviaturas').toggle();
+
+         });
   
 
 })

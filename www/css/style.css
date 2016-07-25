@@ -62,6 +62,10 @@ font-size: smaller;
     color: gray;
 }
 
+.centrar_logos{
+
+}
+
 #unidades_totales_moderado_alto_vih{
     background: white;
     width: 85px;
@@ -2056,4 +2060,41 @@ background-color: #86253C !important;
 
 .directo .toggle{
     display: none;
+}
+
+.centrar_logos{
+    
+    margin-top: 25px;
+}
+
+.logos_presentacion img{
+        margin: 12px;
+}
+
+.interior_presentacion{
+    display: none;
+}
+
+.interior_nota_autores{
+    display: none;
+}
+
+.interior_autores{
+    display: none;
+}
+.interior_creditos{
+    display: none;
+}
+.interior_referencias{
+    display: none;
+}
+.interior_abreviaturas{
+    display: none;
+}
+
+
+@media only screen and (min-width: 350px) {
+    .centrar_logos{
+        margin-top: 72px;
+    }
 }
