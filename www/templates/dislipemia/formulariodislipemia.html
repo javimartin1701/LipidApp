@@ -5,8 +5,8 @@
 
 </ion-header-bar>
 <ion-content class="form_dislipenia">
-<h2 class="subtitle">Variables Clínicas</h2>
-<h4 class="subtitle" style="margin: -30px 0px 0px 0px;">2 de 3 Riesgo Cardiovascular</h4>
+<h2 class="subtitle">1 de 3 Variables Clínicas</h2>
+
 
       
 	  <ul class="list lista">
@@ -43,13 +43,19 @@
 		 </p>
 		 <p>Score<button style="top:76px" ng-click="ircalcscore()" class="button calculadora"></button></p>
 	      <p>
-	      	<select id="selector-score">
+	      	<!-- <select id="selector-score">
 			  <option value="-">Seleccione una opción</option>
-			  
 			  <option value="10-20">SCORE &ge;10%</option>
 			  <option value="5-9">SCORE >5 - 9%</option>
 			  <option value="1-4">SCORE >1 - 4%</option>
 			  <option value="1">SCORE &lt;1%</option>
+		 	</select> -->
+		 	<select id="selector-score">
+			  <option value="-">Seleccione una opción</option>
+			  <option value="1">SCORE &lt;1%</option>
+			  <option value="1-4">SCORE: 1 - 4%</option>
+			  <option value="5-9">SCORE: 5 - 9%</option>
+			  <option value="10-20">SCORE &ge;10%</option>
 		 	</select>
 		 </p>
 	    </li>

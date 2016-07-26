@@ -75,6 +75,8 @@ var unidad_seleccionada=null;
 
 var check_ecvdoc=false;
 
+var tratamiento_previo=false;
+
 angular.module('starter', ['ionic','ui.router','firebase'])
 
 .run(function($ionicPlatform,$rootScope,$ionicPopup,$state) {
@@ -373,6 +375,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     controller: 'RiesgoModeradoBajoVIH'
   })
 
+      .state('modal_tratamiento_previo',{
+    cache: false,
+    url:'/modal_tratamiento_previo',
+    templateUrl:'templates/dislipemia/modal_tratamiento_previo.html',
+    controller: 'ModalTratamientoPrevio'
+  })
+
 
 
 
@@ -642,6 +651,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
   })
 
 ///////////////////////LIMITACIONES/////////////////////////
+
+.state('modal_mialgias',{
+    cache: false,
+    url:'/modal_mialgias',
+    templateUrl:'templates/limitaciones/modal_mialgias.html',
+    controller: 'ModalMialgias'
+  })
 
        .state('limitaciones1',{
     cache: false,
@@ -1026,22 +1042,40 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
         }
 
         scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        // if(scoreindex==1){
+        //   score_calculado=25;
+        // }
+
+        // if(scoreindex==2){
+        //  score_calculado=15;
+        // }
+
+        // if(scoreindex==3){
+        //   score_calculado=8;
+        // }
+        // if(scoreindex==4){
+        //  score_calculado=3;
+        // }
+        // if(scoreindex==5){
+        //  score_calculado=0;
+        // }
+
         if(scoreindex==1){
-          score_calculado=25;
+          score_calculado=0;
         }
 
         if(scoreindex==2){
-         score_calculado=15;
+         score_calculado=3;
         }
 
         if(scoreindex==3){
           score_calculado=8;
         }
         if(scoreindex==4){
-         score_calculado=3;
+         score_calculado=15;
         }
         if(scoreindex==5){
-         score_calculado=0;
+         score_calculado=25;
         }
        
         ldltransactual=document.getElementById("ldl-actual").value;
@@ -1068,22 +1102,39 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
         }
 
         scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        // if(scoreindex==1){
+        //   score_calculado=25;
+        // }
+
+        // if(scoreindex==2){
+        //  score_calculado=15;
+        // }
+
+        // if(scoreindex==3){
+        //   score_calculado=8;
+        // }
+        // if(scoreindex==4){
+        //  score_calculado=3;
+        // }
+        // if(scoreindex==5){
+        //  score_calculado=0;
+        // }
         if(scoreindex==1){
-          score_calculado=25;
+          score_calculado=0;
         }
 
         if(scoreindex==2){
-         score_calculado=15;
+         score_calculado=3;
         }
 
         if(scoreindex==3){
           score_calculado=8;
         }
         if(scoreindex==4){
-         score_calculado=3;
+         score_calculado=15;
         }
         if(scoreindex==5){
-         score_calculado=0;
+         score_calculado=25;
         }
         ldltransactual=document.getElementById("ldl-actual").value;
         $state.go('funcionrenal');
@@ -1107,22 +1158,39 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
         }
 
         scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        // if(scoreindex==1){
+        //   score_calculado=25;
+        // }
+
+        // if(scoreindex==2){
+        //  score_calculado=15;
+        // }
+
+        // if(scoreindex==3){
+        //   score_calculado=8;
+        // }
+        // if(scoreindex==4){
+        //  score_calculado=3;
+        // }
+        // if(scoreindex==5){
+        //  score_calculado=0;
+        // }
         if(scoreindex==1){
-          score_calculado=25;
+          score_calculado=0;
         }
 
         if(scoreindex==2){
-         score_calculado=15;
+         score_calculado=3;
         }
 
         if(scoreindex==3){
           score_calculado=8;
         }
         if(scoreindex==4){
-         score_calculado=3;
+         score_calculado=15;
         }
         if(scoreindex==5){
-         score_calculado=0;
+         score_calculado=25;
         }
         ldltransactual=document.getElementById("ldl-actual").value;
         $state.go('calcscore');
@@ -1145,22 +1213,39 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
         }
 
         scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        // if(scoreindex==1){
+        //   score_calculado=25;
+        // }
+
+        // if(scoreindex==2){
+        //  score_calculado=15;
+        // }
+
+        // if(scoreindex==3){
+        //   score_calculado=8;
+        // }
+        // if(scoreindex==4){
+        //  score_calculado=3;
+        // }
+        // if(scoreindex==5){
+        //  score_calculado=0;
+        // }
         if(scoreindex==1){
-          score_calculado=25;
+          score_calculado=0;
         }
 
         if(scoreindex==2){
-         score_calculado=15;
+         score_calculado=3;
         }
 
         if(scoreindex==3){
           score_calculado=8;
         }
         if(scoreindex==4){
-         score_calculado=3;
+         score_calculado=15;
         }
         if(scoreindex==5){
-         score_calculado=0;
+         score_calculado=25;
         }
         ldltransactual=document.getElementById("ldl-actual").value;
         $state.go('modalcardiodoc');
@@ -1302,6 +1387,9 @@ else if(ldlactual==0){
    });
 }
 
+
+
+
   }
 
 
@@ -1341,9 +1429,9 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
 
         
         check = document.getElementById("VIH");
-        if (check.checked) {
-             $state.go('modalvih');
-        }
+        // if (check.checked) {
+        //      $state.go('modalvih');
+        // }
         vih="yes";
         ldltransactual=document.getElementById("ldl-actual").value;
         
@@ -6033,6 +6121,8 @@ if(unidad_seleccionada=="1"){
 
 .controller('TratamientoPrevioMedicamentos',function($scope,$state){
 
+  tratamiento_previo=true;
+
  
 
 jQuery('.linea_atorvastatina').on( "click", function() { 
@@ -6289,7 +6379,7 @@ $state.go('tratamientoinicio');
 
 .controller('TratamientoPrevioMedicamentos_vih',function($scope,$state){
 
- 
+ tratamiento_previo=true;
 
 jQuery('.linea_atorvastatina').on( "click", function() { 
 
@@ -6407,6 +6497,16 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicio',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
+
+  console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
@@ -6444,6 +6544,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicio_vih',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=objetivo_vih;
   var porc_reducc=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlactual))*100);
@@ -6482,6 +6590,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicioSinEstatina',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
@@ -6520,6 +6636,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicioSinEstatina_vih',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=objetivo_vih;
   var porc_reducc=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlactual))*100);
@@ -6605,6 +6729,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicioSinEzetimive',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
@@ -6644,6 +6776,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicioSinEzetimive_vih',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
  
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=objetivo_vih;
@@ -6685,6 +6825,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicioSinIPCSK9',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
@@ -6724,6 +6872,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicioSinIPCSK9NiResinas',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
@@ -6763,6 +6919,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicioSinFibratos',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
@@ -6802,6 +6966,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicioSinResina',function($scope,$state, $firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
@@ -6850,6 +7022,14 @@ $state.go('tratamientoinicio_vih');
 
 
 .controller('TratamientoInicio2',function($scope,$state,$firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
 
   document.getElementById("ldl_act_tratamiento2").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento2").value=ldlobjetivo;
@@ -6967,6 +7147,14 @@ if(quitar_sim_inter==true){
 
 
 .controller('TratamientoInicio2_vih',function($scope,$state,$firebaseArray){
+  if(tratamiento_previo==true){
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $(".info_tratamiento").show();
+  }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
 
   document.getElementById("ldl_act_tratamiento2").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento2").value=objetivo_vih;
@@ -15981,6 +16169,11 @@ else{
 
 .controller('ManejoMialgias',function($scope,$state){
 
+$scope.ir_modal_mialgias = function() {
+        $state.go('modal_mialgias');
+        
+    }
+
 $scope.sintomatico = function() {
   if( $('.content_rabdomiolisis').is(":visible") ){
               $('#rabdomiolisis').attr('checked', false);
@@ -16756,6 +16949,18 @@ $scope.volver = function() {
 })
 
 .controller('PreMenuInteracciones2',function($scope,$state,$rootScope){
+
+
+})
+
+
+.controller('ModalTratamientoPrevio',function($scope,$state,$rootScope){
+
+
+})
+
+
+.controller('ModalMialgias',function($scope,$state,$rootScope){
 
 
 })

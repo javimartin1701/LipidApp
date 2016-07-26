@@ -77,6 +77,19 @@ font-size: smaller;
     color: gray;
 }
 
+.info_tratamiento{
+    background-image: url('../img/info.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    width: 36px;
+    height: 20px;
+    position: absolute;
+    top: 143px;
+    left: 50%;
+    margin-left: -18px;
+    display: none;
+}
+
 
 #unidades_totales{
     background: white;
@@ -2089,6 +2102,18 @@ background-color: #86253C !important;
     display: none;
 }
 .interior_abreviaturas{
+    display: none;
+}
+.super_modalvih{
+    position:absolute; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    z-index:9999999999999;     
+    background: #efefef;
+}
+.continuar_vih{
     display: none;
 }
 
