@@ -652,6 +652,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 
 ///////////////////////LIMITACIONES/////////////////////////
 
+.state('modal_glucemias_elevadas',{
+    cache: false,
+    url:'/modal_glucemias_elevadas',
+    templateUrl:'templates/limitaciones/modal_glucemias_elevadas.html',
+    controller: 'ModalGlucemiasElevadas'
+  })
+
 .state('modal_mialgias',{
     cache: false,
     url:'/modal_mialgias',
@@ -7023,8 +7030,8 @@ $state.go('tratamientoinicio_vih');
 
 .controller('TratamientoInicio2',function($scope,$state,$firebaseArray){
   if(tratamiento_previo==true){
-    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
-    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $("#ldl_act_tratamiento2").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento2").css("background-size", "100px 100px");
     $(".info_tratamiento").show();
   }
   $scope.ir_info_previo = function() {
@@ -7148,8 +7155,8 @@ if(quitar_sim_inter==true){
 
 .controller('TratamientoInicio2_vih',function($scope,$state,$firebaseArray){
   if(tratamiento_previo==true){
-    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
-    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    $("#ldl_act_tratamiento2").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento2").css("background-size", "100px 100px");
     $(".info_tratamiento").show();
   }
   $scope.ir_info_previo = function() {
@@ -16465,10 +16472,16 @@ $scope.historia_relacionada = function() {
 })
 
 
-.controller('FormDiabetogenicidad',function($scope,$state,$ionicPopup){
+.controller('FormDiabetogenicidad',function($scope,$state,$ionicPopup,$ionicScrollDelegate){
 document.getElementById('edad_diabet').options.selectedIndex=edad_diabet_index;
 document.getElementById('sexo_diabet').options.selectedIndex=sexo_diabet_index;
 
+$scope.ir_modal_glucemias_elevadas = function() {
+  $(".super_modalglucemias").toggle();
+  $(".calcular").toggle();
+  
+  $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop();
+}
 
 
   $scope.selector_sexo = function() {
@@ -16961,6 +16974,11 @@ $scope.volver = function() {
 
 
 .controller('ModalMialgias',function($scope,$state,$rootScope){
+
+
+})
+
+.controller('ModalGlucemiasElevadas',function($scope,$state,$rootScope){
 
 
 })

@@ -1706,7 +1706,7 @@ background: white;
 
 .diabetogenicidad p:first-child{
     font-weight: 600;
-    font-size: 17px;
+    font-size: 30px;
 }
 
 .diabeto_texto1{
@@ -1743,7 +1743,7 @@ background: white;
     border-top-color: #cccaca !important;
     padding: 5px 0 5px 0;
     border-top: 1px;
-    border-bottom: 1px;
+    border-bottom: 0px;
     border-style: solid;
     width: 90%;
     font-weight: 300;
@@ -2106,6 +2106,17 @@ background-color: #86253C !important;
 }
 .super_modalvih{
     position:absolute; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    z-index:9999999999999;     
+    background: #efefef;
+}
+
+.super_modalglucemias{
+    display: none;
+    position:fixed; 
     top:0; 
     left:0; 
     width:100%; 

@@ -4,7 +4,17 @@
         <h1 class="title">Limitaciones Estatinas</h1>
 
 </ion-header-bar>
-<ion-content class="form_dislipenia">
+<ion-content class="form_dislipenia"  delegate-handle="mainScroll">
+<div id="top_v" class="super_modalglucemias">
+		<div class="factores_cuadro">
+		<a class="cerrar" ng-click="ir_modal_glucemias_elevadas()"></a>
+		<ul style="color:#606366">
+			<li></li>
+			<li>Analítica, enfermedad, gestación, etc.</li>
+			
+		</ul>
+	</div>
+</div>
 <h2 class="subtitle">Diabetogenicidad<br><span>Cálculo Score</span></h2>
 
       
@@ -12,7 +22,7 @@
 	    <li class="item">
 	      <label>Edad</label>
 	      
-	      <select id="edad_diabet" >
+	      <select id="edad_diabet">
 			  <option value="."></option>
 			  <option value="0">&lt;45 años</option>
 			  <option value="2">45-54 años</option>
@@ -96,7 +106,7 @@
 		</li>
 		<li class="item">
 		<label>¿Alguna vez<br>ha presentado<br>glucemias elevadas?</label>
-	      
+	     <a style="position: absolute;margin-left: 9px;" ng-click="ir_modal_glucemias_elevadas()"><img src="img/info.png"></a> 
 	      <select id="glucemias_diabet">
 			  <option value="0"></option>
 			  <option value="5">Sí</option>
@@ -122,7 +132,7 @@
 	  <div style="width:100%; height:300px;"></div>
 	  
 </ion-content>
-<button ng-click="calc_diabeto()" class="continuar button">Calcular</button>
+<button ng-click="calc_diabeto()" class="continuar button calcular">Calcular</button>
 <div class="tabs tabs-icon-only bar-footer">
   
 
