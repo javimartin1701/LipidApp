@@ -10,6 +10,7 @@ var cardio="0";
 var ldlactual=0;
 var renalindex="9";
 var scoreindex="9";
+var scoreindex_vih="9";
 var ldltransactual="";
 var ldlobjetivo="0";
 var score_calculado="-";
@@ -1413,14 +1414,18 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
   document.getElementById("ldl-actual").value=ldlconv.toFixed(2);
   
 });
+$("#selector-score option[value=" + 20 + "]").hide();
 
+if(vih=="yes"){
+  $("#selector-score option[value=" + 20 + "]").show();
 
-
+}
 
 
 
 
   $scope.govih = function() {
+    $("#selector-score option[value=" + 20 + "]").toggle();
     unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
 
      if($("#ecvdoc").is(':checked')) {  
@@ -1439,6 +1444,9 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
         // if (check.checked) {
         //      $state.go('modalvih');
         // }
+        if(vih=="yes"){
+          vih="no";
+        }
         vih="yes";
         ldltransactual=document.getElementById("ldl-actual").value;
         
@@ -1505,10 +1513,12 @@ document.getElementById('VIH').checked=true;
     $("select#funcion_renal").val("2");
   }
 
-
+if (score_calculado>19) {
+    $("select#selector-score").val("10-20");
+  }
 
    if (score_calculado>19) {
-    $("select#selector-score").val("10-20");
+    $("select#selector-score").val("20");
   }
   if (score_calculado>9&&score_calculado<20) {
     $("select#selector-score").val("10-20");
@@ -16606,6 +16616,7 @@ var alertPopup = $ionicPopup.alert({
 .controller('DiabetoAlto',function($scope,$state){
   
   $("#texto_diabeto").text(calc_diabeto_total);
+  calc_diabeto_total2=calc_diabeto_total;
 
 })
 

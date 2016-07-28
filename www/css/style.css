@@ -1188,6 +1188,17 @@ background: white;
     border-width: 1px;
     display: inline-block;
 }
+#selector-score-vih{
+    
+background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-radius: 0;
+    height: 30px;
+    width: 230px;
+    border-width: 1px;
+    display: none;
+}
 #ldl-actual-unidades{
 background: white;
     border-color: #ccc;
@@ -1758,13 +1769,13 @@ background: white;
 
 .diabetogenicidad_naranja p:first-child{
     font-weight: 600;
-    font-size: 17px;
+    font-size: 30px;
 }
 .diabetogenicidad_naranja p:nth-child(2){
     border-top-color: #cccaca !important;
     padding: 5px 0 5px 0;
     border-top: 1px;
-    border-bottom: 1px;
+   /* border-bottom: 1px;*/
     border-style: solid;
     width: 90%;
     font-weight: 300;
@@ -1780,14 +1791,14 @@ background: white;
 
 .diabetogenicidad_verde p:first-child{
     font-weight: 600;
-    font-size: 17px;
+    font-size: 30px;
 }
 .diabetogenicidad_verde p:nth-child(2){
     border-top-color: #cccaca !important;
     padding: 5px 0 5px 0;
     border-top: 1px;
-    border-bottom: 1px;
-    border-style: solid;
+/*    border-bottom: 1px;
+*/    border-style: solid;
     width: 90%;
     font-weight: 300;
     margin: auto;
