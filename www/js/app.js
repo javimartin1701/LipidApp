@@ -8,7 +8,7 @@ var sexoimc="1";
 var resultadofiltradoredond="100";
 var cardio="0";
 var ldlactual=0;
-var renalindex="9";
+var renalindex="inicio";
 var scoreindex="9";
 var scoreindex_vih="9";
 var ldltransactual="";
@@ -71,6 +71,7 @@ var previo2=null;
 var longhistoria=null;
 var pen=null;
 var rama_vih=false;
+var consulta_scoreindex=null;
 
 var unidad_seleccionada=null;
 
@@ -924,7 +925,7 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 })
 
 .controller('HomeCtrl',function($scope){
-
+tratamiento_previo=false;
   totalimcRounded="0";
  sexoimc="1";
  resultadofiltradoredond="inicio";
@@ -1016,7 +1017,8 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
 
 
 .controller('DislipFormCtrl',function($scope,$state,$ionicPopup){
-
+    var element = document.getElementById('funcion_renal');
+    element.value = 2;
 
   if(unidad_seleccionada=="1"){
     $("select#ldl-actual-unidades").val("0.25");
@@ -1048,8 +1050,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
                 if(renalindex==2){
           resultadofiltradoredond=10;
         }
-
-        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        consulta_scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(consulta_scoreindex==0){
+        scoreindex=document.getElementById('selector-score-vih').options.selectedIndex;
+        }
+        else{
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;  
+        }
         // if(scoreindex==1){
         //   score_calculado=25;
         // }
@@ -1109,7 +1116,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
           resultadofiltradoredond=10;
         }
 
-        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        consulta_scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(consulta_scoreindex==0){
+        scoreindex=document.getElementById('selector-score-vih').options.selectedIndex;
+        }
+        else{
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;  
+        }
         // if(scoreindex==1){
         //   score_calculado=25;
         // }
@@ -1165,7 +1178,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
           resultadofiltradoredond=10;
         }
 
-        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        consulta_scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(consulta_scoreindex==0){
+        scoreindex=document.getElementById('selector-score-vih').options.selectedIndex;
+        }
+        else{
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;  
+        }
         // if(scoreindex==1){
         //   score_calculado=25;
         // }
@@ -1220,7 +1239,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
           resultadofiltradoredond=10;
         }
 
-        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        consulta_scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(consulta_scoreindex==0){
+        scoreindex=document.getElementById('selector-score-vih').options.selectedIndex;
+        }
+        else{
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;  
+        }
         // if(scoreindex==1){
         //   score_calculado=25;
         // }
@@ -1269,7 +1294,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     
     ecvcheck = document.getElementById("ecvdoc");
     renalindex=document.getElementById('funcion_renal').options.selectedIndex;
-    scoreindex=document.getElementById('selector-score').options.selectedIndex;
+    consulta_scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(consulta_scoreindex==0){
+        scoreindex=document.getElementById('selector-score-vih').options.selectedIndex;
+        }
+        else{
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;  
+        }
     tiene_vih=document.getElementById('VIH');
     if(unidad_seleccionada=="1"){
       ldlactual = document.getElementById("ldl-actual").value;
@@ -1414,10 +1445,12 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
   document.getElementById("ldl-actual").value=ldlconv.toFixed(2);
   
 });
-$("#selector-score option[value=" + 20 + "]").hide();
+$("#selector-score-vih").hide();
 
 if(vih=="yes"){
-  $("#selector-score option[value=" + 20 + "]").show();
+  $("#selector-score").hide();
+  $("#selector-score-vih").show();
+  $(".titulo_score").text("Score paciente VIH");
 
 }
 
@@ -1425,7 +1458,17 @@ if(vih=="yes"){
 
 
   $scope.govih = function() {
-    $("#selector-score option[value=" + 20 + "]").toggle();
+if( $('#selector-score-vih').is(":visible") ){
+     
+           $(".titulo_score").text("Score");
+        }
+        else{
+          $(".titulo_score").text("Score paciente VIH");
+        }
+    
+    $("#selector-score").toggle();
+    $("#selector-score-vih").toggle();
+        
     unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
 
      if($("#ecvdoc").is(':checked')) {  
@@ -1451,7 +1494,13 @@ if(vih=="yes"){
         ldltransactual=document.getElementById("ldl-actual").value;
         
         renalindex=document.getElementById('funcion_renal').options.selectedIndex;
-        scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        consulta_scoreindex=document.getElementById('selector-score').options.selectedIndex;
+        if(consulta_scoreindex==0){
+        scoreindex=document.getElementById('selector-score-vih').options.selectedIndex;
+        }
+        else{
+        scoreindex=document.getElementById('selector-score').options.selectedIndex;  
+        }
 
         if(renalindex==0){
           resultadofiltradoredond=70;
@@ -1500,6 +1549,8 @@ if(vih=="yes"){
 document.getElementById('VIH').checked=true;
 }
 
+  
+
   if (resultadofiltradoredond>60) {
     $("select#funcion_renal").val("1");
   }
@@ -1507,22 +1558,18 @@ document.getElementById('VIH').checked=true;
     $("select#funcion_renal").val("3");
   }
   else if(resultadofiltradoredond=="inicio"){
-    $("select#funcion_renal").val("4");
+    $("select#funcion_renal").val("1");
   }
   else{
     $("select#funcion_renal").val("2");
   }
 
-if (score_calculado>19) {
+
+
+   if (score_calculado>9) {
     $("select#selector-score").val("10-20");
   }
 
-   if (score_calculado>19) {
-    $("select#selector-score").val("20");
-  }
-  if (score_calculado>9&&score_calculado<20) {
-    $("select#selector-score").val("10-20");
-  }
     if (score_calculado>4&&score_calculado<10) {
     $("select#selector-score").val("5-9");
   }
@@ -1532,8 +1579,26 @@ if (score_calculado>19) {
   if (score_calculado<2) {
     $("select#selector-score").val("1");
   }
+///////////////////////////////////////////////////
+ 
+
+   if (score_calculado>19) {
+    $("select#selector-score-vih").val("20");
+  }
+  if (score_calculado>9&&score_calculado<20) {
+    $("select#selector-score-vih").val("10-20");
+  }
+    if (score_calculado>4&&score_calculado<10) {
+    $("select#selector-score-vih").val("5-9");
+  }
+  if (score_calculado>1&&score_calculado<5) {
+    $("select#selector-score-vih").val("1-4");
+  }
+  if (score_calculado<2) {
+    $("select#selector-score-vih").val("1");
+  }
   
-  
+
   
 
 })
