@@ -6603,19 +6603,19 @@ $state.go('tratamientoinicio_vih');
     var col = null;
     $scope.disp.$loaded(function(){
         angular.forEach($scope.disp, function(value, key){
-          var cols = [value.col4, value.col3, value.col2, value.col1];
-          //console.log(cols);
-          if(key == 0){
-            for(var i = 0; i < cols.length; i++){
-              if(cols[i]){
-                col = i;
-                break;
-              }
-            }
-          }
-          if(cols[col]){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          // }
+          // if(cols[col]){
             $scope.displenias.push(value);
-          }
+          // }
         });
         console.log($scope.displenias);
 
@@ -6833,20 +6833,20 @@ $state.go('tratamientoinicio_vih');
     var col = null;
     $scope.disp.$loaded(function(){
         angular.forEach($scope.disp, function(value, key){
-          var cols = [value.col4, value.col3, value.col2, value.col1];
-          //console.log(cols);
-          if(key == 0){
-            for(var i = 0; i < cols.length; i++){
-              if(cols[i]){
-                col = i;
-                break;
-              }
-            }
-            //console.log(col);
-          }
-          if(cols[col]){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
             $scope.displenias.push(value);
-          }
+          // }
         });
         console.log($scope.displenias);
 
@@ -6881,20 +6881,20 @@ $state.go('tratamientoinicio_vih');
     var col = null;
     $scope.disp.$loaded(function(){
         angular.forEach($scope.disp, function(value, key){
-          var cols = [value.col4, value.col3, value.col2, value.col1];
-          //console.log(cols);
-          if(key == 0){
-            for(var i = 0; i < cols.length; i++){
-              if(cols[i]){
-                col = i;
-                break;
-              }
-            }
-            //console.log(col);
-          }
-          if(cols[col]){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
             $scope.displenias.push(value);
-          }
+          // }
         });
         console.log($scope.displenias);
 
@@ -6929,20 +6929,20 @@ $state.go('tratamientoinicio_vih');
     var col = null;
     $scope.disp.$loaded(function(){
         angular.forEach($scope.disp, function(value, key){
-          var cols = [value.col4, value.col3, value.col2, value.col1];
-          //console.log(cols);
-          if(key == 0){
-            for(var i = 0; i < cols.length; i++){
-              if(cols[i]){
-                col = i;
-                break;
-              }
-            }
-            //console.log(col);
-          }
-          if(cols[col]){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
             $scope.displenias.push(value);
-          }
+          // }
         });
         console.log($scope.displenias);
 
@@ -6976,20 +6976,20 @@ $state.go('tratamientoinicio_vih');
     var col = null;
     $scope.disp.$loaded(function(){
         angular.forEach($scope.disp, function(value, key){
-          var cols = [value.col4, value.col3, value.col2, value.col1];
-          //console.log(cols);
-          if(key == 0){
-            for(var i = 0; i < cols.length; i++){
-              if(cols[i]){
-                col = i;
-                break;
-              }
-            }
-            //console.log(col);
-          }
-          if(cols[col]){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
             $scope.displenias.push(value);
-          }
+          // }
         });
         console.log($scope.displenias);
 
@@ -7023,20 +7023,20 @@ $state.go('tratamientoinicio_vih');
     var col = null;
     $scope.disp.$loaded(function(){
         angular.forEach($scope.disp, function(value, key){
-          var cols = [value.col4, value.col3, value.col2, value.col1];
-          //console.log(cols);
-          if(key == 0){
-            for(var i = 0; i < cols.length; i++){
-              if(cols[i]){
-                col = i;
-                break;
-              }
-            }
-            //console.log(col);
-          }
-          if(cols[col]){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
             $scope.displenias.push(value);
-          }
+          // }
         });
         console.log($scope.displenias);
 
@@ -7070,20 +7070,20 @@ $state.go('tratamientoinicio_vih');
     var col = null;
     $scope.disp.$loaded(function(){
         angular.forEach($scope.disp, function(value, key){
-          var cols = [value.col4, value.col3, value.col2, value.col1];
-          //console.log(cols);
-          if(key == 0){
-            for(var i = 0; i < cols.length; i++){
-              if(cols[i]){
-                col = i;
-                break;
-              }
-            }
-            //console.log(col);
-          }
-          if(cols[col]){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          //   //console.log(col);
+          // }
+          // if(cols[col]){
             $scope.displenias.push(value);
-          }
+          // }
         });
         console.log($scope.displenias);
 
@@ -7127,19 +7127,19 @@ $state.go('tratamientoinicio_vih');
     var col = null;
     $scope.disp.$loaded(function(){
         angular.forEach($scope.disp, function(value, key){
-          var cols = [value.col4, value.col3, value.col2, value.col1];
-          //console.log(cols);
-          if(key == 0){
-            for(var i = 0; i < cols.length; i++){
-              if(cols[i]){
-                col = i;
-                break;
-              }
-            }
-          }
-          if(cols[col]){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          // }
+          // if(cols[col]){
             $scope.displenias.push(value);
-          }
+          // }
         });
         console.log($scope.displenias);
 
