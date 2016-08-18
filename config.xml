@@ -21,6 +21,6 @@
     <preference name="Fullscreen" value="true"/>
   </platform>
   <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+    <param name="ios-package" value="CDVStatusBar" onload="false"/>
   </feature>
 </widget>

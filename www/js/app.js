@@ -94,10 +94,10 @@ angular.module('starter', ['ionic','ui.router','firebase'])
       // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
     }
-    if(window.StatusBar) {
-      StatusBar.hide();
-    ionic.Platform.fullScreen()
-    }
+  //   ionic.Platform.fullScreen();
+  // if (window.StatusBar) {
+  //   return StatusBar.hide();
+  // }
     var config = {
       apiKey: "AIzaSyAXx_Kp0wEDLonlMBTo5NgfkuWxEVHwU9M",
       authDomain: "lipid-app.firebaseapp.com",
@@ -834,6 +834,12 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     templateUrl:'templates/hipercolesterolemia/modal_criterio_diagnostico.html',
     controller: 'ModalCriterioDiagnostico'
   }) 
+                .state('modal_info_tratamiento_alto',{
+    cache: false,
+    url:'/modal_info_tratamiento_alto',
+    templateUrl:'templates/hipercolesterolemia/modal_info_tratamiento_alto.html',
+    controller: 'ModalInfoTratamientoAlto'
+  }) 
 
                   .state('form_criterio_diagnostico',{
     cache: false,
@@ -1367,19 +1373,7 @@ if(ldlactual>0){
     }
     }
     else{
-    if(cardio=="1"||ecvcheck.checked||renalindex=="2"||scoreindex=="1"||scoreindex=="2"){
-      ldlobjetivo=70;
-      if (ldlactual>70) {
-        $state.go('riesgomuyalto');
-        
-      }
-      else if (ldlactual<71){
-        $state.go('riesgobajo');
-      }
-      // alert("RiesgoMuyAlto");
-      
-
-    }
+    
     if(cardio=="2"||renalindex=="1"||scoreindex=="3"){
       // alert("RiesgoAlto");
       ldlobjetivo=100;
@@ -1392,6 +1386,19 @@ if(ldlactual>0){
       }
 
       
+    }
+    if(cardio=="1"||ecvcheck.checked||renalindex=="2"||scoreindex=="1"||scoreindex=="2"){
+      ldlobjetivo=70;
+      if (ldlactual>70) {
+        $state.go('riesgomuyalto');
+        
+      }
+      else if (ldlactual<71){
+        $state.go('riesgobajo');
+      }
+      // alert("RiesgoMuyAlto");
+      
+
     }
     if(scoreindex=="4"){
       ldlobjetivo=115;
@@ -16952,6 +16959,10 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
   
 });
 
+$scope.ir_info_tratamiento_alto = function() {
+  $state.go("modal_info_tratamiento_alto");
+}  
+
    $scope.procesar2 = function() {
 
     ldlactual=document.getElementById("ldl-actual").value;
@@ -17055,6 +17066,11 @@ $scope.volver = function() {
 })
 
 .controller('ModalGlucemiasElevadas',function($scope,$state,$rootScope){
+
+
+})
+
+.controller('ModalInfoTratamientoAlto',function($scope,$state,$rootScope){
 
 
 })

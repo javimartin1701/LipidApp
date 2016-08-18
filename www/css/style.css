@@ -800,9 +800,10 @@ display: inline-block;
 }
 
 .listado_medicacion p{
-    text-transform: uppercase;
+    
     color: #606366;
     margin-left: 15px;
+
 }
 
 .listado_medicacion div{
