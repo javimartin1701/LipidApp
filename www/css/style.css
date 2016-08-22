@@ -221,17 +221,47 @@ font-size: smaller;
     background-size: 100px 100px;
     background-repeat: no-repeat;
 }
+#ldl_obj_tratamiento0{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    background: transparent;
+    color: green;
+    font-size: 26px;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+}
 
 #ldl_act_tratamiento{
     display: inline-block;
     width: 100px;
     height: 100px;
     text-align: center;
-    background: url('../img/total_rojo.png');
+    background: url('../img/total_rojo2.png');
     background-size: 100px 100px;
     color: #87253c;
     font-size: 26px;
     background-repeat: no-repeat;
+}
+
+.campos_res_gris{
+    display: none;
+}
+
+
+#ldl_act_tratamiento0{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    background: url('../img/total_rojo_gris.png');
+    background-size: 100px 100px;
+    color: #87253c;
+    font-size: 26px;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+
 }
 
 #ldl_obj_tratamiento2{
@@ -305,6 +335,16 @@ font-size: smaller;
 }
 
 #porcentaje_red_tratamiento{
+    display: inline-block;
+    width: 65px;
+    background: transparent;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: #289e3b;
+}
+
+#porcentaje_red_tratamiento0{
     display: inline-block;
     width: 65px;
     background: transparent;
@@ -1402,8 +1442,8 @@ background: white;
 
 
 .inicio button:first-child{
-	color: #86253c !important;
-    height: 125px;
+	    color: #86253c !important;
+    height: 96px;
     font-weight: 500;
     background-image: url('../img/heart.png');
     background-position-x: center;
@@ -1417,17 +1457,17 @@ background: white;
 }
 
 .inicio .col{
-	height: 109px !important;
+	text-align: center;
 }
 
-.inicio .col:first-child{
+/*.inicio .col:first-child{
 	text-align: center;
-    padding-top: 34px;
+    padding-top: 24px;
 }
 .inicio .col:nth-child(2){
 	text-align: center;
-    padding-top: 26px;
-}
+    padding-top: 14px;
+}*/
 
 .bar-home button{
 	background: transparent !important;
@@ -1442,6 +1482,28 @@ background: white;
     width: 50px !important;
     background-size: 36% !important;
     height: 32px !important;
+}
+
+.info_modal_inicio_tratamiento {
+    position: fixed;
+    right: 0;
+    top: 335px !important;
+}
+
+.modal_esquema {
+    width: 84%;
+    margin: auto;
+    margin-top: 8%;
+    border-width: 2px;
+    border-color: #d7c5ca;
+    margin-bottom: 300px;
+}
+
+.modal_esquema li:first-child{
+    color: #86253C;
+    font-weight: 500;
+    padding-bottom: 30px !important;
+    line-height: 15px;
 }
 
 
@@ -2089,8 +2151,8 @@ background-color: #86253C !important;
 
 .centrar_logos{
     
-    margin-top: 25px;
-}
+/*    margin-top: 25px;
+*/}
 
 .logos_presentacion img{
         margin: 12px;

@@ -290,6 +290,13 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     controller: 'ModalVIH'
   })
 
+   .state('modalesquema',{
+    cache: false,
+    url:'/modalesquema',
+    templateUrl:'templates/dislipemia/modalesquema.html',
+    controller: 'ModalEsquema'
+  })
+
   .state('presentacion',{
     cache: false,
     url:'/presentacion',
@@ -1377,17 +1384,18 @@ if(ldlactual>0){
     if(cardio=="2"||renalindex=="1"||scoreindex=="3"){
       // alert("RiesgoAlto");
       ldlobjetivo=100;
-      if (ldlactual>100) {
-        $state.go('riesgoalto');
+      $state.go('riesgoalto');
+      // if (ldlactual>100) {
+      //   $state.go('riesgoalto');
         
-      }
-      else if (ldlactual<101){
-        $state.go('riesgobajo');
-      }
+      // }
+      // else if (ldlactual<101){
+      //   $state.go('riesgobajo');
+      // }
 
       
     }
-    if(cardio=="1"||ecvcheck.checked||renalindex=="2"||scoreindex=="1"||scoreindex=="2"){
+    if(cardio=="1"||ecvcheck.checked||renalindex=="2"||scoreindex=="4"){
       ldlobjetivo=70;
       if (ldlactual>70) {
         $state.go('riesgomuyalto');
@@ -1400,7 +1408,7 @@ if(ldlactual>0){
       
 
     }
-    if(scoreindex=="4"){
+    if(scoreindex=="2"){
       ldlobjetivo=115;
       if (ldlactual>115) {
         $state.go('riesgomedio');
@@ -1412,7 +1420,7 @@ if(ldlactual>0){
       // alert("RiesgoModerado");
       
     }
-    if(scoreindex=="5"){
+    if(scoreindex=="1"){
       // alert("RiesgoBajo");
       ldlobjetivo=115;
       $state.go('riesgobajo');
@@ -6587,9 +6595,11 @@ $state.go('tratamientoinicio_vih');
 
 .controller('TratamientoInicio',function($scope,$state, $firebaseArray){
   if(tratamiento_previo==true){
-    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo2.png')");
     $("#ldl_act_tratamiento").css("background-size", "100px 100px");
     $(".info_tratamiento").show();
+    $(".campos_res_gris").show();
+    $(".campos_res_gris").css("top", "335px");
   }
   $scope.ir_info_previo = function() {
     $state.go('modal_tratamiento_previo');
@@ -17071,6 +17081,11 @@ $scope.volver = function() {
 })
 
 .controller('ModalInfoTratamientoAlto',function($scope,$state,$rootScope){
+
+
+})
+
+.controller('ModalEsquema',function($scope,$state,$rootScope){
 
 
 })
