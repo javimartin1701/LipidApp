@@ -6606,12 +6606,18 @@ $state.go('reduccion_trat_vih');
 
 
 .controller('TratamientoInicio',function($scope,$state, $firebaseArray){
+
   if(tratamiento_previo==true){
+    ldlactual=ldlrectificado;
     $("#ldl_act_tratamiento").css("background", "url('img/total_rojo2.png')");
     $("#ldl_act_tratamiento").css("background-size", "100px 100px");
     $(".info_tratamiento").show();
     $(".campos_res_gris").show();
     $(".campos_res_gris").css("top", "335px");
+  }
+  if(tratamiento_previo==false){
+      $("#ldl_act_tratamiento").css("background", "url('img/total_rojo3.png')");
+    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
   }
   $scope.ir_info_previo = function() {
     $state.go('modal_tratamiento_previo');
@@ -17111,21 +17117,21 @@ $scope.ir_info_previo = function() {
 
   if(unidad_seleccionada=="1"){
     $("select#unidades_totales").val("0.25");
-    document.getElementById("ldl_act_tratamiento0").value=ldlrectificado*0.25;
-    document.getElementById("ldl_act_red").value=ldlactual*0.25;
+    document.getElementById("ldl_act_tratamiento0").value=ldlactual*0.25;
+    document.getElementById("ldl_act_red").value=ldlrectificado*0.25;
     document.getElementById("ldl_obj_red").value=ldlobjetivo*0.25;
   }
   else{
 
-    document.getElementById("ldl_act_tratamiento0").value=ldlrectificado;
-  document.getElementById("ldl_act_red").value=ldlactual;
+    document.getElementById("ldl_act_tratamiento0").value=ldlactual;
+  document.getElementById("ldl_act_red").value=ldlrectificado;
   document.getElementById("ldl_obj_red").value=ldlobjetivo;
 }
 
 
 // document.getElementById("ldl_act_red").value=ldlactual;
 //   document.getElementById("ldl_obj_red").value=ldlobjetivo;  
-  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
   document.getElementById("porcentaje_red").value=porc_reducc+"%";
 
 })
@@ -17140,14 +17146,14 @@ $scope.ir_info_previo = function() {
 
   if(unidad_seleccionada=="1"){
     $("select#unidades_totales").val("0.25");
-    document.getElementById("ldl_act_tratamiento0").value=ldlrectificado*0.25;
-    document.getElementById("ldl_act_red").value=ldlactual*0.25;
+    document.getElementById("ldl_act_tratamiento0").value=ldlactual*0.25;
+    document.getElementById("ldl_act_red").value=ldlrectificado*0.25;
     document.getElementById("ldl_obj_red_vih").value=objetivo_vih*0.25;
   }
   else{
 
-    document.getElementById("ldl_act_tratamiento0").value=ldlrectificado;
-  document.getElementById("ldl_act_red").value=ldlactual;
+    document.getElementById("ldl_act_tratamiento0").value=ldlactual;
+  document.getElementById("ldl_act_red").value=ldlrectificado;
   document.getElementById("ldl_obj_red_vih").value=objetivo_vih;
 }
 
