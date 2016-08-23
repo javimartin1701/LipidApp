@@ -78,7 +78,7 @@ var unidad_seleccionada=null;
 var check_ecvdoc=false;
 
 var tratamiento_previo=false;
-
+var pantallaactual=null;
 angular.module('starter', ['ionic','ui.router','firebase'])
 
 .run(function($ionicPlatform,$rootScope,$ionicPopup,$state) {
@@ -231,10 +231,202 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     penul=historia[pen];
     console.log(historia);
     console.log(penul);
+    pantallaactual = $rootScope.currentState;
+    console.log(pantallaactual);
 
 });
 
 
+$( "#ir_presentacion" ).click(function() {
+if(pantallaactual != 'home'){
+     var confirmPopup = $ionicPopup.confirm({
+
+      title: '¡Atención!',
+
+      template: 'Está apunto de abandonar la sección en la que se encuentra actualmente. Perderá la información introducida. ¿Está seguro que desea continuar?',
+
+      cancelText: 'Cancelar',
+
+      okText: 'Aceptar',
+
+   });
+
+   confirmPopup.then(function(res) {
+
+      if (res) {
+
+         $state.go('presentacion');
+
+      } else {
+
+         console.log('You clicked on "Cancel" button');
+
+      }
+
+   });
+}
+else{
+  $state.go('presentacion');
+
+}
+  });
+
+
+
+
+
+
+$( "#ir_formulariodislipemia" ).click(function() {
+if(pantallaactual != 'home'){
+     var confirmPopup = $ionicPopup.confirm({
+
+      title: '¡Atención!',
+
+      template: 'Está apunto de abandonar la sección en la que se encuentra actualmente. Perderá la información introducida. ¿Está seguro que desea continuar?',
+
+      cancelText: 'Cancelar',
+
+      okText: 'Aceptar',
+
+   });
+
+   confirmPopup.then(function(res) {
+
+      if (res) {
+
+         $state.go('formulariodislipemia');
+
+      } else {
+
+         console.log('You clicked on "Cancel" button');
+
+      }
+
+   });
+}
+else{
+  $state.go('formulariodislipemia');
+
+}
+  });
+
+
+
+
+
+
+$( "#ir_hipercolesterolemia" ).click(function() {
+if(pantallaactual != 'home'){
+     var confirmPopup = $ionicPopup.confirm({
+
+      title: '¡Atención!',
+
+      template: 'Está apunto de abandonar la sección en la que se encuentra actualmente. Perderá la información introducida. ¿Está seguro que desea continuar?',
+
+      cancelText: 'Cancelar',
+
+      okText: 'Aceptar',
+
+   });
+
+   confirmPopup.then(function(res) {
+
+      if (res) {
+
+         $state.go('hipercolesterolemia');
+
+      } else {
+
+         console.log('You clicked on "Cancel" button');
+
+      }
+
+   });
+}
+else{
+  $state.go('hipercolesterolemia');
+
+}
+  });
+
+
+
+
+
+
+
+$( "#ir_limitaciones1" ).click(function() {
+if(pantallaactual != 'home'){
+     var confirmPopup = $ionicPopup.confirm({
+
+      title: '¡Atención!',
+
+      template: 'Está apunto de abandonar la sección en la que se encuentra actualmente. Perderá la información introducida. ¿Está seguro que desea continuar?',
+
+      cancelText: 'Cancelar',
+
+      okText: 'Aceptar',
+
+   });
+
+   confirmPopup.then(function(res) {
+
+      if (res) {
+
+         $state.go('limitaciones1');
+
+      } else {
+
+         console.log('You clicked on "Cancel" button');
+
+      }
+
+   });
+}
+else{
+  $state.go('limitaciones1');
+
+}
+  });
+
+
+
+
+
+
+$( "#ir_premenu_interacciones2" ).click(function() {
+if(pantallaactual != 'home'){
+     var confirmPopup = $ionicPopup.confirm({
+
+      title: '¡Atención!',
+
+      template: 'Está apunto de abandonar la sección en la que se encuentra actualmente. Perderá la información introducida. ¿Está seguro que desea continuar?',
+
+      cancelText: 'Cancelar',
+
+      okText: 'Aceptar',
+
+   });
+
+   confirmPopup.then(function(res) {
+
+      if (res) {
+
+         $state.go('premenu_interacciones2');
+
+      } else {
+
+         console.log('You clicked on "Cancel" button');
+
+      }
+
+   });
+}
+else{
+  $state.go('premenu_interacciones2');
+
+}
+  });
 
 
 })
