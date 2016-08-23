@@ -415,6 +415,20 @@ $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParam
     templateUrl:'templates/dislipemia/reduccion_vih.html',
     controller: 'Reduccion_vih'
   })
+            .state('reduccion_trat',{
+    cache: false,
+    url:'/reduccion_trat',
+    templateUrl:'templates/dislipemia/reduccion_trat.html',
+    controller: 'ReduccionTrat'
+  })
+
+.state('reduccion_trat_vih',{
+    cache: false,
+    url:'/reduccion_trat_vih',
+    templateUrl:'templates/dislipemia/reduccion_trat_vih.html',
+    controller: 'ReduccionTratVIH'
+  })
+
 
       .state('tratamientoprevio',{
     cache: false,
@@ -6457,14 +6471,11 @@ if ($('#gemf_600').is(":checked")){gemf_600v=10;}
 
 red_trat=atorv_10v+atorv_20v+atorv_40v+atorv_80v+rosuv_5v+rosuv_10v+rosuv_20v+pitv_1v+pitv_2v+pitv_4v+simv_10v+simv_20v+simv_40v+simv_80v+prav_10v+prav_20v+prav_40v+prav_80v+fluv_20v+fluv_40v+fluv_80v+lov_20v+lov_40v+ezet_10v+aliroc_75v+aliroc_150v+evoloc_140v+evoloc_420v+colestir_4v+colestip_5v+fenof_200v+gemf_900v+gemf_600v;
 ldlrectificado=parseFloat(ldlactual)+parseFloat(ldlactual)*(red_trat/100);
-ldlactual=ldlrectificado;
-$state.go('tratamientoinicio');
+// ldlactual=ldlrectificado;
+$state.go('reduccion_trat');
 }
 
 })
-
-
-
 
 
 
@@ -6576,8 +6587,9 @@ if (($('#prav_40').is(":checked"))&&($('#ezet_10').is(":checked"))){prav_40v_eze
 red_trat=atorv_10v+atorv_20v+rosuv_10v+prav_40v+ezet_10v+atorv_10v_ezet_10v+atorv_20v_ezet_10v+rosuv_10v_ezet_10v+prav_40v_ezet_10v;
 
 ldlrectificado=parseFloat(ldlactual)+parseFloat(ldlactual)*(red_trat/100);
-ldlactual=ldlrectificado;
-$state.go('tratamientoinicio_vih');
+// ldlactual=ldlrectificado;
+// $state.go('tratamientoinicio_vih');
+$state.go('reduccion_trat_vih');
 }
 
 })
@@ -17087,6 +17099,63 @@ $scope.volver = function() {
 
 .controller('ModalEsquema',function($scope,$state,$rootScope){
 
+
+})
+
+
+.controller('ReduccionTrat',function($scope,$state){
+
+$scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
+
+  if(unidad_seleccionada=="1"){
+    $("select#unidades_totales").val("0.25");
+    document.getElementById("ldl_act_tratamiento0").value=ldlrectificado*0.25;
+    document.getElementById("ldl_act_red").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_red").value=ldlobjetivo*0.25;
+  }
+  else{
+
+    document.getElementById("ldl_act_tratamiento0").value=ldlrectificado;
+  document.getElementById("ldl_act_red").value=ldlactual;
+  document.getElementById("ldl_obj_red").value=ldlobjetivo;
+}
+
+
+// document.getElementById("ldl_act_red").value=ldlactual;
+//   document.getElementById("ldl_obj_red").value=ldlobjetivo;  
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red").value=porc_reducc+"%";
+
+})
+
+
+
+.controller('ReduccionTratVIH',function($scope,$state){
+
+$scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
+
+  if(unidad_seleccionada=="1"){
+    $("select#unidades_totales").val("0.25");
+    document.getElementById("ldl_act_tratamiento0").value=ldlrectificado*0.25;
+    document.getElementById("ldl_act_red").value=ldlactual*0.25;
+    document.getElementById("ldl_obj_red_vih").value=objetivo_vih*0.25;
+  }
+  else{
+
+    document.getElementById("ldl_act_tratamiento0").value=ldlrectificado;
+  document.getElementById("ldl_act_red").value=ldlactual;
+  document.getElementById("ldl_obj_red_vih").value=objetivo_vih;
+}
+
+
+// document.getElementById("ldl_act_red").value=ldlactual;
+//   document.getElementById("ldl_obj_red").value=ldlobjetivo;  
+  var porc_reducc=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlactual))*100);
+  document.getElementById("porcentaje_red_vih").value=porc_reducc+"%";
 
 })
 

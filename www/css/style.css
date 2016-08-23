@@ -90,6 +90,19 @@ font-size: smaller;
     display: none;
 }
 
+.info_tratamiento_pre{
+    background-image: url('../img/info.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    width: 36px;
+    height: 20px;
+    position: absolute;
+    top: 160px;
+    left: 50%;
+    margin-left: -18px;
+    
+}
+
 
 #unidades_totales{
     background: white;
