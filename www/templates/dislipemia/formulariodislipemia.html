@@ -7,7 +7,6 @@
 <ion-content class="form_dislipenia">
 <h2 class="subtitle">1 de 3 Variables Clínicas</h2>
 
-
       
 	  <ul class="list lista">
 	    <li class="item">
@@ -59,16 +58,17 @@
 		 	</select>
 		 	<select id="selector-score-vih">
 			  <option value="-">Seleccione una opción</option>
-			  <option value="1">SCORE &lt;1%</option>
+			 <!--  <option value="1">SCORE &lt;1%</option>
 			  <option value="1-4">SCORE: 1 - 4%</option>
-			  <option value="5-9">SCORE: 5 - 9%</option>
+			  <option value="5-9">SCORE: 5 - 9%</option> -->
+			  <option value="10">SCORE: &lt;10%</option>
 			  <option value="10-20">SCORE: 10 - 20%</option>
 			  <option value="20">SCORE &ge;20%</option>
 		 	</select>
 		 </p>
 	    </li>
 	     <li class="item item-toggle">
-     <label>VIH</label>
+     <label>VIH</label><a class="info" ng-click="govih2()"></a>
 		     <label class="toggle toggle-assertive" style="top: 5px;">
 		       <input type="checkbox" id="VIH" ng-click="govih()">
 		       <div class="track">

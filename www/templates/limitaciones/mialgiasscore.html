@@ -10,8 +10,52 @@
 
       
 	  <ul class="list lista form_score_mialgias">
+		<li class="item">
+	      <p style="font-weight:600">Patrón/distribución regional<br>de las mialgias</p>
+	      <p>
+	      	
+			  <input type="radio" class="patron_distribucion" name="patron_distribucion" value="3">Simétricas de los flexores<br>de la cadera/muslos</br>
+			  <input type="radio" class="patron_distribucion" name="patron_distribucion" value="2">Simétricas de las pantorrillas</br>
+			  <input type="radio" class="patron_distribucion" name="patron_distribucion" value="2">Simétricas proximales de los MMSS</br>
+			  <input type="radio" class="patron_distribucion" name="patron_distribucion" value="1">No específicas, asimétricas, intermitentes</br>
+		 	
+		 </p>
+		</li>
 
-	     <li class="item">
+		<li class="item">
+	      <p style="font-weight:600">Patrón temporal</p>
+	      <p>
+	      	
+			  <input type="radio" class="patron_distribucion" name="patron_temporal" value="3">Inicio &lt;4 semanas</br>
+			  <input type="radio" class="patron_distribucion" name="patron_temporal" value="2">Inicio 4-12 semanas</br>
+			  <input type="radio" class="patron_distribucion" name="patron_temporal" value="1">Inicio &gt;12 semanas</br>
+		 	
+		 </p>
+		</li>
+
+		<li class="item">
+	      <p style="font-weight:600">Retirada estatina</p>
+	      <p>
+	      	
+			  <input type="radio" class="patron_distribucion" name="retirada_estatina" value="2">Mejoría en &lt;2 semanas</br>
+			  <input type="radio" class="patron_distribucion" name="retirada_estatina" value="1">Mejoría en 2-4 semanas</br>
+			  <input type="radio" class="patron_distribucion" name="retirada_estatina" value="0">Sin mejoría en &gt;4 semanas</br>
+		 	
+		 </p>
+		</li>
+
+		<li class="item">
+	      <p style="font-weight:600">Reintroducción estatina</p>
+	      <p>
+	      	
+			  <input type="radio" class="patron_distribucion" name="reintroduccion_estatina" value="3">Reaparecen los mismos síntomas<br>en &lt;4 semanas</br>
+			  <input type="radio" class="patron_distribucion" name="reintroduccion_estatina" value="1">Reaparecen los mismos síntomas<br>en 4-12 semanas</br>
+			  
+		 	
+		 </p>
+		</li>
+
+	     <!-- <li class="item">
 	      <p>Patrón/distribución regional<br>de las mialgias</p>
 	      <p>
 	      	<select id="patron_distribucion">
@@ -54,7 +98,7 @@
 			  <option value="1">Reaparecen los mismos síntomas en 4-12 semanas</option>
 		 	</select>
 		 </p>
-	    </li>
+	    </li> -->
 
 	  </ul>
 	  <button ng-click="score_mialgias()" class="continuar_imc button">Calcular</button>

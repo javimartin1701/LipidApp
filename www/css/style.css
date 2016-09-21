@@ -103,6 +103,25 @@ font-size: smaller;
     
 }
 
+.texto_password{
+    color: #444;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.password{
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 19px;
+    height: 35px;
+    text-align: center;
+}
+
+
+
 
 #unidades_totales{
     background: white;
@@ -1105,6 +1124,10 @@ display: inline-block;
     background: #efefef;
 }
 
+.inicio2{
+    background: #efefef;
+}
+
 .form_dislipenia{
     background: #efefef;
 }
@@ -1501,6 +1524,11 @@ background: white;
     position: fixed;
     right: 0;
     top: 335px !important;
+    text-align: right;
+}
+
+.info_modal_inicio_tratamiento img{
+    width: 75%;
 }
 
 .modal_esquema {
@@ -2031,6 +2059,52 @@ background-color: #86253C !important;
     margin:auto;
 }
 
+.condiciones span{
+    color: #444;
+    font-size: 12px;
+    line-height: 13px;
+}
+
+.condiciones{
+        width: 79%;
+    margin: auto;
+    margin-bottom: 25px;
+    text-align: justify !important;
+}
+
+.aviso_cond{
+    text-align: center;
+    color: red;
+    display: none;
+}
+
+#contra{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #86253c;
+}
+
+.condiciones input{
+    width: 18px;
+    height: 18px;
+    top: 1px;
+    margin-right: 10px;
+    border-color: #9e203a;
+    border-style: solid;
+    border-width: 1px;
+    -webkit-appearance: none;
+    color: red;
+    border-radius: 0px;
+}
+
+.condiciones input:active, ..condiciones input:checked:active {
+color: red
+    }
+
+.condiciones input:checked {
+    background: url('../img/check.png');
+    color: red
+}
 
 .certeza2 span{
     font-size: 28px;
@@ -2214,7 +2288,49 @@ background-color: #86253C !important;
 .continuar_vih{
     display: none;
 }
+ .cartel_rojo{
+    background: #881b36;
+    color: white;
+    line-height: 66px;
+    font-size: 27px;
+    margin-top: -15px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+ }
 
+  .cartel_naranja{
+    background: #cd5b43;
+    color: white;
+    line-height: 66px;
+    font-size: 27px;
+    margin-top: -15px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+ }
+
+   .cartel_verde{
+    background: #6ed38c;
+    color: white;
+    line-height: 66px;
+    font-size: 27px;
+    margin-top: -15px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+ }
+
+ .entrar{
+    width: 50%;
+    margin-left: 25%;
+    border: none;
+    height: 35px;
+    background-color: #86253c !important;
+    font-size: 18px;
+    margin-bottom: 140px;
+    color: white;
+}
 
 @media only screen and (min-width: 350px) {
     .centrar_logos{

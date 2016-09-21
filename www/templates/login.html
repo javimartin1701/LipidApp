@@ -3,27 +3,21 @@
         <h1 class="title">LIPIDapp</h1>
         <button class="button"><i class="icon ion-ios-plus-outline"></i></button>
 </ion-header-bar>
-<ion-content class="inicio" scroll="false">
+<ion-content class="inicio2" scroll="false">
+<p class="texto_password">Introduzca su código de acceso a la aplicación. Si no dispone de código póngase en contacto con xxx@xxx.com</p>
 
-        <button  class="button button-full button-light">
-        </button>
-        <button ui-sref="formulariodislipemia" class="button button-full button-light" style="background:#a66171 !important;">
-          TRATAMIENTO DISLIPEMIA
-        </button>
-        <button ui-sref="hipercolesterolemia" class="button button-full button-light" style="line-height: 20px;padding: 12px 0 12px 0;">
-          HIPERCOLESTEROLEMIA<br>FAMILIAR
-        </button>
-        <button ui-sref="limitaciones1" class="button button-full button-light">
-          LIMITACIONES ESTATINAS
-        </button>
-        <button ui-sref="premenu_interacciones2" class="button button-full button-light">
-          INTERACCIONES FARMACOLÓGICAS
-        </button>
+        <input type="password" id="contra" class="password">
+        <p class="condiciones" style="text-align:center;"><input type="checkbox" id="condiciones"><span>Al marcar la presente casilla declaro que he leído y acepto los términos y condiciones que rigen el acceso y utilización de la Aplicación LipidApp</span></p>
+        <p class="aviso_cond">Para ingresar en la aplicación acepte las condiciones y terminos legales.</p>
+        <button ng-click="incorrecto()" class="entrar">Entrar</button>
+
 
         <div class="row">
           <div class="col"><img style="margin-top: 8px;" src="img/logo-cardio.png"></div>
           <div class="col"><img src="img/logo-sea.png"></div>
         </div>
+
+        <div class="tapa"></div>
 
 </ion-content>
 

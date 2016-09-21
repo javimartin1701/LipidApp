@@ -6,8 +6,14 @@
 <ion-content class="form_dislipenia">
 <h2 class="subtitle">2 de 3 Riesgo Cardiovascular</h2>
 <div class="pantalla_resultado">
-	  <img style="width:95%" src="img/riesgo_muy_alto.png">
-	  <label>Objetivo cLDL</label>
+<!-- 	  <img style="width:95%" src="img/riesgo_muy_alto.png">
+
+ -->
+<div class="cartel_rojo">
+	<p>MUY ALTO</p>
+</div>
+
+ 	  <label>Objetivo cLDL</label>
 	  <select id="unidades_totales" >
 			  <option value="4">mg/dL</option>
 			  <option value="0.25">mmol/L</option>
@@ -15,7 +21,7 @@
 	 
 	  <div class="campos_res">
 	  	
-	  	<input type="text" id="ldl_act_res">
+	  	<input style="background: url('img/total_rojo3.png');" type="text" id="ldl_act_res">
 	    <input type="text" id="ldl_obj_res">
 	  </div>
 	  
