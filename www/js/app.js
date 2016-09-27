@@ -95,6 +95,9 @@ var sin_fibratos=false;
 var sin_ipcsk9=false;
 var sin_resina=false;
 var password2=null;
+var mitad=false;
+var tipo_riesgo=null;
+var tratamiento=false;
 
 angular.module('starter', ['ionic','ui.router','firebase'])
 
@@ -463,6 +466,13 @@ else{
     url:'/login',
     templateUrl:'templates/login.html',
     controller: 'Login'
+  })
+
+  .state('condiciones_legales',{
+    cache: false,
+    url:'/condiciones_legales',
+    templateUrl:'templates/condiciones_legales.html',
+    controller: 'condiciones_legales'
   })
 
   .state('home',{
@@ -1649,11 +1659,13 @@ if(ldlactual>0){
 
          objetivo_vih=70;
       if (ldlactual>70) {
-        $state.go('riesgoalto_vih');
+        // $state.go('riesgoalto_vih');
+        tipo_riesgo="riesgoalto_vih";
         
       }
       else if (ldlactual<71){
-        $state.go('riesgobajo_vih');
+        // $state.go('riesgobajo_vih');
+        tipo_riesgo="riesgobajo_vih";
       }
       // alert("RiesgoMuyAlto");
       // alert("Riesgo alto");
@@ -1664,11 +1676,14 @@ if(ldlactual>0){
     if(cardio=="1"||scoreindex=="2"){
       objetivo_vih=100;
       if (ldlactual>100) {
-        $state.go('riesgomoderadoalto_vih');
+        // $state.go('riesgomoderadoalto_vih');
+        tipo_riesgo="riesgomoderadoalto_vih";
+       
         
       }
       else if (ldlactual<101){
-        $state.go('riesgobajo_vih');
+        // $state.go('riesgobajo_vih');
+        tipo_riesgo="riesgobajo_vih";
       }
       // alert("RiesgoAlto");
       // alert("Riesgo moderado-alto");
@@ -1676,11 +1691,13 @@ if(ldlactual>0){
     if(cardio=="1"||scoreindex=="3"){
       objetivo_vih=130;
       if (ldlactual>130) {
-        $state.go('riesgomoderadobajo_vih');
+        // $state.go('riesgomoderadobajo_vih');
+        tipo_riesgo="riesgomoderadobajo_vih";
         
       }
       else if (ldlactual<131){
-        $state.go('riesgobajo_vih');
+        // $state.go('riesgobajo_vih');
+        tipo_riesgo="riesgobajo_vih";
       }
       // alert("RiesgoModerado");
       // alert("Riesgo moderado-bajo");
@@ -1689,9 +1706,13 @@ if(ldlactual>0){
     if(cardio=="1"){
       // alert("RiesgoBajo");
       // alert("Riesgo bajo");
-      $state.go('riesgobajo_vih');
+      // $state.go('riesgobajo_vih');
+      tipo_riesgo="riesgobajo_vih";
       objetivo_vih=130;
     }
+
+    $state.go('tratamientoprevio_vih');
+
     }
 
 
@@ -1708,7 +1729,8 @@ if(ldlactual>0){
     if(cardio=="2"||renalindex=="1"||scoreindex=="3"){
       // alert("RiesgoAlto");
       ldlobjetivo=100;
-      $state.go('riesgoalto');
+      // $state.go('riesgoalto');
+      tipo_riesgo="riesgoalto";
       // if (ldlactual>100) {
       //   $state.go('riesgoalto');
         
@@ -1722,7 +1744,8 @@ if(ldlactual>0){
     if(cardio=="1"||ecvcheck.checked||renalindex=="2"||scoreindex=="4"){
       ldlobjetivo=70;
       // if (ldlactual>70) {
-        $state.go('riesgomuyalto');
+        // $state.go('riesgomuyalto');
+        tipo_riesgo="riesgomuyalto";
         
       // }
       // else if (ldlactual<71){
@@ -1735,7 +1758,8 @@ if(ldlactual>0){
     if(scoreindex=="2"){
       ldlobjetivo=115;
       // if (ldlactual>115) {
-        $state.go('riesgomedio');
+        // $state.go('riesgomedio');
+        tipo_riesgo="riesgomedio";
         
       // }
       // else if (ldlactual<116){
@@ -1747,15 +1771,18 @@ if(ldlactual>0){
     if(scoreindex=="1"){
       // alert("RiesgoBajo");
       ldlobjetivo=115;
-      $state.go('riesgobajo');
+      // $state.go('riesgobajo');
+      tipo_riesgo="riesgobajo";
     }
 
         if(ecvcheck.checked){
       ldlobjetivo=70;
-      $state.go('riesgomuyalto');
+      // $state.go('riesgomuyalto');
+      tipo_riesgo="riesgomuyalto";
         
       }
 
+      $state.go('tratamientoprevio');
 
   }
 
@@ -6354,6 +6381,9 @@ else{
 
 
 .controller('RiesgoMuyAlto',function($scope,$state){
+  if (ldlactual>70&&ldlactual<135){
+    ldlobjetivo=ldlobjetivo/2
+  }
   if(unidad_seleccionada=="1"){
     $("select#unidades_totales").val("0.25");
     document.getElementById("ldl_act_res").value=ldlactual*0.25;
@@ -6372,6 +6402,7 @@ else{
         
         
     }
+
 
     var unidad=document.getElementById("unidades_totales").value;
 
@@ -6394,6 +6425,9 @@ else{
 
 
 .controller('RiesgoAlto',function($scope,$state){
+    if (ldlactual>100&&ldlactual<200){
+    ldlobjetivo=ldlobjetivo/2
+  }
 
 if(unidad_seleccionada=="1"){
     $("select#unidades_totales_alto").val("0.25");
@@ -6485,6 +6519,7 @@ if(unidad_seleccionada=="1"){
 
 .controller('Reduccion',function($scope){
 
+
   if(unidad_seleccionada=="1"){
     $("select#unidades_totales").val("0.25");
     document.getElementById("ldl_act_red").value=ldlactual*0.25;
@@ -6498,10 +6533,19 @@ if(unidad_seleccionada=="1"){
 
 
 // document.getElementById("ldl_act_red").value=ldlactual;
-//   document.getElementById("ldl_obj_red").value=ldlobjetivo;  
+//   document.getElementById("ldl_obj_red").value=ldlobjetivo; 
+if(tratamiento==true){
+var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+console.log("con tratamiento previo") 
+} 
+else{
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  console.log("con tratamiento previo") 
+}
   document.getElementById("porcentaje_red").value=porc_reducc+"%";
-
+if(tratamiento==true){
+  $(".adicional span").show();
+}
 
 
 })
@@ -6523,22 +6567,63 @@ if(unidad_seleccionada=="1"){
 
 // document.getElementById("ldl_act_red_vih").value=ldlactual;
 //   document.getElementById("ldl_obj_red_vih").value=objetivo_vih;  
+
+if(tratamiento==true){
+  var porc_reducc=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlrectificado))*100);
+}
+else{
   var porc_reducc=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlactual))*100);
+}
   document.getElementById("porcentaje_red_vih").value=porc_reducc+"%";
 
-
-
-})
-
-
-.controller('TratamientoPrevio',function($scope){
-
-  
+if(tratamiento==true){
+  $(".adicional span").show();
+}
 
 })
 
-.controller('TratamientoPrevio_vih',function($scope){
 
+.controller('TratamientoPrevio',function($scope,$state){
+
+    $scope.elegir_opcion = function() {
+
+             if(tipo_riesgo="riesgomuyalto"){
+                $state.go('riesgomuyalto');
+             }
+             else if(tipo_riesgo="riesgoalto"){
+                $state.go('riesgoalto');
+             }
+             else if(tipo_riesgo="riesgomedio"){
+                $state.go('riesgomedio');
+             }
+             else if(tipo_riesgo="riesgobajo"){
+                $state.go('riesgobajo');
+             }
+        
+        
+    }
+
+})
+
+.controller('TratamientoPrevio_vih',function($scope,$state){
+
+    $scope.elegir_opcion = function() {
+
+             if(tipo_riesgo="riesgoalto_vih"){
+                $state.go('riesgoalto_vih');
+             }
+             else if(tipo_riesgo="riesgomoderadoalto_vih"){
+                $state.go('riesgomoderadoalto_vih');
+             }
+             else if(tipo_riesgo="riesgomoderadobajo_vih"){
+                $state.go('riesgomoderadobajo_vih');
+             }
+             else if(tipo_riesgo="riesgobajo_vih"){
+                $state.go('riesgobajo_vih');
+             }
+        
+        
+    }
   
 
 })
@@ -6553,6 +6638,7 @@ if(unidad_seleccionada=="1"){
  
 
 jQuery('.linea_atorvastatina').on( "click", function() { 
+  
 
            jQuery('.cuadro_atorvastatina').show(); //muestro mediante clase
          });
@@ -6923,7 +7009,28 @@ if ($('#gemf_600').is(":checked")){gemf_600v=10;}
 red_trat=atorv_10v+atorv_20v+atorv_40v+atorv_80v+rosuv_5v+rosuv_10v+rosuv_20v+pitv_1v+pitv_2v+pitv_4v+simv_10v+simv_20v+simv_40v+simv_80v+prav_10v+prav_20v+prav_40v+prav_80v+fluv_20v+fluv_40v+fluv_80v+lov_20v+lov_40v+ezet_10v+aliroc_75v+aliroc_150v+evoloc_140v+evoloc_420v+colestir_4v+colestip_5v+fenof_200v+gemf_900v+gemf_600v;
 ldlrectificado=parseFloat(ldlactual)+parseFloat(ldlactual)*(red_trat/100);
 // ldlactual=ldlrectificado;
-$state.go('reduccion_trat');
+
+tratamiento=true;
+
+
+
+             if(tipo_riesgo="riesgomuyalto"){
+                $state.go('riesgomuyalto');
+             }
+             else if(tipo_riesgo="riesgoalto"){
+                $state.go('riesgoalto');
+             }
+             else if(tipo_riesgo="riesgomedio"){
+                $state.go('riesgomedio');
+             }
+             else if(tipo_riesgo="riesgobajo"){
+                $state.go('riesgobajo');
+             }
+        
+        
+
+
+
 }
 
 })
@@ -7052,7 +7159,30 @@ red_trat=atorv_10v+atorv_20v+rosuv_10v+prav_40v+ezet_10v+atorv_10v_ezet_10v+ator
 ldlrectificado=parseFloat(ldlactual)+parseFloat(ldlactual)*(red_trat/100);
 // ldlactual=ldlrectificado;
 // $state.go('tratamientoinicio_vih');
-$state.go('reduccion_trat_vih');
+// $state.go('reduccion_trat_vih');
+
+tratamiento=true;
+
+
+
+             if(tipo_riesgo="riesgoalto_vih"){
+                $state.go('riesgoalto_vih');
+             }
+             else if(tipo_riesgo="riesgomoderadoalto_vih"){
+                $state.go('riesgomoderadoalto_vih');
+             }
+             else if(tipo_riesgo="riesgomoderadobajo_vih"){
+                $state.go('riesgomoderadobajo_vih');
+             }
+             else if(tipo_riesgo="riesgobajo_vih"){
+                $state.go('riesgobajo_vih');
+             }
+        
+        
+    
+
+
+
 }
 
 })
@@ -18014,6 +18144,10 @@ $scope.ir_info_previo = function() {
 
 .controller('Login',function($scope,$state,$rootScope){
 
+if(pantallaactual=="login"){
+  $(".bar-footer").hide();
+}
+
 
 
 $scope.incorrecto = function() {
@@ -18032,7 +18166,8 @@ $scope.incorrecto = function() {
       } else {
 
             console.log("Incorrecto");
-            $("#contra").attr("placeholder", "Contraseña erronea");
+            // $("#contra").attr("placeholder", "Contraseña erronea");
+            $(".pass_fail").show();
             document.getElementById("contra").value=null;
 
       }
@@ -18040,12 +18175,25 @@ $scope.incorrecto = function() {
     }
     else{
       $(".aviso_cond").show();
+      $(".logotipo").css("bottom", "10%");
     }
+}
+
+
+$scope.ver_cond = function() {
+  $state.go('condiciones_legales');
 }
 
 })
 
 
+.controller('condiciones_legales',function($scope,$state,$rootScope){
+
+  if(pantallaactual=="condiciones_legales"){
+  $(".menu_icon_bottom").hide();
+}
+
+})
 
 
 

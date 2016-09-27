@@ -62,6 +62,10 @@ font-size: smaller;
     color: gray;
 }
 
+.adicional{
+
+}
+
 .centrar_logos{
 
 }
@@ -627,7 +631,7 @@ font-size: smaller;
     width: 127px;
     height: 127px;
     text-align: center;
-    background: url('../img/total_rojo.png');
+    background: url('../img/total_rojo3.png');
     color: #87253c;
     font-size: 31px;
 }
@@ -2063,6 +2067,7 @@ background-color: #86253C !important;
     color: #444;
     font-size: 12px;
     line-height: 13px;
+    text-decoration: underline;
 }
 
 .condiciones{
@@ -2070,9 +2075,24 @@ background-color: #86253C !important;
     margin: auto;
     margin-bottom: 25px;
     text-align: justify !important;
+
+}
+
+.content_aviso{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 17px;
+    padding-bottom: 50px;
+    color: #444;
 }
 
 .aviso_cond{
+    text-align: center;
+    color: red;
+    display: none;
+}
+
+.pass_fail{
     text-align: center;
     color: red;
     display: none;
@@ -2328,7 +2348,6 @@ color: red
     height: 35px;
     background-color: #86253c !important;
     font-size: 18px;
-    margin-bottom: 140px;
     color: white;
 }
 

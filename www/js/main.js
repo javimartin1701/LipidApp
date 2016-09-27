@@ -98,7 +98,11 @@ function menu_inferior(){
 
 
 function showEstatina() {
-    
+    jQuery('.selector_medicamentos').hide();
+    $("#ezetimibe").prop("checked", false);
+    $("#ipcsk9").prop("checked", false);
+    $("#resinas").prop("checked", false);
+    $("#fibratos").prop("checked", false);
         
         check = document.getElementById("estatinas");
         if (check.checked) {
@@ -111,6 +115,12 @@ function showEstatina() {
 
 
 function showEzetimibe() {
+
+    jQuery('.selector_medicamentos').hide();
+    $("#estatinas").prop("checked", false);
+    $("#ipcsk9").prop("checked", false);
+    $("#resinas").prop("checked", false);
+    $("#fibratos").prop("checked", false);
     
         
         check = document.getElementById("ezetimibe");
@@ -123,7 +133,11 @@ function showEzetimibe() {
     }
 
 function showIPCSK9() {
-    
+    jQuery('.selector_medicamentos').hide();
+    $("#estatinas").prop("checked", false);
+    $("#ezetimibe").prop("checked", false);
+    $("#resinas").prop("checked", false);
+    $("#fibratos").prop("checked", false);
         
         check = document.getElementById("ipcsk9");
         if (check.checked) {
@@ -135,6 +149,11 @@ function showIPCSK9() {
     }
 
 function showResinas() {
+    jQuery('.selector_medicamentos').hide();
+    $("#estatinas").prop("checked", false);
+    $("#ipcsk9").prop("checked", false);
+    $("#ezetimibe").prop("checked", false);
+    $("#fibratos").prop("checked", false);
     
         
         check = document.getElementById("resinas");
@@ -148,6 +167,11 @@ function showResinas() {
 
 
 function showFibratos() {
+    jQuery('.selector_medicamentos').hide();
+    $("#ezetimibe").prop("checked", false);
+    $("#ipcsk9").prop("checked", false);
+    $("#resinas").prop("checked", false);
+    $("#estatinas").prop("checked", false);
     
         
         check = document.getElementById("fibratos");
@@ -161,7 +185,13 @@ function showFibratos() {
 
 
 function showEstatinaContra() {
-    
+    jQuery('.ocultar_contra').hide();
+
+    $("#contra_rel_estatinas").prop("checked", false);
+    $("#contra_abs_ezetimibe").prop("checked", false);
+    $("#contra_abs_fibratos").prop("checked", false);
+    $("#contra_abs_resinas").prop("checked", false);
+    $("#contra_abs_ipcsk9").prop("checked", false);
         
         check = document.getElementById("contra_abs_estatinas");
         if (check.checked) {
@@ -173,7 +203,12 @@ function showEstatinaContra() {
     }
 
 function showEstatinaContraRel() {
-    
+    jQuery('.ocultar_contra').hide();
+        $("#contra_abs_estatinas").prop("checked", false);
+    $("#contra_abs_ezetimibe").prop("checked", false);
+    $("#contra_abs_fibratos").prop("checked", false);
+    $("#contra_abs_resinas").prop("checked", false);
+    $("#contra_abs_ipcsk9").prop("checked", false);
         
         check = document.getElementById("contra_rel_estatinas");
         if (check.checked) {
@@ -185,7 +220,12 @@ function showEstatinaContraRel() {
     }
 
 function showEzetimibeContra() {
-    
+    jQuery('.ocultar_contra').hide();
+        $("#contra_abs_estatinas").prop("checked", false);
+    $("#contra_rel_estatinas").prop("checked", false);
+    $("#contra_abs_fibratos").prop("checked", false);
+    $("#contra_abs_resinas").prop("checked", false);
+    $("#contra_abs_ipcsk9").prop("checked", false);
         
         check = document.getElementById("contra_abs_ezetimibe");
         if (check.checked) {
@@ -197,7 +237,13 @@ function showEzetimibeContra() {
     }
 
 function showFibratosContra() {
-    
+    jQuery('.ocultar_contra').hide();
+
+        $("#contra_abs_estatinas").prop("checked", false);
+    $("#contra_rel_estatinas").prop("checked", false);
+    $("#contra_abs_ezetimibe").prop("checked", false);
+    $("#contra_abs_resinas").prop("checked", false);
+    $("#contra_abs_ipcsk9").prop("checked", false);
         
         check = document.getElementById("contra_abs_fibratos");
         if (check.checked) {
@@ -209,8 +255,15 @@ function showFibratosContra() {
     }
 
 function showResinasContra() {
+
+
     
-        
+        jQuery('.ocultar_contra').hide();
+            $("#contra_abs_estatinas").prop("checked", false);
+    $("#contra_rel_estatinas").prop("checked", false);
+    $("#contra_abs_ezetimibe").prop("checked", false);
+    $("#contra_abs_fibratos").prop("checked", false);
+    $("#contra_abs_ipcsk9").prop("checked", false);
         check = document.getElementById("contra_abs_resinas");
         if (check.checked) {
              $(".lista_contra_abs_resinas").css("display", "block");
@@ -221,7 +274,13 @@ function showResinasContra() {
     }
 
 function showIPCSK9Contra() {
-    
+    jQuery('.ocultar_contra').hide();
+
+        $("#contra_abs_estatinas").prop("checked", false);
+    $("#contra_rel_estatinas").prop("checked", false);
+    $("#contra_abs_ezetimibe").prop("checked", false);
+    $("#contra_abs_fibratos").prop("checked", false);
+    $("#contra_abs_resinas").prop("checked", false);
         
         check = document.getElementById("contra_abs_ipcsk9");
         if (check.checked) {

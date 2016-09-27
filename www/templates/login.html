@@ -4,17 +4,19 @@
         <button class="button"><i class="icon ion-ios-plus-outline"></i></button>
 </ion-header-bar>
 <ion-content class="inicio2" scroll="false">
-<p class="texto_password">Introduzca su código de acceso a la aplicación. Si no dispone de código póngase en contacto con xxx@xxx.com</p>
+<p class="texto_password">Introduzca su código de acceso a la aplicación. Si no dispone de código póngase en contacto con lipidapp@puntaalta.es
+</p>
 
         <input type="password" id="contra" class="password">
-        <p class="condiciones" style="text-align:center;"><input type="checkbox" id="condiciones"><span>Al marcar la presente casilla declaro que he leído y acepto los términos y condiciones que rigen el acceso y utilización de la Aplicación LipidApp</span></p>
+        <p class="pass_fail">Por favor, introduzca una contraseña correcta</p>
+        <p class="condiciones" style="text-align:center;" ><input type="checkbox" id="condiciones"><span ng-click="ver_cond()">Al marcar la presente casilla declaro que he leído y acepto los términos y condiciones que rigen el acceso y utilización de la Aplicación LipidApp</span></p>
         <p class="aviso_cond">Para ingresar en la aplicación acepte las condiciones y terminos legales.</p>
         <button ng-click="incorrecto()" class="entrar">Entrar</button>
 
 
-        <div class="row">
-          <div class="col"><img style="margin-top: 8px;" src="img/logo-cardio.png"></div>
-          <div class="col"><img src="img/logo-sea.png"></div>
+        <div class="row logotipo" style="position: absolute;bottom: 16%;">
+          <div style="text-align:center;" class="col"><img style="margin-top: 8px;" src="img/logo-cardio.png"></div>
+          <div style="text-align:center;" class="col"><img src="img/logo-sea.png"></div>
         </div>
 
         <div class="tapa"></div>
