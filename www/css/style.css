@@ -257,6 +257,45 @@ font-size: smaller;
     background-size: 100px 100px;
     background-repeat: no-repeat;
 }
+
+.eje_actual{
+position: absolute;
+    top: 175px;
+    color: #606366;
+    font-size: 12px;
+    font-weight: 400;
+    left: 8px;
+    z-index: 99999;
+}
+
+.valor_eje_actual{
+    position: absolute;
+    top: 196px;
+    color: #606366;
+    font-size: 12px;
+    font-weight: 700;
+    left: 15px;
+    z-index: 99999;
+}
+
+.origen_eje{
+    position: absolute;
+    top: 196px;
+    color: #606366;
+    font-size: 12px;
+    font-weight: 700;
+    right: 20px;
+    z-index: 99999;
+}
+
+
+.imagen_eje{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 166px;
+}
+
 #ldl_obj_tratamiento0{
     display: inline-block;
     width: 100px;
@@ -274,7 +313,8 @@ font-size: smaller;
     width: 100px;
     height: 100px;
     text-align: center;
-    background: url('../img/total_rojo2.png');
+/*    background: url('../img/total_rojo2.png');
+*/    background: url('../img/total_rojo3.png');
     background-size: 100px 100px;
     color: #87253c;
     font-size: 26px;
@@ -883,7 +923,7 @@ display: inline-block;
 }
 
 .listado_medicacion div{
-       background: green;
+       background-color: green;
     height: 25px;
 }
 
