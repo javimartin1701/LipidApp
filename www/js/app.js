@@ -7330,7 +7330,7 @@ tratamiento=true;
 
 
 
-.controller('grupos_sin_tratamiento',function($scope,$state, $firebaseArray){
+.controller('grupos_sin_tratamiento',function($scope,$state, $ionicPopup, $firebaseArray){
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -7349,13 +7349,26 @@ tratamiento=true;
   // }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
-  // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
-  // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
-    // Initialize Firebase
+    document.getElementById("ldl_act_tratamiento_red").value=ldlactual;
     
+  document.getElementById("ldl_obj_tratamiento_red").value=ldlobjetivo;
 
+ // document.getElementById("ldl_act_tratamiento").value="150";
+ // document.getElementById("ldl_obj_tratamiento").value="100";
+
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+
+  // var porc_reducc=65;
+  // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+ $(".objetivo_desliz").text(ldlobjetivo);
+ $(".valor_eje_actual").text(ldlactual);
+    // Initialize Firebase
+    var distancia_left=porc_reducc*0.87;
+    var ancho=distancia_left + "%";
+
+
+    
+$(".premarcador").css("left",ancho);
     var ref = firebase.database().ref('grupos_sin_contra').orderByChild("media");
     $scope.disp = $firebaseArray(ref);
 
@@ -7379,12 +7392,156 @@ tratamiento=true;
           
           // }
           
+          
+          // if(i%2){
+          //   console.log(i+" es impar");
+          // }
+          // else{
+          //   console.log(i+" es par")
+          // }
+          // i=i+1;
+          
         });
         
 
     });
 
 
+
+$scope.info_grupos = function() {
+// An alert dialog
+
+   var alertPopup = $ionicPopup.alert({
+     template: 'IEBI: Estatina de Baja Intensidad<br>EMI: Estatina de Media Intensidad<br>EAI: Estatina de Alta Intensidad<br>Eze: Ezetimiba<br>Ali 75: Alirocumab 75 mg<br>Ali 150: Alirocumab 150 mg<br>Evo 140: Evolocumab 140 mg<br>Evo 420: Evolocumab 420 mg/mes'
+   });
+
+   alertPopup.then(function(res) {
+     console.log('Thank you for not eating my delicious ice cream cone');
+   });
+ 
+
+}
+
+  setTimeout(
+  function() 
+  {
+
+ 
+if(porc_reducc>90.76352){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE_ALI_EVO").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE_ALI_EVO").css("background-color","red");
+}
+if(porc_reducc>88.06016){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE_ALI_EVO").css("background-color","red");
+  
+}
+if(porc_reducc>86.43392){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
+  
+}
+if(porc_reducc>85.3568){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
+  
+}
+if(porc_reducc>82.46336){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+  
+}
+if(porc_reducc>78.4928){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+
+}
+if(porc_reducc>67.2){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+
+}
+if(porc_reducc>57.6){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+
+}
+if(porc_reducc>59){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+  $(".tratamientoinicio_EAI").css("background-color","red");
+
+}
+if(porc_reducc>52.8){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+
+}
+if(porc_reducc>47){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+  $(".tratamientoinicio_EMI").css("background-color","red");
+
+}
+if(porc_reducc>35){
+  $(".tratamientoinicio_EBI").css("background-color","red");
+
+}
+
+}, 3000);
 
 
 
@@ -7412,8 +7569,8 @@ tratamiento=true;
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -7631,8 +7788,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -7851,8 +8008,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8068,8 +8225,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8285,8 +8442,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8503,8 +8660,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8722,8 +8879,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8944,8 +9101,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -9164,8 +9321,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -9384,8 +9541,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -9604,8 +9761,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -9815,8 +9972,8 @@ setTimeout(
   }
 
   // console.log(tratamiento_previo);
-  //   document.getElementById("ldl_act_tratamiento").value=ldlactual;
-  // document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase

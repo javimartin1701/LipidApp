@@ -258,9 +258,55 @@ font-size: smaller;
     background-repeat: no-repeat;
 }
 
+#ldl_obj_tratamiento_red{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    background: url('../img/total_verde.png');
+    color: green;
+    font-size: 26px;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+}
+.marcador_objetivo{
+            position: relative;
+    bottom: 44px;
+    color: #606366;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: -45px;
+    left: -15px;
+}
+
+.objetivo_desliz{
+    font-size: 12px;
+    font-weight: 700;
+        margin-left: 18px !important;
+}
+.premarcador{
+    background-color: transparent !important;
+    position: absolute;
+    height: 100% !important;
+}
+
+.marcador{
+    width: 0px;
+    height: 100%;
+    position: absolute;
+    top: -7px;
+    z-index: 99999;
+    border-width: 5px;
+    border-bottom: none;
+    border-top: none;
+    border-right: none;
+    border-color: #fba5b6;
+    margin-left: 23px;
+}
+
 .eje_actual{
 position: absolute;
-    top: 175px;
+    top: 240px;
     color: #606366;
     font-size: 12px;
     font-weight: 400;
@@ -270,7 +316,7 @@ position: absolute;
 
 .valor_eje_actual{
     position: absolute;
-    top: 196px;
+    top: 259px;
     color: #606366;
     font-size: 12px;
     font-weight: 700;
@@ -279,21 +325,31 @@ position: absolute;
 }
 
 .origen_eje{
-    position: absolute;
-    top: 196px;
+        position: absolute;
+    top: 259px;
     color: #606366;
     font-size: 12px;
     font-weight: 700;
     right: 20px;
     z-index: 99999;
+    margin-top: 0;
 }
 
+.info_grupos{
+    position: absolute;
+    display: block;
+    height: 32px;
+    font-size: 32px;
+    left: 50%;
+    top: 143px;
+    margin-left: -16px;
+}
 
 .imagen_eje{
     position: absolute;
     left: 0;
     width: 100%;
-    top: 166px;
+    top: 230px;
 }
 
 #ldl_obj_tratamiento0{
@@ -309,6 +365,19 @@ position: absolute;
 }
 
 #ldl_act_tratamiento{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+/*    background: url('../img/total_rojo2.png');
+*/    background: url('../img/total_rojo3.png');
+    background-size: 100px 100px;
+    color: #87253c;
+    font-size: 26px;
+    background-repeat: no-repeat;
+}
+
+#ldl_act_tratamiento_red{
     display: inline-block;
     width: 100px;
     height: 100px;

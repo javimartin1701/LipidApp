@@ -17,14 +17,24 @@
 	  
 	  <div class="campos_res">
 	  	
-	  	<input type="text" id="ldl_act_tratamiento">
-	  	<input type="text" id="porcentaje_red_tratamiento">
-	    <input type="text" id="ldl_obj_tratamiento">
+	  	<input type="text" id="ldl_act_tratamiento_red" readonly="readonly">
+	  	<input type="text" id="porcentaje_red_tratamiento" readonly="readonly">
+	    <input type="text" id="ldl_obj_tratamiento_red" readonly="readonly">
 	    <a class="info_tratamiento" ng-click="ir_info_previo()"></a>
-
+		
 	  </div>
+	  <i ng-click="info_grupos()" class="icon ion-ios-information-outline inf-red info_grupos"></i>
+	  <p style="
+    color: #606366;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    font-size: 13px;
+    line-height: 15px;
+    margin-top: 23px;
+">Haga click en los gráficos para conocer<br>las opciones que mejor se adaptan al</p>
       <div class="eje_actual">ACTUAL</div>
-<div class="valor_eje_actual">220</div>
+<div id="valor_eje_actual" class="valor_eje_actual"></div>
        <div class="origen_eje">0</div>
 
 <img class="imagen_eje" src="img/eje.jpg">
@@ -32,9 +42,13 @@
 </div>
 
       
-	  <ul style="margin-top: -90px;background: white;" class="list lista listado_medicacion">
+	  <ul style="margin-top: -25px;background: white;" class="list lista listado_medicacion">
+
 	  	<hr style="width: 1;height: 100%;position: absolute;top: -7px;left: 24px;z-index: 99999;border-width: 1px;border-bottom: none;border-top: none;border-right: none;border-color: black;border-left-style: dashed;">
 	  	<hr style="width: 0px;height: 100%;position: absolute;top: -7px;right: 24px;z-index: 99999;border-width: 1px;border-bottom: none;border-top: none;border-right: none;border-color: black;">
+	  	<div class="premarcador"><p id="marcador_desliz" class="marcador_objetivo">OBJETIVO</p><p class="objetivo_desliz">30%</p><hr class="marcador"></div>
+
+
 
 
 	  	<!-- <li ng-repeat="(key, value) in displenias" class="{{ value.tipo }} {{ value.dosis }}">
@@ -45,13 +59,17 @@
 				
 			</li> -->
 
-			<li ng-repeat="(key, value) in grupos_sin_contra">
+
+
+			<li  ng-repeat="(key, value) in grupos_sin_contra">
 				<p style="margin-bottom: 0;">{{ value.categoria }}</p>
 				
 				<div ui-sref="{{ value.url }}" style="background: transparent; width: 90%; height: 25px; margin-left:15px">
-					<div class="barras_grupos" style="width:{{ value.media }}%"><!-- <span>{{ value.media | number:0 }}%</span> --></div>
+					<div class="barras_grupos {{ value.url }}" style="width:{{ value.media }}%"><!-- <span>{{ value.media | number:0 }}%</span> --></div>
 				</div>
-				
+				<script type="text/javascript">
+					console.log("prueba");
+				</script>
 				
 			</li>	    
 		  
