@@ -345,6 +345,14 @@ position: absolute;
     margin-left: -16px;
 }
 
+.tratamientoinicio_EZE_ALI75{
+    display: none;
+}
+
+.tratamientoinicio_EZE_ALI_EVO{
+    display: none;
+}
+
 .imagen_eje{
     position: absolute;
     left: 0;

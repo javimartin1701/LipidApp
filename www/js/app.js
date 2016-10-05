@@ -720,6 +720,20 @@ else{
     controller: 'tratamientoinicio_EAI_EZE_ALI75'
   })
 
+.state('tratamientoinicio_EZE_ALI75',{
+    cache: false,
+    url:'/tratamientoinicio_EZE_ALI75',
+    templateUrl:'templates/dislipemia/tratamientoinicio_EZE_ALI75.html',
+    controller: 'tratamientoinicio_EZE_ALI75'
+  })
+
+.state('tratamientoinicio_EZE_ALI_EVO',{
+    cache: false,
+    url:'/tratamientoinicio_EZE_ALI_EVO',
+    templateUrl:'templates/dislipemia/tratamientoinicio_EZE_ALI_EVO.html',
+    controller: 'tratamientoinicio_EZE_ALI_EVO'
+  })
+
 .state('tratamientoinicio_EBI_EZE_ALI_EVO',{
     cache: false,
     url:'/tratamientoinicio_EBI_EZE_ALI_EVO',
@@ -7416,7 +7430,7 @@ $scope.info_grupos = function() {
    });
 
    alertPopup.then(function(res) {
-     console.log('Thank you for not eating my delicious ice cream cone');
+     console.log();
    });
  
 
@@ -7426,6 +7440,57 @@ $scope.info_grupos = function() {
   function() 
   {
 
+if(quitar_estatina==true){
+  $(".tratamientoinicio_EZE_ALI75").show();
+  $(".tratamientoinicio_EZE_ALI_EVO").show();
+  $(".tratamientoinicio_EBI").hide();
+  $(".tratamientoinicio_EMI").hide();
+  $(".tratamientoinicio_EAI").hide();
+  $(".tratamientoinicio_EBI_EZE").hide();
+  $(".tratamientoinicio_EMI_EZE").hide();
+  $(".tratamientoinicio_EAI_EZE").hide();
+  $(".tratamientoinicio_EBI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EMI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EAI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EMI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EAI_EZE_ALI_EVO").hide();
+}
+
+if(quitar_ezetimibe==true){
+  $(".tratamientoinicio_EBI_EZE").hide();
+  $(".tratamientoinicio_EMI_EZE").hide();
+  $(".tratamientoinicio_EAI_EZE").hide();
+  $(".tratamientoinicio_EBI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EMI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EAI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EMI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EAI_EZE_ALI_EVO").hide();
+}
+
+if(quitar_fibratos==true){
+
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EMI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EAI_EZE_ALI_EVO").hide();
+}
+
+if(quitar_resinas==true){
+  
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EMI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EAI_EZE_ALI_EVO").hide();
+}
+
+if(quitar_ipcsk9==true){
+  $(".tratamientoinicio_EBI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EMI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EAI_EZE_ALI75").hide();
+  $(".tratamientoinicio_EBI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EMI_EZE_ALI_EVO").hide();
+  $(".tratamientoinicio_EAI_EZE_ALI_EVO").hide();
+}
  
 if(porc_reducc>90.76352){
   $(".tratamientoinicio_EBI").css("background-color","red");
@@ -8690,6 +8755,446 @@ setTimeout(
           // }
         });
         console.log($scope.EAI_EZE_ALI_EVO);
+
+    });
+
+setTimeout(
+  function() 
+  {
+         if (previo_ator==10){
+            $('.ator10').hide();         
+          }
+          else if (previo_ator==20){
+            $('.ator10').hide(); 
+            $('.ator20').hide(); 
+          }
+          else if (previo_ator==40){
+            $('.ator10').hide(); 
+            $('.ator20').hide(); 
+            $('.ator40').hide(); 
+          }
+          else if (previo_ator==80){
+             $('.ator10').hide(); 
+            $('.ator20').hide(); 
+            $('.ator40').hide(); 
+             $('.ator80').hide(); 
+          }
+
+
+          if (previo_rosu==5){
+            $('.rosu5').hide();         
+          }
+          else if (previo_rosu==10){
+            $('.rosu5').hide(); 
+            $('.rosu10').hide(); 
+          }
+          else if (previo_rosu==20){
+            $('.rosu5').hide(); 
+            $('.rosu10').hide(); 
+            $('.rosu20').hide(); 
+          }
+          else if (previo_rosu==40){
+            $('.rosu5').hide(); 
+            $('.rosu10').hide(); 
+            $('.rosu20').hide();
+            $('.rosu40').hide(); 
+          }
+
+
+          if (previo_pita==1){
+            $('.pita1').hide();         
+          }
+          else if (previo_pita==2){
+            $('.pita1').hide(); 
+            $('.pita2').hide(); 
+          }
+          else if (previo_pita==4){
+            $('.pita1').hide(); 
+            $('.pita2').hide(); 
+            $('.pita4').hide(); 
+          }
+         
+          
+          if (previo_sim==10){
+            $('.sim10').hide();         
+          }
+          else if (previo_sim==20){
+            $('.sim10').hide(); 
+            $('.sim20').hide(); 
+          }
+          else if (previo_sim==40){
+            $('.sim10').hide(); 
+            $('.sim20').hide(); 
+            $('.sim40').hide(); 
+          }
+          else if (previo_sim==80){
+             $('.sim10').hide(); 
+            $('.sim20').hide(); 
+            $('.sim40').hide(); 
+             $('.sim80').hide(); 
+          }
+
+
+
+           if (previo_pra==10){
+            $('.pra10').hide();         
+          }
+          else if (previo_pra==20){
+            $('.pra10').hide(); 
+            $('.pra20').hide(); 
+          }
+          else if (previo_pra==40){
+            $('.pra10').hide(); 
+            $('.pra20').hide(); 
+            $('.pra40').hide(); 
+          }
+          else if (previo_pra==80){
+             $('.pra10').hide(); 
+            $('.pra20').hide(); 
+            $('.pra40').hide(); 
+             $('.pra80').hide(); 
+          }
+
+
+
+           if (previo_pra==10){
+            $('.pra10').hide();         
+          }
+          else if (previo_pra==20){
+            $('.pra10').hide(); 
+            $('.pra20').hide(); 
+          }
+          else if (previo_pra==40){
+            $('.pra10').hide(); 
+            $('.pra20').hide(); 
+            $('.pra40').hide(); 
+          }
+          else if (previo_pra==80){
+             $('.pra10').hide(); 
+            $('.pra20').hide(); 
+            $('.pra40').hide(); 
+             $('.pra80').hide(); 
+          }
+
+
+
+
+        
+         if (previo_fluv==20){
+            
+            $('.fluv20').hide(); 
+          }
+          else if (previo_fluv==40){
+            
+            $('.fluv20').hide(); 
+            $('.fluv40').hide(); 
+          }
+          else if (previo_fluv==80){
+            
+            $('.fluv20').hide(); 
+            $('.fluv40').hide(); 
+             $('.fluv80').hide(); 
+          }
+
+
+          if (previo_lov==20){
+            
+            $('.lov20').hide(); 
+          }
+          else if (previo_lov==40){
+            
+            $('.lov20').hide(); 
+            $('.lov40').hide(); 
+          }
+
+
+
+
+
+
+  }, 5000);
+
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+.controller('tratamientoinicio_EZE_ALI75',function($scope,$state, $firebaseArray){
+
+  // if(tratamiento_previo==true){
+  //   ldlactual=ldlrectificado;
+  //   $("#ldl_act_tratamiento").css("background", "url('img/total_rojo2.png')");
+  //   $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+  //   $(".info_tratamiento").show();
+  //   $(".campos_res_gris").show();
+  //   $(".campos_res_gris").css("top", "335px");
+  // }
+  // if(tratamiento_previo==false){
+  //     $("#ldl_act_tratamiento").css("background", "url('img/total_rojo3.png')");
+  //   $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+  // }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
+
+  // console.log(tratamiento_previo);
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    
+
+    // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
+    var ref = firebase.database().ref('EZE_ALI75').orderByChild("porcentaje");
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.EZE_ALI75 = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          // }
+          // if(cols[col]){
+            $scope.EZE_ALI75.push(value);
+          // }
+        });
+        console.log($scope.EZE_ALI75);
+
+    });
+
+setTimeout(
+  function() 
+  {
+         if (previo_ator==10){
+            $('.ator10').hide();         
+          }
+          else if (previo_ator==20){
+            $('.ator10').hide(); 
+            $('.ator20').hide(); 
+          }
+          else if (previo_ator==40){
+            $('.ator10').hide(); 
+            $('.ator20').hide(); 
+            $('.ator40').hide(); 
+          }
+          else if (previo_ator==80){
+             $('.ator10').hide(); 
+            $('.ator20').hide(); 
+            $('.ator40').hide(); 
+             $('.ator80').hide(); 
+          }
+
+
+          if (previo_rosu==5){
+            $('.rosu5').hide();         
+          }
+          else if (previo_rosu==10){
+            $('.rosu5').hide(); 
+            $('.rosu10').hide(); 
+          }
+          else if (previo_rosu==20){
+            $('.rosu5').hide(); 
+            $('.rosu10').hide(); 
+            $('.rosu20').hide(); 
+          }
+          else if (previo_rosu==40){
+            $('.rosu5').hide(); 
+            $('.rosu10').hide(); 
+            $('.rosu20').hide();
+            $('.rosu40').hide(); 
+          }
+
+
+          if (previo_pita==1){
+            $('.pita1').hide();         
+          }
+          else if (previo_pita==2){
+            $('.pita1').hide(); 
+            $('.pita2').hide(); 
+          }
+          else if (previo_pita==4){
+            $('.pita1').hide(); 
+            $('.pita2').hide(); 
+            $('.pita4').hide(); 
+          }
+         
+          
+          if (previo_sim==10){
+            $('.sim10').hide();         
+          }
+          else if (previo_sim==20){
+            $('.sim10').hide(); 
+            $('.sim20').hide(); 
+          }
+          else if (previo_sim==40){
+            $('.sim10').hide(); 
+            $('.sim20').hide(); 
+            $('.sim40').hide(); 
+          }
+          else if (previo_sim==80){
+             $('.sim10').hide(); 
+            $('.sim20').hide(); 
+            $('.sim40').hide(); 
+             $('.sim80').hide(); 
+          }
+
+
+
+           if (previo_pra==10){
+            $('.pra10').hide();         
+          }
+          else if (previo_pra==20){
+            $('.pra10').hide(); 
+            $('.pra20').hide(); 
+          }
+          else if (previo_pra==40){
+            $('.pra10').hide(); 
+            $('.pra20').hide(); 
+            $('.pra40').hide(); 
+          }
+          else if (previo_pra==80){
+             $('.pra10').hide(); 
+            $('.pra20').hide(); 
+            $('.pra40').hide(); 
+             $('.pra80').hide(); 
+          }
+
+
+
+           if (previo_pra==10){
+            $('.pra10').hide();         
+          }
+          else if (previo_pra==20){
+            $('.pra10').hide(); 
+            $('.pra20').hide(); 
+          }
+          else if (previo_pra==40){
+            $('.pra10').hide(); 
+            $('.pra20').hide(); 
+            $('.pra40').hide(); 
+          }
+          else if (previo_pra==80){
+             $('.pra10').hide(); 
+            $('.pra20').hide(); 
+            $('.pra40').hide(); 
+             $('.pra80').hide(); 
+          }
+
+
+
+
+        
+         if (previo_fluv==20){
+            
+            $('.fluv20').hide(); 
+          }
+          else if (previo_fluv==40){
+            
+            $('.fluv20').hide(); 
+            $('.fluv40').hide(); 
+          }
+          else if (previo_fluv==80){
+            
+            $('.fluv20').hide(); 
+            $('.fluv40').hide(); 
+             $('.fluv80').hide(); 
+          }
+
+
+          if (previo_lov==20){
+            
+            $('.lov20').hide(); 
+          }
+          else if (previo_lov==40){
+            
+            $('.lov20').hide(); 
+            $('.lov40').hide(); 
+          }
+
+
+
+
+
+
+  }, 5000);
+
+
+
+
+})
+
+
+
+
+
+
+.controller('tratamientoinicio_EZE_ALI_EVO',function($scope,$state, $firebaseArray){
+
+  // if(tratamiento_previo==true){
+  //   ldlactual=ldlrectificado;
+  //   $("#ldl_act_tratamiento").css("background", "url('img/total_rojo2.png')");
+  //   $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+  //   $(".info_tratamiento").show();
+  //   $(".campos_res_gris").show();
+  //   $(".campos_res_gris").css("top", "335px");
+  // }
+  // if(tratamiento_previo==false){
+  //     $("#ldl_act_tratamiento").css("background", "url('img/total_rojo3.png')");
+  //   $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+  // }
+  $scope.ir_info_previo = function() {
+    $state.go('modal_tratamiento_previo');
+  }
+
+  // console.log(tratamiento_previo);
+    document.getElementById("ldl_act_tratamiento").value=ldlactual;
+  document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+  // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+    // Initialize Firebase
+    
+
+    // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
+    var ref = firebase.database().ref('EZE_ALI_EVO').orderByChild("porcentaje");
+    $scope.disp = $firebaseArray(ref);
+
+    $scope.EZE_ALI_EVO = [];
+    var col = null;
+    $scope.disp.$loaded(function(){
+        angular.forEach($scope.disp, function(value, key){
+          // var cols = [value.col4, value.col3, value.col2, value.col1];
+          // //console.log(cols);
+          // if(key == 0){
+          //   for(var i = 0; i < cols.length; i++){
+          //     if(cols[i]){
+          //       col = i;
+          //       break;
+          //     }
+          //   }
+          // }
+          // if(cols[col]){
+            $scope.EZE_ALI_EVO.push(value);
+          // }
+        });
+        console.log($scope.EZE_ALI_EVO);
 
     });
 
@@ -11284,35 +11789,65 @@ if(quitar_sim_inter==true){
   contra_abs_resinas = document.getElementById("contra_abs_resinas");
   contra_abs_ipcsk9 = document.getElementById("contra_abs_ipcsk9");
 
+  if(quitar_estatina==true){
+    $("#contra_abs_estatinas").prop("checked", true);
+  }
+  if(quitar_ezetimibe==true){
+    $("#contra_abs_ezetimibe").prop("checked", true);
+  }
+  if(quitar_fibratos==true){
+    $("#contra_abs_fibratos").prop("checked", true);
+  }
+  if(quitar_resinas==true){
+    $("#contra_abs_resinas").prop("checked", true);
+  }
+  if(quitar_ipcsk9==true){
+    $("#contra_abs_ipcsk9").prop("checked", true);
+  }
+
   $scope.filtro_contra = function() {
       if(contra_abs_estatina.checked){
         quitar_estatina=true;
-        $state.go('tratamientoinicio_sin_estatina');
       }
       else if(contra_abs_ezetimibe.checked){
         quitar_ezetimibe=true;
-        $state.go('tratamientoinicio_sin_ezetimive');
       }
       else if(contra_abs_fibratos.checked){
         quitar_fibratos=true;
-        $state.go('tratamientoinicio_sin_fibratos');
       }
       else if(contra_abs_resinas.checked){
         quitar_resinas=true;
-        $state.go('tratamientoinicio_sin_resina');
       }
       else if(contra_abs_ipcsk9.checked){
         quitar_ipcsk9=true;
-        $state.go('tratamientoinicio_sin_ipcsk9');
       }
        else if(contra_abs_ipcsk9.checked&&contra_abs_resinas.checked){
         quitar_ipcsk9=true;
-        $state.go('tratamientoinicio_sin_ipcsk9_ni_resinas');
       }
-      else{
-        $state.go('tratamientoinicio2');
+
+      if(!(contra_abs_estatina.checked)){
+        quitar_estatina=false;
         
       }
+      if(!(contra_abs_ezetimibe.checked)){
+        quitar_ezetimibe=false;
+        
+      }
+      if(!(contra_abs_fibratos.checked)){
+        quitar_fibratos=false;
+      }
+      if(!(contra_abs_resinas.checked)){
+        quitar_resinas=false;
+      }
+      if(!(contra_abs_ipcsk9.checked)){
+        quitar_ipcsk9=false;
+      }
+       if(!(contra_abs_ipcsk9.checked&&contra_abs_resinas.checked)){
+        quitar_ipcsk9=false;
+      }
+
+    $state.go('grupos_sin_tratamiento');
+     
       console.log(quitar_estatina+","+quitar_ezetimibe+","+quitar_fibratos+","+quitar_resinas+","+quitar_ipcsk9);
   }
 

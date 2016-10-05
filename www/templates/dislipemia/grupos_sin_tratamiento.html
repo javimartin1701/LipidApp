@@ -61,7 +61,7 @@
 
 
 
-			<li  ng-repeat="(key, value) in grupos_sin_contra">
+			<li  ng-repeat="(key, value) in grupos_sin_contra" class="{{ value.url }}">
 				<p style="margin-bottom: 0;">{{ value.categoria }}</p>
 				
 				<div ui-sref="{{ value.url }}" style="background: transparent; width: 90%; height: 25px; margin-left:15px">
