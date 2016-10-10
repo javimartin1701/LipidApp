@@ -353,6 +353,71 @@ position: absolute;
     display: none;
 }
 
+
+.tratamientoinicio_EBI_ALI75{
+    display: none;
+}
+
+.tratamientoinicio_EAI_ALI75{
+    display: none;
+}
+
+.tratamientoinicio_EMI_ALI75{
+    display: none;
+}
+
+.tratamientoinicio_EBI_ALI_EVO{
+    display: none;
+}
+
+.tratamientoinicio_EMI_ALI_EVO{
+    display: none;
+}
+.tratamientoinicio_EAI_ALI_EVO{
+    display: none;
+}
+.tratamientoinicio_EAI_EZE_RES{
+    display: none;
+}
+.tratamientoinicio_EMI_EZE_RES{
+    display: none;
+}
+.tratamientoinicio_EBI_EZE_RES{
+    display: none;
+}
+.tratamientoinicio_EAI_EZE_FIB{
+    display: none;
+}
+.tratamientoinicio_EMI_EZE_FIB{
+    display: none;
+}
+.tratamientoinicio_EBI_EZE_FIB{
+    display: none;
+}
+
+.tratamientoinicio_EBI_EZE_ALI75_RES{
+    display: none;
+}
+.tratamientoinicio_EMI_EZE_ALI75_RES{
+    display: none;
+}
+.tratamientoinicio_EAI_EZE_ALI75_RES{
+    display: none;
+}
+
+.tratamientoinicio_EBI_EZE_ALI_EVO_RES{
+    display: none;
+}
+
+.tratamientoinicio_EMI_EZE_ALI_EVO_RES{
+    display: none;
+}
+.tratamientoinicio_EAI_EZE_ALI_EVO_RES{
+    display: none;
+}
+
+
+
 .imagen_eje{
     position: absolute;
     left: 0;
