@@ -124,6 +124,13 @@ font-size: smaller;
     text-align: center;
 }
 
+/*.alerta_grupo_alta{
+    display: none;
+}*/
+/*.alerta_grupo_baja{
+    display: none;
+}*/
+
 
 
 
@@ -435,8 +442,26 @@ position: absolute;
 .tratamientoinicio_EAI_EZE_ALI_EVO_FIB{
     display: none;
 }
+.tratamientoinicio_EAI_ALI_EVO_FIB{
+    display: none;
+}
+.tratamientoinicio_EBI_ALI_EVO_FIB{
+    display: none;
+}
+.tratamientoinicio_EMI_ALI_EVO_FIB{
+    display: none;
+}
 
+.boton_contraindicaciones{
 
+}
+
+.boton_interacciones{
+    display: none;
+}
+.boton_finalizar{
+    display: none;
+}
 
 .imagen_eje{
     position: absolute;

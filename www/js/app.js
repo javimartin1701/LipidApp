@@ -28,6 +28,7 @@ var quitar_fibratos=false;
 var quitar_resinas=false;
 var quitar_ipcsk9=false;
 var quitar_ator_inter=false;
+var quitar_ator_inter_rojo=false;
 var quitar_fluv_inter=false;
 var quitar_lov_inter=false;
 var quitar_pito_inter=false;
@@ -100,6 +101,8 @@ var tipo_riesgo=null;
 var tratamiento=false;
 
 var quitar_vih=false;
+var proviene_contraindicaciones=false;
+var proviene_interacciones=false;
 
 angular.module('starter', ['ionic','ui.router','firebase'])
 
@@ -1519,6 +1522,9 @@ tratamiento_previo=false;
  unidad_seleccionada=null;
 
  check_ecvdoc=false;
+
+proviene_contraindicaciones=false;
+proviene_interacciones=false;
  
 
 })
@@ -7504,7 +7510,54 @@ tratamiento=true;
 
 
 
-.controller('grupos_sin_tratamiento',function($scope,$state, $ionicPopup, $firebaseArray){
+.controller('grupos_sin_tratamiento',function($scope,$state, $ionicPopup, $firebaseArray,$rootScope){
+  
+  // $scope.estatinas_interaccion_alta=quitar_ator_inter_rojo;
+  // $scope.estatinas_interaccion_baja=quitar_ator_inter;
+  // $scope.ezetimibe_interaccion_alta=quitar_ator_inter_rojo;
+
+
+  $( ".boton_finalizar" ).click(function() {
+
+   var confirmPopup = $ionicPopup.confirm({
+
+      title: '¡Atención!',
+
+      template: '¿Está seguro que desea acceder al menú principal de la app?',
+
+      cancelText: 'Cancelar',
+
+      okText: 'Aceptar',
+
+   });
+
+   confirmPopup.then(function(res) {
+
+      if (res) {
+
+         $state.go('home');
+
+      } else {
+
+         console.log('You clicked on "Cancel" button');
+
+      }
+
+   });
+
+
+});
+
+  if(proviene_contraindicaciones==true){
+    $(".boton_interacciones").show();
+    $(".boton_contraindicaciones").hide();
+  }
+
+  if((proviene_contraindicaciones==true)&&(proviene_interacciones==true)){
+    $(".boton_interacciones").hide();
+    $(".boton_contraindicaciones").hide();
+    $(".boton_finalizar").show();
+  }
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -7652,7 +7705,7 @@ if(quitar_fibratos==true){
 }
 
 if(quitar_resinas==true){
-  $(".tratamientoinicio_EBI_EZE_ALI75_FIB").show();
+  
   $(".tratamientoinicio_EMI_EZE_ALI75_FIB").show();
   $(".tratamientoinicio_EAI_EZE_ALI75_FIB").show();
   $(".tratamientoinicio_EBI_EZE_ALI_EVO_FIB").show();
@@ -7681,119 +7734,127 @@ if(quitar_ipcsk9==true){
   $(".tratamientoinicio_EAI_EZE_ALI_EVO").hide();
 }
  
-if(porc_reducc>90.76352){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE_ALI_EVO").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE_ALI_EVO").css("background-color","red");
-}
-if(porc_reducc>88.06016){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE_ALI_EVO").css("background-color","red");
+// if(porc_reducc>90.76352){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE_ALI_EVO").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE_ALI_EVO").css("background-color","red");
+// }
+// if(porc_reducc>88.06016){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE_ALI_EVO").css("background-color","red");
   
-}
-if(porc_reducc>86.43392){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
+// }
+// if(porc_reducc>86.43392){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE_ALI75").css("background-color","red");
   
-}
-if(porc_reducc>85.3568){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
+// }
+// if(porc_reducc>85.3568){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI_EVO").css("background-color","red");
   
-}
-if(porc_reducc>82.46336){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
+// }
+// if(porc_reducc>82.46336){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE_ALI75").css("background-color","red");
   
-}
-if(porc_reducc>78.4928){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
+// }
+// if(porc_reducc>78.4928){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE_ALI75").css("background-color","red");
 
-}
-if(porc_reducc>67.2){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI_EZE").css("background-color","red");
+// }
+// if(porc_reducc>67.2){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI_EZE").css("background-color","red");
 
-}
-if(porc_reducc>57.6){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
-  $(".tratamientoinicio_EMI_EZE").css("background-color","red");
+// }
+// if(porc_reducc>57.6){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
+//   $(".tratamientoinicio_EMI_EZE").css("background-color","red");
 
-}
-if(porc_reducc>59){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
-  $(".tratamientoinicio_EAI").css("background-color","red");
+// }
+// if(porc_reducc>59){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+//   $(".tratamientoinicio_EAI").css("background-color","red");
 
-}
-if(porc_reducc>52.8){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
-  $(".tratamientoinicio_EBI_EZE").css("background-color","red");
+// }
+// if(porc_reducc>52.8){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
+//   $(".tratamientoinicio_EBI_EZE").css("background-color","red");
 
-}
-if(porc_reducc>47){
-  $(".tratamientoinicio_EBI").css("background-color","red");
-  $(".tratamientoinicio_EMI").css("background-color","red");
+// }
+// if(porc_reducc>47){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
+//   $(".tratamientoinicio_EMI").css("background-color","red");
 
-}
-if(porc_reducc>35){
-  $(".tratamientoinicio_EBI").css("background-color","red");
+// }
+// if(porc_reducc>35){
+//   $(".tratamientoinicio_EBI").css("background-color","red");
 
-}
+// }
+
+
+ if(quitar_ator_inter_rojo==true){
+    $(".tratamientoinicio_EBI .alerta_grupo_alta").show();
+  }
+if(quitar_ator_inter==true){
+    $(".tratamientoinicio_EBI .alerta_grupo_baja").show();
+  }
 
 }, 3000);
 
@@ -17229,6 +17290,7 @@ if(quitar_sim_inter==true){
   }
 
   $scope.filtro_contra = function() {
+    proviene_contraindicaciones=true;
       if(contra_abs_estatina.checked){
         quitar_estatina=true;
       }
@@ -17284,7 +17346,7 @@ if(quitar_sim_inter==true){
 
 
 
-.controller('Contraindicaciones_vih',function($scope,$state){
+.controller('Contraindicaciones_vih',function($scope,$state,$rootScope){
 
 
   contra_abs_estatina = document.getElementById("contra_abs_estatinas");
@@ -18131,24 +18193,66 @@ $scope.filtrar_inter = function() {
 
  if( $('.check_ator').is(':checked') ) {
     quitar_ator_inter=true;
+    $rootScope.estatinas_interaccion_baja=true;
+
 }
+if( $('.check_ator_rojo').is(':checked') ) {
+    quitar_ator_inter_rojo=true;
+    $rootScope.estatinas_interaccion_alta=true;
+}
+
 if( $('.check_fluv').is(':checked') ) {
     quitar_fluv_inter=true;
+    $rootScope.estatinas_interaccion_baja=true;
 }
+if( $('.check_fluv_rojo').is(':checked') ) {
+    quitar_fluv_inter_rojo=true;
+    $rootScope.estatinas_interaccion_alta=true;
+}
+
 if( $('.check_lov').is(':checked') ) {
     quitar_lov_inter=true;
+    $rootScope.estatinas_interaccion_baja=true;
 }
+if( $('.check_lov_rojo').is(':checked') ) {
+    quitar_lov_inter_rojo=true;
+    $rootScope.estatinas_interaccion_alta=true;
+}
+
 if( $('.check_pita').is(':checked') ) {
     quitar_pito_inter=true;
+    $rootScope.estatinas_interaccion_baja=true;
 }
+if( $('.check_pita_rojo').is(':checked') ) {
+    quitar_pito_inter_rojo=true;
+    $rootScope.estatinas_interaccion_alta=true;
+}
+
 if( $('.check_prav').is(':checked') ) {
     quitar_pra_inter=true;
+    $rootScope.estatinas_interaccion_baja=true;
 }
+if( $('.check_prav_rojo').is(':checked') ) {
+    quitar_pra_inter_rojo=true;
+    $rootScope.estatinas_interaccion_alta=true;
+}
+
 if( $('.check_rosu').is(':checked') ) {
     quitar_rosu_inter=true;
+    $rootScope.estatinas_interaccion_baja=true;
 }
+if( $('.check_rosu_rojo').is(':checked') ) {
+    quitar_rosu_inter_rojo=true;
+    $rootScope.estatinas_interaccion_alta=true;
+}
+
 if( $('.check_sim').is(':checked') ) {
     quitar_sim_inter=true;
+    $rootScope.estatinas_interaccion_baja=true;
+}
+if( $('.check_sim_rojo').is(':checked') ) {
+    quitar_sim_inter_rojo=true;
+    $rootScope.estatinas_interaccion_alta=true;
 }
 
 $state.go('menu_interacciones');
@@ -20751,7 +20855,7 @@ $state.go('menu_interacciones_vih');
 
 
 
-.controller('Fibratos',function($scope,$state,$rootScope){
+.controller('Fibratos',function($scope,$state,$rootScope,$rootScope){
   var previo=$rootScope.previousState;
 if (previo=="menu_interacciones"){
   jQuery('.procedencia1').toggle();
@@ -26935,27 +27039,37 @@ $scope.ir_info_tratamiento_alto = function() {
 
 .controller('MenuInteracciones',function($scope,$state,$rootScope){
 
-$scope.volver = function() {
-  if(sin_estatinas==true){
-  $state.go("tratamientoinicio_sin_estatina");
-  }
-  else if(sin_ezetimive==true){
-    $state.go("tratamientoinicio_sin_ezetimive");
-  }
-  else if(sin_fibratos==true){
-    $state.go("tratamientoinicio_sin_fibratos");
-  }
-  else if(sin_ipcsk9==true){
-    $state.go("tratamientoinicio_sin_ipcsk9");
-  }
-  else if(sin_resina==true){
-    $state.go("tratamientoinicio_sin_resina");
-  }
-  else{
-    $state.go("tratamientoinicio2");
-  }
+
+
+// $scope.volver = function() {
+//   if(sin_estatinas==true){
+//   $state.go("tratamientoinicio_sin_estatina");
+//   }
+//   else if(sin_ezetimive==true){
+//     $state.go("tratamientoinicio_sin_ezetimive");
+//   }
+//   else if(sin_fibratos==true){
+//     $state.go("tratamientoinicio_sin_fibratos");
+//   }
+//   else if(sin_ipcsk9==true){
+//     $state.go("tratamientoinicio_sin_ipcsk9");
+//   }
+//   else if(sin_resina==true){
+//     $state.go("tratamientoinicio_sin_resina");
+//   }
+//   else{
+//     $state.go("tratamientoinicio2");
+//   }
   
 
+// }
+
+$scope.volver = function() {
+  proviene_interacciones=true;
+
+    $state.go("grupos_sin_tratamiento");
+  
+  
 }
 
 })
