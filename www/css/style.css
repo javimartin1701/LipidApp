@@ -405,6 +405,16 @@ position: absolute;
     display: none;
 }
 
+.tratamientoinicio_EBI_EZE_ALI75_FIB{
+    display: none;
+}
+.tratamientoinicio_EMI_EZE_ALI75_FIB{
+    display: none;
+}
+.tratamientoinicio_EAI_EZE_ALI75_FIB{
+    display: none;
+}
+
 .tratamientoinicio_EBI_EZE_ALI_EVO_RES{
     display: none;
 }
@@ -413,6 +423,16 @@ position: absolute;
     display: none;
 }
 .tratamientoinicio_EAI_EZE_ALI_EVO_RES{
+    display: none;
+}
+.tratamientoinicio_EBI_EZE_ALI_EVO_FIB{
+    display: none;
+}
+
+.tratamientoinicio_EMI_EZE_ALI_EVO_FIB{
+    display: none;
+}
+.tratamientoinicio_EAI_EZE_ALI_EVO_FIB{
     display: none;
 }
 
