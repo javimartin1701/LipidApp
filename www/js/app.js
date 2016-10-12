@@ -7516,6 +7516,7 @@ tratamiento=true;
   // $scope.estatinas_interaccion_baja=quitar_ator_inter;
   // $scope.ezetimibe_interaccion_alta=quitar_ator_inter_rojo;
 
+  $scope.ldlactualscope=ldlactual;
 
   $( ".boton_finalizar" ).click(function() {
 
@@ -7584,6 +7585,8 @@ tratamiento=true;
  // document.getElementById("ldl_obj_tratamiento").value="100";
 
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+
+   $scope.reduccionscope=porc_reducc;
 
   // var porc_reducc=65;
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
@@ -21697,6 +21700,84 @@ $state.go('menu_interacciones');
         
         
     }
+
+
+$scope.filtrar_inter = function() {
+
+
+
+  
+
+ if( $('.check_ator').is(':checked') ) {
+    quitar_ator_inter=true;
+    $rootScope.ezetimive_interaccion_baja=true;
+
+}
+if( $('.check_ator_rojo').is(':checked') ) {
+    quitar_ator_inter_rojo=true;
+    $rootScope.ezetimive_interaccion_alta=true;
+}
+
+if( $('.check_fluv').is(':checked') ) {
+    quitar_fluv_inter=true;
+    $rootScope.ezetimive_interaccion_baja=true;
+}
+if( $('.check_fluv_rojo').is(':checked') ) {
+    quitar_fluv_inter_rojo=true;
+    $rootScope.ezetimive_interaccion_alta=true;
+}
+
+if( $('.check_lov').is(':checked') ) {
+    quitar_lov_inter=true;
+    $rootScope.ezetimive_interaccion_baja=true;
+}
+if( $('.check_lov_rojo').is(':checked') ) {
+    quitar_lov_inter_rojo=true;
+    $rootScope.ezetimive_interaccion_alta=true;
+}
+
+if( $('.check_pita').is(':checked') ) {
+    quitar_pito_inter=true;
+    $rootScope.ezetimive_interaccion_baja=true;
+}
+if( $('.check_pita_rojo').is(':checked') ) {
+    quitar_pito_inter_rojo=true;
+    $rootScope.ezetimive_interaccion_alta=true;
+}
+
+if( $('.check_prav').is(':checked') ) {
+    quitar_pra_inter=true;
+    $rootScope.ezetimive_interaccion_baja=true;
+}
+if( $('.check_prav_rojo').is(':checked') ) {
+    quitar_pra_inter_rojo=true;
+    $rootScope.ezetimive_interaccion_alta=true;
+}
+
+if( $('.check_rosu').is(':checked') ) {
+    quitar_rosu_inter=true;
+    $rootScope.ezetimive_interaccion_baja=true;
+}
+if( $('.check_rosu_rojo').is(':checked') ) {
+    quitar_rosu_inter_rojo=true;
+    $rootScope.ezetimive_interaccion_alta=true;
+}
+
+if( $('.check_sim').is(':checked') ) {
+    quitar_sim_inter=true;
+    $rootScope.ezetimive_interaccion_baja=true;
+}
+if( $('.check_sim_rojo').is(':checked') ) {
+    quitar_sim_inter_rojo=true;
+    $rootScope.ezetimive_interaccion_alta=true;
+}
+
+$state.go('menu_interacciones');
+   console.log(quitar_ator_inter+","+quitar_fluv_inter+","+quitar_lov_inter+","+quitar_pito_inter+","+quitar_pra_inter+","+quitar_rosu_inter+","+quitar_sim_inter);
+        
+        
+    }
+
 
               
 
