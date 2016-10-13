@@ -32,8 +32,11 @@
 
 			<li ng-repeat="(key, value) in EMI_ALI75" class="{{ value.tipo }} {{ value.dosis }}">
 				<p>{{ value.medicacion }}</p>
-				<div style="background: url('img/barra_progreso.png'); width: 190px; height: 25px; margin-left:15px">
+				<div ng-if="reduccionscope < value.porcentaje" style="background: url('img/barra_progreso.png'); width: 190px; height: 25px; margin-left:15px">
 					<div style="width:{{ value.porcentaje }}%"><span>{{ value.porcentaje | number:0 }}%</span></div>
+				</div>
+				<div ng-if="reduccionscope > value.porcentaje" style="background: url('img/barra_progreso.png'); width: 190px; height: 25px; margin-left:15px">
+					<div style="background-color:red;width:{{ value.porcentaje }}%"><span>{{ value.porcentaje | number:0 }}%</span></div>
 				</div>
 				
 			</li>	    
