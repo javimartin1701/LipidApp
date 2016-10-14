@@ -104,6 +104,14 @@ var quitar_vih=false;
 var proviene_contraindicaciones=false;
 var proviene_interacciones=false;
 
+var previo_ezet=false;
+var previo_aliro=false;
+var previo_evolo=false;
+var previo_colestir=false;
+var previo_colestip=false;
+var previo_fenof=false;
+var previo_gemf=false;
+
 angular.module('starter', ['ionic','ui.router','firebase'])
 
 .run(function($ionicPlatform,$rootScope,$ionicPopup,$state) {
@@ -2276,6 +2284,27 @@ if(quitar_vih==true){
 
 .controller('FactorRiesgoCardio',function($scope,$state){
 
+if(check8_imc==false){
+  document.getElementById('sobrepeso').checked=false;
+}
+if(check4_imc==false){
+  document.getElementById('diabetes').checked=false;
+}
+if(check2_imc==false){
+  document.getElementById('hipertension').checked=false;
+}
+if(check9_imc==false){
+  document.getElementById('sobrepeso').checked=false;
+}
+if(check5_imc==false){
+  document.getElementById('lod').checked=false;
+}
+if(check6_imc==false){
+  document.getElementById('frcv').checked=false;
+}
+if(check3_imc==false){
+  document.getElementById('htasevera').checked=false;
+}
 
   
   if(sexoimc=="1"){
@@ -2434,27 +2463,49 @@ $scope.ir_info = function(){
             check2_imc=true;
 
         }
+        else{
+          check2_imc=false;
+        }
         if($("#htasevera").is(':checked')) {  
             check3_imc=true;
+        }
+        else{
+          check3_imc=false;
         }
         if($("#diabetes").is(':checked')) {  
             check4_imc=true;
         }
+        else{
+          check4_imc=false;
+        }
         if($("#lod").is(':checked')) {  
             check5_imc=true;
+        }
+        else{
+          check5_imc=false;
         }
         if($("#frcv").is(':checked')) {  
             check6_imc=true;
         }
+        else{
+          check6_imc=false;
+        }
                 if($("#hiperfam").is(':checked')) {  
             check7_imc=true;
         }
-                        if($("#dislipemia").is(':checked')) {  
-            check8_imc=true;
+
+        if($("#dislipemia").is(':checked')) {  
+          check8_imc=true;
+        }
+        else{
+          check8_imc=false;
         }
                 if($("#sobrepeso").is(':checked')) {  
                   check9_imc=true;
             
+        }
+        else{
+          check9_imc=false;
         }
   
         $state.go('formulariodislipemia');
@@ -6936,8 +6987,128 @@ else{
 .controller('TratamientoPrevioMedicamentos',function($scope,$state){
 
   tratamiento_previo=true;
+if(previo_ator==10){
+  jQuery("#atorv_10").prop('checked', true);
+}
+else if(previo_ator==20){
+  jQuery("#atorv_20").prop('checked', true);
+}
+else if(previo_ator==30){
+  jQuery("#atorv_30").prop('checked', true);
+}
+else if(previo_ator==40){
+  jQuery("#atorv_40").prop('checked', true);
+}
 
- 
+if(previo_rosu==5){
+  jQuery("#rosuv_5").prop('checked', true);
+}
+else if(previo_rosu==10){
+  jQuery("#rosuv_10").prop('checked', true);
+}
+else if(previo_rosu==20){
+  jQuery("#rosuv_20").prop('checked', true);
+}
+else if(previo_rosu==40){
+  jQuery("#rosuv_40").prop('checked', true);
+}
+
+if(previo_pita==1){
+  jQuery("#piv_5").prop('checked', true);
+}
+else if(previo_pita==2){
+  jQuery("#pitv_10").prop('checked', true);
+}
+else if(previo_pita==4){
+  jQuery("#pitv_20").prop('checked', true);
+}
+
+if(previo_sim==10){
+  jQuery("#simv_10").prop('checked', true);
+}
+else if(previo_sim==20){
+  jQuery("#simv_20").prop('checked', true);
+}
+else if(previo_sim==40){
+  jQuery("#simv_40").prop('checked', true);
+}
+else if(previo_sim==80){
+  jQuery("#simv_80").prop('checked', true);
+}
+
+if(previo_pra==10){
+  jQuery("#prav_10").prop('checked', true);
+}
+else if(previo_pra==20){
+  jQuery("#prav_20").prop('checked', true);
+}
+else if(previo_pra==40){
+  jQuery("#prav_40").prop('checked', true);
+}
+else if(previo_pra==80){
+  jQuery("#prav_80").prop('checked', true);
+}
+
+
+if(previo_fluv==20){
+  jQuery("#fluv_20").prop('checked', true);
+}
+else if(previo_fluv==40){
+  jQuery("#fluv_40").prop('checked', true);
+}
+else if(previo_fluv==80){
+  jQuery("#fluv_80").prop('checked', true);
+}
+
+if(previo_lov==20){
+  jQuery("#lov_20").prop('checked', true);
+}
+else if(previo_lov==40){
+  jQuery("#lov_40").prop('checked', true);
+}
+
+if(previo_lov==10){
+  jQuery("#lov_10").prop('checked', true);
+}
+
+if(previo_ezet==10){
+  jQuery("#ezet_10").prop('checked', true);
+}
+
+if(previo_aliro==75){
+  jQuery("#aliroc_75").prop('checked', true);
+}
+else if(previo_aliro==150){
+  jQuery("#aliroc_150").prop('checked', true);
+}
+
+if(previo_evolo==140){
+  jQuery("#evoloc_140").prop('checked', true);
+}
+else if(previo_evolo==420){
+  jQuery("#evoloc_420").prop('checked', true);
+}
+
+if(previo_colestir==4){
+  jQuery("#colestir_4").prop('checked', true);
+}
+
+if(previo_colestir==5){
+  jQuery("#colestir_5").prop('checked', true);
+}
+
+if(previo_fenof==200){
+  jQuery("#fenof_200").prop('checked', true);
+}
+
+if(previo_gemf==900){
+  jQuery("#gemf_900").prop('checked', true);
+}
+else if(previo_gemf==600){
+  jQuery("#gemf_600").prop('checked', true);
+}
+
+
 
 jQuery('.linea_atorvastatina').on( "click", function() { 
 
@@ -7169,6 +7340,9 @@ jQuery('.ok_guardar').on( "click", function() {
            if ($('.cuadro_ezetimibe input').is(":checked")){
             $(".linea_ezetimibe").css("color", "#86253c");
           }
+          if ($('#ezet_10').is(":checked")){
+            previo_ezet=10;
+          }
          });
 jQuery('.cancelar8').on( "click", function() { 
           jQuery("#ezet_10").prop('checked', false);
@@ -7183,6 +7357,12 @@ jQuery('.ok_guardar').on( "click", function() {
            jQuery('.cuadro_alirocumab').hide(); //muestro mediante clase
            if ($('.cuadro_alirocumab input').is(":checked")){
             $(".linea_alirocumab").css("color", "#86253c");
+          }
+          if ($('#aliroc_75').is(":checked")){
+            previo_aliro=75;
+          }
+          if ($('#aliroc_150').is(":checked")){
+            previo_aliro=150;
           }
          });
 jQuery('.cancelar9').on( "click", function() { 
@@ -7200,6 +7380,12 @@ jQuery('.ok_guardar').on( "click", function() {
            if ($('.cuadro_evolocumab input').is(":checked")){
             $(".linea_evolocumab").css("color", "#86253c");
           }
+          if ($('#evoloc_140').is(":checked")){
+            previo_evolo=140;
+          }
+          if ($('#evoloc_420').is(":checked")){
+            previo_evolo=420;
+          }
          });
 jQuery('.cancelar10').on( "click", function() { 
           jQuery("#evoloc_140").prop('checked', false);
@@ -7216,6 +7402,9 @@ jQuery('.ok_guardar').on( "click", function() {
            if ($('.cuadro_colestiramina input').is(":checked")){
             $(".linea_colestiramina").css("color", "#86253c");
           }
+          if ($('#colestir_4').is(":checked")){
+            previo_colestir=4;
+          }
          });
 jQuery('.cancelar11').on( "click", function() { 
           jQuery("#colestir_4").prop('checked', false);
@@ -7230,6 +7419,9 @@ jQuery('.ok_guardar').on( "click", function() {
            jQuery('.cuadro_colestipol').hide(); //muestro mediante clase
            if ($('.cuadro_colestipol input').is(":checked")){
             $(".linea_colestipol").css("color", "#86253c");
+          }
+          if ($('#colestip_5').is(":checked")){
+            previo_colestip=5;
           }
          });
 jQuery('.cancelar12').on( "click", function() { 
@@ -7246,6 +7438,10 @@ jQuery('.ok_guardar').on( "click", function() {
            if ($('.cuadro_fenofibrato input').is(":checked")){
             $(".linea_fenofibrato").css("color", "#86253c");
           }
+          if ($('#fenof_200').is(":checked")){
+            previo_fenof=200;
+          }
+         
          });
 jQuery('.cancelar13').on( "click", function() { 
           jQuery("#fenof_200").prop('checked', false);
@@ -7261,6 +7457,13 @@ jQuery('.ok_guardar').on( "click", function() {
            if ($('.cuadro_gemfibrozilo input').is(":checked")){
             $(".linea_gemfibrozilo").css("color", "#86253c");
           }
+          if ($('#gemf_900').is(":checked")){
+            previo_gemf=900;
+          }
+          if ($('#gemf_600').is(":checked")){
+            previo_gemf=600;
+          }
+        
          });
 jQuery('.cancelar13').on( "click", function() { 
           jQuery("#gemf_900").prop('checked', false);
