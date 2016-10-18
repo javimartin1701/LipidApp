@@ -6799,8 +6799,13 @@ else{
   // ldlobjetivo=115;
 
   $scope.reduccion = function() {
-
-             $state.go('reduccion');
+    if(ldlactual<ldlobjetivo){
+      $state.go('home');
+    }
+    else{
+      $state.go('reduccion');
+    }
+             
         
         
     }
@@ -6840,7 +6845,12 @@ else{
 
      $scope.reduccion = function() {
 
-             $state.go('reduccion');
+             if(ldlactual<ldlobjetivo){
+      $state.go('home');
+    }
+    else{
+      $state.go('reduccion');
+    }
         
         
     }
@@ -6888,7 +6898,12 @@ if(unidad_seleccionada=="1"){
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion');
+             if(ldlactual<ldlobjetivo){
+      $state.go('home');
+    }
+    else{
+      $state.go('reduccion');
+    }
         
         
     }
@@ -6930,7 +6945,12 @@ if(unidad_seleccionada=="1"){
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion');
+             if(ldlactual<ldlobjetivo){
+      $state.go('home');
+    }
+    else{
+      $state.go('reduccion');
+    }
         
         
     }
@@ -26608,8 +26628,14 @@ if(unidad_seleccionada=="1"){
   // // ldlobjetivo=100;
 
   $scope.reduccion = function() {
+    if(ldlactual<ldlobjetivo_vih){
+      $state.go('home');
+    }
+    else{
+      $state.go('reduccion_vih');
+    }
 
-             $state.go('reduccion_vih');
+             
         
         
     }
@@ -26654,7 +26680,12 @@ if(unidad_seleccionada=="1"){
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion_vih');
+             if(ldlactual<ldlobjetivo_vih){
+      $state.go('home');
+    }
+    else{
+      $state.go('reduccion_vih');
+    }
         
         
     }
@@ -26694,8 +26725,12 @@ if(unidad_seleccionada=="1"){
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion_vih');
-        
+             if(ldlactual<ldlobjetivo_vih){
+      $state.go('home');
+    }
+    else{
+      $state.go('reduccion_vih');
+    }
         
     }
     var unidad=document.getElementById("unidades_totales_moderado_bajo_vih").value;
@@ -26747,7 +26782,12 @@ else{
 
   $scope.reduccion = function() {
 
-             $state.go('reduccion_vih');
+             if(ldlactual<ldlobjetivo_vih){
+      $state.go('home');
+    }
+    else{
+      $state.go('reduccion_vih');
+    }
         
         
     }
