@@ -506,11 +506,13 @@ position: absolute;
     color: #87253c;
     font-size: 26px;
     background-repeat: no-repeat;
+    padding-left: 1%;
 }
 
 .campos_res_gris{
     display: none;
 }
+
 
 
 #ldl_act_tratamiento0{
@@ -2577,6 +2579,19 @@ color: red
     font-size: 18px;
     color: white;
 }
+
+.marca_verde{
+  background:url(../img/alerta_baja.png) !important;
+  background-repeat:no-repeat !important;
+  background-position: 97% 81% !important;
+}
+
+.marca_roja{
+  background:url(../img/alerta.png) !important;
+  background-repeat:no-repeat !important;
+  background-position: 97% 81% !important;
+}
+
 
 @media only screen and (min-width: 350px) {
     .centrar_logos{

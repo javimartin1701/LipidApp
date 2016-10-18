@@ -27,14 +27,33 @@ var quitar_ezetimibe=false;
 var quitar_fibratos=false;
 var quitar_resinas=false;
 var quitar_ipcsk9=false;
+
 var quitar_ator_inter=false;
 var quitar_ator_inter_rojo=false;
+
 var quitar_fluv_inter=false;
+var quitar_fluv_inter_rojo=false;
+
 var quitar_lov_inter=false;
+var quitar_lov_inter_rojo=false;
+
 var quitar_pito_inter=false;
+var quitar_pito_inter_rojo=false;
+
 var quitar_pra_inter=false;
+var quitar_pra_inter_rojo=false;
+
 var quitar_rosu_inter=false;
+var quitar_rosu_inter_rojo=false;
+
 var quitar_sim_inter=false;
+var quitar_sim_inter_rojo=false;
+
+var quitar_feno_inter=false;
+
+var quitar_gem_inter=false;
+var quitar_gem_inter_rojo=false;
+
 var objetivo_vih=null;
 var eliminar_sim=false;
 var total_score_mialgias=null;
@@ -1457,15 +1476,16 @@ else{
 
 })
 
-.controller('HomeCtrl',function($scope){
-tratamiento_previo=false;
-  totalimcRounded="0";
+.controller('HomeCtrl',function($scope,$rootScope){
+
+ totalimcRounded="0";
  sexoimc="1";
- resultadofiltradoredond="inicio";
+ resultadofiltradoredond="100";
  cardio="0";
  ldlactual=0;
- renalindex="9";
+ renalindex="inicio";
  scoreindex="9";
+ scoreindex_vih="9";
  ldltransactual="";
  ldlobjetivo="0";
  score_calculado="-";
@@ -1482,13 +1502,35 @@ tratamiento_previo=false;
  quitar_fibratos=false;
  quitar_resinas=false;
  quitar_ipcsk9=false;
+
+
+
  quitar_ator_inter=false;
+ quitar_ator_inter_rojo=false;
+
  quitar_fluv_inter=false;
+ quitar_fluv_inter_rojo=false;
+
  quitar_lov_inter=false;
+ quitar_lov_inter_rojo=false;
+
  quitar_pito_inter=false;
+ quitar_pito_inter_rojo=false;
+
  quitar_pra_inter=false;
+ quitar_pra_inter_rojo=false;
+
  quitar_rosu_inter=false;
+ quitar_rosu_inter_rojo=false;
+
  quitar_sim_inter=false;
+ quitar_sim_inter_rojo=false;
+
+ quitar_feno_inter=false;
+
+ quitar_gem_inter=false;
+ quitar_gem_inter_rojo=false;
+
  objetivo_vih=null;
  eliminar_sim=false;
  total_score_mialgias=null;
@@ -1526,13 +1568,46 @@ tratamiento_previo=false;
  longhistoria=null;
  pen=null;
  rama_vih=false;
+ consulta_scoreindex=null;
 
  unidad_seleccionada=null;
 
  check_ecvdoc=false;
 
-proviene_contraindicaciones=false;
-proviene_interacciones=false;
+ tratamiento_previo=false;
+ pantallaactual=null;
+
+ previo_ator=null;
+ previo_rosu=null;
+ previo_pita=null;
+ previo_sim=null;
+ previo_pra=null;
+ previo_fluv=null;
+ previo_lov=null;
+
+ sin_estatinas=false;
+ sin_ezetimive=false;
+ sin_fibratos=false;
+ sin_fibratos=false;
+ sin_ipcsk9=false;
+ sin_resina=false;
+ password2=null;
+ mitad=false;
+ tipo_riesgo=null;
+ tratamiento=false;
+
+ quitar_vih=false;
+ proviene_contraindicaciones=false;
+ proviene_interacciones=false;
+
+ previo_ezet=false;
+ previo_aliro=false;
+ previo_evolo=false;
+ previo_colestir=false;
+ previo_colestip=false;
+ previo_fenof=false;
+ previo_gemf=false;
+
  
 
 })
@@ -1622,7 +1697,7 @@ $scope.govih2 = function() {
     element.value = 2;
 
   if(unidad_seleccionada=="1"){
-    $("select#ldl-actual-unidades").val("0.25");
+    $("select#ldl-actual-unidades").val("0.02586");
   }
 
 
@@ -1941,7 +2016,7 @@ tiene_vih=document.getElementById('VIH');
     if(unidad_seleccionada=="1"){
       ldlactual = document.getElementById("ldl-actual").value;
       console.log(ldlactual);
-      ldlactual=parseInt(ldlactual*4);
+      ldlactual=parseInt(ldlactual*38.669);
       console.log(ldlactual);
 
       
@@ -1949,8 +2024,20 @@ tiene_vih=document.getElementById('VIH');
     if(unidad_seleccionada=="0"){
     ldlactual = document.getElementById("ldl-actual").value;
     }
+
+
+if(scoreindex==0){
+    var alertPopup = $ionicPopup.alert({
+     title: '¡Atención!',
+     template: 'No ha seleccionado ningún valor de Score'
+   });
+
+   alertPopup.then(function(res) {
+     
+   });
+}
     
-if(ldlactual>0){
+else if(ldlactual>0){
     console.log(ldlactual);
     if (tiene_vih.checked){
       quitar_vih=false;
@@ -2114,7 +2201,7 @@ var unidad=document.getElementById("ldl-actual-unidades").value;
   
   var ldl = parseFloat(document.getElementById("ldl-actual").value);
   var ldlconv=ldl*factor;
-  document.getElementById("ldl-actual").value=ldlconv.toFixed(2);
+  document.getElementById("ldl-actual").value=ldlconv.toFixed(5);
   
 });
 $("#selector-score-vih").hide();
@@ -2610,10 +2697,11 @@ $scope.ir_info = function(){
 
 })
 
-.controller('Presentacion',function($scope){
+.controller('Presentacion',function($scope,$ionicScrollDelegate){
 
   
 jQuery('.ver_interior_presentacion').on( "click", function() { 
+  $ionicScrollDelegate.scrollTop();
 
            jQuery('.interior_presentacion').toggle(); //muestro mediante clase
             jQuery('.interior_nota_autores').hide();
@@ -2624,6 +2712,7 @@ jQuery('.ver_interior_presentacion').on( "click", function() {
 
          });
 jQuery('.ver_interior_nota_autores').on( "click", function() { 
+  $ionicScrollDelegate.scrollTop();
 
            jQuery('.interior_presentacion').hide(); //muestro mediante clase
             jQuery('.interior_nota_autores').toggle();
@@ -2634,6 +2723,7 @@ jQuery('.ver_interior_nota_autores').on( "click", function() {
 
          });
 jQuery('.ver_interior_autores').on( "click", function() { 
+  $ionicScrollDelegate.scrollTop();
 
            jQuery('.interior_presentacion').hide(); //muestro mediante clase
             jQuery('.interior_nota_autores').hide();
@@ -2644,7 +2734,7 @@ jQuery('.ver_interior_autores').on( "click", function() {
 
          });
 jQuery('.ver_interior_creditos').on( "click", function() { 
-
+$ionicScrollDelegate.scrollTop();
            jQuery('.interior_presentacion').hide(); //muestro mediante clase
             jQuery('.interior_nota_autores').hide();
             jQuery('.interior_autores').hide();
@@ -2654,7 +2744,7 @@ jQuery('.ver_interior_creditos').on( "click", function() {
 
          });
 jQuery('.ver_interior_referencias').on( "click", function() { 
-
+$ionicScrollDelegate.scrollTop();
            jQuery('.interior_presentacion').hide(); //muestro mediante clase
             jQuery('.interior_nota_autores').hide();
             jQuery('.interior_autores').hide();
@@ -2664,7 +2754,7 @@ jQuery('.ver_interior_referencias').on( "click", function() {
 
          });
 jQuery('.ver_interior_abreviaturas').on( "click", function() { 
-
+$ionicScrollDelegate.scrollTop();
            jQuery('.interior_presentacion').hide(); //muestro mediante clase
             jQuery('.interior_nota_autores').hide();
             jQuery('.interior_autores').hide();
@@ -6685,9 +6775,9 @@ $state.go('formulariodislipemia');
 .controller('RiesgoBajo',function($scope,$state){
 
   if(unidad_seleccionada=="1"){
-    $("select#unidades_totales_bajo").val("0.25");
-    document.getElementById("ldl_act_res_bajo").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_res_bajo").value=ldlobjetivo*0.25;
+    $("select#unidades_totales_bajo").val("0.02586");
+    document.getElementById("ldl_act_res_bajo").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_res_bajo").value=ldlobjetivo*0.02586;
   }
   else{
 
@@ -6737,9 +6827,9 @@ else{
     ldlobjetivo=ldlactual/2
   }
   if(unidad_seleccionada=="1"){
-    $("select#unidades_totales").val("0.25");
-    document.getElementById("ldl_act_res").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_res").value=ldlobjetivo*0.25;
+    $("select#unidades_totales").val("0.02586");
+    document.getElementById("ldl_act_res").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_res").value=ldlobjetivo*0.02586;
   }
   else{
 
@@ -6782,9 +6872,9 @@ else{
   }
 
 if(unidad_seleccionada=="1"){
-    $("select#unidades_totales_alto").val("0.25");
-    document.getElementById("ldl_act_res_alto").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_res_alto").value=ldlobjetivo*0.25;
+    $("select#unidades_totales_alto").val("0.02586");
+    document.getElementById("ldl_act_res_alto").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_res_alto").value=ldlobjetivo*0.02586;
   }
   else{
 
@@ -6824,9 +6914,9 @@ if(unidad_seleccionada=="1"){
 .controller('RiesgoMedio',function($scope,$state){
 
 if(unidad_seleccionada=="1"){
-    $("select#unidades_totales_medio").val("0.25");
-    document.getElementById("ldl_act_res_medio").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_res_medio").value=ldlobjetivo*0.25;
+    $("select#unidades_totales_medio").val("0.02586");
+    document.getElementById("ldl_act_res_medio").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_res_medio").value=ldlobjetivo*0.02586;
   }
   else{
 
@@ -6873,9 +6963,9 @@ if(unidad_seleccionada=="1"){
 
 
   if(unidad_seleccionada=="1"){
-    $("select#unidades_totales").val("0.25");
-    document.getElementById("ldl_act_red").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_red").value=ldlobjetivo*0.25;
+    $("select#unidades_totales").val("0.02586");
+    document.getElementById("ldl_act_red").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_red").value=ldlobjetivo*0.02586;
   }
   else{
 
@@ -6894,7 +6984,7 @@ else{
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   console.log("con tratamiento previo") 
 }
-  document.getElementById("porcentaje_red").value=porc_reducc+"%";
+  document.getElementById("porcentaje_red").value=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100)+"%";
 if(tratamiento==true){
   $(".adicional span").show();
 }
@@ -6906,9 +6996,9 @@ if(tratamiento==true){
 .controller('Reduccion_vih',function($scope){
 
   if(unidad_seleccionada=="1"){
-    $("select#unidades_totales").val("0.25");
-    document.getElementById("ldl_act_red_vih").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_red_vih").value=objetivo_vih*0.25;
+    $("select#unidades_totales").val("0.02586");
+    document.getElementById("ldl_act_red_vih").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_red_vih").value=objetivo_vih*0.02586;
   }
   else{
 
@@ -6927,7 +7017,7 @@ if(tratamiento==true){
 else{
   var porc_reducc=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlactual))*100);
 }
-  document.getElementById("porcentaje_red_vih").value=porc_reducc+"%";
+  document.getElementById("porcentaje_red_vih").value=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlactual))*100)+"%";
 
 // if(tratamiento==true){
 //   $(".adicional span").show();
@@ -7713,7 +7803,24 @@ tratamiento=true;
 
 
 
-.controller('grupos_sin_tratamiento',function($scope,$state, $ionicPopup, $firebaseArray,$rootScope){
+.controller('grupos_sin_tratamiento',function($scope,$state, $ionicPopup, $firebaseArray,$rootScope,$ionicLoading){
+  
+  
+    $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
+  
+  // setTimeout(
+  // function() 
+  // {
+  //   $ionicLoading.hide().then(function(){
+  //      console.log("The loading indicator is now hidden");
+  //   });
+  // }, 3100);
   
   // $scope.estatinas_interaccion_alta=quitar_ator_inter_rojo;
   // $scope.estatinas_interaccion_baja=quitar_ator_inter;
@@ -8055,12 +8162,12 @@ if(quitar_ipcsk9==true){
 // }
 
 
- if(quitar_ator_inter_rojo==true){
-    $(".tratamientoinicio_EBI .alerta_grupo_alta").show();
-  }
-if(quitar_ator_inter==true){
-    $(".tratamientoinicio_EBI .alerta_grupo_baja").show();
-  }
+//  if(quitar_ator_inter_rojo==true){
+//     $(".tratamientoinicio_EBI .alerta_grupo_alta").show();
+//   }
+// if(quitar_ator_inter==true){
+//     $(".tratamientoinicio_EBI .alerta_grupo_baja").show();
+//   }
 
 }, 3000);
 
@@ -8094,6 +8201,7 @@ if(quitar_ator_inter==true){
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8314,6 +8422,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8536,6 +8645,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8737,7 +8847,7 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI',function($scope,$state,$rootScope,$firebaseArray){
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -8758,6 +8868,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -8789,6 +8900,63 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
         console.log($scope.EBI);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -8944,6 +9112,11 @@ setTimeout(
 
 
 
+
+
+
+
+
   }, 5000);
 
 
@@ -8978,6 +9151,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -9199,6 +9373,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -9417,6 +9592,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -9635,6 +9811,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -9854,6 +10031,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -10079,6 +10257,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -10297,6 +10476,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -10512,6 +10692,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -10728,6 +10909,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -10946,6 +11128,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -11162,6 +11345,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -11380,6 +11564,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -11602,6 +11787,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -11819,6 +12005,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -12037,6 +12224,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -12255,6 +12443,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -12475,6 +12664,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -12692,6 +12882,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -12910,6 +13101,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -13129,6 +13321,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -13352,6 +13545,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -13575,6 +13769,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -13794,6 +13989,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -14013,6 +14209,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -14230,6 +14427,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -14447,6 +14645,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -14665,6 +14864,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -14883,6 +15083,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -15103,6 +15304,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -15331,6 +15533,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -15552,6 +15755,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
  
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -15772,6 +15976,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -15993,6 +16198,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -16205,6 +16411,7 @@ setTimeout(
   // console.log(tratamiento_previo);
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=ldlobjetivo;
+  $scope.ldlactualscope=ldlactual;
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
@@ -16619,9 +16826,9 @@ setTimeout(
 
 .controller('TratamientoInicio_vih',function($scope,$state, $firebaseArray){
   if(tratamiento_previo==true){
-    $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
-    $("#ldl_act_tratamiento").css("background-size", "100px 100px");
-    $(".info_tratamiento").show();
+    // $("#ldl_act_tratamiento").css("background", "url('img/total_rojo_sin.png')");
+    // $("#ldl_act_tratamiento").css("background-size", "100px 100px");
+    // $(".info_tratamiento").show();
   }
   $scope.ir_info_previo = function() {
     $state.go('modal_tratamiento_previo');
@@ -16629,9 +16836,9 @@ setTimeout(
     document.getElementById("ldl_act_tratamiento").value=ldlactual;
   document.getElementById("ldl_obj_tratamiento").value=objetivo_vih;
   var porc_reducc=100-parseInt((parseFloat(objetivo_vih)/parseFloat(ldlactual))*100);
-  document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
+  // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    
+    $scope.ldlactualscope=ldlactual;
 
     var ref = firebase.database().ref('dislipemia3').orderByChild("porcentaje").startAt(porc_reducc);
     $scope.disp = $firebaseArray(ref);
@@ -18463,7 +18670,7 @@ if( $('.check_lov_rojo').is(':checked') ) {
 }
 
 if( $('.check_pita').is(':checked') ) {
-    quitar_pito_inter=true;
+    quitar_pita_inter=true;
     $rootScope.estatinas_interaccion_baja=true;
 }
 if( $('.check_pita_rojo').is(':checked') ) {
@@ -21944,6 +22151,26 @@ $state.go('menu_interacciones');
 
 $scope.filtrar_inter = function() {
 
+ if( $('.check_dicu').is(':checked') ) {
+    quitar_feno_inter=true;
+}
+ if( $('.check_ciclo').is(':checked') ) {
+    quitar_feno_inter=true;
+}
+
+ if( $('.check_aco_gem').is(':checked') ) {
+    quitar_gem_inter=true;
+}
+ if( $('.check_rosi').is(':checked') ) {
+    quitar_gem_inter=true;
+}
+
+ if( $('.check_esta_rojo').is(':checked') ) {
+    quitar_gem_inter_rojo=true;
+}
+ if( $('.check_repa_rojo').is(':checked') ) {
+    quitar_gem_inter_rojo=true;
+}
 
 
   
@@ -22879,7 +23106,7 @@ if( $('.check_sim').is(':checked') ) {
 
 
 
-$state.go('menu_interacciones');
+$state.go('menu_interacciones2');
    
         
         
@@ -26365,9 +26592,9 @@ $state.go('menu_interacciones_vih');
 .controller('RiesgoAltoVIH',function($scope,$state){
 
 if(unidad_seleccionada=="1"){
-    $("select#unidades_totales_alto_vih").val("0.25");
-    document.getElementById("ldl_act_res_alto_vih").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_res_alto_vih").value=objetivo_vih*0.25;
+    $("select#unidades_totales_alto_vih").val("0.02586");
+    document.getElementById("ldl_act_res_alto_vih").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_res_alto_vih").value=objetivo_vih*0.02586;
   }
   else{
 
@@ -26409,9 +26636,9 @@ if(unidad_seleccionada=="1"){
 .controller('RiesgoModeradoAltoVIH',function($scope,$state){
 
   if(unidad_seleccionada=="1"){
-    $("select#unidades_totales_moderado_alto_vih").val("0.25");
-    document.getElementById("ldl_act_res_moderado_alto_vih").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_res_moderado_alto_vih").value=objetivo_vih*0.25;
+    $("select#unidades_totales_moderado_alto_vih").val("0.02586");
+    document.getElementById("ldl_act_res_moderado_alto_vih").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_res_moderado_alto_vih").value=objetivo_vih*0.02586;
   }
   else{
 
@@ -26451,9 +26678,9 @@ if(unidad_seleccionada=="1"){
 .controller('RiesgoModeradoBajoVIH',function($scope,$state){
 
 if(unidad_seleccionada=="1"){
-    $("select#unidades_totales_moderado_bajo_vih").val("0.25");
-    document.getElementById("ldl_act_res_moderado_bajo_vih").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_res_moderado_bajo_vih").value=objetivo_vih*0.25;
+    $("select#unidades_totales_moderado_bajo_vih").val("0.02586");
+    document.getElementById("ldl_act_res_moderado_bajo_vih").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_res_moderado_bajo_vih").value=objetivo_vih*0.02586;
   }
   else{
 
@@ -26493,9 +26720,9 @@ if(unidad_seleccionada=="1"){
 .controller('RiesgoBajoVIH',function($scope,$state){
 
 if(unidad_seleccionada=="1"){
-    $("select#unidades_totales_bajo_vih").val("0.25");
-    document.getElementById("ldl_act_res_bajo_vih").value=ldlactual*0.25;
-    document.getElementById("ldl_obj_res_bajo_vih").value=objetivo_vih*0.25;
+    $("select#unidades_totales_bajo_vih").val("0.02586");
+    document.getElementById("ldl_act_res_bajo_vih").value=ldlactual*0.02586;
+    document.getElementById("ldl_obj_res_bajo_vih").value=objetivo_vih*0.02586;
   }
   else{
 
@@ -26598,6 +26825,11 @@ $scope.mejoran = function() {
     }
 
 $scope.asintomatico = function() {
+  if( $('.reaparecen_sintomas').is(":visible") ){
+              $('#reaparecen_sintomas').attr('checked', false);
+              jQuery('.reaparecen_sintomas').toggle();
+    
+}
 
              jQuery('.asintomatico').toggle();
         
@@ -26605,7 +26837,12 @@ $scope.asintomatico = function() {
     }
 
 $scope.reaparecen_sintomas = function() {
-
+  if( $('.asintomatico').is(":visible") ){
+              $('#asintomatico').attr('checked', false);
+               jQuery('.asintomatico').toggle();
+    
+}
+            
              jQuery('.reaparecen_sintomas').toggle();
         
         
@@ -27461,10 +27698,10 @@ $scope.ir_info_previo = function() {
   }
 
   if(unidad_seleccionada=="1"){
-    $("select#unidades_totales").val("0.25");
-    document.getElementById("ldl_act_tratamiento0").value=ldlactual*0.25;
-    document.getElementById("ldl_act_red").value=ldlrectificado*0.25;
-    document.getElementById("ldl_obj_red").value=ldlobjetivo*0.25;
+    $("select#unidades_totales").val("0.02586");
+    document.getElementById("ldl_act_tratamiento0").value=ldlactual*0.02586;
+    document.getElementById("ldl_act_red").value=ldlrectificado*0.02586;
+    document.getElementById("ldl_obj_red").value=ldlobjetivo*0.02586;
   }
   else{
 
@@ -27490,10 +27727,10 @@ $scope.ir_info_previo = function() {
   }
 
   if(unidad_seleccionada=="1"){
-    $("select#unidades_totales").val("0.25");
-    document.getElementById("ldl_act_tratamiento0").value=ldlactual*0.25;
-    document.getElementById("ldl_act_red").value=ldlrectificado*0.25;
-    document.getElementById("ldl_obj_red_vih").value=objetivo_vih*0.25;
+    $("select#unidades_totales").val("0.02586");
+    document.getElementById("ldl_act_tratamiento0").value=ldlactual*0.02586;
+    document.getElementById("ldl_act_red").value=ldlrectificado*0.02586;
+    document.getElementById("ldl_obj_red_vih").value=objetivo_vih*0.02586;
   }
   else{
 
