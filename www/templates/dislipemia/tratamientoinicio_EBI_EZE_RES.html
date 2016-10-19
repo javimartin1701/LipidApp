@@ -28,9 +28,9 @@
 </div>
 
       
-	  <ul style="margin-top: -135px;" class="list lista listado_medicacion">
+	  <ul style="margin-top: -135px;" class="list  listado_medicacion">
 
-			<li ng-repeat="(key, value) in EBI_EZE_RES" class="{{ value.tipo }} {{ value.dosis }}">
+			<li ng-repeat="(key, value) in EBI_EZE_RES" class="{{ value.tipo }} {{ value.dosis }} {{ value.medicacion }}">
 				<p>{{ value.medicacion }}</p>
 				<div ng-if="reduccionscope < value.porcentaje" style="background: url('img/barra_progreso.png'); width: 190px; height: 25px; margin-left:15px">
 					<div style="width:{{ value.porcentaje }}%"><span>{{ ldlactualscope - (ldlactualscope * value.porcentaje)/100 | number:0}}</span></div>

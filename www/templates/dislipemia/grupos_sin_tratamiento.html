@@ -68,17 +68,19 @@
 				
 				<div ui-sref="{{ value.url }}" style="background: transparent; width: 90%; height: 25px; margin-left:15px">
 					<div ng-if="reduccionscope < value.media" class="barras_grupos {{ value.url }}" style="width:{{ value.media }}%"><!-- <span>{{ value.media | number:0 }}%</span> -->
-						<img ng-if="estatinas_interaccion_alta == value.estatina" class="alerta_grupo_alta" style="position: absolute;right: 32px" src="img/alerta.png">
-						<img ng-if="ezetimive_interaccion_alta == value.ezetimive" class="alerta_grupo_alta" style="position: absolute;right: 32px" src="img/alerta.png">
-						<img ng-if="estatinas_interaccion_baja == value.estatina" class="alerta_grupo_baja" style="position: absolute;right: 66px" src="img/alerta_baja.png">
-						<img ng-if="ezetimive_interaccion_baja == value.ezetimive" class="alerta_grupo_baja" style="position: absolute;right: 66px" src="img/alerta_baja.png">
+					
+						<img ng-if="estatinas_interaccion_alta == value.estatina" class="alerta_grupo_alta" style="position: absolute;right: 60px;" src="img/alerta.png">
+						<img ng-if="ezetimive_interaccion_alta == value.fibrato" class="alerta_grupo_alta" style="position: absolute;right: 60px;" src="img/alerta.png">
+						<img ng-if="estatinas_interaccion_baja == value.estatina" class="alerta_grupo_baja" style="position: absolute;right: 29px;" src="img/alerta_baja.png">
+						<img ng-if="ezetimive_interaccion_baja == value.fibrato" class="alerta_grupo_baja" style="position: absolute;right: 29px;" src="img/alerta_baja.png">
 					</div>
 
 					<div ng-if="reduccionscope > value.media" class="barras_grupos {{ value.url }}" style="background-color: red;width:{{ value.media }}%"><!-- <span>{{ value.media | number:0 }}%</span> -->
-						<img ng-if="estatinas_interaccion_alta == value.estatina" class="value.estatina alerta_grupo_alta" style="position: absolute;right: 32px" src="img/alerta.png">
-						<img ng-if="ezetimive_interaccion_alta == value.ezetimive" class="alerta_grupo_alta" style="position: absolute;right: 32px" src="img/alerta.png">
-						<img ng-if="estatinas_interaccion_baja == value.estatina" class="alerta_grupo_baja" style="position: absolute;right: 66px" src="img/alerta_baja.png">
-						<img ng-if="ezetimive_interaccion_baja == value.ezetimive" class="alerta_grupo_baja" style="position: absolute;right: 66px" src="img/alerta_baja.png">
+
+						<img ng-if="estatinas_interaccion_alta == value.estatina" class="value.estatina alerta_grupo_alta" style="position: absolute;right: 60px;" src="img/alerta.png">
+						<img ng-if="ezetimive_interaccion_alta == value.fibrato" class="alerta_grupo_alta" style="position: absolute;right: 60px;" src="img/alerta.png">
+						<img ng-if="estatinas_interaccion_baja == value.estatina" class="alerta_grupo_baja" style="position: absolute;right: 29px;" src="img/alerta_baja.png">
+						<img ng-if="ezetimive_interaccion_baja == value.fibrato" class="alerta_grupo_baja" style="position: absolute;right: 29px;" src="img/alerta_baja.png">
 					</div>
 
 				</div>

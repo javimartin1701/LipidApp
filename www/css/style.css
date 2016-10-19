@@ -234,6 +234,9 @@ font-size: smaller;
 }
 
 #ldl_obj_res{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -244,6 +247,9 @@ font-size: smaller;
 }
 
 #ldl_act_res{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -254,6 +260,9 @@ font-size: smaller;
 }
 
 #ldl_obj_tratamiento{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -266,6 +275,12 @@ font-size: smaller;
 }
 
 #ldl_obj_tratamiento_red{
+    padding: 0;
+    margin: 0;
+    border: 0;
+        padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -496,6 +511,9 @@ position: absolute;
 }
 
 #ldl_act_tratamiento_red{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -506,7 +524,7 @@ position: absolute;
     color: #87253c;
     font-size: 26px;
     background-repeat: no-repeat;
-    padding-left: 1%;
+    
 }
 
 .campos_res_gris{
@@ -623,6 +641,9 @@ position: absolute;
 
 
 #ldl_obj_res_alto{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -633,6 +654,9 @@ position: absolute;
 }
 
 #ldl_act_res_alto{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -644,6 +668,9 @@ position: absolute;
 
 
 #ldl_obj_res_alto_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -654,6 +681,9 @@ position: absolute;
 }
 
 #ldl_act_res_alto_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -666,6 +696,9 @@ position: absolute;
 
 
 #ldl_obj_res_medio{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -676,6 +709,9 @@ position: absolute;
 }
 
 #ldl_act_res_medio{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -687,6 +723,9 @@ position: absolute;
 
 
 #ldl_obj_res_moderado_alto_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -697,6 +736,9 @@ position: absolute;
 }
 
 #ldl_act_res_moderado_alto_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -707,6 +749,9 @@ position: absolute;
 }
 
 #ldl_obj_res_moderado_bajo_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -717,6 +762,9 @@ position: absolute;
 }
 
 #ldl_act_res_moderado_bajo_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -728,6 +776,9 @@ position: absolute;
 
 
 #ldl_obj_res_bajo_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -738,6 +789,9 @@ position: absolute;
 }
 
 #ldl_act_res_bajo_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -749,6 +803,9 @@ position: absolute;
 
 
 #ldl_obj_res_bajo{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -759,6 +816,9 @@ position: absolute;
 }
 
 #ldl_act_res_bajo{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -814,6 +874,9 @@ position: absolute;
 }
 
 #ldl_obj_red{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -846,6 +909,9 @@ position: absolute;
 }
 
 #ldl_act_red{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;
@@ -856,6 +922,9 @@ position: absolute;
 }
 
 #ldl_act_red_vih{
+    padding: 0;
+    margin: 0;
+    border: 0;
     display: inline-block;
     width: 127px;
     height: 127px;

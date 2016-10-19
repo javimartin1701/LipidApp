@@ -50,6 +50,7 @@ var quitar_sim_inter=false;
 var quitar_sim_inter_rojo=false;
 
 var quitar_feno_inter=false;
+var quitar_feno_inter_rojo=false;
 
 var quitar_gem_inter=false;
 var quitar_gem_inter_rojo=false;
@@ -249,6 +250,10 @@ for(var i = 0; i < arreglo.length; i++) {
       if (res) {
 
          $state.go('home');
+         $rootScope.estatinas_interaccion_baja=null;
+         $rootScope.estatinas_interaccion_alta=null;
+         $rootScope.ezetimive_interaccion_baja=null;
+         $rootScope.ezetimive_interaccion_alta=null;
 
       } else {
 
@@ -1612,6 +1617,11 @@ else{
 })
 
 .controller('HomeCtrl',function($scope,$rootScope){
+quitar_feno_inter=false;
+quitar_feno_inter_rojo=false;
+
+ quitar_gem_inter=false;
+ quitar_gem_inter_rojo=false;
 
  totalimcRounded="0";
  sexoimc="1";
@@ -8424,6 +8434,79 @@ if(quitar_ipcsk9==true){
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -8641,6 +8724,79 @@ setTimeout(
         console.log($scope.EMI_EZE_RES);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -8868,6 +9024,79 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -9088,6 +9317,8 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
 
     });
 
+
+
 setTimeout(
   function() 
   {
@@ -9098,6 +9329,20 @@ if(quitar_ator_inter==true){
 }
 if(quitar_ator_inter_rojo==true){
   $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
 }
 
 
@@ -9374,6 +9619,76 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -9592,6 +9907,93 @@ setTimeout(
         console.log($scope.EBI_EZE_ALI75);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -9815,6 +10217,78 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -10030,6 +10504,77 @@ setTimeout(
         console.log($scope.EMI_EZE_ALI75_FIB);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -10250,6 +10795,77 @@ setTimeout(
         console.log($scope.EAI_EZE_ALI75_FIB);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -10480,6 +11096,77 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -10695,6 +11382,78 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
         console.log($scope.EMI_EZE_ALI75_RES);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -10915,6 +11674,78 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -11128,6 +11959,78 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
         console.log($scope.EBI_EZE_FIB);
 
     });
+
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -11351,6 +12254,78 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -11564,6 +12539,63 @@ setTimeout(
         console.log($scope.EAI_EZE_FIB);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -11783,6 +12815,77 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
         console.log($scope.EBI_EZE_ALI_EVO);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -12010,6 +13113,77 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -12224,6 +13398,78 @@ setTimeout(
         console.log($scope.EMI_EZE_ALI_EVO_FIB);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -12444,6 +13690,78 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
 
     });
 
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
 setTimeout(
   function() 
   {
@@ -12662,6 +13980,78 @@ setTimeout(
         console.log($scope.EBI_EZE_ALI_EVO_RES);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -12887,6 +14277,77 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -13101,6 +14562,78 @@ setTimeout(
         console.log($scope.EAI_EZE_ALI_EVO_RES);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -13324,6 +14857,78 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -13540,6 +15145,78 @@ setTimeout(
         console.log($scope.EAI_EZE_ALI_EVO);
 
     });
+
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -13768,6 +15445,78 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -13992,6 +15741,77 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -14208,6 +16028,75 @@ var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100
         console.log($scope.EMI_ALI_EVO);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -14432,6 +16321,77 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -14650,6 +16610,77 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -14864,6 +16895,77 @@ setTimeout(
         console.log($scope.EMI_ALI75);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -15087,6 +17189,77 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -15302,6 +17475,78 @@ setTimeout(
         console.log($scope.EZE_ALI_EVO);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -15523,6 +17768,77 @@ setTimeout(
         console.log($scope.EMI_EZE_ALI75);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -15756,6 +18072,75 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -15973,6 +18358,76 @@ setTimeout(
         console.log($scope.EAI_EZE);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -16199,6 +18654,78 @@ setTimeout(
 setTimeout(
   function() 
   {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
+
+setTimeout(
+  function() 
+  {
          if (previo_ator==10){
             $('.ator10').hide();         
           }
@@ -16417,6 +18944,76 @@ setTimeout(
         console.log($scope.EMI);
 
     });
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -16630,6 +19227,76 @@ setTimeout(
         console.log($scope.EAI);
 
     });
+
+setTimeout(
+  function() 
+  {
+
+
+if(quitar_ator_inter==true){
+  $(".ator").addClass("marca_verde");
+}
+if(quitar_ator_inter_rojo==true){
+  $(".ator").addClass("marca_roja");
+}
+
+if(quitar_feno_inter==true){
+  $(".Fenofibrato").addClass("marca_verde");
+}
+if(quitar_feno_inter_rojo==true){
+  $(".Fenofibrato").addClass("marca_roja");
+}
+
+if(quitar_gem_inter==true){
+  $(".Gemfibrozilo").addClass("marca_verde");
+}
+if(quitar_gem_inter_rojo==true){
+  $(".Gemfibrozilo").addClass("marca_roja");
+}
+
+
+if(quitar_fluv_inter==true){
+  $(".fluv").addClass("marca_verde");
+}if(quitar_fluv_inter_rojo==true){
+  $(".fluv").addClass("marca_roja");
+}
+
+
+if(quitar_lov_inter==true){
+  $(".lov").addClass("marca_verde");
+}if(quitar_lov_inter_rojo==true){
+  $(".lov").addClass("marca_roja");
+}
+
+
+if(quitar_pito_inter==true){
+  $(".pito").addClass("marca_verde");
+}if(quitar_pito_inter_rojo==true){
+  $(".pito").addClass("marca_roja");
+}
+
+
+if(quitar_pra_inter==true){
+  $(".pra").addClass("marca_verde");
+}if(quitar_pra_inter_rojo==true){
+  $(".pra").addClass("marca_roja");
+}
+
+
+if(quitar_rosu_inter==true){
+  $(".rosu").addClass("marca_verde");
+}if(quitar_rosu_inter_rojo==true){
+  $(".rosu").addClass("marca_roja");
+}
+
+
+if(quitar_sim_inter==true){
+  $(".sim").addClass("marca_verde");
+}if(quitar_sim_inter_rojo==true){
+  $(".sim").addClass("marca_roja");
+}
+
+  }, 1000);
 
 setTimeout(
   function() 
@@ -22315,42 +24982,43 @@ jQuery('.raco_rosuv').on( "click", function() {
  
   });
 
-$scope.filtrar_inter = function() {
+// $scope.filtrar_inter = function() {
 
 
 
 
- if( $('.check_ator').is(':checked') ) {
-    quitar_ator_inter=true;
-}
-if( $('.check_fluv').is(':checked') ) {
-    quitar_fluv_inter=true;
-}
-if( $('.check_lov').is(':checked') ) {
-    quitar_lov_inter=true;
-}
-if( $('.check_pita').is(':checked') ) {
-    quitar_pito_inter=true;
-}
-if( $('.check_prav').is(':checked') ) {
-    quitar_pra_inter=true;
-}
-if( $('.check_rosu').is(':checked') ) {
-    quitar_rosu_inter=true;
+//  if( $('.check_ator').is(':checked') ) {
+//     quitar_ator_inter=true;
+// }
+// if( $('.check_fluv').is(':checked') ) {
+//     quitar_fluv_inter=true;
+// }
+// if( $('.check_lov').is(':checked') ) {
+//     quitar_lov_inter=true;
+// }
+// if( $('.check_pita').is(':checked') ) {
+//     quitar_pito_inter=true;
+// }
+// if( $('.check_prav').is(':checked') ) {
+//     quitar_pra_inter=true;
+// }
+// if( $('.check_rosu').is(':checked') ) {
+//     quitar_rosu_inter=true;
     
-}
-if( $('.check_sim').is(':checked') ) {
-    quitar_sim_inter=true;
-    eliminar_sim=true;
-}
+// }
+// if( $('.check_sim').is(':checked') ) {
+//     quitar_sim_inter=true;
+//     eliminar_sim=true;
+// }
 
 
 
-$state.go('menu_interacciones');
+// $state.go('menu_interacciones');
    
         
         
-    }
+//     }
+
 
 
 $scope.filtrar_inter = function() {
