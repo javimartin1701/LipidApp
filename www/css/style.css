@@ -546,7 +546,7 @@ position: absolute;
     width: 100px;
     height: 100px;
     text-align: center;
-    background: url('../img/total_rojo.png');
+    background: url('../img/total_rojo3.png');
     background-size: 100px 100px;
     color: #87253c;
     font-size: 26px;
@@ -850,7 +850,7 @@ position: absolute;
     width: 127px;
     height: 127px;
     text-align: center;
-    background: url('../img/total_rojo.png');
+    background: url('../img/total_rojo3.png');
     color: #87253c;
     font-size: 31px;
 }
@@ -1712,11 +1712,12 @@ background: white;
 
 .inicio button:first-child{
 	    color: #86253c !important;
-    height: 96px;
+    height: 100px;
     font-weight: 500;
-    background-image: url('../img/heart.png');
+    background-image: url(../img/heart2.png);
     background-position-x: center;
-    background-position-y: 18px;
+    background-size: 77px auto;
+    background-position-y: 10px;
     background-repeat: no-repeat;
     padding-top: 70px;
 }

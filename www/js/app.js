@@ -330,6 +330,10 @@ else{
 
 
 $( "#ir_formulariodislipemia" ).click(function() {
+
+
+
+
 if(pantallaactual != 'home'){
      var confirmPopup = $ionicPopup.confirm({
 
@@ -348,6 +352,137 @@ if(pantallaactual != 'home'){
       if (res) {
 
          $state.go('formulariodislipemia');
+         location.reload();
+
+totalimcRounded="0";
+ sexoimc="1";
+ resultadofiltradoredond="100";
+ cardio="0";
+ ldlactual=0;
+ renalindex="inicio";
+ scoreindex="9";
+ scoreindex_vih="9";
+ ldltransactual="";
+ ldlobjetivo="0";
+ score_calculado="-";
+ vih="no";
+ objetivo_vih=0;
+ contra_abs_estatina=null;
+ contra_rel_estatina=null;
+ contra_abs_ezetimibe=null;
+ contra_abs_fibratos=null;
+ contra_abs_resinas=null;
+ contra_abs_ipcsk9=null;
+ quitar_estatina=false;
+ quitar_ezetimibe=false;
+ quitar_fibratos=false;
+ quitar_resinas=false;
+ quitar_ipcsk9=false;
+
+
+
+ quitar_ator_inter=false;
+ quitar_ator_inter_rojo=false;
+
+ quitar_fluv_inter=false;
+ quitar_fluv_inter_rojo=false;
+
+ quitar_lov_inter=false;
+ quitar_lov_inter_rojo=false;
+
+ quitar_pito_inter=false;
+ quitar_pito_inter_rojo=false;
+
+ quitar_pra_inter=false;
+ quitar_pra_inter_rojo=false;
+
+ quitar_rosu_inter=false;
+ quitar_rosu_inter_rojo=false;
+
+ quitar_sim_inter=false;
+ quitar_sim_inter_rojo=false;
+
+ quitar_feno_inter=false;
+
+ quitar_gem_inter=false;
+ quitar_gem_inter_rojo=false;
+
+ objetivo_vih=null;
+ eliminar_sim=false;
+ total_score_mialgias=null;
+ calc_diabeto_total=null;
+ calc_diabeto_total2=null;
+ totalimcRounded_diabet=".";
+ edad_diabet=".";
+ edad_diabet_index=0;
+ sexo_diabet_index=0;
+
+ check1_imc = null;
+ check2_imc = null;
+ check3_imc = null;
+ check4_imc = null;
+ check5_imc = null;
+ check6_imc = null;
+ check7_imc = null;
+ check8_imc = null;
+ check9_imc = null;
+
+ check1_form = null;
+
+ check1_score = null;
+ check2_score = null;
+ check3_score = null;
+ check4_score = null;
+ check5_score = null;
+ check5b_score = null;
+ check6_score = null;
+ total_criterios_het = null;
+
+ historia=[];
+ penul=null;
+ previo2=null;
+ longhistoria=null;
+ pen=null;
+ rama_vih=false;
+ consulta_scoreindex=null;
+
+ unidad_seleccionada=null;
+
+ check_ecvdoc=false;
+
+ tratamiento_previo=false;
+ pantallaactual=null;
+
+ previo_ator=null;
+ previo_rosu=null;
+ previo_pita=null;
+ previo_sim=null;
+ previo_pra=null;
+ previo_fluv=null;
+ previo_lov=null;
+
+ sin_estatinas=false;
+ sin_ezetimive=false;
+ sin_fibratos=false;
+ sin_fibratos=false;
+ sin_ipcsk9=false;
+ sin_resina=false;
+ password2=null;
+ mitad=false;
+ tipo_riesgo=null;
+ tratamiento=false;
+
+ quitar_vih=false;
+ proviene_contraindicaciones=false;
+ proviene_interacciones=false;
+
+ previo_ezet=false;
+ previo_aliro=false;
+ previo_evolo=false;
+ previo_colestir=false;
+ previo_colestip=false;
+ previo_fenof=false;
+ previo_gemf=false;
 
       } else {
 
@@ -1608,6 +1743,7 @@ else{
  previo_fenof=false;
  previo_gemf=false;
 
+
  
 
 })
@@ -1628,6 +1764,16 @@ else{
 
 
 .controller('DislipFormCtrl',function($scope,$state,$ionicPopup){
+
+$( "#ecvdoc" ).click(function() {
+  $(".ocultar_score").toggle();
+  // $('#selector-score').val('1');
+
+
+
+});
+
+
 
 
 $scope.govih2 = function() {
@@ -2026,18 +2172,19 @@ tiene_vih=document.getElementById('VIH');
     }
 
 
-if(scoreindex==0){
-    var alertPopup = $ionicPopup.alert({
-     title: '¡Atención!',
-     template: 'No ha seleccionado ningún valor de Score'
-   });
+// if(scoreindex==0){
+//     var alertPopup = $ionicPopup.alert({
+//      title: '¡Atención!',
+//      template: 'No ha seleccionado ningún valor de Score'
+//    });
 
-   alertPopup.then(function(res) {
+//    alertPopup.then(function(res) {
      
-   });
-}
+//    });
+// }
     
-else if(ldlactual>0){
+// else if(ldlactual>0){
+if(ldlactual>0){
     console.log(ldlactual);
     if (tiene_vih.checked){
       quitar_vih=false;
@@ -2341,28 +2488,28 @@ document.getElementById('VIH').checked=true;
 ///////////////////////////////////////////////////
  
 
-   if (score_calculado>19) {
-    $("select#selector-score-vih").val("20");
+   if (score_calculado<10) {
+    $("select#selector-score-vih").val("10");
   }
   if (score_calculado>9&&score_calculado<20) {
     $("select#selector-score-vih").val("10-20");
   }
-    if (score_calculado>4&&score_calculado<10) {
-    $("select#selector-score-vih").val("5-9");
+    if (score_calculado>20) {
+    $("select#selector-score-vih").val("20");
   }
-  if (score_calculado>1&&score_calculado<5) {
-    $("select#selector-score-vih").val("1-4");
-  }
-  if (score_calculado<2) {
-    $("select#selector-score-vih").val("1");
-  }
+
   
 
   
 if(quitar_vih==true){
-   $("#VIH").prop("checked", false);
- 
+ $("#VIH").prop("checked", false);
+ $(".titulo_score").text("Score");
+ $("#selector-score").show();
+ $("#selector-score-vih").hide();
 }
+
+
+
 
 
 })
@@ -2370,6 +2517,9 @@ if(quitar_vih==true){
 
 
 .controller('FactorRiesgoCardio',function($scope,$state){
+
+
+
 
 if(check8_imc==false){
   document.getElementById('sobrepeso').checked=false;
@@ -2399,6 +2549,11 @@ if(check3_imc==false){
     document.getElementById('sobrepeso').checked=true;
     
     }
+     else{
+
+      document.getElementById('sobrepeso').checked=false;
+    }
+
     
   }
   else{
@@ -2622,9 +2777,9 @@ $scope.ir_info = function(){
     }
 
 
-
-
-  
+if(totalimcRounded<25){
+document.getElementById('sobrepeso').checked=false;
+  }
 
 })
 
@@ -2997,6 +3152,13 @@ $("#resultadofiltrado").css("display", "block");
 
 
   $scope.calculoScore = function() {
+    check2_score=document.getElementById("sexoscore").value;
+    check3_score=document.getElementById("tabaquismoscore").value;
+    check1_score=document.getElementById("edadscore").value;
+    check4_score=document.getElementById("PAS").value;
+    check5_score=document.getElementById("colesterolscore2").value;
+    check5b_score=document.getElementById("colesterolscore1").value;
+
     var sexoscore=document.getElementById("sexoscore").value;
     var tabaquismoscore=document.getElementById("tabaquismoscore").value;
     var edadscore=document.getElementById("edadscore").value;
@@ -7850,6 +8012,7 @@ tratamiento=true;
 
   $( ".boton_finalizar" ).click(function() {
 
+
    var confirmPopup = $ionicPopup.confirm({
 
       title: '¡Atención!',
@@ -7867,6 +8030,10 @@ tratamiento=true;
       if (res) {
 
          $state.go('home');
+         $rootScope.estatinas_interaccion_baja=null;
+         $rootScope.estatinas_interaccion_alta=null;
+         $rootScope.ezetimive_interaccion_baja=null;
+         $rootScope.ezetimive_interaccion_alta=null;
 
       } else {
 
@@ -7972,7 +8139,7 @@ $scope.info_grupos = function() {
 // An alert dialog
 
    var alertPopup = $ionicPopup.alert({
-     template: 'IEBI: Estatina de Baja Intensidad<br>EMI: Estatina de Media Intensidad<br>EAI: Estatina de Alta Intensidad<br>Eze: Ezetimiba<br>Ali 75: Alirocumab 75 mg<br>Ali 150: Alirocumab 150 mg<br>Evo 140: Evolocumab 140 mg<br>Evo 420: Evolocumab 420 mg/mes'
+     template: 'IEBI: Estatina de Baja Intensidad<br>EMI: Estatina de Media Intensidad<br>EAI: Estatina de Alta Intensidad<br>Eze: Ezetimiba<br>Ali 75: Alirocumab 75 mg<br>Ali 150: Alirocumab 150 mg<br>Evo 140: Evolocumab 140 mg<br>Evo 420: Evolocumab 420 mg'
    });
 
    alertPopup.then(function(res) {
@@ -17851,7 +18018,7 @@ if(quitar_sim_inter==true){
 
 
 
-.controller('Estatinas',function($scope,$state,$rootScope){
+.controller('Estatinas',function($scope,$state,$rootScope,$ionicScrollDelegate){
 
 var previo=$rootScope.previousState;
 if (previo=="menu_interacciones"){
@@ -17865,6 +18032,9 @@ else{
 
 
   jQuery('#atorv_inter').on( "click", function() {
+    $ionicScrollDelegate.scrollTop();
+          jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
+
            jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
 
   });
@@ -17985,6 +18155,8 @@ else{
 
 
     jQuery('#fluv_inter').on( "click", function() {
+      $ionicScrollDelegate.scrollTop();
+      jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
            jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
   });
 jQuery('.faco_fluv').on( "click", function() {
@@ -18096,6 +18268,8 @@ jQuery('.faco_fluv').on( "click", function() {
 
 
       jQuery('#lov_inter').on( "click", function() {
+        $ionicScrollDelegate.scrollTop();
+        jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
            jQuery('.sub_lov_inter').toggle(); //muestro mediante clase
   });
  jQuery('.laco_lov').on( "click", function() {
@@ -18204,6 +18378,8 @@ jQuery('.faco_fluv').on( "click", function() {
 
 
         jQuery('#pitav_inter').on( "click", function() {
+          $ionicScrollDelegate.scrollTop();
+          jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
            jQuery('.sub_pitav_inter').toggle(); //muestro mediante clase
   });
 
@@ -18324,6 +18500,8 @@ jQuery('.faco_fluv').on( "click", function() {
 
 
           jQuery('#prav_inter').on( "click", function() {
+            $ionicScrollDelegate.scrollTop();
+            jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
            jQuery('.sub_prav_inter').toggle(); //muestro mediante clase
   });
 
@@ -18439,6 +18617,8 @@ jQuery('.praco_prav').on( "click", function() {
 
 
             jQuery('#rosuv_inter').on( "click", function() {
+              $ionicScrollDelegate.scrollTop();
+              jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
            jQuery('.sub_rosuv_inter').toggle(); //muestro mediante clase
   });
 jQuery('.raco_rosuv').on( "click", function() {
@@ -18553,6 +18733,8 @@ jQuery('.raco_rosuv').on( "click", function() {
 
 
               jQuery('#simv_inter').on( "click", function() {
+                $ionicScrollDelegate.scrollTop();
+                jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
            jQuery('.sub_simv_inter').toggle(); //muestro mediante clase
 
   });
@@ -21325,7 +21507,7 @@ $state.go('menu_interacciones_vih');
 
 
 
-.controller('Fibratos',function($scope,$state,$rootScope,$rootScope){
+.controller('Fibratos',function($scope,$state,$rootScope,$rootScope,$ionicScrollDelegate){
   var previo=$rootScope.previousState;
 if (previo=="menu_interacciones"){
   jQuery('.procedencia1').toggle();
@@ -21335,6 +21517,7 @@ else{
 }
 
   jQuery('#atorv_inter').on( "click", function() {
+          jQuery('.sub_atorv_inter,.sub_fluv_inter').hide();
            jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
 
   });
@@ -21456,6 +21639,7 @@ else{
 
 
     jQuery('#fluv_inter').on( "click", function() {
+      jQuery('.sub_atorv_inter,.sub_fluv_inter').hide();
            jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
   });
 jQuery('.faco_fluv').on( "click", function() {
@@ -27586,6 +27770,7 @@ $scope.ir_info_tratamiento_alto = function() {
   $state.go("modal_info_tratamiento_alto");
 }  
 
+
    $scope.procesar2 = function() {
 
     ldlactual=document.getElementById("ldl-actual").value;
@@ -27594,12 +27779,15 @@ $scope.ir_info_tratamiento_alto = function() {
 
     if($("#riesgo_muy_alto").is(':checked')) {  
             ldlobjetivo=document.getElementById("riesgo_muy_alto").value;
+            tipo_riesgo="riesgomuyalto";
         }
     if($("#riesgo_alto").is(':checked')) {  
             ldlobjetivo=document.getElementById("riesgo_alto").value;
+            tipo_riesgo="riesgoalto";
         }
     if($("#riesgo_moderado").is(':checked')) {  
             ldlobjetivo=document.getElementById("riesgo_moderado").value;
+            tipo_riesgo="riesgomedio";
         }
 
       $state.go('form_tratamiento2');
