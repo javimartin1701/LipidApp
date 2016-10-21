@@ -9,7 +9,32 @@
         else if(!(check.checked)){
             element.style.display='none';
         }
+
+        if($("#frcv").is(':checked')) {  
+            document.getElementById('frcv').checked=false;
+        }
+
+       
+
+
+
+
     }
+
+
+function showDiabetesFRCV(){
+
+   
+    
+           if($('#LOD').is(":visible")){
+            document.getElementById('frcv').checked=true;
+
+           }
+           
+         
+
+}
+
 
     function showDiabetes() {
         if($("#tabaquismo").is(':checked')) {  
@@ -73,6 +98,11 @@ function cerrar_modal_vih(){
 
 
 $(document).ready(function(){
+
+
+
+
+
   jQuery('.menu_bottom').on( "click", function() {
     
            jQuery('.menu_bottom').toggle();

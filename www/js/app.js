@@ -7,7 +7,7 @@ var totalimcRounded="0";
 var sexoimc="1";
 var resultadofiltradoredond="100";
 var cardio="0";
-var ldlactual=0;
+var ldlactual=null;
 var renalindex="inicio";
 var scoreindex="9";
 var scoreindex_vih="9";
@@ -132,9 +132,19 @@ var previo_colestip=false;
 var previo_fenof=false;
 var previo_gemf=false;
 
+var ecvcheck2=false;
+var creatinina_mem=null;
+var edad_mem=null;
+
+var sex=false;
+var raz=false;
+
+
+
+
 angular.module('starter', ['ionic','ui.router','firebase'])
 
-.run(function($ionicPlatform,$rootScope,$ionicPopup,$state) {
+.run(function($ionicPlatform,$rootScope,$ionicPopup,$state,$rootScope) {
   
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -357,9 +367,28 @@ if(pantallaactual != 'home'){
       if (res) {
 
          $state.go('formulariodislipemia');
-         location.reload();
+         
 
-totalimcRounded="0";
+ $rootScope.estatina_grupos_emi=null;
+$rootScope.estatina_grupos_eai=null;
+ $rootScope.estatina_grupos_emi=null;
+  $rootScope.estatina_grupos_emi_rojo=null;
+$rootScope.estatina_grupos_eai_rojo=null;
+ $rootScope.estatina_grupos_emi_rojo=null;
+
+ecvcheck2=false;
+tiene_vih=false;
+
+consulta_scoreindex=null;
+renalindex=null;
+$rootScope.ldlactual_scope=null;
+quitar_feno_inter=false;
+quitar_feno_inter_rojo=false;
+
+ quitar_gem_inter=false;
+ quitar_gem_inter_rojo=false;
+
+ totalimcRounded="0";
  sexoimc="1";
  resultadofiltradoredond="100";
  cardio="0";
@@ -488,6 +517,18 @@ totalimcRounded="0";
  previo_colestip=false;
  previo_fenof=false;
  previo_gemf=false;
+
+
+ $rootScope.ldlactual_scope=null;
+
+consulta_scoreindex=null;
+
+
+ecvcheck2=null;
+tiene_vih=null;
+
+
+
 
       } else {
 
@@ -1617,6 +1658,21 @@ else{
 })
 
 .controller('HomeCtrl',function($scope,$rootScope){
+
+
+ $rootScope.estatina_grupos_emi=null;
+$rootScope.estatina_grupos_eai=null;
+ $rootScope.estatina_grupos_emi=null;
+  $rootScope.estatina_grupos_emi_rojo=null;
+$rootScope.estatina_grupos_eai_rojo=null;
+ $rootScope.estatina_grupos_emi_rojo=null;
+
+ecvcheck2=false;
+tiene_vih=false;
+
+consulta_scoreindex=null;
+renalindex=null;
+$rootScope.ldlactual_scope=null;
 quitar_feno_inter=false;
 quitar_feno_inter_rojo=false;
 
@@ -1773,19 +1829,46 @@ quitar_feno_inter_rojo=false;
 
 
 
-.controller('DislipFormCtrl',function($scope,$state,$ionicPopup){
+.controller('DislipFormCtrl',function($scope,$state,$ionicPopup,$rootScope){
+
+
+
 
 $( "#ecvdoc" ).click(function() {
   $(".ocultar_score").toggle();
   // $('#selector-score').val('1');
 
-
-
 });
+ setTimeout(
+  function() 
+  {
+
+
+
+// $rootScope.ldlactualscope=null;
+
+var ldltemp = $rootScope.ldlactual_scope;
+if(ldltemp!=null){
+ document.getElementById("ldl-actual").value=ldltemp;
+}
+document.getElementById('selector-score').options.selectedIndex=consulta_scoreindex;
+document.getElementById('funcion_renal').options.selectedIndex=renalindex;
+
+if(ecvcheck2==true){
+document.getElementById('ecvdoc').checked=true;
+$(".ocultar_score").hide();
+}
+if(tiene_vih==true){
+document.getElementById('VIH').checked=true;
+}
+
+  
 
 
 
 
+
+}, 400);
 $scope.govih2 = function() {
         unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
       if($("#ecvdoc").is(':checked')) {  
@@ -2087,6 +2170,8 @@ tiene_vih=document.getElementById('VIH');
         ldltransactual=document.getElementById("ldl-actual").value;
         $state.go('calcscore');
     }
+
+
     $scope.ir_info_cardio = function(){
       unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
       if($("#ecvdoc").is(':checked')) {  
@@ -2153,13 +2238,17 @@ tiene_vih=document.getElementById('VIH');
 
     $scope.comprofinal = function(){
 
-      
+    $rootScope.ldlactual_scope = document.getElementById("ldl-actual").value;
 
 
     unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
 
     
     ecvcheck = document.getElementById("ecvdoc");
+    if($("#ecvdoc").is(':checked')){
+      ecvcheck2=true;
+    }
+    
     renalindex=document.getElementById('funcion_renal').options.selectedIndex;
     consulta_scoreindex=document.getElementById('selector-score').options.selectedIndex;
         if(consulta_scoreindex==0){
@@ -2519,6 +2608,18 @@ if(quitar_vih==true){
 }
 
 
+// // document.getElementById("ldl-actual").value=ldlactual;
+// document.getElementById('selector-score').options.selectedIndex=consulta_scoreindex;
+// document.getElementById('funcion_renal').options.selectedIndex=renalindex;
+
+// if(check1_form==true){
+// document.getElementById('ecvdoc').checked=true;
+// }
+// if(tiene_vih==true){
+// document.getElementById('VIH').checked=true;
+// }
+
+
 
 
 
@@ -2541,7 +2642,7 @@ if(check2_imc==false){
   document.getElementById('hipertension').checked=false;
 }
 if(check9_imc==false){
-  document.getElementById('sobrepeso').checked=false;
+  
 }
 if(check5_imc==false){
   document.getElementById('lod').checked=false;
@@ -2573,6 +2674,23 @@ if(check3_imc==false){
     }
     
   }
+
+if (check9_imc==true) {
+
+ 
+    
+    setTimeout(
+  function() 
+  {
+document.getElementById('sobrepeso').checked=true;
+
+  }, 100);
+     
+    
+    }
+else{
+  document.getElementById('sobrepeso').checked=false;
+}
 
 
 if (check1_imc==true) {
@@ -2613,11 +2731,7 @@ if (check8_imc==true) {
      $("#HIPERCOL").show();
     
     }
-if (check9_imc==true) {
-    document.getElementById('sobrepeso').checked=true;
-     
-    
-    }
+
 
 
 $scope.ir_calc_imc = function(){
@@ -2934,7 +3048,42 @@ $ionicScrollDelegate.scrollTop();
 
 .controller('FuncionRenal',function($scope){
 
+document.getElementById('creatinina').options.selectedIndex=creatinina_mem;
+document.getElementById('edad-filtrado').options.selectedIndex=edad_mem;
+
+if(sex==true){
+  document.getElementById('sexo-filtrado').checked=true;
+}
+else{
+  document.getElementById('sexo-filtrado').checked=false;
+}
+if(raz==true){
+  document.getElementById('raza-fintrado').checked=true;
+}
+else{
+  document.getElementById('raza-fintrado').checked=false;
+}
+
 $scope.CKD1 = function() {
+
+creatinina_mem=document.getElementById('creatinina').options.selectedIndex;
+edad_mem=document.getElementById('edad-filtrado').options.selectedIndex;
+
+if($("#sexo-filtrado").is(':checked')) {  
+            sex=true;
+
+        }
+else{
+  sex=false;
+}
+if($("#raza-fintrado").is(':checked')) {  
+            raz=true;
+        }
+else{
+  raz=false;
+}
+
+
 
 
 var MU=1; 
@@ -2959,6 +3108,24 @@ resultadofiltrado= Math.round(resultadofiltrado * 100) / 100;
 resultadofiltradoredond=resultadofiltrado.toFixed(1) 
 document.getElementById("resultadofiltrado").value = resultadofiltradoredond; 
 $("#resultadofiltrado").css("display", "block");
+
+
+ if (resultadofiltradoredond>59) {
+    $("select#funcion_renal").val("0");
+    renalindex=0;
+  }
+  else if(resultadofiltradoredond<30){
+    $("select#funcion_renal").val("2");
+    renalindex=2;
+  }
+  else if(resultadofiltradoredond<60&&resultadofiltradoredond>29){
+    $("select#funcion_renal").val("1");
+  }
+
+
+
+
+
 } 
 
   
@@ -6930,7 +7097,44 @@ else{
     
   }
 }
+
+
+
 score_calculado=parseInt(score_calculado);
+
+if (score_calculado>9) {
+    $("select#selector-score").val("10-20");
+    consulta_scoreindex=4;
+  }
+
+    if (score_calculado>4&&score_calculado<10) {
+    $("select#selector-score").val("5-9");
+     consulta_scoreindex=3;
+  }
+  if (score_calculado>1&&score_calculado<5) {
+    $("select#selector-score").val("1-4");
+     consulta_scoreindex=2;
+  }
+  if (score_calculado<2) {
+    $("select#selector-score").val("1");
+     consulta_scoreindex=1;
+  }
+///////////////////////////////////////////////////
+ 
+
+  //  if (score_calculado<10) {
+  //   $("select#selector-score-vih").val("10");
+  //   consulta_scoreindex=1;
+  // }
+  // if (score_calculado>9&&score_calculado<20) {
+  //   $("select#selector-score-vih").val("10-20");
+  //   consulta_scoreindex=2;
+  // }
+  //   if (score_calculado>20) {
+  //   $("select#selector-score-vih").val("20");
+  //   consulta_scoreindex=3;
+  // }
+
 $state.go('formulariodislipemia');
 }
 
@@ -7219,6 +7423,10 @@ else{
 
 
 .controller('TratamientoPrevio',function($scope,$state){
+
+  $scope.volver = function() {
+        $state.go('formulariodislipemia');
+  }
 
     $scope.elegir_opcion = function() {
 
@@ -20700,108 +20908,351 @@ else{
 
   jQuery('#atorv_inter').on( "click", function() {
     $ionicScrollDelegate.scrollTop();
+
           jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
 
-           jQuery('.sub_atorv_inter').toggle(); //muestro mediante clase
+           jQuery('.sub_atorv_inter').toggle();
 
+          
   });
 
   jQuery('.aco_atorv').on( "click", function() {
-           jQuery('.aco+div').toggle(); //muestro mediante clase
- 
+          if($('.aco+div').is(":visible")){
+               jQuery('.aco+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.aco+div').show();
+
+          
+           }
+
   });
   jQuery('.ami_atorv').on( "click", function() {
-           jQuery('.ami+div').toggle(); //muestro mediante clase
+if($('.ami+div').is(":visible")){
+               jQuery('.ami+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.ami+div').show();
+
+          
+           }
+ 
+          
  
   });
  jQuery('.ant_atorv').on( "click", function() {
-           jQuery('.ant-cal+div').toggle(); //muestro mediante clase
+          if($('.ant-cal+div').is(":visible")){
+               jQuery('.ant-cal+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.ant-cal+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
  jQuery('.antia_atorv').on( "click", function() {
-           jQuery('.antia+div').toggle(); //muestro mediante clase
+          if($('.antia+div').is(":visible")){
+               jQuery('.antia+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.antia+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
   jQuery('.antif_atorv').on( "click", function() {
-           jQuery('.antif+div').toggle(); //muestro mediante clase
+          if($('.antif+div').is(":visible")){
+               jQuery('.antif+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.antif+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
     jQuery('.asocl_atorv').on( "click", function() {
-           jQuery('.asocl+div').toggle(); //muestro mediante clase
+          if($('.asocl+div').is(":visible")){
+               jQuery('.asocl+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.asocl+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
       jQuery('.bar_atorv').on( "click", function() {
-           jQuery('.bar+div').toggle(); //muestro mediante clase
+          if($('.bar+div').is(":visible")){
+               jQuery('.bar+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.bar+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
       jQuery('.bez_atorv').on( "click", function() {
-           jQuery('.bez+div').toggle(); //muestro mediante clase
+          if($('.bez+div').is(":visible")){
+               jQuery('.bez+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.bez+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
         jQuery('.boc_atorv').on( "click", function() {
-           jQuery('.boc+div').toggle(); //muestro mediante clase
+          if($('.boc+div').is(":visible")){
+               jQuery('.boc+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.boc+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
         jQuery('.carb_atorv').on( "click", function() {
-           jQuery('.carb+div').toggle(); //muestro mediante clase
+          if($('.carb+div').is(":visible")){
+               jQuery('.carb+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.carb+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
       jQuery('.cicl_atorv').on( "click", function() {
-           jQuery('.cicl+div').toggle(); //muestro mediante clase
+          if($('.cicl+div').is(":visible")){
+               jQuery('.cicl+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.cicl+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
             jQuery('.cil_atorv').on( "click", function() {
-           jQuery('.cil+div').toggle(); //muestro mediante clase
+          if($('.cil+div').is(":visible")){
+               jQuery('.cil+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.cil+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
                 jQuery('.colc_atorv').on( "click", function() {
-           jQuery('.colc+div').toggle(); //muestro mediante clase
+          if($('.colc+div').is(":visible")){
+               jQuery('.colc+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.colc+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
               jQuery('.dacl_atorv').on( "click", function() {
-           jQuery('.dacl+div').toggle(); //muestro mediante clase
+          if($('.dacl+div').is(":visible")){
+               jQuery('.dacl+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.dacl+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
                 jQuery('.dan_atorv').on( "click", function() {
-           jQuery('.dan+div').toggle(); //muestro mediante clase
+          if($('.dan+div').is(":visible")){
+               jQuery('.dan+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.dan+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
                   jQuery('.dron_atorv').on( "click", function() {
-           jQuery('.dron+div').toggle(); //muestro mediante clase
+          if($('.dron+div').is(":visible")){
+               jQuery('.dron+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.dron+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
                   jQuery('.feno_atorv').on( "click", function() {
-           jQuery('.feno+div').toggle(); //muestro mediante clase
+          if($('.feno+div').is(":visible")){
+               jQuery('.feno+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.feno+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
 
                 jQuery('.gim_atorv').on( "click", function() {
-           jQuery('.gim+div').toggle(); //muestro mediante clase
+          if($('.gim+div').is(":visible")){
+               jQuery('.gim+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.gim+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
 
               jQuery('.macro_atorv').on( "click", function() {
-           jQuery('.macro+div').toggle(); //muestro mediante clase
+          if($('.macro+div').is(":visible")){
+               jQuery('.macro+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.macro+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
                 jQuery('.res_atorv').on( "click", function() {
-           jQuery('.res+div').toggle(); //muestro mediante clase
+          if($('.res+div').is(":visible")){
+               jQuery('.res+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.res+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
       jQuery('.rif_atorv').on( "click", function() {
-           jQuery('.rif+div').toggle(); //muestro mediante clase
+          if($('.rif+div').is(":visible")){
+               jQuery('.rif+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.rif+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
             jQuery('.sime_atorv').on( "click", function() {
-           jQuery('.sime+div').toggle(); //muestro mediante clase
+          if($('.sime+div').is(":visible")){
+               jQuery('.sime+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.sime+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
               jQuery('.tela_atorv').on( "click", function() {
-           jQuery('.tela+div').toggle(); //muestro mediante clase
+          if($('.tela+div').is(":visible")){
+               jQuery('.tela+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.tela+div').show();
+
+          
+           }
+ //muestro mediante clase
  
   });
-              jQuery('.zumo_atorv').on( "click", function() {
-           jQuery('.zumo+div').toggle(); //muestro mediante clase
+              jQuery('.zumo_atorv').on( "click", function(){
+                        if($('.zumo+div').is(":visible")){
+               jQuery('.zumo+div').hide(); 
+          }
+          else{
+
+             jQuery('.aco+div,.ami+div,.ant-cal+div,.antia+div,.antif+div,.asocl+div,.bar+div,.bez+div,.boc+div,.carb+div,.cicl+div,.cil+div,.colc+div,.dacl+div,.dan+div,.dron+div,.feno+div,.gim+adiv,.macro+div,.res+div,.rif+div,.sime+div,.tela+div,.zumo+div').hide(); //muestro mediante clase
+              jQuery('.zumo+div').show();
+
+          
+           }
+ //muestro mediante clase
+ 
  
   });
 
@@ -21513,65 +21964,91 @@ $scope.filtrar_inter = function() {
  if( $('.check_ator').is(':checked') ) {
     quitar_ator_inter=true;
     $rootScope.estatinas_interaccion_baja=true;
+    $rootScope.estatina_grupos_emi=true;
+    $rootScope.estatina_grupos_eai=true;
 
 }
 if( $('.check_ator_rojo').is(':checked') ) {
     quitar_ator_inter_rojo=true;
     $rootScope.estatinas_interaccion_alta=true;
+    $rootScope.estatina_grupos_emi_rojo=true;
+    $rootScope.estatina_grupos_eai_rojo=true;
 }
 
 if( $('.check_fluv').is(':checked') ) {
     quitar_fluv_inter=true;
     $rootScope.estatinas_interaccion_baja=true;
+    $rootScope.estatina_grupos_ebi=true;
+
 }
 if( $('.check_fluv_rojo').is(':checked') ) {
     quitar_fluv_inter_rojo=true;
     $rootScope.estatinas_interaccion_alta=true;
+    $rootScope.estatina_grupos_ebi_rojo=true;
 }
 
 if( $('.check_lov').is(':checked') ) {
     quitar_lov_inter=true;
     $rootScope.estatinas_interaccion_baja=true;
+    $rootScope.estatina_grupos_ebi=true;
 }
 if( $('.check_lov_rojo').is(':checked') ) {
     quitar_lov_inter_rojo=true;
     $rootScope.estatinas_interaccion_alta=true;
+    $rootScope.estatina_grupos_ebi_rojo=true;
 }
 
 if( $('.check_pita').is(':checked') ) {
     quitar_pita_inter=true;
     $rootScope.estatinas_interaccion_baja=true;
+    $rootScope.estatina_grupos=true;
+    $rootScope.estatina_grupos_ebi=true;
+    $rootScope.estatina_grupos_emi=true;
 }
 if( $('.check_pita_rojo').is(':checked') ) {
     quitar_pito_inter_rojo=true;
     $rootScope.estatinas_interaccion_alta=true;
+     $rootScope.estatina_grupos_ebi_rojo=true;
+    $rootScope.estatina_grupos_emi_rojo=true;
 }
 
 if( $('.check_prav').is(':checked') ) {
     quitar_pra_inter=true;
     $rootScope.estatinas_interaccion_baja=true;
+    $rootScope.estatina_grupos_ebi=true;
 }
 if( $('.check_prav_rojo').is(':checked') ) {
     quitar_pra_inter_rojo=true;
     $rootScope.estatinas_interaccion_alta=true;
+    $rootScope.estatina_grupos_ebi_rojo=true;
 }
 
 if( $('.check_rosu').is(':checked') ) {
     quitar_rosu_inter=true;
     $rootScope.estatinas_interaccion_baja=true;
+    $rootScope.estatina_grupos_emi=true;
+    $rootScope.estatina_grupos_eai=true;
 }
 if( $('.check_rosu_rojo').is(':checked') ) {
     quitar_rosu_inter_rojo=true;
     $rootScope.estatinas_interaccion_alta=true;
+    $rootScope.estatina_grupos_emi_rojo=true;
+    $rootScope.estatina_grupos_eai_rojo=true;
 }
 
 if( $('.check_sim').is(':checked') ) {
     quitar_sim_inter=true;
     $rootScope.estatinas_interaccion_baja=true;
+    $rootScope.estatina_grupos_ebi=true;
+    $rootScope.estatina_grupos_emi=true;
+
+
 }
 if( $('.check_sim_rojo').is(':checked') ) {
     quitar_sim_inter_rojo=true;
     $rootScope.estatinas_interaccion_alta=true;
+    $rootScope.estatina_grupos_ebi_rojo=true;
+    $rootScope.estatina_grupos_emi_rojo=true;
 }
 
 $state.go('menu_interacciones');
