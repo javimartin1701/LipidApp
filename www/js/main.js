@@ -10,8 +10,13 @@
             element.style.display='none';
         }
 
-        if($("#frcv").is(':checked')) {  
-            document.getElementById('frcv').checked=false;
+         if(!($("#hipertension").is(':checked'))){
+                document.getElementById('frcv').checked=false;
+        }
+        else{
+            if($('#LOD').is(":visible")){
+            document.getElementById('frcv').checked=true;
+           }
         }
 
        
@@ -32,17 +37,20 @@ function showDiabetesFRCV(){
             document.getElementById('frcv').checked=true;
            }
         }
-
-   
-    
-           
-
-           // if($("#frcv").is(':checked')) {  
-           //  document.getElementById('frcv').checked=false;
-           //   }
-           
          
+}
 
+function showDiabetesSobre(){
+
+        if(!($("#sobrepeso").is(':checked'))){
+                document.getElementById('frcv').checked=false;
+        }
+        else{
+            if($('#LOD').is(":visible")){
+            document.getElementById('frcv').checked=true;
+           }
+        }
+         
 }
 
 
