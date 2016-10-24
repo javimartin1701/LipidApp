@@ -24,12 +24,22 @@
 
 function showDiabetesFRCV(){
 
+        if(!($("#tabaquismo").is(':checked'))){
+                document.getElementById('frcv').checked=false;
+        }
+        else{
+            if($('#LOD').is(":visible")){
+            document.getElementById('frcv').checked=true;
+           }
+        }
+
    
     
-           if($('#LOD').is(":visible")){
-            document.getElementById('frcv').checked=true;
+           
 
-           }
+           // if($("#frcv").is(':checked')) {  
+           //  document.getElementById('frcv').checked=false;
+           //   }
            
          
 

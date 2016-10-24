@@ -14,9 +14,10 @@
 	    <input type="text" id="ldl_obj_tratamiento2" readonly="readonly">
 	  </div>
 	  <div class="cuadro_opcion_tratamiento" style="background:#dddbdb">
-			<p>¿El paciente cumple<br>con su objetivo LDL?</p>
-			<button ui-sref="hipercolesterolemia" class="button tratamiento_btn_si">Si</button>
-			<button ui-sref="tratamientoprevio" class="button tratamiento_btn_no">No</button>
+			<p class="paciente_no_cumple" style="display:none; margin-bottom:5px;">El paciente NO cumple con el objetivo LDL</p>
+			<p class="paciente_cumple" style="display:none; margin-bottom:5px;">El paciente SI cumple con el objetivo LDL</p>
+			<!-- <button ui-sref="hipercolesterolemia" class="button tratamiento_btn_si">Si</button>
+			<button ui-sref="tratamientoprevio" class="button tratamiento_btn_no">No</button> -->
 	  </div>
 
       
@@ -26,7 +27,8 @@
 
 
 </ion-content>
-<button ui-sref="estatinas" class="continuar button">Continuar</button>
+<button ui-sref="tratamientoprevio" class="continuar button avanzar" style="display:none">Continuar</button>
+<button ui-sref="hipercolesterolemia" class="continuar button finalizar_hiper" style="display:none">Finalizar</button>
 <div class="tabs tabs-icon-only bar-footer">
   
 

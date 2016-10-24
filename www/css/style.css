@@ -2523,6 +2523,15 @@ color: red
     display: none;
 }
 
+
+.paciente_cumple{
+  
+}
+
+.paciente_no_cumple{
+    
+}
+
 .login input{
         background: #ecd0d0;
         text-align: center;
