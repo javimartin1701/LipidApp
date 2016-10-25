@@ -2327,6 +2327,7 @@ else{
       if(cardio=="2"||ecvcheck.checked||scoreindex=="1"){
 
          objetivo_vih=70;
+         ldlobjetivo_vih=objetivo_vih;
       if (ldlactual>70) {
         // $state.go('riesgoalto_vih');
         tipo_riesgo="riesgoalto_vih";
@@ -2344,6 +2345,7 @@ else{
     }
     if(cardio=="1"||scoreindex=="2"){
       objetivo_vih=100;
+      ldlobjetivo_vih=objetivo_vih;
       if (ldlactual>100) {
         // $state.go('riesgomoderadoalto_vih');
         tipo_riesgo="riesgomoderadoalto_vih";
@@ -2359,6 +2361,7 @@ else{
     }
     if(cardio=="1"||scoreindex=="3"){
       objetivo_vih=130;
+      ldlobjetivo_vih=objetivo_vih;
       if (ldlactual>130) {
         // $state.go('riesgomoderadobajo_vih');
         tipo_riesgo="riesgomoderadobajo_vih";
@@ -2378,6 +2381,7 @@ else{
       // $state.go('riesgobajo_vih');
       tipo_riesgo="riesgobajo_vih";
       objetivo_vih=130;
+      ldlobjetivo_vih=objetivo_vih;
     }
 
 
@@ -8421,7 +8425,15 @@ tratamiento=true;
  // document.getElementById("ldl_act_tratamiento").value="150";
  // document.getElementById("ldl_obj_tratamiento").value="100";
 
+ if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+ }
+ else{
   var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+
+ 
+
 
    $scope.reduccionscope=porc_reducc;
 
@@ -8710,7 +8722,15 @@ if(quitar_ipcsk9==true){
 
 
 
-.controller('tratamientoinicio_EBI_EZE_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -9004,7 +9024,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -9300,7 +9328,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_EZE_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -9596,7 +9632,14 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI',function($scope,$state,$rootScope,$firebaseArray){
+.controller('tratamientoinicio_EBI',function($scope,$state,$rootScope,$firebaseArray,$ionicLoading){
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -9895,7 +9938,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_EZE',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -10187,7 +10238,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_EZE_ALI75',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE_ALI75',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -10493,7 +10552,16 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_EZE_ALI75_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE_ALI75_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -10784,7 +10852,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE_ALI75_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE_ALI75_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -11075,7 +11151,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_EZE_ALI75_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE_ALI75_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -11372,7 +11456,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_EZE_ALI75_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE_ALI75_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -11662,7 +11754,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE_ALI75_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE_ALI75_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -11950,7 +12050,15 @@ setTimeout(
 })
 
 
-.controller('tratamientoinicio_EAI_EZE_ALI75_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE_ALI75_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -12239,7 +12347,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_EZE_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -12530,7 +12646,16 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -12819,7 +12944,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_EZE_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -13095,7 +13228,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_EZE_ALI_EVO',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE_ALI_EVO',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -13389,7 +13530,16 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_EZE_ALI_EVO_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE_ALI_EVO_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -13678,7 +13828,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE_ALI_EVO_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE_ALI_EVO_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -13969,7 +14127,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_EZE_ALI_EVO_FIB',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE_ALI_EVO_FIB',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -14260,7 +14426,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_EZE_ALI_EVO_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_EZE_ALI_EVO_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -14553,7 +14727,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE_ALI_EVO_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE_ALI_EVO_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -14842,7 +15024,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_EZE_ALI_EVO_RES',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE_ALI_EVO_RES',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -15133,7 +15323,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE_ALI_EVO',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE_ALI_EVO',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -15425,7 +15623,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_EZE_ALI_EVO',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE_ALI_EVO',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -15721,7 +15927,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_ALI_EVO',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_ALI_EVO',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -16017,7 +16231,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_ALI_EVO',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_ALI_EVO',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -16308,7 +16530,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_ALI_EVO',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_ALI_EVO',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -16597,7 +16827,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EZE_ALI75',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EZE_ALI75',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -16886,7 +17124,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EBI_ALI75',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EBI_ALI75',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -17175,7 +17421,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_ALI75',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_ALI75',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -17465,7 +17719,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_ALI75',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_ALI75',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -17755,7 +18017,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EZE_ALI_EVO',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EZE_ALI_EVO',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -18048,7 +18318,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE_ALI75',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE_ALI75',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -18348,7 +18626,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_EZE_ALI75',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE_ALI75',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -18639,7 +18925,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EAI_EZE',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI_EZE',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -18930,7 +19224,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI_EZE',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI_EZE',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -19224,7 +19526,15 @@ setTimeout(
 
 
 
-.controller('tratamientoinicio_EMI',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EMI',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
@@ -19507,7 +19817,15 @@ setTimeout(
 })
 
 
-.controller('tratamientoinicio_EAI',function($scope,$state, $firebaseArray){
+.controller('tratamientoinicio_EAI',function($scope,$state, $firebaseArray,$ionicLoading){
+
+  $ionicLoading.show({
+      // template: 'Cargando...',
+      templateUrl:"templates/loading.html",
+      duration: 3100
+    }).then(function(){
+       console.log("The loading indicator is now displayed");
+    });
 
   // if(tratamiento_previo==true){
   //   ldlactual=ldlrectificado;
