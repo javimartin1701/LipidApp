@@ -719,6 +719,13 @@ else{
     controller: 'CalculadoraIMC'
   })
 
+      .state('version_pruebas',{
+    cache: false,
+    url:'/version_pruebas',
+    templateUrl:'templates/dislipemia/version_pruebas.html',
+    controller: 'version_pruebas'
+  })
+
    .state('modalcardiodoc',{
     cache: false,
     url:'/modalcardiodoc',
@@ -2301,7 +2308,7 @@ tiene_vih=document.getElementById('VIH');
 // else if(ldlactual>0){
 if(ldlactual>0){
 
-if((marcado_frc==false)&&(scoreindex==0)&&!(ecvcheck.checked)){
+if((marcado_frc==false)&&(scoreindex==0)&&!(ecvcheck.checked)&&(renalindex==0)){
         var alertPopup = $ionicPopup.alert({
      title: '¡Atención!',
      template: 'Por favor, seleccione las variables clínicas de su paciente'
@@ -2441,12 +2448,7 @@ else{
       tipo_riesgo="riesgobajo";
     }
 
-        if(ecvcheck.checked){
-      ldlobjetivo=70;
-      // $state.go('riesgomuyalto');
-      tipo_riesgo="riesgomuyalto";
         
-      }
 
           if(renalindex==2){
       ldlobjetivo=70;
@@ -2488,6 +2490,12 @@ else{
       // $state.go('riesgoalto');
       tipo_riesgo="riesgoalto";
     }
+    if(ecvcheck.checked){
+      ldlobjetivo=70;
+      // $state.go('riesgomuyalto');
+      tipo_riesgo="riesgomuyalto";
+        
+      }
 
 
 
@@ -2946,6 +2954,9 @@ $scope.ir_info = function(){
         }
                 if($("#hiperfam").is(':checked')) {  
             check7_imc=true;
+        }
+        else{
+          check7_imc=false;
         }
 
         if($("#dislipemia").is(':checked')) {  
@@ -21392,105 +21403,297 @@ if($('.ami+div').is(":visible")){
            jQuery('.sub_fluv_inter').toggle(); //muestro mediante clase
   });
 jQuery('.faco_fluv').on( "click", function() {
-           jQuery('.faco+div').toggle(); //muestro mediante clase
+          if($('.faco+div').is(":visible")){
+               jQuery('.faco+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.faco+div').show();
+
+          
+           }
  
   });
+
+
+          
+
+
+
+
   jQuery('.fami_fluv').on( "click", function() {
-           jQuery('.fami+div').toggle(); //muestro mediante clase
+           
+           if($('.fami+div').is(":visible")){
+               jQuery('.fami+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fami+div').show();
+
+          
+           }
  
   });
  jQuery('.fant_fluv').on( "click", function() {
-           jQuery('.fant-cal+div').toggle(); //muestro mediante clase
+          if($('.fant+div').is(":visible")){
+               jQuery('.fant+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fant+div').show();
+
+          
+           }
  
   });
  jQuery('.fantia_fluv').on( "click", function() {
-           jQuery('.fantia+div').toggle(); //muestro mediante clase
+  if($('.fantia+div').is(":visible")){
+               jQuery('.fantia+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fantia+div').show();
+            }
  
   });
   jQuery('.fantif_fluv').on( "click", function() {
-           jQuery('.fantif+div').toggle(); //muestro mediante clase
+             if($('.fantif+div').is(":visible")){
+               jQuery('.fantif+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fantif+div').show();
+            }
  
   });
     jQuery('.fasoco_fluv').on( "click", function() {
-           jQuery('.fasoco+div').toggle(); //muestro mediante clase
+            if($('.fasoco+div').is(":visible")){
+               jQuery('.fasoco+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fasoco+div').show();
+            }
  
   });
       jQuery('.fbar_fluv').on( "click", function() {
-           jQuery('.fbar+div').toggle(); //muestro mediante clase
+        if($('.fbar+div').is(":visible")){
+               jQuery('.fbar+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fbar+div').show();
+            }
  
   });
       jQuery('.fbez_fluv').on( "click", function() {
-           jQuery('.fbez+div').toggle(); //muestro mediante clase
+        if($('.fbez+div').is(":visible")){
+               jQuery('.fbez+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fbez+div').show();
+            }
  
   });
         jQuery('.fboc_fluv').on( "click", function() {
-           jQuery('.fboc+div').toggle(); //muestro mediante clase
+            if($('.fboc+div').is(":visible")){
+               jQuery('.fboc+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fboc+div').show();
+            }
  
   });
         jQuery('.fcarb_fluv').on( "click", function() {
-           jQuery('.fcarb+div').toggle(); //muestro mediante clase
+          if($('.fcarb+div').is(":visible")){
+               jQuery('.fcarb+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fcarb+div').show();
+            }
  
   });
       jQuery('.fcicl_fluv').on( "click", function() {
-           jQuery('.fcicl+div').toggle(); //muestro mediante clase
+        if($('.fcicl+div').is(":visible")){
+               jQuery('.fcicl+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fcicl+div').show();
+            }
  
   });
             jQuery('.fcil_fluv').on( "click", function() {
-           jQuery('.fcil+div').toggle(); //muestro mediante clase
+              if($('.fcicl+div').is(":visible")){
+               jQuery('.fcicl+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fcicl+div').show();
+            }
+ 
  
   });
                 jQuery('.fcolc_fluv').on( "click", function() {
-           jQuery('.fcolc+div').toggle(); //muestro mediante clase
+          if($('.fcolc+div').is(":visible")){
+               jQuery('.fcolc+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fcolc+div').show();
+            }
+ 
  
   });
               jQuery('.fdacl_fluv').on( "click", function() {
-           jQuery('.fdacl+div').toggle(); //muestro mediante clase
+                if($('.fdacl+div').is(":visible")){
+               jQuery('.fdacl+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fdacl+div').show();
+            }
  
   });
                 jQuery('.fdan_fluv').on( "click", function() {
-           jQuery('.fdan+div').toggle(); //muestro mediante clase
+            if($('.fdan+div').is(":visible")){
+               jQuery('.fdan+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fdan+div').show();
+            }
  
   });
                   jQuery('.fdron_fluv').on( "click", function() {
-           jQuery('.fdron+div').toggle(); //muestro mediante clase
+            if($('.fdron+div').is(":visible")){
+               jQuery('.fdron+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fdron+div').show();
+            }
  
   });
                   jQuery('.ferit_fluv').on( "click", function() {
-           jQuery('.ferit+div').toggle(); //muestro mediante clase
+            if($('.ferit+div').is(":visible")){
+               jQuery('.ferit+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.ferit+div').show();
+            }
  
   });
                   jQuery('.ffen_fluv').on( "click", function() {
-           jQuery('.ffen+div').toggle(); //muestro mediante clase
+            if($('.ffen+div').is(":visible")){
+               jQuery('.ffen+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.ffen+div').show();
+            }
  
   });
 
                 jQuery('.fgem_fluv').on( "click", function() {
-           jQuery('.fgem+div').toggle(); //muestro mediante clase
+                  if($('.fgem+div').is(":visible")){
+               jQuery('.fgem+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fgem+div').show();
+            }
  
   });
 
               jQuery('.fmacro_fluv').on( "click", function() {
-           jQuery('.fmacro+div').toggle(); //muestro mediante clase
+                if($('.fmacro+div').is(":visible")){
+               jQuery('.fmacro+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fmacro+div').show();
+            }
  
   });
                 jQuery('.fres_fluv').on( "click", function() {
-           jQuery('.fres+div').toggle(); //muestro mediante clase
+            if($('.fres+div').is(":visible")){
+               jQuery('.fres+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fres+div').show();
+            }
  
   });
       jQuery('.ffluc_fluv').on( "click", function() {
-           jQuery('.ffluc+div').toggle(); //muestro mediante clase
+        if($('.ffluc+div').is(":visible")){
+               jQuery('.ffluc+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.ffluc+div').show();
+            }
  
   });
             jQuery('.fsime_fluv').on( "click", function() {
-           jQuery('.fsime+div').toggle(); //muestro mediante clase
+              if($('.fsime+div').is(":visible")){
+               jQuery('.fsime+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fsime+div').show();
+            }
  
   });
               jQuery('.ftela_fluv').on( "click", function() {
-           jQuery('.ftela+div').toggle(); //muestro mediante clase
+                if($('.ftela+div').is(":visible")){
+               jQuery('.ftela+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.ftela+div').show();
+            }
  
   });
               jQuery('.fzumo_fluv').on( "click", function() {
-           jQuery('.fzumo+div').toggle(); //muestro mediante clase
+
+            if($('.ferit+div,.fzumo+div').is(":visible")){
+               jQuery('.ftela+div').hide(); 
+          }
+          else{
+
+             jQuery('.ferit+div,.ffluc+div,.faco+div,.fami+div,.fant-cal+div,.fantia+div,.fantif+div,.fasocl+div,.fbar+div,.fbez+div,.fboc+div,.fcarb+div,.fcicl+div,.fcil+div,.fcolc+div,.fdacl+div,.fdan+div,.fdron+div,.ffeno+div,.fgim+adiv,.fmacro+div,.fres+div,.frif+div,.fsime+div,.ftela+div,.fzumo+div').hide(); //muestro mediante clase
+              jQuery('.fzumo+div').show();
+            }
  
   });
 
@@ -21504,102 +21707,336 @@ jQuery('.faco_fluv').on( "click", function() {
         jQuery('.sub_atorv_inter,.sub_fluv_inter,.sub_lov_inter,.sub_pitav_inter,.sub_prav_inter,.sub_rosuv_inter,.sub_simv_inter').hide();
            jQuery('.sub_lov_inter').toggle(); //muestro mediante clase
   });
- jQuery('.laco_lov').on( "click", function() {
-           jQuery('.laco+div').toggle(); //muestro mediante clase
+jQuery('.laco_lov').on( "click", function() {
+          if($('.laco+div').is(":visible")){
+               jQuery('.laco+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.laco+div').show();
+
+          
+           }
  
   });
+
+
+          
+
+
+
+
   jQuery('.lami_lov').on( "click", function() {
-           jQuery('.lami+div').toggle(); //muestro mediante clase
+           
+           if($('.lami+div').is(":visible")){
+               jQuery('.lami+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lami+div').show();
+
+          
+           }
  
   });
- jQuery('.lanta_lov').on( "click", function() {
-           jQuery('.lanta+div').toggle(); //muestro mediante clase
+ jQuery('.lant_lov').on( "click", function() {
+          if($('.lant+div').is(":visible")){
+               jQuery('.lant+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lant+div').show();
+
+          
+           }
  
   });
  jQuery('.lantia_lov').on( "click", function() {
-           jQuery('.lantia+div').toggle(); //muestro mediante clase
+  if($('.lantia+div').is(":visible")){
+               jQuery('.lantia+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lantia+div').show();
+            }
+ 
+  });
+ jQuery('.lanta_lov').on( "click", function() {
+  if($('.lanta+div').is(":visible")){
+               jQuery('.lanta+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lanta+div').show();
+            }
  
   });
   jQuery('.lantif_lov').on( "click", function() {
-           jQuery('.lantif+div').toggle(); //muestro mediante clase
+             if($('.lantif+div').is(":visible")){
+               jQuery('.lantif+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lantif+div').show();
+            }
+ 
+  });
+    jQuery('.lasoco_lov').on( "click", function() {
+            if($('.lasoco+div').is(":visible")){
+               jQuery('.lasoco+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lasoco+div').show();
+            }
  
   });
     jQuery('.lasocl_lov').on( "click", function() {
-           jQuery('.lasocl+div').toggle(); //muestro mediante clase
+            if($('.lasocl+div').is(":visible")){
+               jQuery('.lasocl+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lasocl+div').show();
+            }
  
   });
       jQuery('.lbar_lov').on( "click", function() {
-           jQuery('.lbar+div').toggle(); //muestro mediante clase
+        if($('.lbar+div').is(":visible")){
+               jQuery('.lbar+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lbar+div').show();
+            }
  
   });
       jQuery('.lbez_lov').on( "click", function() {
-           jQuery('.lbez+div').toggle(); //muestro mediante clase
+        if($('.lbez+div').is(":visible")){
+               jQuery('.lbez+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lbez+div').show();
+            }
  
   });
         jQuery('.lboc_lov').on( "click", function() {
-           jQuery('.lboc+div').toggle(); //muestro mediante clase
+            if($('.lboc+div').is(":visible")){
+               jQuery('.lboc+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lboc+div').show();
+            }
  
   });
         jQuery('.lcarb_lov').on( "click", function() {
-           jQuery('.lcarb+div').toggle(); //muestro mediante clase
+          if($('.lcarb+div').is(":visible")){
+               jQuery('.lcarb+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lcarb+div').show();
+            }
  
   });
       jQuery('.lcicl_lov').on( "click", function() {
-           jQuery('.lcicl+div').toggle(); //muestro mediante clase
+        if($('.lcicl+div').is(":visible")){
+               jQuery('.lcicl+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lcicl+div').show();
+            }
  
   });
             jQuery('.lcil_lov').on( "click", function() {
-           jQuery('.lcil+div').toggle(); //muestro mediante clase
+              if($('.lcil+div').is(":visible")){
+               jQuery('.lcil+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lcil+div').show();
+            }
+ 
  
   });
                 jQuery('.lcol_lov').on( "click", function() {
-           jQuery('.lcol+div').toggle(); //muestro mediante clase
+          if($('.lcol+div').is(":visible")){
+               jQuery('.lcol+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lcol+div').show();
+            }
+ 
  
   });
               jQuery('.ldac_lov').on( "click", function() {
-           jQuery('.ldac+div').toggle(); //muestro mediante clase
+                if($('.ldac+div').is(":visible")){
+               jQuery('.ldac+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.ldac+div').show();
+            }
  
   });
                 jQuery('.ldan_lov').on( "click", function() {
-           jQuery('.ldan+div').toggle(); //muestro mediante clase
+            if($('.ldan+div').is(":visible")){
+               jQuery('.ldan+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.ldan+div').show();
+            }
  
   });
                   jQuery('.ldron_lov').on( "click", function() {
-           jQuery('.ldron+div').toggle(); //muestro mediante clase
+            if($('.ldron+div').is(":visible")){
+               jQuery('.ldron+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.ldron+div').show();
+            }
+ 
+  });
+                  jQuery('.lerit_lov').on( "click", function() {
+            if($('.lerit+div').is(":visible")){
+               jQuery('.lerit+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lerit+div').show();
+            }
  
   });
                   jQuery('.lfen_lov').on( "click", function() {
-           jQuery('.lfen+div').toggle(); //muestro mediante clase
+            if($('.lfen+div').is(":visible")){
+               jQuery('.lfen+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lfen+div').show();
+            }
  
   });
 
                 jQuery('.lgem_lov').on( "click", function() {
-           jQuery('.lgem+div').toggle(); //muestro mediante clase
+                  if($('.lgem+div').is(":visible")){
+               jQuery('.lgem+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lgem+div').show();
+            }
  
   });
 
               jQuery('.lmacro_lov').on( "click", function() {
-           jQuery('.lmacro+div').toggle(); //muestro mediante clase
+                if($('.lmacro+div').is(":visible")){
+               jQuery('.lmacro+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lmacro+div').show();
+            }
  
   });
                 jQuery('.lres_lov').on( "click", function() {
-           jQuery('.lres+div').toggle(); //muestro mediante clase
+            if($('.lres+div').is(":visible")){
+               jQuery('.lres+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lres+div').show();
+            }
  
   });
-      jQuery('.lrif_lov').on( "click", function() {
-           jQuery('.lrif+div').toggle(); //muestro mediante clase
+
+jQuery('.lrif_lov').on( "click", function() {
+            if($('.lrif+div').is(":visible")){
+               jQuery('.lrif+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lrif+div').show();
+            }
+ 
+  });
+
+
+
+
+      jQuery('.lfluc_lov').on( "click", function() {
+        if($('.lfluc+div').is(":visible")){
+               jQuery('.lfluc+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lfluc+div').show();
+            }
  
   });
             jQuery('.lsim_lov').on( "click", function() {
-           jQuery('.lsim+div').toggle(); //muestro mediante clase
+              if($('.lsim+div').is(":visible")){
+               jQuery('.lsim+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lsim+div').show();
+            }
  
   });
               jQuery('.ltel_lov').on( "click", function() {
-           jQuery('.ltel+div').toggle(); //muestro mediante clase
+                if($('.ltel+div').is(":visible")){
+               jQuery('.ltel+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.ltel+div').show();
+            }
  
   });
               jQuery('.lzumo_lov').on( "click", function() {
-           jQuery('.lzumo+div').toggle(); //muestro mediante clase
+
+            if($('.lerit+div,.lzumo+div').is(":visible")){
+               jQuery('.lzumo+div').hide(); 
+          }
+          else{
+
+             jQuery('.lerit+div,.lfluc+div,.laco+div,.lami+div,.lanta+div,.lantia+div,.lantif+div,.lasocl+div,.lbar+div,.lbez+div,.lboc+div,.lcarb+div,.lcicl+div,.lcil+div,.lcol+div,.ldac+div,.ldan+div,.ldron+div,.lfeno+div,.lgim+adiv,.lmacro+div,.lres+div,.lrif+div,.lsim+div,.ltel+div,.lzumo+div').hide(); //muestro mediante clase
+              jQuery('.lzumo+div').show();
+            }
  
   });
 
@@ -31279,7 +31716,7 @@ $scope.incorrecto = function() {
 
     if (password2<"lipidapp15001"&&password2>"lipidapp00000") {
 
-       $state.go('home');
+       $state.go('version_pruebas');
          console.log("Correcto");
 
       } else {
@@ -31315,6 +31752,11 @@ $scope.ver_cond = function() {
 })
 
 
+
+.controller('version_pruebas',function($scope,$state){
+
+ 
+})
 
 
 
