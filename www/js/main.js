@@ -77,10 +77,15 @@ function showDiabetesSobre(){
         else if(!(check.checked)){
             element.style.display='none';
         }
+
+        if(($("#dislipemia").is(':checked'))){
+                document.getElementById('frcv').checked=true;
+        }
     }
 
 
 function showDislipemia() {
+
         element = document.getElementById("HIPERCOL");
         
         check = document.getElementById("dislipemia");
@@ -89,6 +94,15 @@ function showDislipemia() {
         }
         else if(!(check.checked)){
             element.style.display='none';
+        }
+
+         if(!($("#dislipemia").is(':checked'))){
+                document.getElementById('frcv').checked=false;
+        }
+        else{
+            if($('#LOD').is(":visible")){
+            document.getElementById('frcv').checked=true;
+           }
         }
     }
 

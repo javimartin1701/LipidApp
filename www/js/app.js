@@ -1973,7 +1973,14 @@ tiene_vih=document.getElementById('VIH');
     $scope.irfactorriesgo = function(){
 
       unidad_seleccionada=document.getElementById('ldl-actual-unidades').options.selectedIndex;
+         if($("#ecvdoc").is(':checked')) {  
+            ecvcheck2=true;
+        }
+        else{
+          ecvcheck2=false;
+        }
         
+
         if($("#ecvdoc").is(':checked')) {  
             check1_form=true;
         }
@@ -2050,6 +2057,13 @@ tiene_vih=document.getElementById('VIH');
 
     $scope.irfuncionrenal = function(){
 
+      if($("#ecvdoc").is(':checked')) {  
+            ecvcheck2=true;
+        }
+        else{
+          ecvcheck2=false;
+        }
+
                  if($("#VIH").is(':checked')) {  
             quitar_vih=false;
         }
@@ -2119,6 +2133,12 @@ tiene_vih=document.getElementById('VIH');
     }
 
     $scope.ircalcscore = function(){
+      if($("#ecvdoc").is(':checked')) {  
+            ecvcheck2=true;
+        }
+        else{
+          ecvcheck2=false;
+        }
            if($("#VIH").is(':checked')) {  
             quitar_vih=false;
         }
@@ -8755,8 +8775,14 @@ if(quitar_ipcsk9==true){
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE_RES').orderByChild("porcentaje");
@@ -9057,8 +9083,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_EZE_RES').orderByChild("porcentaje");
@@ -9361,8 +9393,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE_RES').orderByChild("porcentaje");
@@ -9665,8 +9703,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -9971,8 +10015,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE').orderByChild("porcentaje");
@@ -10271,8 +10321,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE_ALI75').orderByChild("porcentaje");
@@ -10586,8 +10642,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE_ALI75_FIB').orderByChild("porcentaje");
@@ -10885,8 +10947,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('tratamientoinicio_EMI_EZE_ALI75_FIB').orderByChild("porcentaje");
@@ -11184,8 +11252,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE_ALI75_FIB').orderByChild("porcentaje");
@@ -11489,8 +11563,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE_ALI75_RES').orderByChild("porcentaje");
@@ -11788,8 +11868,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_EZE_ALI75_RES').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -12084,8 +12170,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE_ALI75_RES').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -12381,8 +12473,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE_FIB').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -12680,8 +12778,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_EZE_FIB').orderByChild("porcentaje");
@@ -12977,8 +13081,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE_FIB').orderByChild("porcentaje");
@@ -13262,8 +13372,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE_ALI_EVO').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -13564,8 +13680,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE_ALI_EVO_FIB').orderByChild("porcentaje");
@@ -13861,8 +13983,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_EZE_ALI_EVO_FIB').orderByChild("porcentaje");
@@ -14161,8 +14289,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE_ALI_EVO_FIB').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -14459,8 +14593,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_EZE_ALI_EVO_RES').orderByChild("porcentaje");
@@ -14761,8 +14901,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_EZE_ALI_EVO_RES').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -15057,8 +15203,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE_ALI_EVO_RES').orderByChild("porcentaje");
@@ -15356,8 +15508,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_EZE_ALI_EVO').orderByChild("porcentaje");
@@ -15656,8 +15814,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE_ALI_EVO').orderByChild("porcentaje");
@@ -15960,8 +16124,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_ALI_EVO').orderByChild("porcentaje");
@@ -16264,8 +16434,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_ALI_EVO').orderByChild("porcentaje");
@@ -16564,8 +16740,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_ALI_EVO').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -16860,8 +17042,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EZE_ALI75').orderByChild("porcentaje");
@@ -17157,8 +17345,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-        var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EBI_ALI75').orderByChild("porcentaje");
@@ -17454,8 +17648,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-        var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_ALI75').orderByChild("porcentaje");
@@ -17753,8 +17953,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_ALI75').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -18050,8 +18256,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-        var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EZE_ALI_EVO').orderByChild("porcentaje");
@@ -18351,8 +18563,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-        var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_EZE_ALI75').orderByChild("porcentaje");
@@ -18660,8 +18878,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE_ALI75').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -18958,8 +19182,14 @@ setTimeout(
  
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EAI_EZE').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -19257,8 +19487,14 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-        var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI_EZE').orderByChild("porcentaje");
@@ -19560,8 +19796,14 @@ setTimeout(
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
     
-    var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
-  $scope.reduccionscope=porc_reducc;
+if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+   $scope.reduccionscope=porc_reducc;
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
     var ref = firebase.database().ref('EMI').orderByChild("porcentaje");
     $scope.disp = $firebaseArray(ref);
@@ -19850,7 +20092,17 @@ setTimeout(
   // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
   // document.getElementById("porcentaje_red_tratamiento").value=porc_reducc+"%";
     // Initialize Firebase
-        var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
+        // var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100); 
+
+ if(tratamiento_previo==true){
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlrectificado))*100);
+  $scope.ldlactualscope=ldlrectificado;
+ }
+ else{
+  var porc_reducc=100-parseInt((parseFloat(ldlobjetivo)/parseFloat(ldlactual))*100);
+ }
+
+
   $scope.reduccionscope=porc_reducc;
 
     // var ref = firebase.database().ref('EBI').orderByChild("porcentaje").startAt(porc_reducc);
